@@ -8,3 +8,7 @@ dist/
 Thumbs.db
 .local/
 *.log
+.wrangler/
+playwright-report/
+test-results/
+.artifacts/

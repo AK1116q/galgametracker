@@ -1,0 +1,633 @@
+{
+  "schemaVersion": "0.1",
+  "id": "wa2-pc-cc-setsuna",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "white-album-2",
+    "title": "白色相簿2",
+    "aliases": ["WA2", "白2", "WHITE ALBUM 2"]
+  },
+  "release": {
+    "id": "wa2-pc-cc",
+    "label": "PC 原版 CC · 中文语义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从 CC 开头按本路线连续选择；需要先完成 IC。",
+    "文本为中文语义提示，不是某个汉化补丁的逐字原文。请同时核对顺序与含义。",
+    "以 PC 原版 CC 路线为基准。没有可靠使用量统计，不宣称它是最多人使用的版本；Extended Edition 与具体汉化补丁仍待实机确认。",
+    "部分攻略对日期标注有一天差异，因此以选择顺序和语义共同定位。",
+    "已完成资料交叉核对，尚未实机通关验证。选了其他项时暂停导航，不猜测后续结局。"
+  ],
+  "sources": [
+    {
+      "id": "seiya",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/leaf/wa2.html",
+      "permission": "提炼选项序号和路线事实，中文提示自行概述；未复制攻略正文，未取得原文转载授权。"
+    },
+    {
+      "id": "playgame",
+      "kind": "public_reference",
+      "reference": "https://playgame.wiki/weam2/gonglue/eeac9b299b",
+      "permission": "交叉核对选项含义、前置条件和分支规则；未复制正文或图片。"
+    },
+    {
+      "id": "bilibili-analysis",
+      "kind": "public_reference",
+      "reference": "https://www.bilibili.com/read/cv6878164/",
+      "permission": "仅核对选项影响与后段判定事实，不转载文章分析、图片或长段原文。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "setsuna-cc",
+      "safeLabel": "小木曾雪菜 · CC",
+      "entryChoiceId": "cc-01",
+      "requiredEndingIds": ["ic-completed"]
+    }
+  ],
+  "choices": [
+    {
+      "id": "cc-01",
+      "locator": "12月1日",
+      "prompt": "与她相处的感受",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不擅长应付她",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "相处时感到舒适",
+          "next": {
+            "kind": "choice",
+            "id": "cc-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第1次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-02",
+      "locator": "12月2日",
+      "prompt": "联系她的方式",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "用电话联系",
+          "next": {
+            "kind": "choice",
+            "id": "cc-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "用短信联系",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第2次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-03",
+      "locator": "12月3日",
+      "prompt": "是否答应这件事",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拒绝",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "接受",
+          "next": {
+            "kind": "choice",
+            "id": "cc-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第3次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-04",
+      "locator": "12月5日",
+      "prompt": "分别的时候",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "陪她回去",
+          "next": {
+            "kind": "choice",
+            "id": "cc-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "留在原地送别",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第4次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-05",
+      "locator": "12月8日",
+      "prompt": "她睡着以后",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她在床上休息",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "把她唤醒",
+          "next": {
+            "kind": "choice",
+            "id": "cc-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第5次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-06",
+      "locator": "12月11—12日",
+      "prompt": "又一次分别",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "陪她回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "留在原地送别",
+          "next": {
+            "kind": "choice",
+            "id": "cc-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第6次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-07",
+      "locator": "12月14日",
+      "prompt": "如何回应那件事",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "事情没有那么简单",
+          "next": {
+            "kind": "choice",
+            "id": "cc-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "事情已经过去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第7次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-08",
+      "locator": "12月17日 · 第一次",
+      "prompt": "约定的时间",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约在今天",
+          "next": {
+            "kind": "choice",
+            "id": "cc-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "推到明天",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第8次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-09",
+      "locator": "12月17日 · 第二次",
+      "prompt": "是否继续交谈",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续聊一会儿",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "今天先回去",
+          "next": {
+            "kind": "choice",
+            "id": "cc-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第9次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-10",
+      "locator": "12月18—19日",
+      "prompt": "面对她的决定",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "由她自己决定",
+          "next": {
+            "kind": "choice",
+            "id": "cc-11"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "表示不能同意",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第10次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-11",
+      "locator": "12月20日",
+      "prompt": "这次在哪里见面",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让对方过来",
+          "next": {
+            "kind": "choice",
+            "id": "cc-12"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "自己过去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第11次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-12",
+      "locator": "12月21日",
+      "prompt": "是否拿一本",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拿一本",
+          "next": {
+            "kind": "choice",
+            "id": "cc-13"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "表示不需要",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第12次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-13",
+      "locator": "12月22日",
+      "prompt": "对那个人的猜想",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再在意",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "想到一种可能",
+          "next": {
+            "kind": "choice",
+            "id": "cc-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第13次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-14",
+      "locator": "12月24—25日 · 第一次",
+      "prompt": "接下来如何度过",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "联系千晶",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "去编辑部",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "不应考虑前两种想法",
+          "next": {
+            "kind": "choice",
+            "id": "cc-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-3"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第14次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-15",
+      "locator": "12月24—25日 · 第二次",
+      "prompt": "这一天的安排",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "前往打工",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "独自度过",
+          "next": {
+            "kind": "choice",
+            "id": "cc-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第15次选择（前五步继承 Save03 之前）"
+        }
+      ]
+    },
+    {
+      "id": "cc-16",
+      "locator": "12月31日",
+      "prompt": "年末的安排",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "前往音乐会（通常不可选）",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "参加跨年参拜",
+          "next": {
+            "kind": "ending",
+            "id": "setsuna-cc-completed"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "setsuna-cc",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CC 雪菜路线，第16次选择（前五步继承 Save03 之前）"
+        }
+      ],
+      "skipTo": {
+        "kind": "ending",
+        "id": "setsuna-cc-completed"
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "ic-completed",
+      "safeLabel": "序章 IC 已完成",
+      "hiddenTitle": "序章完成",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "setsuna-cc-completed",
+      "safeLabel": "雪菜 CC 路线完成",
+      "hiddenTitle": "雪菜 Closing Chapter END",
+      "spoilerLevel": 2
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-14",
+      "routeIds": ["setsuna-cc"],
+      "method": "source_crosscheck",
+      "evidence": "保留誠也の部屋 Save03 之前的五次选择，再接雪菜分支。与中文攻略及 B 站 CC 解析逐项核对选项影响、后段判定。采用同一完整路径，不拼接不同攻略推荐；见 docs/wa2-research.md。"
+    }
+  ]
+}

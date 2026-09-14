@@ -4,42 +4,118 @@
   "revision": 1,
   "synthetic": true,
   "status": "draft",
-  "game": { "id": "demo-game", "title": "纸上岔路（虚构测试作品）", "aliases": ["演示作品"] },
-  "release": { "id": "demo-zh-v1", "label": "虚构简中测试版 1.0", "locale": "zh-CN" },
+  "game": {
+    "id": "demo-game",
+    "title": "纸上岔路（虚构测试作品）",
+    "aliases": ["演示作品"]
+  },
+  "release": {
+    "id": "demo-zh-v1",
+    "label": "虚构简中测试版 1.0",
+    "locale": "zh-CN"
+  },
   "sources": [
-    { "id": "demo-source", "kind": "synthetic", "reference": "本仓库自编测试场景，不对应真实游戏", "permission": "仅用于测试数据契约" }
+    {
+      "id": "demo-source",
+      "kind": "synthetic",
+      "reference": "本仓库自编测试场景，不对应真实游戏",
+      "permission": "仅用于测试数据契约"
+    }
   ],
   "routes": [
-    { "id": "route-a", "safeLabel": "角色甲", "entryChoiceId": "choice-1", "requiredEndingIds": [] },
-    { "id": "route-b", "safeLabel": "角色乙", "entryChoiceId": "choice-1", "requiredEndingIds": ["ending-a"] }
+    {
+      "id": "route-a",
+      "safeLabel": "角色甲",
+      "entryChoiceId": "choice-1",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "route-b",
+      "safeLabel": "角色乙",
+      "entryChoiceId": "choice-1",
+      "requiredEndingIds": ["ending-a"]
+    }
   ],
   "choices": [
     {
-      "id": "choice-1", "locator": "演示第一日", "prompt": "现在去哪里？",
+      "id": "choice-1",
+      "locator": "演示第一日",
+      "prompt": "现在去哪里？",
       "options": [
-        { "id": "library", "text": "去图书馆", "next": { "kind": "choice", "id": "choice-2" } },
-        { "id": "garden", "text": "去庭院", "next": { "kind": "ending", "id": "ending-b" } }
+        {
+          "id": "library",
+          "text": "去图书馆",
+          "next": { "kind": "choice", "id": "choice-2" }
+        },
+        {
+          "id": "garden",
+          "text": "去庭院",
+          "next": { "kind": "ending", "id": "ending-b" }
+        }
       ],
       "rules": [
-        { "routeId": "route-a", "when": { "all": [] }, "recommendedOptionIds": ["library"], "sourceId": "demo-source", "sourceLocator": "演示规则 A-1" },
-        { "routeId": "route-b", "when": { "endingId": "ending-a" }, "recommendedOptionIds": ["garden"], "sourceId": "demo-source", "sourceLocator": "演示规则 B-1" }
+        {
+          "routeId": "route-a",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["library"],
+          "sourceId": "demo-source",
+          "sourceLocator": "演示规则 A-1"
+        },
+        {
+          "routeId": "route-b",
+          "when": { "endingId": "ending-a" },
+          "recommendedOptionIds": ["garden"],
+          "sourceId": "demo-source",
+          "sourceLocator": "演示规则 B-1"
+        }
       ]
     },
     {
-      "id": "choice-2", "locator": "演示第一日，图书馆", "prompt": "接下来做什么？",
+      "id": "choice-2",
+      "locator": "演示第一日，图书馆",
+      "prompt": "接下来做什么？",
       "options": [
-        { "id": "stay", "text": "留下读书", "next": { "kind": "ending", "id": "ending-a" } },
-        { "id": "leave", "text": "先回家", "next": { "kind": "ending", "id": "ending-neutral" } }
+        {
+          "id": "stay",
+          "text": "留下读书",
+          "next": { "kind": "ending", "id": "ending-a" }
+        },
+        {
+          "id": "leave",
+          "text": "先回家",
+          "next": { "kind": "ending", "id": "ending-neutral" }
+        }
       ],
       "rules": [
-        { "routeId": "route-a", "when": { "choiceId": "choice-1", "optionId": "library" }, "recommendedOptionIds": ["stay"], "sourceId": "demo-source", "sourceLocator": "演示规则 A-2" }
+        {
+          "routeId": "route-a",
+          "when": { "choiceId": "choice-1", "optionId": "library" },
+          "recommendedOptionIds": ["stay"],
+          "sourceId": "demo-source",
+          "sourceLocator": "演示规则 A-2"
+        }
       ]
     }
   ],
   "endings": [
-    { "id": "ending-a", "safeLabel": "结局记录 A", "hiddenTitle": "演示：共同阅读", "spoilerLevel": 2 },
-    { "id": "ending-b", "safeLabel": "结局记录 B", "hiddenTitle": "演示：庭院相见", "spoilerLevel": 2 },
-    { "id": "ending-neutral", "safeLabel": "结局记录 C", "hiddenTitle": "演示：平常的一天", "spoilerLevel": 2 }
+    {
+      "id": "ending-a",
+      "safeLabel": "结局记录 A",
+      "hiddenTitle": "演示：共同阅读",
+      "spoilerLevel": 2
+    },
+    {
+      "id": "ending-b",
+      "safeLabel": "结局记录 B",
+      "hiddenTitle": "演示：庭院相见",
+      "spoilerLevel": 2
+    },
+    {
+      "id": "ending-neutral",
+      "safeLabel": "结局记录 C",
+      "hiddenTitle": "演示：平常的一天",
+      "spoilerLevel": 2
+    }
   ],
   "reviews": []
 }
