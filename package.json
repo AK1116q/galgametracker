@@ -1,0 +1,13 @@
+{
+  "name": "galgametracker",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "validate:data": "node scripts/validate-data.mjs",
+    "test": "node --test",
+    "check": "npm run validate:data && npm test"
+  },
+  "devDependencies": { "ajv": "^8.17.1" }
+}
