@@ -2375,3 +2375,268 @@ button svg {
     display: none;
   }
 }
+/* Product flow: chapter > ending > chronological choice tree. */
+.chapter-picker,
+.target-picker,
+.chapter-info,
+.tracking-tools {
+  margin: 24px 0;
+  padding: 0;
+}
+.chapter-picker h2,
+.target-picker h2,
+.tracking-tools h2 {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.chapter-options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.chapter-button {
+  text-align: left;
+  border: 1px solid #d3d8d1;
+  background: #fff;
+  border-radius: 6px;
+  padding: 16px 20px;
+  min-width: 220px;
+  display: grid;
+  gap: 8px;
+  cursor: pointer;
+  color: #27352d;
+}
+.chapter-button strong {
+  font-size: 17px;
+}
+.chapter-button span {
+  font-size: 14px;
+  color: #536259;
+}
+.chapter-button.selected {
+  border: 2px solid #40654b;
+  padding: 15px 19px;
+  background: #f0f5ef;
+}
+.chapter-info {
+  padding: 24px;
+  border: 1px solid #d3d8d1;
+  border-radius: 6px;
+}
+.guide {
+  margin-top: 32px;
+  max-width: 1040px;
+}
+.guide-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.guide-title h2 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+.guide p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 10px 0;
+  color: #536259;
+}
+.guide-scope {
+  background: #f2f3ef;
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+.tree-root,
+.tree-ending {
+  padding: 16px 20px;
+  border: 1px solid #9cac9b;
+  border-radius: 6px;
+  background: #edf3ec;
+  font-weight: 600;
+  line-height: 1.7;
+}
+.tree-root {
+  margin-top: 20px;
+}
+.route-tree {
+  list-style: none;
+  padding: 0 0 0 24px;
+  margin: 0;
+}
+.tree-step {
+  border-left: 2px solid #88a18d;
+  padding: 24px 0 24px 24px;
+  position: relative;
+}
+.tree-step::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 33px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #40654b;
+}
+.tree-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+.tree-date > span {
+  color: #526659;
+  font-size: 13px;
+}
+.tree-date strong {
+  font-size: 17px;
+}
+.tree-date b {
+  font-size: 12px;
+  background: #e7eee4;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.tree-step.current .tree-date b {
+  background: #40654b;
+  color: white;
+}
+.tree-prompt {
+  margin: 4px 0 12px !important;
+}
+.tree-branches {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  position: relative;
+  flex-wrap: wrap;
+}
+.tree-option {
+  flex: 1 1 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #d7ddd5;
+  border-radius: 5px;
+  position: relative;
+  min-width: 0;
+}
+.tree-option strong {
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.target-option {
+  background: #edf4eb;
+  border: 2px solid #65816b;
+  order: -1;
+}
+.target-option::after {
+  content: "↓ 继续";
+  position: absolute;
+  bottom: -25px;
+  left: 12px;
+  color: #40654b;
+  font-size: 12px;
+}
+.branch-label {
+  font-size: 12px;
+  color: #536259;
+}
+.target-option .branch-label {
+  font-weight: 700;
+  color: #365c3f;
+}
+.other-option {
+  background: #fafbf9;
+}
+.other-option strong {
+  font-weight: 400;
+  color: #677067;
+}
+.tree-option .button {
+  font-size: 13px;
+  padding: 8px 10px;
+  min-height: 36px;
+  white-space: normal;
+}
+.tracking-bar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 0;
+}
+.tracking-tools {
+  border-top: 1px solid #d3d8d1;
+  padding-top: 22px;
+}
+.tracking-tools .check-label {
+  margin: 14px 0;
+}
+.tree-ending .button {
+  margin-top: 12px;
+}
+.eyebrow,
+.sidebar-version,
+.page-footer,
+.library-footer,
+.add-game-card {
+  display: none;
+}
+.page-heading {
+  margin-bottom: 24px;
+}
+.page-heading h1 {
+  font-size: 30px;
+}
+.main-content {
+  padding-top: 30px;
+}
+@media (max-width: 600px) {
+  .chapter-button {
+    min-width: 0;
+    width: 100%;
+    padding: 14px;
+  }
+  .chapter-button.selected {
+    padding: 13px;
+  }
+  .chapter-options {
+    width: 100%;
+  }
+  .guide-title h2 {
+    font-size: 21px;
+  }
+  .route-tree {
+    padding-left: 6px;
+  }
+  .tree-step {
+    padding-left: 14px;
+  }
+  .tree-branches {
+    gap: 8px;
+  }
+  .tree-option {
+    flex-basis: 100%;
+    padding: 12px;
+  }
+  .target-option {
+    order: 0;
+  }
+  .target-option::after {
+    display: none;
+  }
+  .tree-step {
+    padding-bottom: 16px;
+  }
+  .tree-root,
+  .tree-ending {
+    padding: 12px;
+  }
+}

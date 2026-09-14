@@ -1,114 +1,111 @@
 import { test, expect } from "@playwright/test";
-
-test("WA2 starts with prerequisites, reveals one choice, restores and undoes", async ({
+async function openTarget(
+  page,
+  chapter = "Coda · 最终章",
+  target = "冬马和纱 · True Ending",
+) {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
+    .click();
+  await page.getByRole("button", { name: chapter }).click();
+  await page.getByRole("button", { name: target }).click();
+}
+test("chapter selection opens a complete target tree without creating progress", async ({
   page,
 }) => {
-  const errors: string[] = [];
+  const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "故事，慢慢读。" }),
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "选择路线", exact: true }).click();
+  await expect(page.getByText("攻略工作台", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "录入攻略" })).toHaveCount(0);
+  await page
+    .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
+    .click();
+  await page.getByRole("button", { name: "IC · 序章" }).click();
   await expect(
-    page.getByRole("button", { name: "开始这条路线" }),
-  ).toBeDisabled();
-  await page.getByLabel("我了解版本说明，会对照游戏画面核对").check();
-  await page.getByLabel("我已完成：序章 IC 已完成").check();
-  await page.getByRole("button", { name: "开始这条路线" }).click();
-  await expect(page.getByText("与她相处的感受", { exact: true })).toHaveCount(
-    0,
-  );
-  await expect(page.getByText("联系她的方式", { exact: true })).toHaveCount(0);
-  await page.getByRole("button", { name: "我已遇到当前选择" }).click();
-  await page.getByRole("radio").filter({ hasText: "相处时感到舒适" }).click();
-  await page.getByRole("button", { name: "确认，我选了这一项" }).click();
-  await expect(page.getByText("12月2日", { exact: true })).toBeVisible();
-  await page.reload();
-  await page.getByRole("button", { name: "继续导航", exact: true }).click();
-  await expect(page.getByText("12月2日", { exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "撤销上一步", exact: true }).click();
-  await expect(page.getByText("12月1日", { exact: true })).toBeVisible();
+    page.getByRole("heading", { name: "IC 没有选项" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "CC · 终章" }).click();
   await expect(
-    page.getByText("雪菜 Closing Chapter END", { exact: true }),
+    page.getByRole("button", { name: "冬马和纱 · True Ending" }),
   ).toHaveCount(0);
-  expect(errors).toEqual([]);
+  await page.getByRole("button", { name: "Coda · 最终章" }).click();
+  await page.getByRole("button", { name: "冬马和纱 · True Ending" }).click();
+  await expect(page.locator(".tree-step")).toHaveCount(14);
+  await expect(page.locator(".target-option").first()).toContainText(
+    "第 2 项：交往已有两年",
+  );
+  await expect(page.locator(".tree-ending")).toContainText(
+    "冬马和纱 True Ending",
+  );
   expect(
     await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth,
+      () =>
+        JSON.parse(
+          localStorage.getItem("galgametracker.web.v1") || '{"sessions":[]}',
+        ).sessions,
+    ),
+  ).toEqual([]);
+  await page.getByLabel("显示其他选项").uncheck();
+  await expect(page.locator(".other-option")).toHaveCount(0);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+  expect(errors).toEqual([]);
 });
-
-test("wrong choice pauses instead of inventing a route", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("button", { name: "选择路线", exact: true }).click();
-  await page.getByLabel("我了解版本说明，会对照游戏画面核对").check();
+test("optional tracking restores old CC progress and undoes actual choices", async ({
+  page,
+}) => {
+  await openTarget(page, "CC · 终章", "小木曾雪菜 · CC");
   await page.getByLabel("我已完成：序章 IC 已完成").check();
-  await page.getByRole("button", { name: "开始这条路线" }).click();
-  await page.getByRole("button", { name: "我已遇到当前选择" }).click();
-  await page.getByRole("radio").filter({ hasText: "不擅长应付她" }).click();
-  await page.getByRole("button", { name: "确认，我选了这一项" }).click();
+  await page.getByRole("button", { name: "开始记录进度" }).click();
+  await page.getByRole("button", { name: "我在游戏中选了第 2 项" }).click();
+  await expect(page.locator(".tree-step.current")).toContainText("12月2日");
+  await page.reload();
+  await page.getByRole("button", { name: "继续导航", exact: true }).click();
+  await expect(page.locator(".tree-step.current")).toContainText("12月2日");
+  await page.getByRole("button", { name: "撤销上一步", exact: true }).click();
+  await expect(page.locator(".tree-step.current")).toContainText("12月1日");
+  await page.getByRole("button", { name: "我在游戏中选了第 1 项" }).click();
   await expect(
-    page.getByRole("heading", { name: "先把书签留在这里。" }),
+    page.getByText("实际选择已偏离本攻略路径", { exact: false }),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "我已在游戏中通关" }),
   ).toHaveCount(0);
-  await page
-    .getByRole("button", { name: "我已在游戏回档，撤销这次选择" })
-    .click();
-  await expect(page.getByText("12月1日", { exact: true })).toBeVisible();
 });
-
-test("editor creates a private route, completes it, and exports a backup", async ({
+test("Kazusa target can be tracked through all fourteen choices and exported", async ({
   page,
 }) => {
-  await page.goto("/");
-  await page.getByRole("button", { name: "录入攻略", exact: true }).click();
-  await page.getByLabel("版本 / 汉化补丁").fill("测试版");
-  await page.getByLabel("目标路线", { exact: true }).fill("本机检查路线");
-  await page.getByLabel("结局记录名称").fill("测试结局");
-  await page.getByLabel("攻略来源", { exact: true }).fill("本人测试笔记");
-  await page.getByLabel("使用依据").fill("仅为自动化测试的虚构内容");
-  await page.getByLabel("时间 / 章节").fill("第一天");
-  await page.getByLabel("当前提示", { exact: true }).fill("去哪里");
-  await page.getByLabel("选择 1 选项 1", { exact: true }).fill("去图书馆");
-  await page.getByLabel("选择 1 选项 2", { exact: true }).fill("先回家");
-  await page.getByRole("button", { name: "保存为私人攻略" }).click();
-  await page.getByLabel("我的游戏版本").selectOption({ label: "测试版 · v1" });
-  await page.getByLabel("我了解版本说明，会对照游戏画面核对").check();
-  await page.getByRole("button", { name: "开始这条路线" }).click();
-  await page.getByRole("button", { name: "我已遇到当前选择" }).click();
-  await page.getByRole("radio").filter({ hasText: "去图书馆" }).click();
-  await page.getByRole("button", { name: "确认，我选了这一项" }).click();
-  await expect(
-    page.getByRole("heading", { name: "剩下的时间，交给故事。" }),
-  ).toBeVisible();
+  await openTarget(page);
+  await page.getByLabel("我已完成：CC 雪菜结局").check();
+  await page.getByRole("button", { name: "开始记录进度" }).click();
+  for (let i = 0; i < 14; i++)
+    await page.locator(".tree-step.current .target-option button").click();
   await page.getByRole("button", { name: "我已在游戏中通关" }).click();
-  await expect(
-    page.getByRole("heading", { name: "这一程，好好收下。" }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "返回路线选择" }).click();
+  await expect(page.locator(".tracking-bar")).toContainText("已通关");
   const menu = page.getByRole("button", { name: "打开导航" });
   if (await menu.isVisible()) await menu.click();
   await page.getByRole("button", { name: "数据与设置", exact: true }).click();
-  const download = page.waitForEvent("download");
+  const pending = page.waitForEvent("download");
   await page.getByRole("button", { name: "导出全部记录" }).click();
-  expect((await download).suggestedFilename()).toContain("路线手记");
+  expect((await pending).suggestedFilename()).toContain("路线手记");
 });
-
-test("malformed import reports an error and retains data", async ({ page }) => {
+test("malformed import retains current data", async ({ page }) => {
   await page.goto("/");
-  await page
-    .getByLabel("导入数据文件")
-    .setInputFiles({
-      name: "bad.json",
-      mimeType: "application/json",
-      buffer: Buffer.from('{"version":999}'),
-    });
+  await page.getByLabel("导入数据文件").setInputFiles({
+    name: "bad.json",
+    mimeType: "application/json",
+    buffer: Buffer.from('{"version":999}'),
+  });
   await expect(page.getByRole("status")).toContainText("无法导入");
   await expect(
-    page.getByRole("heading", { name: "故事，慢慢读。" }),
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
   ).toBeVisible();
 });
