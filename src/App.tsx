@@ -54,6 +54,41 @@ const extraPacks = Object.values(
 ).filter((p) => p.id !== wa2Data.id && p.id !== kazusaData.id);
 const BUILTINS = [wa2Data, kazusaData, ...extraPacks, demoData] as Pack[];
 type View = "library" | "game" | "play" | "records" | "settings";
+type Navigation = {
+  view: View;
+  gameId: string;
+  activeId: string;
+  chapter: string;
+  target: string;
+};
+function readNavigation(): Navigation {
+  const params = new URLSearchParams(location.search);
+  const requested = params.get("view") as View;
+  return {
+    view: ["library", "game", "play", "records", "settings"].includes(requested)
+      ? requested
+      : "library",
+    gameId: params.get("game") || "white-album-2",
+    activeId: params.get("session") || "",
+    chapter: params.get("chapter") || "",
+    target: params.get("target") || "",
+  };
+}
+function navigationUrl(next: Navigation) {
+  const url = new URL(location.href);
+  for (const key of ["view", "game", "session", "chapter", "target"])
+    url.searchParams.delete(key);
+  if (next.view !== "library") url.searchParams.set("view", next.view);
+  if (next.view === "game") {
+    url.searchParams.set("game", next.gameId);
+    if (next.chapter) url.searchParams.set("chapter", next.chapter);
+    if (next.target) url.searchParams.set("target", next.target);
+  }
+  if (next.view === "play" && next.activeId)
+    url.searchParams.set("session", next.activeId);
+  url.hash = "";
+  return url.pathname + url.search;
+}
 const statusText = (p: Pack) =>
   p.synthetic
     ? "体验用虚构示例"
@@ -169,9 +204,8 @@ export default function App() {
   const [initial] = useState(readInitial);
   const [library, setLibrary] = useState<Library>(initial.library);
   const [problem, setProblem] = useState(initial.problem);
-  const [view, setView] = useState<View>("library");
-  const [gameId, setGameId] = useState("white-album-2");
-  const [activeId, setActiveId] = useState("");
+  const [navigation, setNavigation] = useState<Navigation>(readNavigation);
+  const { view, gameId, activeId } = navigation;
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
@@ -215,8 +249,28 @@ export default function App() {
     document.title = `${{ library: "游戏库", game: "路线选择", play: "路线导航", records: "游玩记录", settings: "数据与设置" }[view]} · 路线手记`;
   }, [view]);
 
-  function navigate(next: View) {
-    setView(next);
+  useEffect(() => {
+    const restore = () => {
+      setNavigation(readNavigation());
+      setMenu(false);
+    };
+    window.addEventListener("popstate", restore);
+    return () => window.removeEventListener("popstate", restore);
+  }, []);
+
+  function navigate(next: View, selection: Partial<Navigation> = {}) {
+    const destination = {
+      view: next,
+      gameId,
+      activeId,
+      chapter: "",
+      target: "",
+      ...selection,
+    };
+    const url = navigationUrl(destination);
+    if (url !== location.pathname + location.search)
+      history.pushState(null, "", url);
+    setNavigation(destination);
     setMenu(false);
     window.scrollTo(0, 0);
   }
@@ -245,12 +299,10 @@ export default function App() {
     return commit(next);
   }
   function resume(session: Session) {
-    setActiveId(session.id);
-    navigate("play");
+    navigate("play", { activeId: session.id });
   }
   function openGame(id: string) {
-    setGameId(id);
-    navigate("game");
+    navigate("game", { gameId: id });
   }
   function start(pack: Pack, routeId: string, initialEndingIds: string[]) {
     try {
@@ -338,8 +390,8 @@ export default function App() {
               key={id}
               className={`nav-item ${view === id || (id === "library" && view === "game") ? "active" : ""}`}
               onClick={() => {
-                if (id === "play" && !active && recent) setActiveId(recent.id);
-                navigate(id);
+                if (id === "play" && !active && recent) resume(recent);
+                else navigate(id);
               }}
             >
               <Icon size={20} weight={view === id ? "fill" : "regular"} />
@@ -633,16 +685,35 @@ export default function App() {
               </div>
             </>
           )}
-          {view === "game" && (
-            <GameView
-              key={gameId}
-              packs={selectedPacks}
-              library={library}
-              start={start}
-              resume={resume}
-              back={() => navigate("library")}
-            />
-          )}
+          {view === "game" &&
+            (selectedPacks.length ? (
+              <GameView
+                key={gameId}
+                packs={selectedPacks}
+                chapter={navigation.chapter}
+                target={navigation.target}
+                select={(chapter, target) =>
+                  navigate("game", { chapter, target })
+                }
+                library={library}
+                start={start}
+                resume={resume}
+                back={() => navigate("library")}
+              />
+            ) : (
+              <Empty
+                title="找不到这部作品"
+                text="该攻略可能尚未导入本机。"
+                action={
+                  <button
+                    className="button secondary"
+                    onClick={() => navigate("library")}
+                  >
+                    返回游戏库
+                  </button>
+                }
+              />
+            ))}
           {view === "play" &&
             (active && activePack ? (
               <PlayView
@@ -857,21 +928,29 @@ function chapterOf(pack: Pack) {
 }
 function GameView({
   packs,
+  chapter: selectedChapter,
+  target,
+  select,
   library,
   start,
   resume,
   back,
 }: {
   packs: Pack[];
+  chapter: string;
+  target: string;
+  select: (chapter: string, target: string) => void;
   library: Library;
   start: (p: Pack, r: string, e: string[]) => void;
   resume: (s: Session) => void;
   back: () => void;
 }) {
   const wa2 = packs[0].game.id === "white-album-2";
-  const [chapter, setChapter] = useState(wa2 ? "" : "other");
-  const [target, setTarget] = useState("");
+  const chapter = selectedChapter || (wa2 ? "" : "other");
+  const setChapter = (value: string) => select(value, "");
+  const setTarget = (value: string) => select(chapter, value);
   const [ready, setReady] = useState(false);
+  useEffect(() => setReady(false), [chapter, target]);
   const chapters = wa2
     ? [
         { id: "ic", label: "IC · 序章", note: "无选项" },
@@ -926,7 +1005,6 @@ function GameView({
               aria-pressed={chapter === c.id}
               onClick={() => {
                 setChapter(c.id);
-                setTarget("");
                 setReady(false);
               }}
             >

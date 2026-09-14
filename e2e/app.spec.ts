@@ -68,7 +68,6 @@ test("optional tracking restores old CC progress and undoes actual choices", asy
   await page.getByRole("button", { name: "我在游戏中选了第 2 项" }).click();
   await expect(page.locator(".tree-step.current")).toContainText("12月2日");
   await page.reload();
-  await page.getByRole("button", { name: "继续导航", exact: true }).click();
   await expect(page.locator(".tree-step.current")).toContainText("12月2日");
   await page.getByRole("button", { name: "撤销上一步", exact: true }).click();
   await expect(page.locator(".tree-step.current")).toContainText("12月1日");
@@ -147,4 +146,79 @@ test("all target entries open, and optional-step text has its own space", async 
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+
+test("page return buttons keep recorded progress and allow reopening the route", async ({
+  page,
+}) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await openTarget(page);
+  await page.getByLabel("我已完成：CC 雪菜结局").check();
+  await page.getByRole("button", { name: "开始记录进度" }).click();
+  await page.locator(".tree-step.current .target-option button").click();
+  await page.getByRole("button", { name: "返回篇章与结局选择" }).click();
+  await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "继续导航", exact: true }).click();
+  await expect(page.locator(".tracking-bar")).toContainText("已记录 1 次选择");
+  expect(errors).toEqual([]);
+});
+
+test("browser back and forward restore chapter, ending, and tracking without leaving the site", async ({
+  page,
+}) => {
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await openTarget(page);
+  const targetUrl = page.url();
+  await page.reload();
+  await expect(page.locator(".tree-step")).toHaveCount(14);
+  await page.goBack();
+  await expect(
+    page.locator(".chapter-picker button[aria-pressed=true]"),
+  ).toContainText("Coda");
+  await expect(page.locator(".guide")).toHaveCount(0);
+  await page.goBack();
+  await expect(page.locator(".chapter-picker")).toBeVisible();
+  await expect(page.locator(".target-picker")).toHaveCount(0);
+  await page.goBack();
+  await expect(
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
+  ).toBeVisible();
+  await page.goForward();
+  await page.goForward();
+  await page.goForward();
+  expect(page.url()).toBe(targetUrl);
+  await expect(page.locator(".tree-step")).toHaveCount(14);
+  await page.getByLabel("我已完成：CC 雪菜结局").check();
+  await page.getByRole("button", { name: "开始记录进度" }).click();
+  await page.locator(".tree-step.current .target-option button").click();
+  await page.goBack();
+  await expect(
+    page.getByRole("button", { name: "继续已有记录" }),
+  ).toBeVisible();
+  await page.goForward();
+  await expect(page.locator(".tracking-bar")).toContainText("已记录 1 次选择");
+  await page.reload();
+  await expect(page.locator(".tracking-bar")).toContainText("已记录 1 次选择");
+  expect(errors).toEqual([]);
+});
+test("unavailable shared game or session link fails gracefully", async ({
+  page,
+}) => {
+  await page.goto("/?view=game&game=not-installed");
+  await expect(
+    page.getByRole("heading", { name: "找不到这部作品" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
+  ).toBeVisible();
+  await page.goto("/?view=play&session=not-on-this-device");
+  await expect(
+    page.getByRole("heading", { name: "还没有正在导航的路线" }),
+  ).toBeVisible();
 });
