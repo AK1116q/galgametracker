@@ -1,0 +1,565 @@
+{
+  "schemaVersion": "0.1",
+  "id": "wa2-pc-cc-chiaki-ne",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "white-album-2",
+    "title": "白色相簿2",
+    "aliases": ["WA2", "白2", "WHITE ALBUM 2"]
+  },
+  "release": {
+    "id": "wa2-pc-cc",
+    "label": "PC 原版 CC · 中文语义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从本篇章开头按此完整路径连续选择；其他选法的后续未在本路径展开。",
+    "中文是选项含义概述，并非特定汉化逐字原文。PC 原版基准，未完成实机通关验证。",
+    "部分来源日期相差一天，请同时按选择顺序定位。"
+  ],
+  "sources": [
+    {
+      "id": "seiya",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/leaf/wa2.html",
+      "permission": "提炼选项序号和路线事实，中文提示自行概述；未复制攻略正文，未取得原文转载授权。"
+    },
+    {
+      "id": "playgame",
+      "kind": "public_reference",
+      "reference": "https://playgame.wiki/weam2/gonglue/eeac9b299b",
+      "permission": "交叉核对选项含义、前置条件和分支规则；未复制正文或图片。"
+    },
+    {
+      "id": "bilibili-analysis",
+      "kind": "public_reference",
+      "reference": "https://www.bilibili.com/read/cv6878164/",
+      "permission": "仅核对选项影响与后段判定事实，不转载文章分析、图片或长段原文。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "chiaki-ne",
+      "safeLabel": "和泉千晶 · Normal Ending",
+      "entryChoiceId": "cc-01",
+      "requiredEndingIds": ["ic-completed"]
+    }
+  ],
+  "choices": [
+    {
+      "id": "cc-01",
+      "locator": "12月1日",
+      "prompt": "与她相处的感受",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不擅长应付她",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "相处时感到舒适",
+          "next": {
+            "kind": "choice",
+            "id": "cc-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 1；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-02",
+      "locator": "12月2日",
+      "prompt": "联系她的方式",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "用电话联系",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "用短信联系",
+          "next": {
+            "kind": "choice",
+            "id": "cc-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 2；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-03",
+      "locator": "12月3日",
+      "prompt": "是否答应这件事",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拒绝",
+          "next": {
+            "kind": "choice",
+            "id": "cc-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "接受",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 3；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-04",
+      "locator": "12月5日",
+      "prompt": "分别的时候",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "陪她回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "留在原地送别",
+          "next": {
+            "kind": "choice",
+            "id": "cc-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 4；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-05",
+      "locator": "12月8日",
+      "prompt": "她睡着以后",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她在床上休息",
+          "next": {
+            "kind": "choice",
+            "id": "cc-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "把她唤醒",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 5；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-06",
+      "locator": "12月11—12日",
+      "prompt": "又一次分别",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "陪她回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "留在原地送别",
+          "next": {
+            "kind": "choice",
+            "id": "cc-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 6；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-07",
+      "locator": "12月14日",
+      "prompt": "如何回应那件事",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "事情没有那么简单",
+          "next": {
+            "kind": "choice",
+            "id": "cc-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "事情已经过去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 7；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-08",
+      "locator": "12月17日 · 第一次",
+      "prompt": "约定的时间",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约在今天",
+          "next": {
+            "kind": "choice",
+            "id": "cc-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "推到明天",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 8；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-09",
+      "locator": "12月17日 · 第二次",
+      "prompt": "是否继续交谈",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续聊一会儿",
+          "next": {
+            "kind": "choice",
+            "id": "cc-10"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "今天先回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 9；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-10",
+      "locator": "12月18—19日",
+      "prompt": "面对她的决定",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "由她自己决定",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "表示不能同意",
+          "next": {
+            "kind": "choice",
+            "id": "cc-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 10；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-11",
+      "locator": "12月20日",
+      "prompt": "这次在哪里见面",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让对方过来",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "自己过去",
+          "next": {
+            "kind": "choice",
+            "id": "cc-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 11；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-12",
+      "locator": "12月21日",
+      "prompt": "是否拿一本",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拿一本",
+          "next": {
+            "kind": "choice",
+            "id": "cc-13"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "表示不需要",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 12；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-13",
+      "locator": "12月22日",
+      "prompt": "对那个人的猜想",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再在意",
+          "next": {
+            "kind": "choice",
+            "id": "cc-14"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "想到一种可能",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 13；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "cc-14",
+      "locator": "12月24—25日 · 第一次",
+      "prompt": "接下来如何度过",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "联系千晶",
+          "next": {
+            "kind": "ending",
+            "id": "chiaki-ne-completed"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "去编辑部",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "不应考虑前两种想法",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chiaki-ne",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "playgame",
+          "sourceLocator": "CC 和泉千晶 · Normal Ending，原全选项编号 14；见 docs/wa2-research.md"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "ic-completed",
+      "safeLabel": "序章 IC 已完成",
+      "hiddenTitle": "序章完成",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "setsuna-cc-completed",
+      "safeLabel": "CC 雪菜结局",
+      "hiddenTitle": "CC 雪菜结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "chiaki-ne-completed",
+      "safeLabel": "和泉千晶 · Normal Ending",
+      "hiddenTitle": "和泉千晶 · Normal Ending",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-15",
+      "routeIds": ["chiaki-ne"],
+      "method": "source_crosscheck",
+      "evidence": "按完整路径核对选项序号及入线条件，保留条件造成的跳项；未进行实机通关。详见 docs/wa2-research.md。"
+    }
+  ]
+}

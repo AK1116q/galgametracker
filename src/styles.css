@@ -2537,14 +2537,7 @@ button svg {
   border: 2px solid #65816b;
   order: -1;
 }
-.target-option::after {
-  content: "↓ 继续";
-  position: absolute;
-  bottom: -25px;
-  left: 12px;
-  color: #40654b;
-  font-size: 12px;
-}
+
 .branch-label {
   font-size: 12px;
   color: #536259;
@@ -2638,5 +2631,76 @@ button svg {
   .tree-root,
   .tree-ending {
     padding: 12px;
+  }
+}
+
+/* Keep branch hints in normal flow; no floating labels over optional-step notes. */
+.chapter-button {
+  line-height: 1.7;
+  max-width: 100%;
+}
+.chapter-button strong,
+.guide-title h2,
+.page-heading h1 {
+  letter-spacing: normal;
+}
+.chapter-button small {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #59665c;
+}
+.target-picker .chapter-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.tree-step {
+  padding-top: 28px;
+  padding-bottom: 30px;
+}
+.tree-step::before {
+  top: 38px;
+}
+.tree-date {
+  gap: 12px;
+  line-height: 1.8;
+}
+.tree-prompt {
+  margin: 8px 0 16px !important;
+}
+.tree-option {
+  padding: 18px 20px;
+  gap: 12px;
+}
+.tree-option strong {
+  font-size: 17px;
+  line-height: 1.85;
+  font-weight: 500;
+}
+.branch-label {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.tree-step > .small-note {
+  margin: 18px 0 0;
+  line-height: 1.9;
+}
+.tree-ending {
+  font-size: 17px;
+  line-height: 1.9;
+  padding: 20px;
+}
+@media (max-width: 600px) {
+  .target-picker .chapter-options {
+    grid-template-columns: 1fr;
+  }
+  .tree-option {
+    padding: 16px;
+  }
+  .tree-step {
+    padding-top: 24px;
+    padding-bottom: 26px;
+  }
+  .tree-step::before {
+    top: 34px;
   }
 }

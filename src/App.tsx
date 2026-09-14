@@ -46,7 +46,13 @@ import demoData from "../data/examples/demo.route.json";
 import wa2Data from "../data/wa2/setsuna-cc.route.json";
 import type { Pack, Session, Library } from "./types";
 
-const BUILTINS = [wa2Data, kazusaData, demoData] as Pack[];
+const extraPacks = Object.values(
+  import.meta.glob<Pack>("../data/wa2/*.route.json", {
+    eager: true,
+    import: "default",
+  }),
+).filter((p) => p.id !== wa2Data.id && p.id !== kazusaData.id);
+const BUILTINS = [wa2Data, kazusaData, ...extraPacks, demoData] as Pack[];
 type View = "library" | "game" | "play" | "records" | "settings";
 const statusText = (p: Pack) =>
   p.synthetic
@@ -794,8 +800,8 @@ export default function App() {
                   <h2>关于路线手记</h2>
                   <p>
                     一个面向小规模中文 Galgame
-                    玩家的非官方工具。首批收录《白色相簿2》雪菜 CC 与冬马 Coda
-                    True Ending
+                    玩家的非官方工具。收录《白色相簿2》正篇 CC 与 Coda 的 10
+                    个结局
                     路线，资料已核对，仍待实机检查。游戏名称权利属于其权利人。
                   </p>
                   <a
@@ -843,8 +849,10 @@ export default function App() {
 }
 
 function chapterOf(pack: Pack) {
-  if (pack.id === "wa2-pc-cc-setsuna") return "cc";
-  if (pack.id === "wa2-pc-coda-kazusa") return "coda";
+  if (pack.game.id === "white-album-2" && pack.release.id === "wa2-pc-cc")
+    return "cc";
+  if (pack.game.id === "white-album-2" && pack.release.id === "wa2-pc-coda")
+    return "coda";
   return "other";
 }
 function GameView({
@@ -867,8 +875,16 @@ function GameView({
   const chapters = wa2
     ? [
         { id: "ic", label: "IC · 序章", note: "无选项" },
-        { id: "cc", label: "CC · 终章", note: "雪菜等路线，无冬马线" },
-        { id: "coda", label: "Coda · 最终章", note: "冬马、雪菜的结局" },
+        {
+          id: "cc",
+          label: "CC · 终章",
+          note: "雪菜 · 小春 · 麻理 · 千晶 · 滑雪结局",
+        },
+        {
+          id: "coda",
+          label: "Coda · 最终章",
+          note: "雪菜 TE · 冬马 TE · 冬马 NE · 通常结局",
+        },
         ...(packs.some((p) => chapterOf(p) === "other")
           ? [{ id: "other", label: "其他攻略", note: "导入的版本" }]
           : []),
@@ -945,16 +961,26 @@ function GameView({
                   }}
                 >
                   <strong>{route.safeLabel}</strong>
-                  <span>{pack.release.label}</span>
+                  <span>{pack.choices.length} 次选择</span>
+                  <small>
+                    前置：
+                    {route.requiredEndingIds
+                      .map(
+                        (id) =>
+                          pack.endings.find((e) => e.id === id)?.safeLabel ??
+                          id,
+                      )
+                      .join("、") || "无"}
+                  </small>
                 </button>
               )),
             )}
           </div>
           <p className="small-note">
             {chapter === "cc"
-              ? "目前收录雪菜 CC 攻略。其他 CC 路线尚未收录。"
+              ? "6 个结局。千晶 True Ending 需要先通关千晶 Normal Ending。"
               : chapter === "coda"
-                ? "目前收录冬马 True Ending。雪菜 True Ending 等其他结局尚未收录。"
+                ? "4 个结局。完成 CC 雪菜结局后进入 Coda。"
                 : ""}
           </p>
         </section>
@@ -1057,7 +1083,7 @@ function GuideTree({
         </label>
       </div>
       <p>
-        从本篇章开头按顺序选择绿色路径。其他分支的后续未收录，不代表一定无法到达目标。
+        从本篇章开头按顺序选择绿色路径。这里展示当前目标的一条完整选法；其他目标请在上方切换。
       </p>
       {!pack.synthetic && (
         <p className="guide-scope">
@@ -1129,7 +1155,10 @@ function GuideTree({
                         <span className="branch-label">
                           {option.id === optionId
                             ? "按此路径选择"
-                            : "其他分支 · 后续未收录"}
+                            : option.next.kind === "ending" &&
+                                option.next.id === path.destination.id
+                              ? "也可到达此结局"
+                              : "其他选法 · 不在当前路径展开"}
                         </span>
                         <strong>
                           第 {index + 1} 项：{option.text}

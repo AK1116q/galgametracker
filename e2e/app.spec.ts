@@ -109,3 +109,42 @@ test("malformed import retains current data", async ({ page }) => {
     page.getByRole("heading", { name: "游戏攻略", exact: true }),
   ).toBeVisible();
 });
+
+test("all target entries open, and optional-step text has its own space", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
+    .click();
+  for (const [chapter, count] of [
+    ["CC · 终章", 6],
+    ["Coda · 最终章", 4],
+  ]) {
+    await page.getByRole("button", { name: chapter }).click();
+    const cards = page.locator(".target-picker .chapter-button");
+    await expect(cards).toHaveCount(count);
+    for (let i = 0; i < count; i++) {
+      await cards.nth(i).click();
+      await expect(page.locator(".tree-ending")).toContainText("目标结局：");
+      expect(await page.locator(".tree-step").count()).toBeGreaterThan(0);
+    }
+  }
+  await page.getByRole("button", { name: "CC · 终章" }).click();
+  await page.getByRole("button", { name: "小木曾雪菜 · CC" }).click();
+  const last = page.locator(".tree-step").last();
+  await last.scrollIntoViewIfNeeded();
+  const geometry = await last.evaluate((el) => ({
+    options: el.querySelector(".tree-branches").getBoundingClientRect().bottom,
+    note: el.querySelector(".small-note").getBoundingClientRect().top,
+    after: getComputedStyle(el.querySelector(".target-option"), "::after")
+      .content,
+  }));
+  expect(geometry.note - geometry.options).toBeGreaterThanOrEqual(16);
+  expect(["none", "normal", '""']).toContain(geometry.after);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+});

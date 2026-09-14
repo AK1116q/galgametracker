@@ -1,0 +1,423 @@
+{
+  "schemaVersion": "0.1",
+  "id": "wa2-pc-coda-affair",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "white-album-2",
+    "title": "白色相簿2",
+    "aliases": ["WA2", "白2", "WHITE ALBUM 2"]
+  },
+  "release": {
+    "id": "wa2-pc-coda",
+    "label": "PC 原版 Coda · 中文语义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从本篇章开头按此完整路径连续选择；其他选法的后续未在本路径展开。",
+    "中文是选项含义概述，并非特定汉化逐字原文。PC 原版基准，未完成实机通关验证。",
+    "日期按原资料及顺序定位；年底三次选择有 12/28 与 12/31 的来源差异。",
+    "跳过的编号是当前选择造成的分支跳转，不是漏录；全选项编号与当前路径步骤号不同。",
+    "最后一个选择只影响 CG；本路径示范第 1 项，第 2 项也到达同一结局。"
+  ],
+  "sources": [
+    {
+      "id": "seiya",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/leaf/wa2.html",
+      "permission": "提炼选项序号和路线事实，中文提示自行概述；未复制攻略正文，未取得原文转载授权。"
+    },
+    {
+      "id": "playgame",
+      "kind": "public_reference",
+      "reference": "https://playgame.wiki/weam2/gonglue/eeac9b299b",
+      "permission": "交叉核对选项含义、前置条件和分支规则；未复制正文或图片。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "affair",
+      "safeLabel": "冬马和纱 · Normal Ending（浮气线）",
+      "entryChoiceId": "coda-01",
+      "requiredEndingIds": ["setsuna-cc-completed"]
+    }
+  ],
+  "choices": [
+    {
+      "id": "coda-01",
+      "locator": "12月24日",
+      "prompt": "交往情况",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "近期准备求婚",
+          "next": {
+            "kind": "choice",
+            "id": "coda-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "交往已有两年",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 1；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-02",
+      "locator": "12月28日 / 31日 · 第1次",
+      "prompt": "是否提及见面",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "以后不再见冬马",
+          "next": {
+            "kind": "choice",
+            "id": "coda-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "说明见过冬马",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 2；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-05",
+      "locator": "1月13日 · 第1次",
+      "prompt": "是否主动联系",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想听雪菜说话",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "遵守不主动联系的约定",
+          "next": {
+            "kind": "choice",
+            "id": "coda-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 5；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-06",
+      "locator": "1月13日 · 第2次",
+      "prompt": "这样做的原因",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "出于对冬马的考虑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认为无需担忧",
+          "next": {
+            "kind": "choice",
+            "id": "coda-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 6；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-07",
+      "locator": "1月18日",
+      "prompt": "能否前往",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不会前往",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "无法前往",
+          "next": {
+            "kind": "choice",
+            "id": "coda-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 7；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-08",
+      "locator": "1月19日",
+      "prompt": "如何回应",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拥住她",
+          "next": {
+            "kind": "choice",
+            "id": "coda-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "让她倚靠胸前",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 8；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-09",
+      "locator": "1月21日 · 第1次",
+      "prompt": "是否离开",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "离开这里",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "注视冬马睡着的样子",
+          "next": {
+            "kind": "choice",
+            "id": "coda-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 9；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-10",
+      "locator": "1月21日 · 第2次",
+      "prompt": "此刻的想法",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "希望一直保留下来（译意待核）",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "想要拥抱她",
+          "next": {
+            "kind": "choice",
+            "id": "coda-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-2"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 10；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-13",
+      "locator": "1月29日 · 第1次",
+      "prompt": "动作",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "松手",
+          "next": {
+            "kind": "choice",
+            "id": "coda-15"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "转开脸",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "CODA 冬马和纱 · Normal Ending（浮气线），原全选项编号 13；见 docs/wa2-research.md"
+        }
+      ]
+    },
+    {
+      "id": "coda-15",
+      "locator": "浮气线后段 · CG 分歧",
+      "prompt": "两项均通向同一结局；收集全部 CG 时存档后分别选择。",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "摘下眼镜",
+          "next": {
+            "kind": "ending",
+            "id": "affair-completed"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "保持原样亲吻",
+          "next": {
+            "kind": "ending",
+            "id": "affair-completed"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "affair",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": ["option-1"],
+          "sourceId": "seiya",
+          "sourceLocator": "浮気END，最后 CG 回收分歧，两项都需查看"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "ic-completed",
+      "safeLabel": "序章 IC 已完成",
+      "hiddenTitle": "序章完成",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "setsuna-cc-completed",
+      "safeLabel": "CC 雪菜结局",
+      "hiddenTitle": "CC 雪菜结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "chiaki-ne-completed",
+      "safeLabel": "千晶 Normal Ending",
+      "hiddenTitle": "千晶 Normal Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "affair-completed",
+      "safeLabel": "冬马和纱 · Normal Ending（浮气线）",
+      "hiddenTitle": "冬马和纱 · Normal Ending（浮气线）",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-15",
+      "routeIds": ["affair"],
+      "method": "source_crosscheck",
+      "evidence": "按完整路径核对选项序号及入线条件，保留条件造成的跳项；未进行实机通关。详见 docs/wa2-research.md。"
+    }
+  ]
+}
