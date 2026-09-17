@@ -1,3 +1,4 @@
+import CinematicChrome from "./CinematicChrome";
 import { useEffect, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
 import {
@@ -210,6 +211,7 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
   const [menu, setMenu] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
   const importRef = useRef<HTMLInputElement>(null);
   const packs = [
     ...BUILTINS,
@@ -246,7 +248,7 @@ export default function App() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
   useEffect(() => {
-    document.title = `${{ library: "游戏库", game: "路线选择", play: "路线导航", records: "游玩记录", settings: "数据与设置" }[view]} · 路线手记`;
+    document.title = `${{ library: "游戏库", game: "路线选择", play: "路线导航", records: "游玩记录", settings: "数据与设置" }[view]} · 偷吃猫娘达咩哟的galgame攻略收集站`;
   }, [view]);
 
   useEffect(() => {
@@ -257,6 +259,18 @@ export default function App() {
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
   }, []);
+
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const animation = mainRef.current?.animate(
+      [
+        { opacity: 0, transform: "translate3d(0,10px,0)" },
+        { opacity: 1, transform: "translate3d(0,0,0)" },
+      ],
+      { duration: 240, easing: "cubic-bezier(.16,1,.3,1)" },
+    );
+    return () => animation?.cancel();
+  }, [navigation]);
 
   function navigate(next: View, selection: Partial<Navigation> = {}) {
     const destination = {
@@ -358,10 +372,13 @@ export default function App() {
     }
   }
   function backup() {
-    download(`路线手记-${new Date().toISOString().slice(0, 10)}.json`, {
-      ...library,
-      packs,
-    });
+    download(
+      `偷吃猫娘达咩哟的galgame攻略收集站-${new Date().toISOString().slice(0, 10)}.json`,
+      {
+        ...library,
+        packs,
+      },
+    );
   }
 
   const nav = [
@@ -371,6 +388,7 @@ export default function App() {
   ];
   return (
     <div className="app-shell">
+      <CinematicChrome />
       <a className="skip-link" href="#main">
         跳到主要内容
       </a>
@@ -380,7 +398,7 @@ export default function App() {
             <BookmarkSimple size={23} weight="fill" />
           </span>
           <span>
-            路线手记<small>ROUTE NOTES</small>
+            偷吃猫娘达咩哟的galgame攻略收集站<small>GALGAME ARCHIVE</small>
           </span>
         </button>
         <div className="sidebar-label">我的空间</div>
@@ -465,6 +483,7 @@ export default function App() {
           </span>
         </header>
         <main
+          ref={mainRef}
           id="main"
           className={`main-content ${view === "play" ? "play-content" : ""}`}
         >
@@ -475,7 +494,9 @@ export default function App() {
                 className="text-button"
                 onClick={() => {
                   const raw = localStorage.getItem(STORAGE_KEY);
-                  download("路线手记-原始数据.json", { raw });
+                  download("偷吃猫娘达咩哟的galgame攻略收集站-原始数据.json", {
+                    raw,
+                  });
                 }}
               >
                 下载原始数据
@@ -868,7 +889,7 @@ export default function App() {
                   <FileText size={26} />
                 </div>
                 <div>
-                  <h2>关于路线手记</h2>
+                  <h2>关于偷吃猫娘达咩哟的galgame攻略收集站</h2>
                   <p>
                     一个面向小规模中文 Galgame
                     玩家的非官方工具。收录《白色相簿2》正篇 CC 与 Coda 的 10
@@ -890,7 +911,7 @@ export default function App() {
           )}
         </main>
         <footer className="page-footer">
-          <span>路线手记</span>
+          <span>偷吃猫娘达咩哟的galgame攻略收集站</span>
           <span></span>
           <span>LOCAL FIRST · v0.1</span>
         </footer>
@@ -1161,7 +1182,7 @@ function GuideTree({
         </label>
       </div>
       <p>
-        从本篇章开头按顺序选择绿色路径。这里展示当前目标的一条完整选法；其他目标请在上方切换。
+        从本篇章开头按顺序选择高亮路径。这里展示当前目标的一条完整选法；其他目标请在上方切换。
       </p>
       {!pack.synthetic && (
         <p className="guide-scope">

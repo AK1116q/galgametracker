@@ -1,0 +1,486 @@
+.archive-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 18% 8%,
+      rgb(255 255 255 / 0.5),
+      transparent 34rem
+    ),
+    radial-gradient(
+      circle at 88% 72%,
+      rgb(255 235 241 / 0.72),
+      transparent 36rem
+    ),
+    linear-gradient(118deg, #efb7c3 0%, #f2bdca 38%, #f7ccd6 70%, #f9d7df 100%);
+}
+
+.archive-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(
+    rgb(93 43 62 / 0.7) 0.55px,
+    transparent 0.7px
+  );
+  background-size: 5px 5px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.archive-background__orb {
+  position: absolute;
+  width: min(48vw, 42rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(126 62 87 / 0.18);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgb(255 255 255 / 0.28),
+    transparent 60%
+  );
+  will-change: transform;
+  animation: archive-float 16s ease-in-out infinite alternate;
+}
+
+.archive-background__orb--one {
+  top: -24%;
+  right: -8%;
+}
+
+.archive-background__orb--two {
+  bottom: -32%;
+  left: -10%;
+  width: min(56vw, 50rem);
+  animation-duration: 21s;
+  animation-direction: alternate-reverse;
+}
+
+.archive-background__beam {
+  position: absolute;
+  top: -45%;
+  left: 48%;
+  width: 16rem;
+  height: 190%;
+  transform: rotate(24deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.26),
+    transparent
+  );
+  filter: blur(2px);
+  animation: archive-beam 13s ease-in-out infinite alternate;
+}
+
+.archive-background__grid {
+  position: absolute;
+  right: -12rem;
+  bottom: -8rem;
+  width: 55rem;
+  height: 32rem;
+  transform: perspective(480px) rotateX(62deg) rotateZ(-16deg);
+  transform-origin: center;
+  opacity: 0.13;
+  background-image:
+    linear-gradient(rgb(126 62 87 / 0.24) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(126 62 87 / 0.24) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: archive-grid 18s linear infinite;
+}
+
+.archive-background__slash {
+  position: absolute;
+  width: 18vw;
+  min-width: 12rem;
+  height: 145vh;
+  top: -24vh;
+  opacity: 0.2;
+  transform: rotate(24deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 0.48),
+    transparent
+  );
+  filter: blur(1px);
+  will-change: transform;
+  animation: archive-slash-drift 11s ease-in-out infinite alternate;
+}
+
+.archive-background__slash--one {
+  left: 8%;
+}
+
+.archive-background__slash--two {
+  right: 4%;
+  opacity: 0.12;
+  animation-delay: -5s;
+  animation-duration: 15s;
+}
+
+.archive-background__dial {
+  position: absolute;
+  top: 8vh;
+  right: 5vw;
+  width: min(34vw, 32rem);
+  aspect-ratio: 1;
+  border: 1px solid rgb(112 52 75 / 0.2);
+  border-radius: 50%;
+  opacity: 0.72;
+  background: repeating-conic-gradient(
+    from 8deg,
+    rgb(112 52 75 / 0.22) 0 1deg,
+    transparent 1deg 9deg
+  );
+  mask: radial-gradient(
+    circle,
+    transparent 0 62%,
+    #000 62.5% 68%,
+    transparent 68.5%
+  );
+  will-change: transform;
+  animation: archive-dial-spin 38s linear infinite;
+}
+
+.archive-background__dial span {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgb(112 52 75 / 0.22);
+  border-radius: inherit;
+}
+
+.archive-background__ticker {
+  position: absolute;
+  right: -4rem;
+  bottom: 16vh;
+  color: rgb(91 43 61 / 0.13);
+  font-size: clamp(2rem, 5vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transform: rotate(-7deg);
+  will-change: transform;
+  animation: archive-ticker 22s ease-in-out infinite alternate;
+}
+
+.archive-background__character {
+  position: absolute;
+  --archive-character-width: min(36vw, 36rem);
+  left: clamp(1rem, 3vw, 4rem);
+  bottom: 2vh;
+  width: var(--archive-character-width);
+  height: calc(100vh - 5rem);
+  overflow: hidden;
+  opacity: 0.92;
+  will-change: transform;
+  animation: archive-character-float 12s ease-in-out infinite alternate;
+  transition:
+    left 760ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    width 760ms cubic-bezier(0.2, 0.85, 0.25, 1),
+    opacity 520ms ease,
+    filter 520ms ease;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 78%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 7%,
+    #000 78%,
+    transparent 100%
+  );
+}
+
+.archive-background__character::before,
+.archive-background__character::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.archive-background__character::before {
+  inset: 0 0 auto;
+  height: 18%;
+  background: linear-gradient(
+    to bottom,
+    rgb(247 195 211 / 0.92),
+    rgb(247 195 211 / 0)
+  );
+}
+
+.archive-background__character::after {
+  inset: 0 auto 0 0;
+  width: 18%;
+  background: linear-gradient(
+    to right,
+    rgb(247 195 211 / 0.82),
+    rgb(247 195 211 / 0)
+  );
+}
+
+.archive-background__character img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 1rem;
+  object-fit: cover;
+  object-position: center 24%;
+  box-shadow: 0 28px 90px rgb(112 52 75 / 0.16);
+}
+
+.archive-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: white;
+  background: #0d080d;
+  contain: paint;
+  will-change: opacity, visibility;
+  transform: translateZ(0);
+  animation: archive-intro-exit 0.7s 2.15s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.archive-intro__slice {
+  position: absolute;
+  inset: -30%;
+  transform: rotate(-12deg) translateX(-105%);
+  background: #ff4f91;
+  will-change: transform;
+  animation: archive-slice 2.05s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.archive-intro__slice--two {
+  transform: rotate(17deg) translateX(108%);
+  background: #ffb6cd;
+  mix-blend-mode: screen;
+  animation-delay: 0.08s;
+  animation-direction: reverse;
+}
+
+.archive-intro__content {
+  position: relative;
+  z-index: 1;
+  width: min(82vw, 40rem);
+  text-align: left;
+  text-shadow: 0 8px 28px rgb(0 0 0 / 0.28);
+  will-change: transform, opacity;
+  animation: archive-title-in 0.7s 0.18s both cubic-bezier(0.2, 0.85, 0.25, 1);
+}
+
+.archive-intro__eyebrow,
+.archive-intro__status {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+}
+
+.archive-intro__title {
+  margin-top: 0.3rem;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.08em;
+}
+
+.archive-intro__line {
+  height: 3px;
+  margin: 1.6rem 0 0.8rem;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.22);
+}
+
+.archive-intro__line span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  background: white;
+  animation: archive-progress 2s 0.35s both cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes archive-float {
+  to {
+    transform: translate3d(-5vw, 5vh, 0) scale(1.12);
+  }
+}
+
+@keyframes archive-beam {
+  to {
+    transform: translateX(18vw) rotate(24deg);
+    opacity: 0.35;
+  }
+}
+
+@keyframes archive-grid {
+  to {
+    background-position: 44px 44px;
+  }
+}
+
+@keyframes archive-slash-drift {
+  from {
+    transform: translate3d(-8vw, -3vh, 0) rotate(24deg);
+  }
+  to {
+    transform: translate3d(18vw, 5vh, 0) rotate(24deg);
+  }
+}
+
+@keyframes archive-dial-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes archive-ticker {
+  from {
+    transform: translate3d(8vw, 0, 0) rotate(-7deg);
+  }
+  to {
+    transform: translate3d(-12vw, -2vh, 0) rotate(-7deg);
+  }
+}
+
+@keyframes archive-character-float {
+  from {
+    transform: translate3d(-0.5vw, 1vh, 0) scale(1.01);
+  }
+  to {
+    transform: translate3d(1vw, -1vh, 0) scale(1.025);
+  }
+}
+
+@keyframes archive-card-in {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes archive-skeleton-sheen {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@keyframes archive-slice {
+  45%,
+  65% {
+    transform: rotate(-12deg) translateX(0);
+  }
+  100% {
+    transform: rotate(-12deg) translateX(105%);
+  }
+}
+
+@keyframes archive-title-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-3rem, 1rem, 0) skewX(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes archive-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes archive-intro-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.archive-background__grid {
+  animation: none;
+}
+.archive-background__character {
+  transition: opacity 300ms ease;
+}
+.archive-intro {
+  z-index: 100;
+  pointer-events: none;
+  animation: archive-intro-exit 350ms 1050ms ease forwards;
+}
+.archive-intro__slice {
+  animation-duration: 1100ms;
+}
+.archive-intro__title {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+.archive-intro__line span {
+  animation-duration: 900ms;
+}
+.archive-intro__skip {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  pointer-events: auto;
+  color: white;
+  background: transparent;
+  border: 1px solid #ffffff60;
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+:root[data-motion="paused"] .archive-background * {
+  animation-play-state: paused !important;
+}
+@media (max-width: 1100px) {
+  .archive-background__character {
+    width: 52vw;
+    left: -8vw;
+    opacity: 0.2;
+  }
+  .archive-background__dial {
+    right: -12vw;
+  }
+}
+@media (max-width: 600px) {
+  .archive-background__character {
+    width: 85vw;
+    opacity: 0.13;
+  }
+  .archive-background__beam,
+  .archive-background__grid,
+  .archive-background__orb--two {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .archive-background *,
+  .archive-intro,
+  .archive-intro * {
+    animation: none !important;
+  }
+  .archive-intro {
+    display: none;
+  }
+}

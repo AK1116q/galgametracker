@@ -2,15 +2,15 @@
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
     "PingFang SC", sans-serif;
-  color: #292e2b;
+  color: #30272b;
   background: #fafaf8;
   font-synthesis: none;
   font-weight: 400;
   --paper: #fafaf8;
   --line: #eaeaea;
-  --muted: #727872;
-  --green: #42624f;
-  --dark: #292e2b;
+  --muted: #816973;
+  --green: #62424f;
+  --dark: #30272b;
   --surface: #fff;
 }
 * {
@@ -60,7 +60,7 @@ input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #739a83;
+  outline: 3px solid #9a7383;
   outline-offset: 4px;
 }
 h1,
@@ -111,7 +111,7 @@ button svg {
   position: fixed;
   inset: 0 auto 0 0;
   border-right: 1px solid var(--line);
-  background: #f3f4f0;
+  background: #f4f0f2;
   display: flex;
   flex-direction: column;
   padding: 35px 20px 18px;
@@ -136,7 +136,7 @@ button svg {
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.15em;
-  color: #777e78;
+  color: #876e78;
   margin-top: 5px;
 }
 .brand-mark {
@@ -151,7 +151,7 @@ button svg {
 .sidebar-label {
   font-size: 12px;
   letter-spacing: 0.13em;
-  color: #92978f;
+  color: #9e8891;
   margin: 0 14px 13px;
 }
 .second-label {
@@ -168,16 +168,16 @@ button svg {
   font-size: 14px;
   text-align: left;
   padding: 13px 14px;
-  color: #656d66;
+  color: #745e67;
   margin-bottom: 5px;
   min-height: 46px;
 }
 .nav-item:hover {
-  background: #e9ede6;
+  background: #ede6e9;
 }
 .nav-item.active {
-  background: #e4e9e1;
-  color: #2b4434;
+  background: #e9e1e4;
+  color: #442b35;
   font-weight: 600;
 }
 .nav-count {
@@ -185,8 +185,8 @@ button svg {
   font:
     12px ui-monospace,
     monospace;
-  background: #f6f7f3;
-  border: 1px solid #d8dfd3;
+  background: #f7f3f5;
+  border: 1px solid #dfd3d8;
   border-radius: 3px;
   min-width: 20px;
   text-align: center;
@@ -197,13 +197,13 @@ button svg {
   padding-top: 45px;
 }
 .local-note {
-  border: 1px solid #dfe3dc;
+  border: 1px solid #e3dcdf;
   border-radius: 7px;
   padding: 17px 14px 13px;
 }
 .tiny-icon {
   display: block;
-  color: #69816e;
+  color: #816973;
   margin-bottom: 11px;
 }
 .local-note strong {
@@ -214,7 +214,7 @@ button svg {
   font-size: 12px;
   line-height: 1.9;
   margin: 8px 0 13px;
-  color: #7a8178;
+  color: #89707a;
 }
 .local-note .text-button {
   font-size: 12px;
@@ -224,7 +224,7 @@ button svg {
   justify-content: space-between;
   font-size: 10px;
   margin: 21px 4px 0;
-  color: #8e958b;
+  color: #9b858e;
 }
 .main-shell {
   margin-left: 232px;
@@ -245,23 +245,23 @@ button svg {
   align-items: center;
   gap: 14px;
   font-size: 12px;
-  color: #8a9088;
+  color: #98818a;
 }
 .breadcrumb strong {
   font-weight: 450;
-  color: #434b43;
+  color: #4e4046;
 }
 .topbar-right {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #6e786c;
+  color: #7d6770;
 }
 .avatar {
   margin-left: 19px;
-  border: 1px solid #e2e6dc;
-  background: #eef0e8;
+  border: 1px solid #e6dce0;
+  background: #f0e8eb;
   width: 29px;
   height: 29px;
   border-radius: 50%;
@@ -280,7 +280,7 @@ button svg {
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 10px;
   letter-spacing: 0.19em;
-  color: #899184;
+  color: #967f89;
   line-height: 1.6;
   font-weight: 400;
 }
@@ -318,15 +318,15 @@ button svg {
   border-color: var(--dark);
 }
 .button.primary:hover:not(:disabled) {
-  background: #465247;
+  background: #54444b;
 }
 .button.secondary {
   background: #fff;
-  border-color: #dddeda;
+  border-color: #e0d9db;
 }
 .button.secondary:hover:not(:disabled) {
-  background: #f0f2ed;
-  border-color: #c6cdc2;
+  background: #f2edef;
+  border-color: #cdc2c7;
 }
 .text-button {
   border: 0;
@@ -337,11 +337,11 @@ button svg {
   justify-content: flex-start;
   gap: 7px;
   font-size: 13px;
-  color: #65715f;
+  color: #725e66;
   text-decoration: none;
 }
 .text-button:hover:not(:disabled) {
-  color: #253a29;
+  color: #3a252e;
 }
 .icon-button {
   display: inline-grid;
@@ -352,14 +352,14 @@ button svg {
   border-radius: 4px;
 }
 .icon-button:hover:not(:disabled) {
-  background: #ecf0e8;
+  background: #f0e8eb;
 }
 .continue-panel {
   display: flex;
   align-items: center;
   gap: 24px;
-  background: #edf1e9;
-  border: 1px solid #e1e7db;
+  background: #f1e9ec;
+  border: 1px solid #e7dbe0;
   border-radius: 8px;
   padding: 27px 29px;
   margin-bottom: 38px;
@@ -367,10 +367,10 @@ button svg {
 .continue-icon {
   width: 58px;
   height: 64px;
-  border: 1px solid #d5ddcd;
+  border: 1px solid #ddcdd4;
   border-radius: 6px;
-  background: #f7f9f3;
-  color: #718369;
+  background: #f9f3f5;
+  color: #836974;
   display: grid;
   place-items: center;
 }
@@ -379,7 +379,7 @@ button svg {
 }
 .continue-copy .eyebrow {
   font-size: 9px;
-  color: #839176;
+  color: #917681;
 }
 .continue-copy h2 {
   font-size: 19px;
@@ -388,7 +388,7 @@ button svg {
 .continue-copy p {
   font-size: 12px;
   margin: 0;
-  color: #798470;
+  color: #866e78;
 }
 .section-toolbar {
   display: flex;
@@ -407,13 +407,13 @@ button svg {
   position: relative;
   background: none;
   border: 0;
-  color: #8a8e86;
+  color: #967e88;
   font-size: 13px;
   padding: 13px 0 15px;
   white-space: nowrap;
 }
 .tabs button.selected {
-  color: #313b2e;
+  color: #3b2e33;
   font-weight: 600;
 }
 .tabs button.selected:after {
@@ -421,7 +421,7 @@ button svg {
   position: absolute;
   bottom: -1px;
   height: 2px;
-  background: #576b48;
+  background: #6b4857;
   left: 0;
   right: 0;
 }
@@ -429,8 +429,8 @@ button svg {
   font-family: ui-monospace, monospace;
   margin-left: 8px;
   font-size: 11px;
-  color: #6e7c65;
-  background: #edf1e9;
+  color: #7c656f;
+  background: #f1e9ec;
   padding: 1px 5px;
   border-radius: 3px;
 }
@@ -438,11 +438,11 @@ button svg {
   display: flex;
   align-items: center;
   gap: 8px;
-  border: 1px solid #e4e7e0;
+  border: 1px solid #e7e0e3;
   background: #fff;
   border-radius: 5px;
   padding: 10px 12px;
-  color: #9ba193;
+  color: #a49098;
   width: 210px;
 }
 .search input {
@@ -454,7 +454,7 @@ button svg {
   color: #333;
 }
 .search:focus-within {
-  outline: 2px solid #739a83;
+  outline: 2px solid #9a7383;
   outline-offset: 2px;
 }
 .game-grid {
@@ -475,14 +475,14 @@ button svg {
   min-width: 0;
 }
 .game-card:hover {
-  border-color: #b8c5ae;
+  border-color: #c5aeb8;
   transform: translateY(-3px);
 }
 .book-cover {
   height: 259px;
-  background: #e9eee9;
+  background: #eee9eb;
   padding: 22px 24px;
-  color: #526457;
+  color: #645259;
   display: flex;
   flex-direction: column;
 }
@@ -493,7 +493,7 @@ button svg {
   font-family: ui-monospace, monospace;
   font-size: 8px;
   letter-spacing: 0.2em;
-  color: #89998b;
+  color: #9c868f;
 }
 .cover-title {
   font-family: Georgia, "Times New Roman", serif;
@@ -514,7 +514,7 @@ button svg {
 .cover-line {
   width: 28px;
   height: 1px;
-  background: #9dab9d;
+  background: #ad9ba2;
   margin-top: 4px;
 }
 .cover-bottom {
@@ -524,7 +524,7 @@ button svg {
   align-items: end;
   gap: 8px;
   font-size: 11px;
-  color: #6e806f;
+  color: #836b75;
 }
 .cover-bottom span + span {
   font-size: 7px;
@@ -541,12 +541,12 @@ button svg {
   margin-bottom: 6px;
 }
 .game-card h3 svg {
-  color: #85937d;
+  color: #947c86;
 }
 .game-card-body > p {
   font-size: 12px;
   margin-bottom: 19px;
-  color: #92978c;
+  color: #9c8790;
 }
 .card-foot {
   display: flex;
@@ -559,14 +559,14 @@ button svg {
   align-items: center;
   gap: 4px;
   font-size: 10px;
-  color: #84917a;
+  color: #927983;
 }
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: #f0f1ec;
-  color: #747b70;
+  background: #f1ecee;
+  color: #816a74;
   padding: 4px 7px;
   border-radius: 3px;
   font-size: 10px;
@@ -578,12 +578,12 @@ button svg {
   color: #627d8c;
 }
 .badge.green {
-  background: #edf3ec;
-  color: #52745a;
+  background: #f3ecef;
+  color: #745260;
 }
 .add-game-card {
   background: transparent;
-  border: 1px dashed #d6ddd1;
+  border: 1px dashed #ddd1d6;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -591,37 +591,37 @@ button svg {
   justify-content: center;
   min-height: 388px;
   padding: 25px;
-  color: #77856d;
+  color: #856d77;
 }
 .add-game-card:hover {
-  background: #f0f3ec;
-  border-color: #aebda3;
+  background: #f3ecef;
+  border-color: #bda3ae;
 }
 .add-square {
   width: 48px;
   height: 48px;
   display: grid;
   place-items: center;
-  border: 1px solid #dce3d6;
-  background: #f2f5ed;
+  border: 1px solid #e3d6db;
+  background: #f5edf0;
   border-radius: 7px;
   margin-bottom: 22px;
 }
 .add-game-card h3 {
   font-size: 15px;
-  color: #65765b;
+  color: #765b66;
   margin-bottom: 11px;
 }
 .add-game-card p {
   text-align: center;
   font-size: 12px;
   line-height: 1.9;
-  color: #9aa28f;
+  color: #a38e97;
   margin-bottom: 26px;
 }
 .add-game-card .text-button {
   font-size: 11px;
-  color: #8b9880;
+  color: #98808a;
 }
 .library-footer {
   margin-top: 34px;
@@ -637,12 +637,12 @@ button svg {
   align-items: center;
   gap: 9px;
   font-size: 11px;
-  color: #929989;
+  color: #9c868f;
   margin: 0;
 }
 .library-footer .text-button {
   font-size: 11px;
-  color: #86947b;
+  color: #947b85;
 }
 .page-footer {
   margin: 0 52px;
@@ -651,7 +651,7 @@ button svg {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  color: #a1a699;
+  color: #a9969e;
   font-size: 10px;
 }
 .page-footer span:last-child {
@@ -661,14 +661,14 @@ button svg {
   letter-spacing: 0.12em;
 }
 .page-footer span:first-child {
-  color: #8a9580;
+  color: #967f89;
 }
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #7c8775;
+  color: #8b717c;
   background: none;
   border: 0;
   padding: 0;
@@ -689,15 +689,15 @@ button svg {
   font-size: 14px;
 }
 .mini-cover {
-  background: #e9eee9;
-  border: 1px solid #dfe5dc;
+  background: #eee9eb;
+  border: 1px solid #e5dce0;
   border-radius: 5px;
   display: grid;
   place-items: center;
   width: 112px;
   height: 143px;
   flex-shrink: 0;
-  color: #5e7362;
+  color: #735e67;
 }
 .mini-cover span {
   font:
@@ -731,14 +731,14 @@ button svg {
 }
 .section-title > span {
   font-size: 11px;
-  color: #929989;
+  color: #9c868f;
 }
 .field {
   display: flex;
   flex-direction: column;
   gap: 9px;
   font-size: 13px;
-  color: #68725f;
+  color: #735e67;
   min-width: 0;
 }
 .field input,
@@ -747,8 +747,8 @@ button svg {
 .editor-option > input {
   width: 100%;
   background: #fff;
-  color: #333b30;
-  border: 1px solid #dde2d8;
+  color: #3b3035;
+  border: 1px solid #e2d8dc;
   border-radius: 5px;
   padding: 12px 13px;
   font-size: 14px;
@@ -756,7 +756,7 @@ button svg {
 }
 .field input::placeholder,
 .editor-option input::placeholder {
-  color: #a5ab9c;
+  color: #ad9aa2;
   font-size: 12px;
 }
 .field textarea {
@@ -767,7 +767,7 @@ button svg {
   margin-bottom: 17px;
 }
 .version-explain {
-  background: #f1f4ee;
+  background: #f4eef0;
   border-radius: 6px;
   padding: 16px 18px;
   margin-bottom: 21px;
@@ -783,11 +783,11 @@ button svg {
   gap: 9px;
   font-size: 12px;
   line-height: 1.8;
-  color: #6b7761;
+  color: #77616a;
 }
 .check-label input {
   margin: 4px 0 0;
-  accent-color: #526d42;
+  accent-color: #6d4254;
   width: 15px;
   height: 15px;
   flex-shrink: 0;
@@ -803,9 +803,9 @@ button svg {
   margin-bottom: 14px;
 }
 .route-emblem {
-  background: #edf2ed;
-  color: #708779;
-  border: 1px solid #e0e8de;
+  background: #f2edef;
+  color: #886f79;
+  border: 1px solid #e8dee2;
   display: grid;
   place-items: center;
   width: 44px;
@@ -833,7 +833,7 @@ button svg {
 }
 .detail-aside {
   padding: 24px 24px;
-  background: #f1f3ed;
+  background: #f3edf0;
   border-radius: 7px;
   align-self: start;
 }
@@ -861,12 +861,12 @@ button svg {
   font:
     11px ui-monospace,
     monospace;
-  color: #8e9e83;
+  color: #9e838e;
 }
 .detail-aside strong {
   font-size: 12px;
   font-weight: 550;
-  color: #6e7c63;
+  color: #7c636d;
 }
 .detail-aside p {
   font-size: 11px;
@@ -874,7 +874,7 @@ button svg {
   margin-top: 5px;
 }
 .detail-aside > svg {
-  color: #98a68b;
+  color: #a68b96;
   margin-top: 9px;
 }
 .understated-note {
@@ -882,7 +882,7 @@ button svg {
   align-items: center;
   gap: 9px;
   font-size: 12px;
-  color: #909c84;
+  color: #9c848e;
   padding: 17px 0;
 }
 .source-details {
@@ -897,21 +897,21 @@ button svg {
   align-items: center;
   gap: 9px;
   font-size: 12px;
-  color: #78876c;
+  color: #876c77;
   list-style: none;
 }
 .source-details summary:after {
   content: "+";
   margin-left: auto;
   font-size: 18px;
-  color: #909c87;
+  color: #9c8790;
 }
 .source-details[open] summary:after {
   content: "−";
 }
 .source-details summary span {
   font-size: 10px;
-  color: #99a38d;
+  color: #a38d96;
   margin-left: 4px;
 }
 .source-body {
@@ -993,12 +993,12 @@ button svg {
   font-family: Georgia, serif;
   font-size: 46px;
   font-weight: 400;
-  color: #55644a;
+  color: #644a55;
   line-height: 1;
 }
 .journey-stat span {
   font-size: 11px;
-  color: #85917b;
+  color: #927a84;
 }
 .journey-bookmark {
   display: flex;
@@ -1007,12 +1007,12 @@ button svg {
   border-top: 1px solid var(--line);
   padding-top: 22px;
   font-size: 12px;
-  color: #77866c;
+  color: #866c77;
 }
 .journey-bookmark small {
   display: block;
   font-size: 10px;
-  color: #9ca78f;
+  color: #a78f99;
   margin-top: 2px;
 }
 .undo-button {
@@ -1022,7 +1022,7 @@ button svg {
 .journey-aside .small-note {
   margin-top: 32px;
   font-size: 11px;
-  color: #a1ab96;
+  color: #ab969f;
 }
 .navigator-panel {
   background: #fff;
@@ -1037,7 +1037,7 @@ button svg {
   justify-content: space-between;
   gap: 16px;
   font-size: 12px;
-  color: #839477;
+  color: #947783;
   margin-bottom: 31px;
 }
 .navigator-panel h1 {
@@ -1053,7 +1053,7 @@ button svg {
   align-items: center;
   flex-direction: column;
   padding: 30px 10px 19px;
-  color: #9bab90;
+  color: #ab909b;
 }
 .encounter-gate p {
   font-size: 14px;
@@ -1069,7 +1069,7 @@ button svg {
   margin-top: 30px;
   padding-top: 19px;
   font-size: 10px;
-  color: #9aa78e;
+  color: #a78e98;
 }
 .option-list {
   display: flex;
@@ -1078,7 +1078,7 @@ button svg {
   margin-bottom: 27px;
 }
 .option {
-  border: 1px solid #e2e6de;
+  border: 1px solid #e6dee1;
   background: #fff;
   border-radius: 6px;
   min-height: 69px;
@@ -1090,18 +1090,18 @@ button svg {
   font-size: 14px;
 }
 .option:hover {
-  background: #f8faf5;
+  background: #faf5f7;
 }
 .option.chosen {
-  border-color: #788e66;
-  background: #f4f7f0;
+  border-color: #8e6677;
+  background: #f7f0f3;
 }
 .option-letter {
   font:
     12px ui-monospace,
     monospace;
-  color: #a0ab96;
-  border-right: 1px solid #e5eade;
+  color: #ab969f;
+  border-right: 1px solid #eadee3;
   padding-right: 13px;
 }
 .recommended-tag {
@@ -1109,14 +1109,14 @@ button svg {
   display: inline-flex;
   gap: 3px;
   align-items: center;
-  color: #6f875c;
+  color: #875c6e;
   white-space: nowrap;
   margin-left: auto;
 }
 .radio-circle {
   width: 16px;
   height: 16px;
-  border: 1px solid #c9d3c0;
+  border: 1px solid #d3c0c8;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -1130,7 +1130,7 @@ button svg {
   display: block;
   width: 8px;
   height: 8px;
-  background: #70855d;
+  background: #855d6e;
   border-radius: 50%;
 }
 .choice-actions {
@@ -1164,7 +1164,7 @@ button svg {
   text-align: center;
 }
 .end-state > svg {
-  color: #789663;
+  color: #966378;
 }
 .end-state h1 {
   margin: 0;
@@ -1192,11 +1192,11 @@ button svg {
   font:
     36px Georgia,
     serif;
-  color: #60714f;
+  color: #714f5d;
 }
 .record-summary span {
   font-size: 12px;
-  color: #8a9879;
+  color: #987986;
 }
 .record-row {
   background: none;
@@ -1210,14 +1210,14 @@ button svg {
   gap: 17px;
 }
 .record-row:hover {
-  background: #f1f4eb;
+  background: #f4ebef;
 }
 .record-icon {
   display: grid;
   place-items: center;
-  color: #869872;
-  background: #edf2e7;
-  border: 1px solid #e3eadb;
+  color: #987282;
+  background: #f2e7ec;
+  border: 1px solid #eadbe1;
   width: 49px;
   height: 55px;
   border-radius: 5px;
@@ -1233,21 +1233,21 @@ button svg {
 }
 .record-copy > span {
   font-size: 11px;
-  color: #99a48c;
+  color: #a48c96;
 }
 .record-meta {
   text-align: right;
   font-size: 12px;
-  color: #879876;
+  color: #987684;
 }
 .record-meta small {
   display: block;
   font-size: 10px;
-  color: #a5af9a;
+  color: #af9aa3;
   margin-top: 4px;
 }
 .record-row > svg {
-  color: #9ba98e;
+  color: #a98e99;
 }
 .empty {
   padding: 74px 24px;
@@ -1257,7 +1257,7 @@ button svg {
   flex-direction: column;
 }
 .empty > svg {
-  color: #9bae8b;
+  color: #ae8b9a;
   margin-bottom: 20px;
 }
 .empty h3 {
@@ -1276,8 +1276,8 @@ button svg {
   padding: 30px 0;
 }
 .settings-icon {
-  background: #eef3e9;
-  color: #81966d;
+  background: #f3e9ed;
+  color: #966d7e;
   width: 45px;
   height: 49px;
   display: grid;
@@ -1296,7 +1296,7 @@ button svg {
 }
 .settings-section small {
   font-size: 11px;
-  color: #99a68a;
+  color: #a68a96;
 }
 .editor-tabs {
   margin: 0 0 30px;
@@ -1314,7 +1314,7 @@ button svg {
   font:
     12px ui-monospace,
     monospace;
-  color: #a5b393;
+  color: #b393a0;
 }
 .form-grid {
   display: grid;
@@ -1343,7 +1343,7 @@ button svg {
 }
 .step-heading strong {
   font-size: 13px;
-  color: #7c8e6a;
+  color: #8e6a79;
   font-weight: 550;
 }
 .step-heading > div {
@@ -1370,10 +1370,10 @@ button svg {
   font:
     12px ui-monospace,
     monospace;
-  color: #95a581;
+  color: #a58190;
 }
 .radio-label input {
-  accent-color: #768c5f;
+  accent-color: #8c5f72;
   width: 15px;
   height: 15px;
 }
@@ -1394,7 +1394,7 @@ button svg {
   display: flex;
   gap: 5px;
   align-items: center;
-  color: #a0b08c;
+  color: #b08c9b;
 }
 .step-footer .text-button {
   font-size: 11px;
@@ -1402,29 +1402,29 @@ button svg {
 .add-step {
   width: 100%;
   padding: 17px;
-  border: 1px dashed #cfdcbd;
+  border: 1px dashed #dcbdca;
   background: none;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 9px;
   font-size: 13px;
-  color: #8b9d75;
+  color: #9d7586;
   border-radius: 6px;
 }
 .add-step:hover {
-  background: #f0f5e8;
+  background: #f5e8ed;
 }
 .editor-aside {
   align-self: start;
   position: sticky;
   top: 25px;
-  background: #edf2e7;
+  background: #f2e7ec;
   border-radius: 6px;
   padding: 23px;
 }
 .editor-aside > svg {
-  color: #82986b;
+  color: #986b7e;
   margin-bottom: 19px;
 }
 .editor-aside h3 {
@@ -1445,7 +1445,7 @@ button svg {
 .editor-aside small {
   display: block;
   font-size: 10px;
-  color: #8d9f76;
+  color: #9f7687;
   margin-top: 14px;
   line-height: 1.9;
 }
@@ -1467,7 +1467,7 @@ button svg {
   margin: 5px 0 0;
 }
 .saved-pack > svg {
-  color: #8a9e74;
+  color: #9e7485;
 }
 .builtin-export {
   padding: 25px 0;
@@ -1475,7 +1475,7 @@ button svg {
   flex-wrap: wrap;
   gap: 17px;
   font-size: 12px;
-  color: #8a9b74;
+  color: #9b7484;
   align-items: center;
 }
 .json-editor textarea {
@@ -1496,8 +1496,8 @@ button svg {
   transform: translateX(-50%);
   z-index: 60;
   max-width: min(640px, 90vw);
-  background: #30392c;
-  border: 1px solid #57634c;
+  background: #392c31;
+  border: 1px solid #634c56;
   color: #fff;
   display: flex;
   align-items: center;
@@ -1509,7 +1509,7 @@ button svg {
   box-shadow: 0 5px 25px #20251c12;
 }
 .toast .icon-button:hover {
-  background: #4b5941;
+  background: #59414b;
 }
 .visually-hidden {
   position: absolute;
@@ -2269,12 +2269,12 @@ button svg {
 .source-body p,
 .detail-aside p,
 .editor-aside p {
-  color: #65735c;
+  color: #735c66;
 }
 .editor-aside small,
 .game-card-body > p,
 .record-copy > span {
-  color: #758268;
+  color: #826873;
 }
 .section-title > span,
 .spoiler-promise,
@@ -2282,13 +2282,13 @@ button svg {
 .library-footer .text-button,
 .add-game-card p {
   font-size: 12px;
-  color: #7c8872;
+  color: #8a707b;
 }
 .add-game-card .text-button {
   font-size: 12px;
 }
 .continue-copy p {
-  color: #6c795f;
+  color: #795f6a;
 }
 .detail-aside li {
   margin-bottom: 20px;
@@ -2396,7 +2396,7 @@ button svg {
 }
 .chapter-button {
   text-align: left;
-  border: 1px solid #d3d8d1;
+  border: 1px solid #d9d0d4;
   background: #fff;
   border-radius: 6px;
   padding: 16px 20px;
@@ -2404,23 +2404,23 @@ button svg {
   display: grid;
   gap: 8px;
   cursor: pointer;
-  color: #27352d;
+  color: #35272d;
 }
 .chapter-button strong {
   font-size: 17px;
 }
 .chapter-button span {
   font-size: 14px;
-  color: #536259;
+  color: #645159;
 }
 .chapter-button.selected {
-  border: 2px solid #40654b;
+  border: 2px solid #65404f;
   padding: 15px 19px;
-  background: #f0f5ef;
+  background: #f5eff2;
 }
 .chapter-info {
   padding: 24px;
-  border: 1px solid #d3d8d1;
+  border: 1px solid #d9d0d4;
   border-radius: 6px;
 }
 .guide {
@@ -2442,19 +2442,19 @@ button svg {
   font-size: 15px;
   line-height: 1.7;
   margin: 10px 0;
-  color: #536259;
+  color: #645159;
 }
 .guide-scope {
-  background: #f2f3ef;
+  background: #f3eff1;
   padding: 10px 14px;
   border-radius: 4px;
 }
 .tree-root,
 .tree-ending {
   padding: 16px 20px;
-  border: 1px solid #9cac9b;
+  border: 1px solid #ad9aa2;
   border-radius: 6px;
-  background: #edf3ec;
+  background: #f3ecef;
   font-weight: 600;
   line-height: 1.7;
 }
@@ -2467,7 +2467,7 @@ button svg {
   margin: 0;
 }
 .tree-step {
-  border-left: 2px solid #88a18d;
+  border-left: 2px solid #a18892;
   padding: 24px 0 24px 24px;
   position: relative;
 }
@@ -2479,7 +2479,7 @@ button svg {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #40654b;
+  background: #65404f;
 }
 .tree-date {
   display: flex;
@@ -2489,7 +2489,7 @@ button svg {
   line-height: 1.5;
 }
 .tree-date > span {
-  color: #526659;
+  color: #66525a;
   font-size: 13px;
 }
 .tree-date strong {
@@ -2497,12 +2497,12 @@ button svg {
 }
 .tree-date b {
   font-size: 12px;
-  background: #e7eee4;
+  background: #eee4e8;
   padding: 3px 8px;
   border-radius: 4px;
 }
 .tree-step.current .tree-date b {
-  background: #40654b;
+  background: #65404f;
   color: white;
 }
 .tree-prompt {
@@ -2522,7 +2522,7 @@ button svg {
   align-items: flex-start;
   gap: 8px;
   padding: 16px;
-  border: 1px solid #d7ddd5;
+  border: 1px solid #ddd5d8;
   border-radius: 5px;
   position: relative;
   min-width: 0;
@@ -2533,25 +2533,25 @@ button svg {
   overflow-wrap: anywhere;
 }
 .target-option {
-  background: #edf4eb;
-  border: 2px solid #65816b;
+  background: #f4ebef;
+  border: 2px solid #816571;
   order: -1;
 }
 
 .branch-label {
   font-size: 12px;
-  color: #536259;
+  color: #645159;
 }
 .target-option .branch-label {
   font-weight: 700;
-  color: #365c3f;
+  color: #5c3646;
 }
 .other-option {
-  background: #fafbf9;
+  background: #fbf9fa;
 }
 .other-option strong {
   font-weight: 400;
-  color: #677067;
+  color: #76616a;
 }
 .tree-option .button {
   font-size: 13px;
@@ -2566,7 +2566,7 @@ button svg {
   padding: 16px 0;
 }
 .tracking-tools {
-  border-top: 1px solid #d3d8d1;
+  border-top: 1px solid #d9d0d4;
   padding-top: 22px;
 }
 .tracking-tools .check-label {
@@ -2647,7 +2647,7 @@ button svg {
 .chapter-button small {
   font-size: 13px;
   line-height: 1.8;
-  color: #59665c;
+  color: #69565e;
 }
 .target-picker .chapter-options {
   display: grid;

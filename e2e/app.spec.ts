@@ -94,7 +94,7 @@ test("Kazusa target can be tracked through all fourteen choices and exported", a
   await page.getByRole("button", { name: "数据与设置", exact: true }).click();
   const pending = page.waitForEvent("download");
   await page.getByRole("button", { name: "导出全部记录" }).click();
-  expect((await pending).suggestedFilename()).toContain("路线手记");
+  expect((await pending).suggestedFilename()).toContain("偷吃猫娘达咩哟");
 });
 test("malformed import retains current data", async ({ page }) => {
   await page.goto("/");

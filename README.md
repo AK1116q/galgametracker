@@ -1,4 +1,4 @@
-# 路线手记 · Galgame Tracker
+# 偷吃猫娘达咩哟的galgame攻略收集站
 
 面向小规模中文 Galgame 玩家的路线攻略工具。
 
@@ -53,7 +53,7 @@ Windows 浏览器测试使用本机 Edge；Linux 先运行 `npx playwright insta
 
 没有游戏本体、游戏 CG 或资源下载，也没有社交、云同步、付费功能。小程序留待后续，共享领域逻辑已与 Web 界面分离。
 
-GitHub 仓库保持私有。Actions 自动检查；生产部署当前由已登录的本机执行，不存储个人 OAuth 凭据到 GitHub。
+GitHub 仓库已按所有者要求公开。Actions 自动检查；生产部署当前由已登录的本机执行，不存储个人 OAuth 凭据到 GitHub。
 
 ## 项目文档
 
