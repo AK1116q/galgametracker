@@ -290,18 +290,86 @@ input:focus-visible {
   }
 }
 
-.saved-section { margin: 24px 0 32px; }
-.saved-route { display:flex; align-items:center; justify-content:space-between; width:100%; padding:16px; margin:8px 0; background:rgba(255,255,255,.7); border:1px solid var(--line); border-radius:12px; text-align:left; }
-.saved-route span { display:grid; gap:6px; }
-.saved-route small { color:var(--muted); }
-.favorite-toggle { margin-bottom:20px; }
-.favorite-toggle[aria-pressed="true"] { color:#a63a69; background:#ffe8f0; }
+.saved-section {
+  margin: 24px 0 32px;
+}
+.saved-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  margin: 8px 0;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: left;
+}
+.saved-route span {
+  display: grid;
+  gap: 6px;
+}
+.saved-route small {
+  color: var(--muted);
+}
+.favorite-toggle {
+  margin-bottom: 20px;
+}
+.favorite-toggle[aria-pressed="true"] {
+  color: #a63a69;
+  background: #ffe8f0;
+}
 
-.cover-atri { background:linear-gradient(130deg,#7bbbc9,#366d9b); }
-.cover-senren-banka { background:linear-gradient(130deg,#e79f96,#995e72); }
-.cover-sabbat-of-the-witch { background:linear-gradient(130deg,#b09acb,#685286); }
-.cover-riddle-joker { background:linear-gradient(130deg,#90a1c8,#3f517c); }
-.cover-saya-no-uta { background:linear-gradient(130deg,#a795a9,#554258); }
-.book-cover .cover-bottom, .book-cover .cover-top, .book-cover .cover-title { color:#fff; }
-.custom-cover .cover-title { font-size:clamp(23px,2.1vw,36px); letter-spacing:0; line-height:1.6; }
-.tree-option strong { line-height:1.8; }
+.cover-atri {
+  background: linear-gradient(130deg, #7bbbc9, #366d9b);
+}
+.cover-senren-banka {
+  background: linear-gradient(130deg, #e79f96, #995e72);
+}
+.cover-sabbat-of-the-witch {
+  background: linear-gradient(130deg, #b09acb, #685286);
+}
+.cover-riddle-joker {
+  background: linear-gradient(130deg, #90a1c8, #3f517c);
+}
+.cover-saya-no-uta {
+  background: linear-gradient(130deg, #a795a9, #554258);
+}
+.book-cover .cover-bottom,
+.book-cover .cover-top,
+.book-cover .cover-title {
+  color: #fff;
+}
+.custom-cover .cover-title {
+  font-size: clamp(23px, 2.1vw, 36px);
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+.tree-option strong {
+  line-height: 1.8;
+}
+.tree-step {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
+}
+.game-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 410px;
+}
+
+.music-launch {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 18px;
+  border: 1px solid #fff9;
+  border-radius: 30px;
+  background: #fff4f8;
+  color: #7a3453;
+  box-shadow: 0 6px 24px #77385325;
+  font-weight: 600;
+}

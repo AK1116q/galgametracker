@@ -369,11 +369,27 @@
           "$ref": "#/definitions/destination"
         }
       },
-      "allOf": [{
-        "if": { "required": ["kind"], "properties": { "kind": { "const": "instruction" } } },
-        "then": { "properties": { "options": { "type": "array", "maxItems": 1 } } },
-        "else": { "if": { "required": ["optionsComplete"], "properties": { "optionsComplete": { "const": false } } }, "then": {}, "else": { "properties": { "options": { "type": "array", "minItems": 2 } } } }
-      }]
+      "allOf": [
+        {
+          "if": {
+            "required": ["kind"],
+            "properties": { "kind": { "const": "instruction" } }
+          },
+          "then": {
+            "properties": { "options": { "type": "array", "maxItems": 1 } }
+          },
+          "else": {
+            "if": {
+              "required": ["optionsComplete"],
+              "properties": { "optionsComplete": { "const": false } }
+            },
+            "then": {},
+            "else": {
+              "properties": { "options": { "type": "array", "minItems": 2 } }
+            }
+          }
+        }
+      ]
     },
     "review": {
       "type": "object",

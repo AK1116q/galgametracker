@@ -6,7 +6,12 @@ export default defineConfig({
     rolldownOptions: {
       output: {
         codeSplitting: {
-          groups: [{ name: "react-vendor", test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/ }],
+          groups: [
+            {
+              name: "react-vendor",
+              test: /node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            },
+          ],
         },
       },
     },

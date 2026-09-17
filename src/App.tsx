@@ -1,5 +1,5 @@
 import CinematicChrome from "./CinematicChrome";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
 import {
   BookOpen,
@@ -23,6 +23,7 @@ import {
   FileText,
   FolderOpen,
   List,
+  MusicNotes,
 } from "@phosphor-icons/react";
 import {
   createSession,
@@ -46,13 +47,16 @@ import kazusaData from "../data/wa2/kazusa-coda.route.json";
 import demoData from "../data/examples/demo.route.json";
 import wa2Data from "../data/wa2/setsuna-cc.route.json";
 import type { Pack, Session, Library, SavedRoute } from "./types";
+const MusicDock = lazy(() => import("./MusicDock"));
 
 const extraPacks = Object.values(
   import.meta.glob<Pack>("../data/**/*.route.json", {
     eager: true,
     import: "default",
   }),
-).filter((p) => p.id !== wa2Data.id && p.id !== kazusaData.id && p.id !== demoData.id);
+).filter(
+  (p) => p.id !== wa2Data.id && p.id !== kazusaData.id && p.id !== demoData.id,
+);
 const BUILTINS = [wa2Data, kazusaData, ...extraPacks, demoData] as Pack[];
 type View = "library" | "game" | "play" | "records" | "settings";
 type Navigation = {
@@ -211,16 +215,24 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
   const [menu, setMenu] = useState(false);
+  const [music, setMusic] = useState(false);
+  const musicButtonRef = useRef<HTMLButtonElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const importRef = useRef<HTMLInputElement>(null);
-  const packs = [
-    ...BUILTINS,
-    ...library.packs.filter(
-      (p) => !BUILTINS.some((b) => packKey(b) === packKey(p)),
-    ),
-  ];
+  const packs = useMemo(
+    () => [
+      ...BUILTINS,
+      ...library.packs.filter(
+        (p) => !BUILTINS.some((b) => packKey(b) === packKey(p)),
+      ),
+    ],
+    [library.packs],
+  );
   const allGames = [...new Map(packs.map((p) => [p.game.id, p.game])).values()];
-  const selectedPacks = packs.filter((p) => p.game.id === gameId);
+  const selectedPacks = useMemo(
+    () => packs.filter((p) => p.game.id === gameId),
+    [packs, gameId],
+  );
   const active = library.sessions.find((s) => s.id === activeId);
   const activePack =
     active && packs.find((p) => packKey(p) === sessionPackKey(active));
@@ -262,14 +274,22 @@ export default function App() {
 
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const animation = mainRef.current?.animate(
-      [
-        { opacity: 0, transform: "translate3d(0,10px,0)" },
-        { opacity: 1, transform: "translate3d(0,0,0)" },
-      ],
-      { duration: 240, easing: "cubic-bezier(.16,1,.3,1)" },
+    // Do not promote a several-thousand-pixel route tree to one animated layer.
+    const elements = [
+      ...(mainRef.current?.querySelectorAll<HTMLElement>(
+        ".page-heading, .chapter-picker, .target-picker, .guide-title",
+      ) ?? []),
+    ];
+    const animations = elements.slice(0, 3).map((el) =>
+      el.animate(
+        [
+          { opacity: 0, transform: "translate3d(0,8px,0)" },
+          { opacity: 1, transform: "translate3d(0,0,0)" },
+        ],
+        { duration: 220, easing: "cubic-bezier(.16,1,.3,1)" },
+      ),
     );
-    return () => animation?.cancel();
+    return () => animations.forEach((animation) => animation.cancel());
   }, [navigation]);
 
   function navigate(next: View, selection: Partial<Navigation> = {}) {
@@ -319,29 +339,70 @@ export default function App() {
     navigate("game", { gameId: id });
   }
   function rememberRoute(chapter: string, target: string) {
-    const pack = packs.find(p => p.routes.some(r => `${packKey(p)}/${r.id}` === target));
-    const route = pack?.routes.find(r => `${packKey(pack)}/${r.id}` === target);
+    const pack = packs.find((p) =>
+      p.routes.some((r) => `${packKey(p)}/${r.id}` === target),
+    );
+    const route = pack?.routes.find(
+      (r) => `${packKey(pack)}/${r.id}` === target,
+    );
     if (pack && route) {
-      const item = { packKey: packKey(pack), routeId: route.id, at: new Date().toISOString() };
-      commit({ ...library, visits: [item, ...(library.visits ?? []).filter(v => v.packKey !== item.packKey || v.routeId !== item.routeId)].slice(0,100) });
+      const item = {
+        packKey: packKey(pack),
+        routeId: route.id,
+        at: new Date().toISOString(),
+      };
+      commit({
+        ...library,
+        visits: [
+          item,
+          ...(library.visits ?? []).filter(
+            (v) => v.packKey !== item.packKey || v.routeId !== item.routeId,
+          ),
+        ].slice(0, 100),
+      });
     }
     navigate("game", { chapter, target });
   }
   function toggleFavorite(pack: Pack, routeId: string) {
     const favorites = library.favorites ?? [];
-    const exists = favorites.some(f => f.packKey === packKey(pack) && f.routeId === routeId);
-    const next = exists ? favorites.filter(f => f.packKey !== packKey(pack) || f.routeId !== routeId)
-      : [{ packKey: packKey(pack), routeId, at: new Date().toISOString() }, ...favorites];
-    if (commit({ ...library, favorites: next })) setToast(exists ? "已取消收藏。" : "已收藏到当前浏览器。");
+    const exists = favorites.some(
+      (f) => f.packKey === packKey(pack) && f.routeId === routeId,
+    );
+    const next = exists
+      ? favorites.filter(
+          (f) => f.packKey !== packKey(pack) || f.routeId !== routeId,
+        )
+      : [
+          { packKey: packKey(pack), routeId, at: new Date().toISOString() },
+          ...favorites,
+        ];
+    if (commit({ ...library, favorites: next }))
+      setToast(exists ? "已取消收藏。" : "已收藏到当前浏览器。");
   }
   function savedRoutes(items: SavedRoute[]) {
-    return items.map(item => {
-      const pack = packs.find(p => packKey(p) === item.packKey);
-      const route = pack?.routes.find(r => r.id === item.routeId);
+    return items.map((item) => {
+      const pack = packs.find((p) => packKey(p) === item.packKey);
+      const route = pack?.routes.find((r) => r.id === item.routeId);
       if (!pack || !route) return null;
-      return <button className="saved-route" key={`${item.packKey}/${item.routeId}`} onClick={() => navigate("game", { gameId: pack.game.id, chapter: chapterOf(pack), target: `${item.packKey}/${item.routeId}` })}>
-        <span><strong>{pack.game.title}</strong><small>{route.safeLabel}</small></span><CaretRight size={18} />
-      </button>;
+      return (
+        <button
+          className="saved-route"
+          key={`${item.packKey}/${item.routeId}`}
+          onClick={() =>
+            navigate("game", {
+              gameId: pack.game.id,
+              chapter: chapterOf(pack),
+              target: `${item.packKey}/${item.routeId}`,
+            })
+          }
+        >
+          <span>
+            <strong>{pack.game.title}</strong>
+            <small>{route.safeLabel}</small>
+          </span>
+          <CaretRight size={18} />
+        </button>
+      );
     });
   }
   function start(pack: Pack, routeId: string, initialEndingIds: string[]) {
@@ -488,7 +549,7 @@ export default function App() {
             >
               <List size={23} />
             </button>
-            <span>我的空间</span>
+            <span>攻略站</span>
             <CaretRight size={12} />
             <strong>
               {
@@ -505,7 +566,7 @@ export default function App() {
           </div>
           <span className="topbar-right">
             <ShieldCheck size={16} />
-            路线攻略<span className="avatar">我</span>
+            游客使用
           </span>
         </header>
         <main
@@ -672,7 +733,11 @@ export default function App() {
                         </p>
                         <div className="card-foot">
                           <span className="badge blue">
-                            {BUILTINS.some(p => p.game.id === g.id && p.status === "source_checked")
+                            {BUILTINS.some(
+                              (p) =>
+                                p.game.id === g.id &&
+                                p.status === "source_checked",
+                            )
                               ? "资料已核对"
                               : "私人攻略"}
                           </span>
@@ -799,12 +864,31 @@ export default function App() {
                   导出备份
                 </button>
               </div>
-              <section className="saved-section"><h2>收藏的攻略</h2>
-                {(library.favorites?.length ?? 0) > 0 ? savedRoutes(library.favorites!) : <p>在目标路线下点击“收藏攻略”。</p>}
+              <section className="saved-section">
+                <h2>收藏的攻略</h2>
+                {(library.favorites?.length ?? 0) > 0 ? (
+                  savedRoutes(library.favorites!)
+                ) : (
+                  <p>在目标路线下点击“收藏攻略”。</p>
+                )}
               </section>
-              <section className="saved-section"><div className="section-toolbar"><h2>最近浏览</h2>
-                {!!library.visits?.length && <button className="text-button" onClick={() => commit({ ...library, visits: [] })}>清空浏览记录</button>}</div>
-                {(library.visits?.length ?? 0) > 0 ? savedRoutes(library.visits!) : <p>暂未浏览攻略。</p>}
+              <section className="saved-section">
+                <div className="section-toolbar">
+                  <h2>最近浏览</h2>
+                  {!!library.visits?.length && (
+                    <button
+                      className="text-button"
+                      onClick={() => commit({ ...library, visits: [] })}
+                    >
+                      清空浏览记录
+                    </button>
+                  )}
+                </div>
+                {(library.visits?.length ?? 0) > 0 ? (
+                  savedRoutes(library.visits!)
+                ) : (
+                  <p>暂未浏览攻略。</p>
+                )}
               </section>
               <h2>游玩进度</h2>
               <div className="record-summary">
@@ -924,10 +1008,9 @@ export default function App() {
                 <div>
                   <h2>关于偷吃猫娘达咩哟的galgame攻略收集站</h2>
                   <p>
-                    一个面向小规模中文 Galgame
-                    玩家的非官方工具。收录《白色相簿2》正篇 CC 与 Coda 的 10
-                    个结局
-                    路线，资料已核对，仍待实机检查。游戏名称权利属于其权利人。
+                    一个面向小规模中文 Galgame 玩家的非官方工具。已收录 6
+                    部作品、36
+                    条主线／结局路径，资料已核对，仍待实机检查。游戏名称权利属于其权利人。
                   </p>
                   <a
                     className="text-button"
@@ -949,6 +1032,32 @@ export default function App() {
           <span>LOCAL FIRST · v0.1</span>
         </footer>
       </div>
+      {!music && (
+        <button
+          ref={musicButtonRef}
+          className="music-launch"
+          onClick={() => setMusic(true)}
+        >
+          <MusicNotes size={19} />
+          音乐
+        </button>
+      )}
+      {music && (
+        <Suspense
+          fallback={
+            <button className="music-launch" onClick={() => setMusic(false)}>
+              正在加载音乐面板 · 取消
+            </button>
+          }
+        >
+          <MusicDock
+            close={() => {
+              setMusic(false);
+              requestAnimationFrame(() => musicButtonRef.current?.focus());
+            }}
+          />
+        </Suspense>
+      )}
       <input
         ref={importRef}
         className="visually-hidden"
@@ -1006,6 +1115,21 @@ function GameView({
   const setChapter = (value: string) => select(value, "");
   const setTarget = (value: string) => select(chapter, value);
   const [ready, setReady] = useState(false);
+  const stepCounts = useMemo(
+    () =>
+      new Map(
+        packs.flatMap((p) =>
+          p.routes.map(
+            (r) =>
+              [
+                `${packKey(p)}/${r.id}`,
+                guidePath(p, r.id).nodes.length,
+              ] as const,
+          ),
+        ),
+      ),
+    [packs],
+  );
   useEffect(() => setReady(false), [chapter, target]);
   const chapters = wa2
     ? [
@@ -1095,7 +1219,9 @@ function GameView({
                   }}
                 >
                   <strong>{route.safeLabel}</strong>
-                  <span>{guidePath(pack, route.id).nodes.length} 个攻略步骤</span>
+                  <span>
+                    {stepCounts.get(`${packKey(pack)}/${route.id}`)} 个攻略步骤
+                  </span>
                   <small>
                     前置：
                     {route.requiredEndingIds
@@ -1121,8 +1247,25 @@ function GameView({
       )}
       {selected && (
         <>
-          <button className="button secondary favorite-toggle" aria-pressed={!!library.favorites?.some(f => f.packKey === packKey(selected.pack) && f.routeId === selected.route.id)} onClick={() => toggleFavorite(selected.pack, selected.route.id)}>
-            <BookmarkSimple size={18} />{library.favorites?.some(f => f.packKey === packKey(selected.pack) && f.routeId === selected.route.id) ? "已收藏 · 点击取消" : "收藏攻略"}
+          <button
+            className="button secondary favorite-toggle"
+            aria-pressed={
+              !!library.favorites?.some(
+                (f) =>
+                  f.packKey === packKey(selected.pack) &&
+                  f.routeId === selected.route.id,
+              )
+            }
+            onClick={() => toggleFavorite(selected.pack, selected.route.id)}
+          >
+            <BookmarkSimple size={18} />
+            {library.favorites?.some(
+              (f) =>
+                f.packKey === packKey(selected.pack) &&
+                f.routeId === selected.route.id,
+            )
+              ? "已收藏 · 点击取消"
+              : "收藏攻略"}
           </button>
           <GuideTree
             key={target}
@@ -1199,7 +1342,7 @@ function GuideTree({
 }) {
   const [alternatives, setAlternatives] = useState(true);
   const route = pack.routes.find((r) => r.id === routeId)!;
-  const path = guidePath(pack, routeId);
+  const path = useMemo(() => guidePath(pack, routeId), [pack, routeId]);
   const position = session ? replay(pack, session).position : undefined;
   return (
     <section className="guide" aria-label="路线树">
@@ -1276,7 +1419,11 @@ function GuideTree({
                 {event && <b>已记录</b>}
               </div>
               <p className="tree-prompt">{choice.prompt}</p>
-              {choice.optionsComplete === false && <p className="small-note">仅列出已核对的目标选项，请按含义对照游戏。</p>}
+              {choice.optionsComplete === false && (
+                <p className="small-note">
+                  仅列出已核对的目标选项，请按含义对照游戏。
+                </p>
+              )}
               <div
                 className={`tree-branches ${alternatives ? "" : "only-target"}`}
               >
@@ -1299,7 +1446,11 @@ function GuideTree({
                               : "其他选法 · 不在当前路径展开"}
                         </span>
                         <strong>
-                          {choice.kind !== "instruction" && choice.orderKnown !== false ? `第 ${index + 1} 项：` : ""}{option.text}
+                          {choice.kind !== "instruction" &&
+                          choice.orderKnown !== false
+                            ? `第 ${index + 1} 项：`
+                            : ""}
+                          {option.text}
                         </strong>
                         {event?.optionId === option.id && (
                           <small>你的选择</small>
@@ -1317,7 +1468,11 @@ function GuideTree({
                               )
                             }
                           >
-                            {choice.kind === "instruction" ? "我已完成这一步" : choice.orderKnown === false ? `我选择了：${option.text}` : `我在游戏中选了第 ${index + 1} 项`}
+                            {choice.kind === "instruction"
+                              ? "我已完成这一步"
+                              : choice.orderKnown === false
+                                ? `我选择了：${option.text}`
+                                : `我在游戏中选了第 ${index + 1} 项`}
                           </button>
                         )}
                       </div>

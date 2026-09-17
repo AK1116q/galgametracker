@@ -79,7 +79,11 @@ export interface Library {
   favorites?: SavedRoute[];
   visits?: SavedRoute[];
 }
-export interface SavedRoute { packKey: string; routeId: string; at: string }
+export interface SavedRoute {
+  packKey: string;
+  routeId: string;
+  at: string;
+}
 export interface Draft {
   gameId: string;
   title: string;

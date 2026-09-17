@@ -1,30 +1,107 @@
 import { test, expect } from "@playwright/test";
-test("new works expose complete paths and menu actions without invented ordinals", async ({ page }) => {
-  await page.goto('/');
-  await expect(page.getByRole('button', { name: /^选择作品：/ })).toHaveCount(6);
-  await page.getByRole('button', { name: '选择作品：ATRI -My Dear Moments-', exact: true }).click();
-  await page.getByRole('button', { name: /^True Ending/ }).click();
-  await expect(page.locator('.tree-step')).toHaveCount(1);
-  await expect(page.locator('.target-option')).toContainText('选择 TRUE END');
-  await expect(page.locator('.target-option')).not.toContainText('第 1 项');
-  await expect(page.getByRole('button', { name: '开始记录进度' })).toBeDisabled();
-  await page.getByRole('button', { name: '返回游戏库' }).click();
-  await page.getByRole('button', { name: '选择作品：千恋＊万花', exact: true }).click();
-  await page.getByRole('button', { name: /^常陆茉子/ }).click();
-  await expect(page.locator('.tree-step')).toHaveCount(7);
-  await expect(page.locator('.route-tree')).not.toContainText('钓鱼分支');
+test("music is opt-in, survives navigation and stops on close", async ({
+  page,
+}) => {
+  const external: string[] = [];
+  page.on("request", (request) => {
+    if (/youtube|googlevideo|ytimg/.test(request.url()))
+      external.push(request.url());
+  });
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<p>Player test boundary</p>",
+    }),
+  );
+  await page.goto("/");
+  await expect(page.locator("iframe")).toHaveCount(0);
+  await page.getByRole("button", { name: "音乐", exact: true }).click();
+  await expect(page.getByLabel("动漫音乐播放器")).toBeVisible();
+  expect(external).toHaveLength(0);
+  await page.getByRole("button", { name: "加载官方播放器" }).click();
+  await expect(page.locator("iframe")).toHaveAttribute(
+    "src",
+    /youtube-nocookie\.com\/embed\/24QGd-mX9bU.*autoplay=0/,
+  );
+  await page.evaluate(() => {
+    (window as any).__musicFrame = document.querySelector("iframe");
+  });
+  await page
+    .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
+    .click();
+  expect(
+    await page.evaluate(
+      () => (window as any).__musicFrame === document.querySelector("iframe"),
+    ),
+  ).toBe(true);
+  await page.getByRole("button", { name: "关闭音乐并停止播放" }).click();
+  await expect(page.locator("iframe")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "音乐", exact: true }),
+  ).toBeFocused();
 });
-test("guest favorites and browsing history persist without registration", async ({ page }) => {
+test("reduced motion skips the opening animation", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.getByLabel("开场动画")).toHaveCount(0);
+  await expect(
+    page.getByRole("heading", { name: "游戏攻略", exact: true }),
+  ).toBeVisible();
+  expect(
+    await page
+      .locator(".archive-background__character")
+      .evaluate((el) => getComputedStyle(el).animationName),
+  ).toBe("none");
+});
+test("new works expose complete paths and menu actions without invented ordinals", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
+    6,
+  );
+  await page
+    .getByRole("button", {
+      name: "选择作品：ATRI -My Dear Moments-",
+      exact: true,
+    })
+    .click();
+  await page.getByRole("button", { name: /^True Ending/ }).click();
+  await expect(page.locator(".tree-step")).toHaveCount(1);
+  await expect(page.locator(".target-option")).toContainText("选择 TRUE END");
+  await expect(page.locator(".target-option")).not.toContainText("第 1 项");
+  await expect(
+    page.getByRole("button", { name: "开始记录进度" }),
+  ).toBeDisabled();
+  await page.getByRole("button", { name: "返回游戏库" }).click();
+  await page
+    .getByRole("button", { name: "选择作品：千恋＊万花", exact: true })
+    .click();
+  await page.getByRole("button", { name: /^常陆茉子/ }).click();
+  await expect(page.locator(".tree-step")).toHaveCount(7);
+  await expect(page.locator(".route-tree")).not.toContainText("钓鱼分支");
+});
+test("guest favorites and browsing history persist without registration", async ({
+  page,
+}) => {
   await openTarget(page);
-  await page.getByRole('button', { name: '收藏攻略', exact: true }).click();
+  await page.getByRole("button", { name: "收藏攻略", exact: true }).click();
   await page.reload();
-  await expect(page.getByRole('button', { name: '已收藏 · 点击取消' })).toHaveAttribute('aria-pressed', 'true');
-  await page.getByRole('button', { name: '游玩记录', exact: true }).click();
-  await expect(page.locator('.saved-section').first().getByRole('button')).toContainText('冬马和纱');
-  await expect(page.locator('.saved-section').nth(1).getByRole('button').last()).toContainText('冬马和纱');
-  await page.getByRole('button', { name: '清空浏览记录' }).click();
-  await expect(page.getByText('暂未浏览攻略。')).toBeVisible();
-  await expect(page.locator('.saved-section').first().getByRole('button')).toHaveCount(1);
+  await expect(
+    page.getByRole("button", { name: "已收藏 · 点击取消" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "游玩记录", exact: true }).click();
+  await expect(
+    page.locator(".saved-section").first().getByRole("button"),
+  ).toContainText("冬马和纱");
+  await expect(
+    page.locator(".saved-section").nth(1).getByRole("button").last(),
+  ).toContainText("冬马和纱");
+  await page.getByRole("button", { name: "清空浏览记录" }).click();
+  await expect(page.getByText("暂未浏览攻略。")).toBeVisible();
+  await expect(
+    page.locator(".saved-section").first().getByRole("button"),
+  ).toHaveCount(1);
 });
 async function openTarget(
   page,
