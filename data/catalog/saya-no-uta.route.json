@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "0.1",
+  "id": "saya-no-uta-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "saya-no-uta",
+    "title": "沙耶之歌",
+    "aliases": [
+      "The Song of Saya",
+      "沙耶の唄"
+    ]
+  },
+  "release": {
+    "id": "saya-no-uta-pc",
+    "label": "PC / Steam 主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从新游戏开始按目标路径连续选择；不覆盖 AFTER、差分 CG 或全成就。",
+    "提示为中文概述，不是汉化补丁逐字原文；未核实选项排列顺序的节点不显示第几项。",
+    "已按所列来源核对分支与前置，未实机通关；偏离路径后的结果不作推断。",
+    "只展示两处分支和三种到达方式，不展开结局剧情。结局编号为本站对照用，不代表游戏官方命名。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://hamumamire.blog105.fc2.com/blog-entry-517.html",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://www.bilibili.com/opus/1014191282114789378",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "ending-one",
+      "safeLabel": "结局一 · 恢复感官",
+      "entryChoiceId": "ending-one-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ending-two",
+      "safeLabel": "结局二 · 联系凉子",
+      "entryChoiceId": "ending-two-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ending-three",
+      "safeLabel": "结局三 · 联系郁纪",
+      "entryChoiceId": "ending-three-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "ending-one-01",
+      "locator": "第一个分支 · 感官",
+      "prompt": "是否希望恢复正常感官",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "希望恢复",
+          "next": {
+            "kind": "ending",
+            "id": "ending-one-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再需要",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ending-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "结局一 · 恢复感官 / 第一个分支 · 感官 / senses；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ending-two-01",
+      "locator": "第一个分支 · 感官",
+      "prompt": "是否希望恢复正常感官",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "希望恢复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再需要",
+          "next": {
+            "kind": "choice",
+            "id": "ending-two-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ending-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "结局二 · 联系凉子 / 第一个分支 · 感官 / senses；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ending-two-02",
+      "locator": "第二个分支 · 电话",
+      "prompt": "联系谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "给凉子打电话",
+          "next": {
+            "kind": "ending",
+            "id": "ending-two-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "给郁纪打电话",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ending-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "结局二 · 联系凉子 / 第二个分支 · 电话 / phone；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ending-three-01",
+      "locator": "第一个分支 · 感官",
+      "prompt": "是否希望恢复正常感官",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "希望恢复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再需要",
+          "next": {
+            "kind": "choice",
+            "id": "ending-three-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ending-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "结局三 · 联系郁纪 / 第一个分支 · 感官 / senses；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ending-three-02",
+      "locator": "第二个分支 · 电话",
+      "prompt": "联系谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "给凉子打电话",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "给郁纪打电话",
+          "next": {
+            "kind": "ending",
+            "id": "ending-three-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ending-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "结局三 · 联系郁纪 / 第二个分支 · 电话 / phone；与来源 2 对照"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "ending-one-end",
+      "safeLabel": "结局一 · 恢复感官",
+      "hiddenTitle": "结局一 · 恢复感官",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ending-two-end",
+      "safeLabel": "结局二 · 联系凉子",
+      "hiddenTitle": "结局二 · 联系凉子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ending-three-end",
+      "safeLabel": "结局三 · 联系郁纪",
+      "hiddenTitle": "结局三 · 联系郁纪",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-18",
+      "routeIds": [
+        "ending-one",
+        "ending-two",
+        "ending-three"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "逐项对照所列资料的主线选法、条件节点及解锁前置。差异处理见 notes 与 docs/catalog-research.md。"
+    }
+  ]
+}

@@ -1,4 +1,19 @@
 import { test, expect } from "@playwright/test";
+test("new works expose complete paths and menu actions without invented ordinals", async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('button', { name: /^选择作品：/ })).toHaveCount(6);
+  await page.getByRole('button', { name: '选择作品：ATRI -My Dear Moments-', exact: true }).click();
+  await page.getByRole('button', { name: /^True Ending/ }).click();
+  await expect(page.locator('.tree-step')).toHaveCount(1);
+  await expect(page.locator('.target-option')).toContainText('选择 TRUE END');
+  await expect(page.locator('.target-option')).not.toContainText('第 1 项');
+  await expect(page.getByRole('button', { name: '开始记录进度' })).toBeDisabled();
+  await page.getByRole('button', { name: '返回游戏库' }).click();
+  await page.getByRole('button', { name: '选择作品：千恋＊万花', exact: true }).click();
+  await page.getByRole('button', { name: /^常陆茉子/ }).click();
+  await expect(page.locator('.tree-step')).toHaveCount(7);
+  await expect(page.locator('.route-tree')).not.toContainText('钓鱼分支');
+});
 test("guest favorites and browsing history persist without registration", async ({ page }) => {
   await openTarget(page);
   await page.getByRole('button', { name: '收藏攻略', exact: true }).click();

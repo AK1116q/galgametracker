@@ -341,6 +341,7 @@
       "properties": {
         "kind": { "enum": ["choice", "instruction"] },
         "orderKnown": { "type": "boolean" },
+        "optionsComplete": { "type": "boolean" },
         "id": {
           "$ref": "#/definitions/id"
         },
@@ -371,7 +372,7 @@
       "allOf": [{
         "if": { "required": ["kind"], "properties": { "kind": { "const": "instruction" } } },
         "then": { "properties": { "options": { "type": "array", "maxItems": 1 } } },
-        "else": { "properties": { "options": { "type": "array", "minItems": 2 } } }
+        "else": { "if": { "required": ["optionsComplete"], "properties": { "optionsComplete": { "const": false } } }, "then": {}, "else": { "properties": { "options": { "type": "array", "minItems": 2 } } } }
       }]
     },
     "review": {

@@ -296,3 +296,12 @@ input:focus-visible {
 .saved-route small { color:var(--muted); }
 .favorite-toggle { margin-bottom:20px; }
 .favorite-toggle[aria-pressed="true"] { color:#a63a69; background:#ffe8f0; }
+
+.cover-atri { background:linear-gradient(130deg,#7bbbc9,#366d9b); }
+.cover-senren-banka { background:linear-gradient(130deg,#e79f96,#995e72); }
+.cover-sabbat-of-the-witch { background:linear-gradient(130deg,#b09acb,#685286); }
+.cover-riddle-joker { background:linear-gradient(130deg,#90a1c8,#3f517c); }
+.cover-saya-no-uta { background:linear-gradient(130deg,#a795a9,#554258); }
+.book-cover .cover-bottom, .book-cover .cover-top, .book-cover .cover-title { color:#fff; }
+.custom-cover .cover-title { font-size:clamp(23px,2.1vw,36px); letter-spacing:0; line-height:1.6; }
+.tree-option strong { line-height:1.8; }

@@ -48,11 +48,11 @@ import wa2Data from "../data/wa2/setsuna-cc.route.json";
 import type { Pack, Session, Library, SavedRoute } from "./types";
 
 const extraPacks = Object.values(
-  import.meta.glob<Pack>("../data/wa2/*.route.json", {
+  import.meta.glob<Pack>("../data/**/*.route.json", {
     eager: true,
     import: "default",
   }),
-).filter((p) => p.id !== wa2Data.id && p.id !== kazusaData.id);
+).filter((p) => p.id !== wa2Data.id && p.id !== kazusaData.id && p.id !== demoData.id);
 const BUILTINS = [wa2Data, kazusaData, ...extraPacks, demoData] as Pack[];
 type View = "library" | "game" | "play" | "records" | "settings";
 type Navigation = {
@@ -627,7 +627,7 @@ export default function App() {
                       onClick={() => openGame(g.id)}
                     >
                       <div
-                        className={`book-cover ${g.id !== "white-album-2" ? "custom-cover" : ""}`}
+                        className={`book-cover cover-${g.id} ${g.id !== "white-album-2" ? "custom-cover" : ""}`}
                       >
                         <div className="cover-top">
                           <span>VISUAL NOVEL</span>
@@ -650,12 +650,12 @@ export default function App() {
                           <span>
                             {g.id === "white-album-2"
                               ? "白色相簿2"
-                              : "我的路线收藏"}
+                              : "主线结局攻略"}
                           </span>
                           <span>
                             {g.id === "white-album-2"
                               ? "Leaf / AQUAPLUS"
-                              : "PERSONAL GUIDE"}
+                              : "ROUTE GUIDE"}
                           </span>
                         </div>
                       </div>
@@ -672,7 +672,7 @@ export default function App() {
                         </p>
                         <div className="card-foot">
                           <span className="badge blue">
-                            {g.id === "white-album-2"
+                            {BUILTINS.some(p => p.game.id === g.id && p.status === "source_checked")
                               ? "资料已核对"
                               : "私人攻略"}
                           </span>
@@ -1095,7 +1095,7 @@ function GameView({
                   }}
                 >
                   <strong>{route.safeLabel}</strong>
-                  <span>{pack.choices.length} 次选择</span>
+                  <span>{guidePath(pack, route.id).nodes.length} 个攻略步骤</span>
                   <small>
                     前置：
                     {route.requiredEndingIds
@@ -1207,7 +1207,7 @@ function GuideTree({
         <div>
           <h2>{route.safeLabel} · 路线树</h2>
           <p>
-            {pack.release.label} · {path.nodes.length} 次选择
+            {pack.release.label} · {path.nodes.length} 个攻略步骤
           </p>
         </div>
         <label className="check-label">
@@ -1276,6 +1276,7 @@ function GuideTree({
                 {event && <b>已记录</b>}
               </div>
               <p className="tree-prompt">{choice.prompt}</p>
+              {choice.optionsComplete === false && <p className="small-note">仅列出已核对的目标选项，请按含义对照游戏。</p>}
               <div
                 className={`tree-branches ${alternatives ? "" : "only-target"}`}
               >
@@ -1325,7 +1326,7 @@ function GuideTree({
               </div>
               {choice.skipTo && (
                 <p className="small-note">
-                  已通关后的周目可能不出现此选择。
+                  不同周目下可能不出现此选择；以游戏实际画面为准。
                   {current && (
                     <button
                       className="text-button"

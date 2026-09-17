@@ -31,6 +31,7 @@ export interface Pack {
     id: string;
     kind?: "choice" | "instruction";
     orderKnown?: boolean;
+    optionsComplete?: boolean;
     locator: string;
     prompt: string;
     skipTo?: Destination;

@@ -1,0 +1,2580 @@
+{
+  "schemaVersion": "0.1",
+  "id": "sabbat-of-the-witch-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "sabbat-of-the-witch",
+    "title": "魔女的夜宴",
+    "aliases": [
+      "Sabbat of the Witch",
+      "サノバウィッチ",
+      "魔宴"
+    ]
+  },
+  "release": {
+    "id": "sabbat-of-the-witch-pc",
+    "label": "PC / Steam 主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从新游戏开始按目标路径连续选择；不覆盖 AFTER、差分 CG 或全成就。",
+    "提示为中文概述，不是汉化补丁逐字原文；未核实选项排列顺序的节点不显示第几项。",
+    "已按所列来源核对分支与前置，未实机通关；偏离路径后的结果不作推断。",
+    "以 PC / Steam 原版主线分歧为范围，不承诺 FHD 版成就流程。",
+    "宁宁前篇后新增标题菜单 RESTART；后半篇的差分选择不改变主线结局，可自行选择。",
+    "和奏需任意主角路线通关；若先攻略宁宁，需要读完 RESTART 后半篇。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/sothewitch.html",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/sharedfiles/filedetails/?id=1546374480",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "nene",
+      "safeLabel": "绫地宁宁 · 前篇",
+      "entryChoiceId": "nene-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "nene-restart",
+      "safeLabel": "绫地宁宁 · 后半篇",
+      "entryChoiceId": "nene-restart-01",
+      "requiredEndingIds": [
+        "nene-end"
+      ]
+    },
+    {
+      "id": "meguru",
+      "safeLabel": "因幡爱瑠",
+      "entryChoiceId": "meguru-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "tsumugi",
+      "safeLabel": "椎叶䌷",
+      "entryChoiceId": "tsumugi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "touko",
+      "safeLabel": "户隐憧子",
+      "entryChoiceId": "touko-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "wakana",
+      "safeLabel": "假屋和奏",
+      "entryChoiceId": "wakana-01",
+      "requiredEndingIds": [
+        "main-completed"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "nene-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "nene-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "nene-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "choice",
+            "id": "nene-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-04",
+      "locator": "宁宁搭档分支 · 外出",
+      "prompt": "接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与大家一起走",
+          "next": {
+            "kind": "choice",
+            "id": "nene-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "先去吃饭",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 宁宁搭档分支 · 外出 / move；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "choice",
+            "id": "nene-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "choice",
+            "id": "nene-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "choice",
+            "id": "nene-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "choice",
+            "id": "nene-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-09",
+      "locator": "共通线 · 握手",
+      "prompt": "是否再请求一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她再握一次",
+          "next": {
+            "kind": "choice",
+            "id": "nene-10"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不好意思说出口",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 握手 / hand；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-10",
+      "locator": "共通线 · 目光",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "移开视线",
+          "next": {
+            "kind": "choice",
+            "id": "nene-11"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "称赞她",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 目光 / look；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-11",
+      "locator": "共通线 · 最后选择",
+      "prompt": "此时想到的人或事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宁宁",
+          "next": {
+            "kind": "ending",
+            "id": "nene-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "爱瑠",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "憧子学姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-4",
+          "text": "乐队",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 前篇 / 共通线 · 最后选择 / final；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nene-restart-01",
+      "locator": "标题菜单 · RESTART",
+      "prompt": "宁宁前篇通关后，返回标题菜单",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择 RESTART，阅读至后半篇结局",
+          "next": {
+            "kind": "ending",
+            "id": "nene-restart-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nene-restart",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "绫地宁宁 · 后半篇 / 标题菜单 · RESTART / restart；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-04",
+      "locator": "爱瑠搭档分支 · 外出",
+      "prompt": "回应这次安排",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "当作一次排练",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 爱瑠搭档分支 · 外出 / rehearse；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-09",
+      "locator": "共通线 · 握手",
+      "prompt": "是否再请求一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她再握一次",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不好意思说出口",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 握手 / hand；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-10",
+      "locator": "共通线 · 目光",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "移开视线",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "称赞她",
+          "next": {
+            "kind": "choice",
+            "id": "meguru-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 目光 / look；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "meguru-11",
+      "locator": "共通线 · 最后选择",
+      "prompt": "此时想到的人或事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宁宁",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "爱瑠",
+          "next": {
+            "kind": "ending",
+            "id": "meguru-end"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "憧子学姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-4",
+          "text": "乐队",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meguru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "因幡爱瑠 / 共通线 · 最后选择 / final；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-04",
+      "locator": "宁宁搭档分支 · 外出",
+      "prompt": "接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与大家一起走",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "先去吃饭",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 宁宁搭档分支 · 外出 / move；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-09",
+      "locator": "共通线 · 握手",
+      "prompt": "是否再请求一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她再握一次",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-10"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不好意思说出口",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 握手 / hand；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-10",
+      "locator": "共通线 · 目光",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "移开视线",
+          "next": {
+            "kind": "choice",
+            "id": "tsumugi-11"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "称赞她",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 目光 / look；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "tsumugi-11",
+      "locator": "共通线 · 最后选择",
+      "prompt": "此时想到的人或事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宁宁",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "爱瑠",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "憧子学姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-4",
+          "text": "乐队",
+          "next": {
+            "kind": "ending",
+            "id": "tsumugi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsumugi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-4"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "椎叶䌷 / 共通线 · 最后选择 / final；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "touko-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "choice",
+            "id": "touko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "choice",
+            "id": "touko-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-04",
+      "locator": "爱瑠搭档分支 · 外出",
+      "prompt": "回应这次安排",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "当作一次排练",
+          "next": {
+            "kind": "choice",
+            "id": "touko-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 爱瑠搭档分支 · 外出 / rehearse；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "choice",
+            "id": "touko-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "choice",
+            "id": "touko-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "choice",
+            "id": "touko-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "choice",
+            "id": "touko-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-09",
+      "locator": "共通线 · 握手",
+      "prompt": "是否再请求一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她再握一次",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不好意思说出口",
+          "next": {
+            "kind": "choice",
+            "id": "touko-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 握手 / hand；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-10",
+      "locator": "共通线 · 目光",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "移开视线",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "称赞她",
+          "next": {
+            "kind": "choice",
+            "id": "touko-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 目光 / look；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "touko-11",
+      "locator": "共通线 · 最后选择",
+      "prompt": "此时想到的人或事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宁宁",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "爱瑠",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "憧子学姐",
+          "next": {
+            "kind": "ending",
+            "id": "touko-end"
+          }
+        },
+        {
+          "id": "option-4",
+          "text": "乐队",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "touko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-3"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "户隐憧子 / 共通线 · 最后选择 / final；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-04",
+      "locator": "宁宁搭档分支 · 外出",
+      "prompt": "接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与大家一起走",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "先去吃饭",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 宁宁搭档分支 · 外出 / move；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "choice",
+            "id": "wakana-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "wakana-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "ending",
+            "id": "wakana-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "wakana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "假屋和奏 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-01",
+      "locator": "共通线 · 称赞",
+      "prompt": "是否再说一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "再次认真称赞",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不再重复",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 称赞 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-02",
+      "locator": "共通线 · 练习搭档",
+      "prompt": "选择搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请宁宁帮忙",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "继续与爱瑠练习",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 练习搭档 / partner；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-03",
+      "locator": "共通线 · 时间安排",
+      "prompt": "如何安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "调整时间",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "仍有些犹豫",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 时间安排 / time；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-04",
+      "locator": "爱瑠搭档分支 · 外出",
+      "prompt": "回应这次安排",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "当作一次排练",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 爱瑠搭档分支 · 外出 / rehearse；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-05",
+      "locator": "共通线 · 回应猜测",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "也许是吧",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不是",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 回应猜测 / maybe；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-06",
+      "locator": "共通线 · 说法",
+      "prompt": "如何表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "直接说明",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "开个小玩笑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 说法 / say；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-07",
+      "locator": "共通线 · 说明情况",
+      "prompt": "是否坦白",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说出",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 说明情况 / honest；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-08",
+      "locator": "共通线 · 学习",
+      "prompt": "是否请教",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先放下，换换心情",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "趁机会请教",
+          "next": {
+            "kind": "choice",
+            "id": "normal-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 学习 / help；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-09",
+      "locator": "共通线 · 握手",
+      "prompt": "是否再请求一次",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她再握一次",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不好意思说出口",
+          "next": {
+            "kind": "choice",
+            "id": "normal-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 握手 / hand；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-10",
+      "locator": "共通线 · 目光",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "移开视线",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "称赞她",
+          "next": {
+            "kind": "choice",
+            "id": "normal-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 目光 / look；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-11",
+      "locator": "共通线 · 最后选择",
+      "prompt": "此时想到的人或事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宁宁",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "爱瑠",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "憧子学姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-4",
+          "text": "乐队",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-4"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 最后选择 / final；与来源 2 对照"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-completed",
+      "safeLabel": "爱瑠、䌷、憧子或宁宁后半篇中任意一条已通关",
+      "hiddenTitle": "爱瑠、䌷、憧子或宁宁后半篇中任意一条已通关",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nene-end",
+      "safeLabel": "绫地宁宁 · 前篇",
+      "hiddenTitle": "绫地宁宁 · 前篇",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nene-restart-end",
+      "safeLabel": "绫地宁宁 · 后半篇",
+      "hiddenTitle": "绫地宁宁 · 后半篇",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "meguru-end",
+      "safeLabel": "因幡爱瑠",
+      "hiddenTitle": "因幡爱瑠",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "tsumugi-end",
+      "safeLabel": "椎叶䌷",
+      "hiddenTitle": "椎叶䌷",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "touko-end",
+      "safeLabel": "户隐憧子",
+      "hiddenTitle": "户隐憧子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "wakana-end",
+      "safeLabel": "假屋和奏",
+      "hiddenTitle": "假屋和奏",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局",
+      "hiddenTitle": "通常结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-18",
+      "routeIds": [
+        "nene",
+        "nene-restart",
+        "meguru",
+        "tsumugi",
+        "touko",
+        "wakana",
+        "normal"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "逐项对照所列资料的主线选法、条件节点及解锁前置。差异处理见 notes 与 docs/catalog-research.md。"
+    }
+  ]
+}

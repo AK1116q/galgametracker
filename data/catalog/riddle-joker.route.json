@@ -1,0 +1,1567 @@
+{
+  "schemaVersion": "0.1",
+  "id": "riddle-joker-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "riddle-joker",
+    "title": "RIDDLE JOKER",
+    "aliases": [
+      "RJ",
+      "谜语小丑"
+    ]
+  },
+  "release": {
+    "id": "riddle-joker-pc",
+    "label": "PC / Steam 主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从新游戏开始按目标路径连续选择；不覆盖 AFTER、差分 CG 或全成就。",
+    "提示为中文概述，不是汉化补丁逐字原文；未核实选项排列顺序的节点不显示第几项。",
+    "已按所列来源核对分支与前置，未实机通关；偏离路径后的结果不作推断。",
+    "七海路径中的追加问题在一周目不出现，直接继续下一步；二周目出现时选择不追问。",
+    "千咲与此处通常结局选法需要先通关任意一条主角路线。通常结局保留资料中含追加选项的二周目路径，不推测一周目替代选法。",
+    "部分转载称千咲需四线全通；原日文攻略和 Steam Chuee 均明确为任意一线，采用后者一致的条件。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/riddlejoker.html",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/sharedfiles/filedetails/?id=2323376164",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "ayase",
+      "safeLabel": "三司绫濑",
+      "entryChoiceId": "ayase-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "nanami",
+      "safeLabel": "在原七海",
+      "entryChoiceId": "nanami-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hazuki",
+      "safeLabel": "二条院羽月",
+      "entryChoiceId": "hazuki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mayu",
+      "safeLabel": "式部茉优",
+      "entryChoiceId": "mayu-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "chisaki",
+      "safeLabel": "壬生千咲",
+      "entryChoiceId": "chisaki-01",
+      "requiredEndingIds": [
+        "main-completed"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局（二周目选法）",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": [
+        "main-completed"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "ayase-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "choice",
+            "id": "ayase-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ayase-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "choice",
+            "id": "ayase-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ayase-03",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "choice",
+            "id": "ayase-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ayase-04",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "choice",
+            "id": "ayase-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ayase-05",
+      "locator": "学生会室分支",
+      "prompt": "选择宿舍",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "照往常一样",
+          "next": {
+            "kind": "choice",
+            "id": "ayase-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "换一个宿舍",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 学生会室分支 / dorm；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "ayase-06",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "ending",
+            "id": "ayase-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ayase",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "三司绫濑 / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-03",
+      "locator": "追加选项 · 七海分支",
+      "prompt": "是否追问话题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "询问下去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不提这个话题",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 追加选项 · 七海分支 / ask；与来源 2 对照"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "nanami-04"
+      }
+    },
+    {
+      "id": "nanami-04",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-05",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-06",
+      "locator": "学生会室分支",
+      "prompt": "选择宿舍",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "照往常一样",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "换一个宿舍",
+          "next": {
+            "kind": "choice",
+            "id": "nanami-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 学生会室分支 / dorm；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "nanami-07",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "ending",
+            "id": "nanami-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "在原七海 / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-03",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-04",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-05",
+      "locator": "学生会室分支",
+      "prompt": "选择宿舍",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "照往常一样",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "换一个宿舍",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 学生会室分支 / dorm；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-06",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "ending",
+            "id": "hazuki-end"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "二条院羽月 / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mayu-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "choice",
+            "id": "mayu-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mayu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "式部茉优 / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mayu-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "choice",
+            "id": "mayu-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mayu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "式部茉优 / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mayu-03",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "choice",
+            "id": "mayu-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mayu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "式部茉优 / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mayu-04",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "choice",
+            "id": "mayu-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mayu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "式部茉优 / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mayu-05",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "ending",
+            "id": "mayu-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mayu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "式部茉优 / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "choice",
+            "id": "chisaki-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "choice",
+            "id": "chisaki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-03",
+      "locator": "追加选项 · 七海分支",
+      "prompt": "是否追问话题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "询问下去",
+          "next": {
+            "kind": "choice",
+            "id": "chisaki-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不提这个话题",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 追加选项 · 七海分支 / ask；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-04",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "choice",
+            "id": "chisaki-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-05",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "choice",
+            "id": "chisaki-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "chisaki-06",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "ending",
+            "id": "chisaki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chisaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-3"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "壬生千咲 / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-01",
+      "locator": "共通线 · 实验",
+      "prompt": "接下来的实验",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与茉优实验",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "邀请七海",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 共通线 · 实验 / test；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-02",
+      "locator": "共通线 · 泳装",
+      "prompt": "关注谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "二条院",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "七海",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 共通线 · 泳装 / swim；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-03",
+      "locator": "追加选项 · 七海分支",
+      "prompt": "是否追问话题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "询问下去",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "不提这个话题",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 追加选项 · 七海分支 / ask；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-04",
+      "locator": "共通线 · 回应",
+      "prompt": "是否重新表达",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不再多说",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "认真重新称赞",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 共通线 · 回应 / praise；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-05",
+      "locator": "共通线 · 求助",
+      "prompt": "去哪里询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学生会室找绫濑",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "研究室找茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 共通线 · 求助 / advice；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-06",
+      "locator": "学生会室分支",
+      "prompt": "选择宿舍",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "照往常一样",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "换一个宿舍",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 学生会室分支 / dorm；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-07",
+      "locator": "共通线 · 人选",
+      "prompt": "想到谁",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "茉优",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "二条院",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "壬生",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局（二周目选法） / 共通线 · 人选 / who；与来源 2 对照"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-completed",
+      "safeLabel": "绫濑、七海、羽月、茉优中任意一条路线已通关",
+      "hiddenTitle": "绫濑、七海、羽月、茉优中任意一条路线已通关",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ayase-end",
+      "safeLabel": "三司绫濑",
+      "hiddenTitle": "三司绫濑",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nanami-end",
+      "safeLabel": "在原七海",
+      "hiddenTitle": "在原七海",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hazuki-end",
+      "safeLabel": "二条院羽月",
+      "hiddenTitle": "二条院羽月",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mayu-end",
+      "safeLabel": "式部茉优",
+      "hiddenTitle": "式部茉优",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "chisaki-end",
+      "safeLabel": "壬生千咲",
+      "hiddenTitle": "壬生千咲",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局（二周目选法）",
+      "hiddenTitle": "通常结局（二周目选法）",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-18",
+      "routeIds": [
+        "ayase",
+        "nanami",
+        "hazuki",
+        "mayu",
+        "chisaki",
+        "normal"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "逐项对照所列资料的主线选法、条件节点及解锁前置。差异处理见 notes 与 docs/catalog-research.md。"
+    }
+  ]
+}

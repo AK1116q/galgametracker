@@ -1,0 +1,2285 @@
+{
+  "schemaVersion": "0.1",
+  "id": "senren-banka-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "senren-banka",
+    "title": "千恋＊万花",
+    "aliases": [
+      "千恋万花",
+      "Senren Banka"
+    ]
+  },
+  "release": {
+    "id": "senren-banka-pc",
+    "label": "PC / Steam 主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "从新游戏开始按目标路径连续选择；不覆盖 AFTER、差分 CG 或全成就。",
+    "提示为中文概述，不是汉化补丁逐字原文；未核实选项排列顺序的节点不显示第几项。",
+    "已按所列来源核对分支与前置，未实机通关；偏离路径后的结果不作推断。",
+    "小春、芦花需先完成任意一位主角路线；采野菜或独自行动后没有钓鱼分支选项。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/senrenbanka.html",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/sharedfiles/filedetails/?id=1997093244",
+      "permission": "仅整理分支、前置和结局事实；中文提示自行概述，不转载攻略正文、图片或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "yoshino",
+      "safeLabel": "朝武芳乃",
+      "entryChoiceId": "yoshino-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mako",
+      "safeLabel": "常陆茉子",
+      "entryChoiceId": "mako-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "murasame",
+      "safeLabel": "丛雨",
+      "entryChoiceId": "murasame-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "lena",
+      "safeLabel": "蕾娜",
+      "entryChoiceId": "lena-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "koharu",
+      "safeLabel": "鞍马小春",
+      "entryChoiceId": "koharu-01",
+      "requiredEndingIds": [
+        "main-completed"
+      ]
+    },
+    {
+      "id": "roka",
+      "safeLabel": "马庭芦花",
+      "entryChoiceId": "roka-01",
+      "requiredEndingIds": [
+        "main-completed"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "yoshino-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-05",
+      "locator": "钓鱼分支",
+      "prompt": "是否同意提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是不行",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "这样的话可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 钓鱼分支 / fish；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-06",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-07",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "choice",
+            "id": "yoshino-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "yoshino-08",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "ending",
+            "id": "yoshino-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoshino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝武芳乃 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "mako-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "mako-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "mako-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "choice",
+            "id": "mako-05"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-05",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "mako-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-06",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "choice",
+            "id": "mako-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "mako-07",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "ending",
+            "id": "mako-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "常陆茉子 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-3"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-05",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-06",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "choice",
+            "id": "murasame-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "murasame-07",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "ending",
+            "id": "murasame-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "murasame",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "丛雨 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "lena-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "lena-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "lena-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "choice",
+            "id": "lena-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-05",
+      "locator": "钓鱼分支",
+      "prompt": "是否同意提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是不行",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "这样的话可以",
+          "next": {
+            "kind": "choice",
+            "id": "lena-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 钓鱼分支 / fish；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-06",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "lena-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-07",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "choice",
+            "id": "lena-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "lena-08",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "ending",
+            "id": "lena-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "lena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蕾娜 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-05",
+      "locator": "钓鱼分支",
+      "prompt": "是否同意提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是不行",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "这样的话可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 钓鱼分支 / fish；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-06",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-07",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-08",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "choice",
+            "id": "koharu-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "koharu-09",
+      "locator": "配角共通线",
+      "prompt": "想起谁的笑容",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "小春",
+          "next": {
+            "kind": "ending",
+            "id": "koharu-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "芦花",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "koharu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鞍马小春 / 配角共通线 / sub；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "roka-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "roka-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "roka-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "choice",
+            "id": "roka-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-05",
+      "locator": "钓鱼分支",
+      "prompt": "是否同意提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是不行",
+          "next": {
+            "kind": "choice",
+            "id": "roka-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "这样的话可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 钓鱼分支 / fish；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-06",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "roka-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-07",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "choice",
+            "id": "roka-08"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-08",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "choice",
+            "id": "roka-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "roka-09",
+      "locator": "配角共通线",
+      "prompt": "想起谁的笑容",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "小春",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "芦花",
+          "next": {
+            "kind": "ending",
+            "id": "roka-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "roka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "马庭芦花 / 配角共通线 / sub；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-01",
+      "locator": "共通线 · 回答问题",
+      "prompt": "如何回答",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "如实说明",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "含糊带过",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 回答问题 / truth；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-02",
+      "locator": "共通线 · 城市与乡村",
+      "prompt": "对居住环境的看法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "暂时说不准",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "更喜欢城市",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 城市与乡村 / city；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-03",
+      "locator": "共通线 · 对穿着的评价",
+      "prompt": "如何评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "并不奇怪",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 对穿着的评价 / cute；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-04",
+      "locator": "共通线 · 外出安排",
+      "prompt": "选择活动",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "钓鱼",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "采野菜",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-3",
+          "text": "独自行动",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 外出安排 / trip；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-05",
+      "locator": "钓鱼分支",
+      "prompt": "是否同意提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是不行",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "这样的话可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 钓鱼分支 / fish；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-06",
+      "locator": "共通线 · 致谢",
+      "prompt": "表达感谢",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "口头道谢",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "摸摸头",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 致谢 / thanks；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-07",
+      "locator": "共通线 · 小春的话",
+      "prompt": "如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信小春",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "有些担心",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 小春的话 / trust；与来源 2 对照"
+        }
+      ]
+    },
+    {
+      "id": "normal-08",
+      "locator": "共通线 · 朝武",
+      "prompt": "是否安慰她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让朝武放心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "避免多说奇怪的话",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 共通线 · 朝武 / reassure；与来源 2 对照"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-completed",
+      "safeLabel": "芳乃、茉子、丛雨、蕾娜中任意一条路线已通关",
+      "hiddenTitle": "芳乃、茉子、丛雨、蕾娜中任意一条路线已通关",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yoshino-end",
+      "safeLabel": "朝武芳乃",
+      "hiddenTitle": "朝武芳乃",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mako-end",
+      "safeLabel": "常陆茉子",
+      "hiddenTitle": "常陆茉子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "murasame-end",
+      "safeLabel": "丛雨",
+      "hiddenTitle": "丛雨",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "lena-end",
+      "safeLabel": "蕾娜",
+      "hiddenTitle": "蕾娜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "koharu-end",
+      "safeLabel": "鞍马小春",
+      "hiddenTitle": "鞍马小春",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "roka-end",
+      "safeLabel": "马庭芦花",
+      "hiddenTitle": "马庭芦花",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局",
+      "hiddenTitle": "通常结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "资料交叉核对（非实机）",
+      "date": "2026-09-18",
+      "routeIds": [
+        "yoshino",
+        "mako",
+        "murasame",
+        "lena",
+        "koharu",
+        "roka",
+        "normal"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "逐项对照所列资料的主线选法、条件节点及解锁前置。差异处理见 notes 与 docs/catalog-research.md。"
+    }
+  ]
+}
