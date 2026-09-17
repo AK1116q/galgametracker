@@ -1,6 +1,4 @@
-import Ajv from "ajv";
-import schema from "../schemas/route-pack.schema.json" with { type: "json" };
-const checkSchema = new Ajv({ allErrors: true, strict: true }).compile(schema);
+import checkSchema from "./route-schema.generated.mjs";
 
 export function validatePack(pack) {
   if (!checkSchema(pack)) {
