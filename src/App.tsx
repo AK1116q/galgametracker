@@ -45,7 +45,7 @@ import { guidePath } from "../core/guide.mjs";
 import kazusaData from "../data/wa2/kazusa-coda.route.json";
 import demoData from "../data/examples/demo.route.json";
 import wa2Data from "../data/wa2/setsuna-cc.route.json";
-import type { Pack, Session, Library } from "./types";
+import type { Pack, Session, Library, SavedRoute } from "./types";
 
 const extraPacks = Object.values(
   import.meta.glob<Pack>("../data/wa2/*.route.json", {
@@ -317,6 +317,32 @@ export default function App() {
   }
   function openGame(id: string) {
     navigate("game", { gameId: id });
+  }
+  function rememberRoute(chapter: string, target: string) {
+    const pack = packs.find(p => p.routes.some(r => `${packKey(p)}/${r.id}` === target));
+    const route = pack?.routes.find(r => `${packKey(pack)}/${r.id}` === target);
+    if (pack && route) {
+      const item = { packKey: packKey(pack), routeId: route.id, at: new Date().toISOString() };
+      commit({ ...library, visits: [item, ...(library.visits ?? []).filter(v => v.packKey !== item.packKey || v.routeId !== item.routeId)].slice(0,100) });
+    }
+    navigate("game", { chapter, target });
+  }
+  function toggleFavorite(pack: Pack, routeId: string) {
+    const favorites = library.favorites ?? [];
+    const exists = favorites.some(f => f.packKey === packKey(pack) && f.routeId === routeId);
+    const next = exists ? favorites.filter(f => f.packKey !== packKey(pack) || f.routeId !== routeId)
+      : [{ packKey: packKey(pack), routeId, at: new Date().toISOString() }, ...favorites];
+    if (commit({ ...library, favorites: next })) setToast(exists ? "已取消收藏。" : "已收藏到当前浏览器。");
+  }
+  function savedRoutes(items: SavedRoute[]) {
+    return items.map(item => {
+      const pack = packs.find(p => packKey(p) === item.packKey);
+      const route = pack?.routes.find(r => r.id === item.routeId);
+      if (!pack || !route) return null;
+      return <button className="saved-route" key={`${item.packKey}/${item.routeId}`} onClick={() => navigate("game", { gameId: pack.game.id, chapter: chapterOf(pack), target: `${item.packKey}/${item.routeId}` })}>
+        <span><strong>{pack.game.title}</strong><small>{route.safeLabel}</small></span><CaretRight size={18} />
+      </button>;
+    });
   }
   function start(pack: Pack, routeId: string, initialEndingIds: string[]) {
     try {
@@ -713,9 +739,8 @@ export default function App() {
                 packs={selectedPacks}
                 chapter={navigation.chapter}
                 target={navigation.target}
-                select={(chapter, target) =>
-                  navigate("game", { chapter, target })
-                }
+                select={rememberRoute}
+                toggleFavorite={toggleFavorite}
                 library={library}
                 start={start}
                 resume={resume}
@@ -766,7 +791,7 @@ export default function App() {
               <div className="page-heading">
                 <div>
                   <div className="eyebrow">YOUR READING JOURNAL</div>
-                  <h1>走过的路，都记得。</h1>
+                  <h1>收藏与记录</h1>
                   <p>查看已保存的选择和通关记录。</p>
                 </div>
                 <button className="button secondary" onClick={backup}>
@@ -774,6 +799,14 @@ export default function App() {
                   导出备份
                 </button>
               </div>
+              <section className="saved-section"><h2>收藏的攻略</h2>
+                {(library.favorites?.length ?? 0) > 0 ? savedRoutes(library.favorites!) : <p>在目标路线下点击“收藏攻略”。</p>}
+              </section>
+              <section className="saved-section"><div className="section-toolbar"><h2>最近浏览</h2>
+                {!!library.visits?.length && <button className="text-button" onClick={() => commit({ ...library, visits: [] })}>清空浏览记录</button>}</div>
+                {(library.visits?.length ?? 0) > 0 ? savedRoutes(library.visits!) : <p>暂未浏览攻略。</p>}
+              </section>
+              <h2>游玩进度</h2>
               <div className="record-summary">
                 <div>
                   <strong>{library.sessions.length}</strong>
@@ -790,7 +823,7 @@ export default function App() {
               </div>
               {!library.sessions.length ? (
                 <Empty
-                  title="第一张书签，还在等你"
+                  title="暂无游玩进度"
                   text="开始路线导航后，你的游玩记录会保存在这里。"
                 />
               ) : (
@@ -853,7 +886,7 @@ export default function App() {
                 <div>
                   <h2>数据存储位置</h2>
                   <p>
-                    游玩记录和私人攻略仅保存在当前浏览器，不会上传到服务器。换设备、换网址或清除浏览器数据前，请先导出备份。
+                    收藏、浏览记录、游玩进度和导入的攻略仅保存在当前浏览器，不会上传到服务器。换设备、换网址或清除浏览器数据前，请先导出备份。
                   </p>
                   <div className="button-row">
                     <button className="button primary" onClick={backup}>
@@ -950,6 +983,7 @@ function chapterOf(pack: Pack) {
 function GameView({
   packs,
   chapter: selectedChapter,
+  toggleFavorite,
   target,
   select,
   library,
@@ -961,6 +995,7 @@ function GameView({
   chapter: string;
   target: string;
   select: (chapter: string, target: string) => void;
+  toggleFavorite: (pack: Pack, routeId: string) => void;
   library: Library;
   start: (p: Pack, r: string, e: string[]) => void;
   resume: (s: Session) => void;
@@ -1086,6 +1121,9 @@ function GameView({
       )}
       {selected && (
         <>
+          <button className="button secondary favorite-toggle" aria-pressed={!!library.favorites?.some(f => f.packKey === packKey(selected.pack) && f.routeId === selected.route.id)} onClick={() => toggleFavorite(selected.pack, selected.route.id)}>
+            <BookmarkSimple size={18} />{library.favorites?.some(f => f.packKey === packKey(selected.pack) && f.routeId === selected.route.id) ? "已收藏 · 点击取消" : "收藏攻略"}
+          </button>
           <GuideTree
             key={target}
             pack={selected.pack}
@@ -1260,7 +1298,7 @@ function GuideTree({
                               : "其他选法 · 不在当前路径展开"}
                         </span>
                         <strong>
-                          第 {index + 1} 项：{option.text}
+                          {choice.kind !== "instruction" && choice.orderKnown !== false ? `第 ${index + 1} 项：` : ""}{option.text}
                         </strong>
                         {event?.optionId === option.id && (
                           <small>你的选择</small>
@@ -1278,7 +1316,7 @@ function GuideTree({
                               )
                             }
                           >
-                            我在游戏中选了第 {index + 1} 项
+                            {choice.kind === "instruction" ? "我已完成这一步" : choice.orderKnown === false ? `我选择了：${option.text}` : `我在游戏中选了第 ${index + 1} 项`}
                           </button>
                         )}
                       </div>

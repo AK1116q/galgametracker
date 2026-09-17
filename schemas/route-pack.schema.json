@@ -339,6 +339,8 @@
       "additionalProperties": false,
       "required": ["id", "locator", "prompt", "options", "rules"],
       "properties": {
+        "kind": { "enum": ["choice", "instruction"] },
+        "orderKnown": { "type": "boolean" },
         "id": {
           "$ref": "#/definitions/id"
         },
@@ -350,7 +352,7 @@
         },
         "options": {
           "type": "array",
-          "minItems": 2,
+          "minItems": 1,
           "items": {
             "$ref": "#/definitions/option"
           }
@@ -365,7 +367,12 @@
         "skipTo": {
           "$ref": "#/definitions/destination"
         }
-      }
+      },
+      "allOf": [{
+        "if": { "required": ["kind"], "properties": { "kind": { "const": "instruction" } } },
+        "then": { "properties": { "options": { "type": "array", "maxItems": 1 } } },
+        "else": { "properties": { "options": { "type": "array", "minItems": 2 } } }
+      }]
     },
     "review": {
       "type": "object",

@@ -1,4 +1,16 @@
 import { test, expect } from "@playwright/test";
+test("guest favorites and browsing history persist without registration", async ({ page }) => {
+  await openTarget(page);
+  await page.getByRole('button', { name: '收藏攻略', exact: true }).click();
+  await page.reload();
+  await expect(page.getByRole('button', { name: '已收藏 · 点击取消' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: '游玩记录', exact: true }).click();
+  await expect(page.locator('.saved-section').first().getByRole('button')).toContainText('冬马和纱');
+  await expect(page.locator('.saved-section').nth(1).getByRole('button').last()).toContainText('冬马和纱');
+  await page.getByRole('button', { name: '清空浏览记录' }).click();
+  await expect(page.getByText('暂未浏览攻略。')).toBeVisible();
+  await expect(page.locator('.saved-section').first().getByRole('button')).toHaveCount(1);
+});
 async function openTarget(
   page,
   chapter = "Coda · 最终章",

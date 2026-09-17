@@ -289,3 +289,10 @@ input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+.saved-section { margin: 24px 0 32px; }
+.saved-route { display:flex; align-items:center; justify-content:space-between; width:100%; padding:16px; margin:8px 0; background:rgba(255,255,255,.7); border:1px solid var(--line); border-radius:12px; text-align:left; }
+.saved-route span { display:grid; gap:6px; }
+.saved-route small { color:var(--muted); }
+.favorite-toggle { margin-bottom:20px; }
+.favorite-toggle[aria-pressed="true"] { color:#a63a69; background:#ffe8f0; }

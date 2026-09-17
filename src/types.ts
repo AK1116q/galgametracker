@@ -29,6 +29,8 @@ export interface Pack {
   }[];
   choices: {
     id: string;
+    kind?: "choice" | "instruction";
+    orderKnown?: boolean;
     locator: string;
     prompt: string;
     skipTo?: Destination;
@@ -73,7 +75,10 @@ export interface Library {
   packs: Pack[];
   sessions: Session[];
   completed: { packKey: string; endingId: string; at: string }[];
+  favorites?: SavedRoute[];
+  visits?: SavedRoute[];
 }
+export interface SavedRoute { packKey: string; routeId: string; at: string }
 export interface Draft {
   gameId: string;
   title: string;

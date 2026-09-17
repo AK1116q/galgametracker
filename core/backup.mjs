@@ -23,7 +23,7 @@ export function validateBackup(data, builtins = []) {
     !Array.isArray(data.sessions) ||
     !Array.isArray(data.completed)
   )
-    throw new Error("不是受支持的路线手记备份。");
+    throw new Error("不是受支持的攻略站备份。");
   if (data.packs.length > 500 || data.sessions.length > 5000)
     throw new Error("备份内容过多，请拆分导入。");
   const packs = new Map(builtins.map((p) => [packKey(p), p]));
@@ -85,6 +85,20 @@ export function validateBackup(data, builtins = []) {
     if (!pack?.endings.some((e) => e.id === item.endingId))
       throw new Error("通关记录缺少对应结局。");
   }
+  for (const field of ["favorites", "visits"]) {
+    if (data[field] === undefined) continue;
+    if (!Array.isArray(data[field]) || data[field].length > 1000)
+      throw new Error("收藏或浏览记录格式不正确。");
+    const seen = new Set();
+    for (const item of data[field]) {
+      const pack = item && packs.get(item.packKey);
+      const key = `${item?.packKey}/${item?.routeId}`;
+      if (!pack?.routes.some((r) => r.id === item.routeId) ||
+          !Number.isFinite(Date.parse(item.at)) || seen.has(key))
+        throw new Error("收藏或浏览记录缺少对应路线，或含有重复记录。");
+      seen.add(key);
+    }
+  }
   return data;
 }
 
@@ -118,6 +132,16 @@ export function mergeBackup(current, incoming, builtins = []) {
       )
     )
       next.completed.push(item);
+  }
+  for (const field of ["favorites", "visits"]) {
+    const merged = new Map();
+    for (const item of [...(next[field] ?? []), ...(incoming[field] ?? [])]) {
+      const key = `${item.packKey}/${item.routeId}`;
+      if (!merged.has(key) || Date.parse(item.at) > Date.parse(merged.get(key).at))
+        merged.set(key, item);
+    }
+    next[field] = [...merged.values()].sort((a,b) => Date.parse(b.at) - Date.parse(a.at));
+    if (field === "visits") next[field] = next[field].slice(0, 100);
   }
   return validateBackup(next, builtins);
 }
