@@ -1,3 +1,5 @@
+import RouteBrief from "./RouteBrief";
+import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
 import GameCover, { CoverSources } from "./GameCover";
 import CinematicChrome from "./CinematicChrome";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
@@ -95,16 +97,7 @@ function navigationUrl(next: Navigation) {
   url.hash = "";
   return url.pathname + url.search;
 }
-const statusText = (p: Pack) =>
-  p.synthetic
-    ? "体验用虚构示例"
-    : p.status === "source_checked"
-      ? "资料已核对 · 待实机"
-      : p.status === "verified"
-        ? "已实机核对"
-        : p.status === "withdrawn"
-          ? "已撤回"
-          : "私人草稿";
+const statusText = (p: Pack) => reviewInfo(p).label;
 const dateText = (date: string) =>
   new Date(date).toLocaleDateString("zh-CN", {
     month: "short",
@@ -711,7 +704,7 @@ export default function App() {
                                 p.game.id === g.id &&
                                 p.status === "source_checked",
                             )
-                              ? "资料已核对"
+                              ? "资料交叉核对 · 未实机"
                               : "私人攻略"}
                           </span>
                           <span>
@@ -1336,8 +1329,9 @@ function GuideTree({
           显示其他选项
         </label>
       </div>
+      <RouteBrief pack={pack} routeId={routeId} />
       <p>
-        从本篇章开头按顺序选择高亮路径。这里展示当前目标的一条完整选法；其他目标请在上方切换。
+        按路线起点和前置条件进入，再依次选择高亮选项。其他目标请在上方切换。
       </p>
       {!pack.synthetic && (
         <p className="guide-scope">
@@ -1354,7 +1348,7 @@ function GuideTree({
         {route.requiredEndingIds.length
           ? `前置：${route.requiredEndingIds.map((id) => pack.endings.find((e) => e.id === id)?.safeLabel ?? id).join("、")} → `
           : ""}
-        本篇章开始
+        路线起点
       </div>
       {session && (
         <div className="tracking-bar">
