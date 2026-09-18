@@ -591,3 +591,33 @@ input:focus-visible {
     transition: none;
   }
 }
+
+.feedback-link {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 44px;
+  color: #8d345c;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 13px;
+}
+.feedback-link:hover {
+  color: #57223b;
+}
+.guide-feedback {
+  display: flex;
+  gap: 8px 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 8px 0 20px;
+}
+.guide-feedback > span {
+  color: #775265;
+  font-size: 13px;
+  line-height: 1.8;
+  flex: 1 1 280px;
+}
+.tree-step > .feedback-link {
+  margin: 0 0 16px 18px;
+}

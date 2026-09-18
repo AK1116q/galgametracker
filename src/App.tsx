@@ -1,3 +1,4 @@
+import GuideFeedback from "./GuideFeedback";
 import RouteBrief from "./RouteBrief";
 import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
 import GameCover, { CoverSources } from "./GameCover";
@@ -1400,6 +1401,13 @@ function GuideTree({
         </label>
       </div>
       <RouteBrief pack={pack} routeId={routeId} />
+      <div className="guide-feedback">
+        <GuideFeedback pack={pack} routeId={routeId} />
+        <span>
+          跳转 GitHub，需要 GitHub
+          账号；提交后公开显示。仅预填攻略信息，不附带本机记录。
+        </span>
+      </div>
       <p>
         按路线起点和前置条件进入，再依次选择高亮选项。其他目标请在上方切换。
       </p>
@@ -1531,6 +1539,11 @@ function GuideTree({
                   {bookmark === choice.id ? "阅读书签在这里" : "标记读到这里"}
                 </button>
               )}
+              <GuideFeedback
+                pack={pack}
+                routeId={routeId}
+                choiceId={choice.id}
+              />
               {choice.optionsComplete === false && (
                 <p className="small-note">
                   仅列出已核对的目标选项，请按含义对照游戏。

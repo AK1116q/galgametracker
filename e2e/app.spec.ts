@@ -371,3 +371,39 @@ test("recorded steps collapse and current position remains reachable", async ({
   await expect(page.locator(".tree-step.current")).toBeFocused();
   await expect(page.locator(".tree-step").first()).toBeVisible();
 });
+
+test("feedback opens a public draft with the selected step and preserves the guide", async ({
+  page,
+  context,
+}) => {
+  await context.route(
+    "https://github.com/AK1116q/galgametracker/issues/new?**",
+    (route) =>
+      route.fulfill({
+        contentType: "text/html",
+        body: "<h1>Draft boundary</h1>",
+      }),
+  );
+  await openTarget(page);
+  await expect(page.locator(".guide-feedback")).toContainText(
+    "需要 GitHub 账号",
+  );
+  await expect(page.locator(".app-shell")).toHaveClass(/reading-mode/);
+  const link = page
+    .locator(".tree-step")
+    .nth(1)
+    .getByRole("link", { name: "反馈此步骤" });
+  const url = new URL((await link.getAttribute("href"))!);
+  expect(url.searchParams.get("body")).toContain("步骤 ID：coda-02");
+  expect(url.searchParams.get("body")).toContain("revision 1");
+  const popupReady = page.waitForEvent("popup");
+  await link.click();
+  const popup = await popupReady;
+  await expect(
+    popup.getByRole("heading", { name: "Draft boundary" }),
+  ).toBeVisible();
+  await popup.close();
+  await expect(page.locator(".tree-step")).toHaveCount(14);
+  await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
+  await expect(page.locator(".app-shell")).not.toHaveClass(/reading-mode/);
+});
