@@ -1,0 +1,116 @@
+{
+  "checkedAt": "2026-09-19",
+  "wa2Versions": [
+    {
+      "label": "PC 原版 IC / CC / Coda",
+      "status": "资料路径基准，未实机验证",
+      "note": "现有选项树以 PC 原版资料整理；中文为本站语义提示。",
+      "url": "https://seiya-saiga.com/game/leaf/wa2.html"
+    },
+    {
+      "label": "PC Extended Edition",
+      "status": "兼容性待核验",
+      "note": "日文攻略仅推测可用，不能视为已确认兼容；附赠短篇不在现有攻略范围。",
+      "url": "https://seiya-saiga.com/game/leaf/wa2.html"
+    },
+    {
+      "label": "PS3 幸せの向こう側",
+      "status": "不在当前适配范围",
+      "note": "官方说明有新增及修改内容，本站尚未逐步验证这个平台。",
+      "url": "https://aquaplus.jp/wa2/product.html"
+    },
+    {
+      "label": "具体中文汉化补丁",
+      "status": "补丁名称及版本待确认",
+      "note": "未确认补丁对应关系，不将本站中文提示标为汉化原文。",
+      "url": ""
+    }
+  ],
+  "issues": [
+    {
+      "id": "wa2-coda-date",
+      "packKeys": [
+        "wa2-pc-coda-kazusa@1"
+      ],
+      "routeIds": [
+        "kazusa-true"
+      ],
+      "choiceIds": [
+        "coda-02",
+        "coda-03",
+        "coda-04"
+      ],
+      "status": "open",
+      "title": "年底日期存在来源差异",
+      "summary": "两份路径资料的选项顺序一致，日期分别为 12/28 与 12/31；请按步骤顺序和选项含义定位。",
+      "checkedAt": "2026-09-19",
+      "evidence": [
+        {
+          "label": "誠也の部屋",
+          "url": "https://seiya-saiga.com/game/leaf/wa2.html",
+          "locator": "Coda 冬马结局，Save07 后的三次连续选择",
+          "finding": "标为 12/28。"
+        },
+        {
+          "label": "电玩狂人",
+          "url": "https://playgame.wiki/weam2/gonglue/eeac9b299b",
+          "locator": "coda 全线选项，选择支 2—4",
+          "finding": "标为 12/31；页面说明内容来自网友，无法确认原始作者及来源独立性。"
+        },
+        {
+          "label": "Ming 的个人通关记录",
+          "url": "https://bitmingw.com/2016/10/31/review-of-white-album-2-coda/",
+          "locator": "文章开头的选择列表，12 月 31 日",
+          "finding": "玩家列为 12/31，但未说明具体补丁，也不是该日期的直接画面证据。"
+        }
+      ],
+      "next": "需要明确游戏版本、补丁及日期画面的连续流程证据；现有文字资料不能定论。"
+    },
+    {
+      "id": "wa2-coda-wording",
+      "packKeys": [
+        "wa2-pc-coda-kazusa@1"
+      ],
+      "routeIds": [
+        "kazusa-true"
+      ],
+      "choiceIds": [
+        "coda-10"
+      ],
+      "status": "open",
+      "title": "第 10 步中文译意待核验",
+      "summary": "两份路径均指向第 1 项；日文强调保留，中文资料强调停留，未确认对应汉化补丁。",
+      "checkedAt": "2026-09-19",
+      "evidence": [
+        {
+          "label": "誠也の部屋",
+          "url": "https://seiya-saiga.com/game/leaf/wa2.html",
+          "locator": "Coda 冬马结局，1/21 第二次选择",
+          "finding": "列为第 1 项。",
+          "quote": "ずっと、残しておきたい"
+        },
+        {
+          "label": "电玩狂人",
+          "url": "https://playgame.wiki/weam2/gonglue/eeac9b299b",
+          "locator": "coda 选择支 10 / 和纱 TE 路径第 10 项",
+          "finding": "列为第 1 项；其截图链接本次未能可靠打开，未完成画面核验。",
+          "quote": "想要，一直留在這裡"
+        },
+        {
+          "label": "Ming 的个人通关记录",
+          "url": "https://bitmingw.com/2016/10/31/review-of-white-album-2-coda/",
+          "locator": "1 月 21 日第二次选择",
+          "finding": "采用停留含义的译文，未注明补丁；仅作文字旁证。"
+        }
+      ],
+      "next": "需要带补丁名称的选项画面或连续流程视频；保持译意待核，不替换为未经确认的汉化原文。"
+    }
+  ],
+  "changes": [
+    {
+      "date": "2026-09-19",
+      "scope": "冬马 TE @1",
+      "text": "补充日期与译意证据定位、版本范围和未解决项；未修改选项路径、前置或核验等级。"
+    }
+  ]
+}

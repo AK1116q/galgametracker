@@ -1,3 +1,4 @@
+import StepEvidence from "./StepEvidence";
 import GuideFeedback from "./GuideFeedback";
 import RouteBrief from "./RouteBrief";
 import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
@@ -1540,6 +1541,11 @@ function GuideTree({
                 </button>
               )}
               <GuideFeedback
+                pack={pack}
+                routeId={routeId}
+                choiceId={choice.id}
+              />
+              <StepEvidence
                 pack={pack}
                 routeId={routeId}
                 choiceId={choice.id}

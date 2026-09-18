@@ -1,3 +1,4 @@
+import VersionScope from "./VersionScope";
 import type { Pack } from "./types";
 import { reviewInfo } from "../core/guide-info.mjs";
 
@@ -56,6 +57,7 @@ export default function RouteBrief({
           </dd>
         </div>
       </dl>
+      <VersionScope pack={pack} />
       {!!pack.notes?.length && (
         <details className="route-notes" open>
           <summary>版本、周目与存档说明</summary>

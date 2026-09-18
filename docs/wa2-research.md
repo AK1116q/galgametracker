@@ -79,3 +79,12 @@
 - https://seiya-saiga.com/game/leaf/wa2.html
 
 按规则自动检查 CC 各条路径的入线阈值、千晶 TE 前置、Coda 跳项及 CG 分支同结局。这里只验证结构和资料规则，不等同实机验证。原有雪菜 CC 与冬马 TE 包不改 revision / 内容，保持旧备份兼容。新增路线统一标记 source_checked。
+
+
+## 2026-09-19：步骤证据与版本边界复查
+
+复查誠也、电玩狂人的 Coda 冬马分支，并阅读 [Ming 的个人通关记录](https://bitmingw.com/2016/10/31/review-of-white-album-2-coda/)。日文年底日期与中文记录仍不一致；后者没有补丁及日期画面证据。第 10 步的选项序号相符，中文译意差异仍未解决。电玩狂人的截图链接未能可靠打开，不记为已检查的截图。B 站同类文本不作为新增独立证据。
+
+[官方 PS3 产品说明](https://aquaplus.jp/wa2/product.html)列有新增及修改内容；不能将 PC 资料自动视为 PS3 适配。Extended Edition 的兼容性仍只有日文攻略作者的推测，继续标待核验。具体汉化补丁未确认。
+
+补充信息存放 `data/editorial/evidence.json`，按 pack ID、revision、route ID、choice ID 绑定，不修改已发布路线包，也不更改原核验日期或等级。每一步同时展示原规则记录的来源位置。新增资料只用于争议旁证，不拼接为新的路径。
