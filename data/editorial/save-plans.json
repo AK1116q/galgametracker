@@ -1,0 +1,103 @@
+[
+  {
+    "id": "wa2-coda-start",
+    "gameId": "white-album-2",
+    "chapter": "coda",
+    "title": "Coda 起点存档",
+    "checkpoint": "12 月 24 日第一次选择之前",
+    "prefixLength": 0,
+    "targets": [
+      {
+        "packKey": "wa2-pc-coda-kazusa@1",
+        "routeId": "kazusa-true",
+        "label": "冬马 TE",
+        "choiceId": "coda-01"
+      },
+      {
+        "packKey": "wa2-pc-coda-setsuna-true@1",
+        "routeId": "setsuna-true",
+        "label": "雪菜 TE",
+        "choiceId": "coda-01"
+      },
+      {
+        "packKey": "wa2-pc-coda-normal@1",
+        "routeId": "normal",
+        "label": "通常结局",
+        "choiceId": "coda-01"
+      },
+      {
+        "packKey": "wa2-pc-coda-affair@1",
+        "routeId": "affair",
+        "label": "冬马 NE",
+        "choiceId": "coda-01"
+      }
+    ],
+    "instructions": [
+      "完成 CC 雪菜结局后，在 Coda 第一项选择前保留一个单独存档。",
+      "切换目标时读取这个起点，并从所选路线第 1 步重新选择；不能只改最后一项。"
+    ],
+    "source": "https://seiya-saiga.com/game/leaf/wa2.html",
+    "sourceLocator": "Coda 起点 Save07，以及通常结局从 Coda 开始的段落",
+    "checkedAt": "2026-09-19"
+  },
+  {
+    "id": "wa2-normal-affair",
+    "gameId": "white-album-2",
+    "chapter": "coda",
+    "title": "通常结局 / 冬马 NE 共用分歧存档",
+    "checkpoint": "1 月 29 日第一次选择之前（本站这两条路径的第 9 步）",
+    "prefixLength": 8,
+    "targets": [
+      {
+        "packKey": "wa2-pc-coda-normal@1",
+        "routeId": "normal",
+        "label": "通常结局",
+        "choiceId": "coda-13"
+      },
+      {
+        "packKey": "wa2-pc-coda-affair@1",
+        "routeId": "affair",
+        "label": "冬马 NE",
+        "choiceId": "coda-13"
+      }
+    ],
+    "instructions": [
+      "严格按本站这两条路径的前 8 步选择后，在第 9 步选择前单独存档。",
+      "取得其中一个结局后读回此存档，再按另一目标的第 9 步及后续选择。",
+      "仅适用于这两条已收录完整路径；不能套用到冬马 TE 或雪菜 TE 的中途存档。"
+    ],
+    "source": "https://seiya-saiga.com/game/leaf/wa2.html",
+    "sourceLocator": "Coda 通常结局段落 Save8，以及浮气线从 Save8 开始的段落",
+    "checkedAt": "2026-09-19"
+  },
+  {
+    "id": "atri-good-bad",
+    "gameId": "atri",
+    "chapter": "other",
+    "title": "Good / Bad Ending 共用分歧存档",
+    "checkpoint": "8 月 26 日第三次选择之前",
+    "prefixLength": 2,
+    "targets": [
+      {
+        "packKey": "atri-pc@1",
+        "routeId": "good",
+        "label": "Good / Normal Ending",
+        "choiceId": "good-03"
+      },
+      {
+        "packKey": "atri-pc@1",
+        "routeId": "bad",
+        "label": "Bad Ending",
+        "choiceId": "bad-03"
+      }
+    ],
+    "instructions": [
+      "先按本站路径完成前两次选择，再在第三次选择前保留存档。",
+      "取得一个结局后读档，改选第三步以取得另一个结局。",
+      "两种结局都完成后，回到标题菜单选择 TRUE END；这不是第三次选项中的一个分支。"
+    ],
+    "source": "https://gameline.jp/atri/",
+    "sourceLocator": "ATRI 攻略について，Save1 及两结局后的 TRUE END 说明",
+    "checkedAt": "2026-09-19"
+  }
+]

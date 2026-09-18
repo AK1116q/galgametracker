@@ -1,3 +1,4 @@
+import SavePlans from "./SavePlans";
 import StepEvidence from "./StepEvidence";
 import GuideFeedback from "./GuideFeedback";
 import RouteBrief from "./RouteBrief";
@@ -1401,7 +1402,8 @@ function GuideTree({
           显示其他选项
         </label>
       </div>
-      <RouteBrief pack={pack} routeId={routeId} />
+      <RouteBrief pack={pack} routeId={routeId} onJump={jump} />
+      <SavePlans pack={pack} routeId={routeId} onJump={jump} />
       <div className="guide-feedback">
         <GuideFeedback pack={pack} routeId={routeId} />
         <span>

@@ -407,3 +407,29 @@ test("feedback opens a public draft with the selected step and preserves the gui
   await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
   await expect(page.locator(".app-shell")).not.toHaveClass(/reading-mode/);
 });
+
+test("quick entry retains disputes and step evidence without opening long notes", async ({
+  page,
+}) => {
+  await openTarget(page);
+  await expect(page.locator(".route-notes")).not.toHaveAttribute("open", "");
+  await expect(page.getByLabel("攻略使用条件")).toContainText(
+    "年底日期存在来源差异",
+  );
+  await page.getByRole("button", { name: "直接看步骤", exact: true }).click();
+  await expect(page.locator(".tree-step").first()).toBeFocused();
+  const disputed = page.locator(".tree-step").nth(9);
+  await disputed.locator("summary").click();
+  await expect(disputed).toContainText("ずっと、残しておきたい");
+  await expect(disputed).toContainText("未完成画面核验");
+});
+
+test("curated save plan jumps to the matching checkpoint", async ({ page }) => {
+  await page.goto(
+    "/?view=game&game=atri&chapter=other&target=atri-pc%401%2Fgood",
+  );
+  await page.locator(".save-plans > summary").click();
+  await page.getByRole("button", { name: "定位存档前的选择" }).click();
+  await expect(page.locator(".tree-step.located")).toContainText("8月26日");
+  await expect(page.locator(".save-plans")).toContainText("前两次选择");
+});

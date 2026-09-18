@@ -658,3 +658,47 @@ input:focus-visible {
   padding-left: 12px;
   border-left: 2px solid #bbb;
 }
+
+.brief-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.brief-heading h3 {
+  margin: 0;
+}
+.brief-alerts {
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #70481d;
+}
+.brief-alerts button {
+  margin-left: 10px;
+}
+
+.save-plans {
+  border-block: 1px solid #dec8d2;
+  padding: 18px 0;
+  margin: 20px 0;
+  line-height: 1.85;
+}
+.save-plans summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.save-plans section + section {
+  margin-top: 24px;
+  border-top: 1px solid #dec8d2;
+  padding-top: 16px;
+}
+.save-plans li + li {
+  margin-top: 8px;
+}
+.save-plans a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
