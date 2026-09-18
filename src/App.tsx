@@ -1,3 +1,11 @@
+import {
+  routePathname,
+  routeFromPath,
+  chapterFor,
+  routeTitle,
+  routeDescription,
+  SITE_ORIGIN,
+} from "../core/urls.mjs";
 import SavePlans from "./SavePlans";
 import StepEvidence from "./StepEvidence";
 import GuideFeedback from "./GuideFeedback";
@@ -75,6 +83,23 @@ type Navigation = {
 function readNavigation(): Navigation {
   const params = new URLSearchParams(location.search);
   const requested = params.get("view") as View;
+  const direct = routeFromPath(location.pathname, BUILTINS);
+  if (!requested && direct)
+    return {
+      view: "game",
+      gameId: direct.pack.game.id,
+      activeId: "",
+      chapter: chapterFor(direct.pack),
+      target: `${packKey(direct.pack)}/${direct.route.id}`,
+    };
+  if (!requested && location.pathname.startsWith("/guides/") && !direct)
+    return {
+      view: "game",
+      gameId: "unavailable-public-guide",
+      activeId: "",
+      chapter: "",
+      target: "",
+    };
   return {
     view: ["library", "game", "play", "records", "settings"].includes(requested)
       ? requested
@@ -86,7 +111,18 @@ function readNavigation(): Navigation {
   };
 }
 function navigationUrl(next: Navigation) {
-  const url = new URL(location.href);
+  const known = BUILTINS.find(
+    (p) =>
+      !p.synthetic &&
+      p.game.id === next.gameId &&
+      p.routes.some((r) => `${packKey(p)}/${r.id}` === next.target),
+  );
+  if (next.view === "game" && known)
+    return routePathname(
+      known,
+      known.routes.find((r) => `${packKey(known)}/${r.id}` === next.target)!.id,
+    );
+  const url = new URL("/", location.origin);
   for (const key of ["view", "game", "session", "chapter", "target"])
     url.searchParams.delete(key);
   if (next.view !== "library") url.searchParams.set("view", next.view);
@@ -257,8 +293,58 @@ export default function App() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
   useEffect(() => {
-    document.title = `${{ library: "游戏库", game: "路线选择", play: "路线导航", records: "游玩记录", settings: "数据与设置" }[view]} · 偷吃猫娘达咩哟的galgame攻略收集站`;
-  }, [view]);
+    const pack = BUILTINS.find(
+      (p) =>
+        !p.synthetic &&
+        p.game.id === gameId &&
+        p.routes.some((r) => `${packKey(p)}/${r.id}` === navigation.target),
+    );
+    const route = pack?.routes.find(
+      (r) => `${packKey(pack)}/${r.id}` === navigation.target,
+    );
+    const publicRoute = view === "game" && pack && route;
+    const title = publicRoute
+      ? routeTitle(pack, route)
+      : `${{ library: "游戏库", game: "路线选择", play: "路线导航", records: "游玩记录", settings: "数据与设置" }[view]} · 偷吃猫娘达咩哟的galgame攻略收集站`;
+    const description = publicRoute
+      ? routeDescription(pack, route)
+      : "按作品、篇章和目标结局查询 Galgame 攻略，记录进度、收藏路线。";
+    document.title = title;
+    function meta(key: string, value: string, attribute = "name") {
+      let element = document.head.querySelector<HTMLMetaElement>(
+        `meta[${attribute}="${key}"]`,
+      );
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.append(element);
+      }
+      element.content = value;
+    }
+    meta("description", description);
+    meta("og:title", title, "property");
+    meta("og:description", description, "property");
+    meta(
+      "robots",
+      publicRoute || view === "library" ? "index,follow" : "noindex,follow",
+    );
+    let canonical = document.head.querySelector<HTMLLinkElement>(
+      'link[rel="canonical"]',
+    );
+    if (publicRoute || view === "library") {
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.rel = "canonical";
+        document.head.append(canonical);
+      }
+      canonical.href =
+        SITE_ORIGIN + (publicRoute ? routePathname(pack, route.id) : "/");
+      meta("og:url", canonical.href, "property");
+    } else {
+      canonical?.remove();
+      document.head.querySelector('meta[property="og:url"]')?.remove();
+    }
+  }, [view, gameId, navigation.target]);
 
   useEffect(() => {
     const restore = () => {
@@ -770,6 +856,20 @@ export default function App() {
                   />
                 )}
               <CoverSources />
+              <details className="public-directory">
+                <summary>按结局浏览全部攻略</summary>
+                <ul>
+                  {BUILTINS.filter((p) => !p.synthetic).flatMap((p) =>
+                    p.routes.map((r) => (
+                      <li key={`${packKey(p)}/${r.id}`}>
+                        <a href={routePathname(p, r.id)}>
+                          {p.game.title} · {r.safeLabel}
+                        </a>
+                      </li>
+                    )),
+                  )}
+                </ul>
+              </details>
               <div className="library-footer">
                 <p>
                   <ShieldCheck size={17} />
@@ -1352,6 +1452,10 @@ function GuideTree({
   const [focused, setFocused] = useState("");
   const [collapse, setCollapse] = useState(false);
   const [bookmarkMessage, setBookmarkMessage] = useState("");
+  const [shareMessage, setShareMessage] = useState("");
+  const publicGuide =
+    !pack.synthetic && BUILTINS.some((p) => packKey(p) === packKey(pack));
+  const shareUrl = SITE_ORIGIN + routePathname(pack, routeId);
   const treeRef = useRef<HTMLOListElement>(null);
   useEffect(() => {
     if (!focused) return;
@@ -1402,6 +1506,24 @@ function GuideTree({
           显示其他选项
         </label>
       </div>
+      {publicGuide && (
+        <div className="share-guide">
+          <button
+            className="text-button"
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(shareUrl);
+                setShareMessage("攻略链接已复制，不含个人进度。");
+              } catch {
+                setShareMessage(`无法自动复制，请复制此链接：${shareUrl}`);
+              }
+            }}
+          >
+            复制攻略链接
+          </button>
+          <span role="status">{shareMessage}</span>
+        </div>
+      )}
       <RouteBrief pack={pack} routeId={routeId} onJump={jump} />
       <SavePlans pack={pack} routeId={routeId} onJump={jump} />
       <div className="guide-feedback">

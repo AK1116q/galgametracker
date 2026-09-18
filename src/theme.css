@@ -702,3 +702,33 @@ input:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+.share-guide {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.public-directory {
+  margin: 20px 0;
+  line-height: 1.8;
+}
+.public-directory summary {
+  cursor: pointer;
+}
+.public-directory li {
+  margin: 10px 0;
+}
+.public-directory a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.static-guide {
+  margin-block: 24px !important;
+  line-height: 1.9;
+}
+.static-guide li {
+  margin-block: 10px;
+}

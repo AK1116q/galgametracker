@@ -237,7 +237,9 @@ test("all target entries open, and optional-step text has its own space", async 
   await last.scrollIntoViewIfNeeded();
   const geometry = await last.evaluate((el) => ({
     options: el.querySelector(".tree-branches").getBoundingClientRect().bottom,
-    note: el.querySelector(".small-note").getBoundingClientRect().top,
+    note: el
+      .querySelector(".tree-branches + .small-note")
+      .getBoundingClientRect().top,
     after: getComputedStyle(el.querySelector(".target-option"), "::after")
       .content,
   }));
@@ -432,4 +434,36 @@ test("curated save plan jumps to the matching checkpoint", async ({ page }) => {
   await page.getByRole("button", { name: "定位存档前的选择" }).click();
   await expect(page.locator(".tree-step.located")).toContainText("8月26日");
   await expect(page.locator(".save-plans")).toContainText("前两次选择");
+});
+
+test("public route pages work without JavaScript and keep canonical content after loading", async ({
+  page,
+  browser,
+}) => {
+  const path = "/guides/white-album-2/wa2-pc-coda-kazusa/1/kazusa-true/";
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const staticPage = await context.newPage();
+  await staticPage.goto(`http://127.0.0.1:4174${path}`);
+  await expect(staticPage.getByRole("heading", { level: 1 })).toContainText(
+    "冬马和纱",
+  );
+  await expect(staticPage.locator(".tree-step")).toHaveCount(14);
+  await expect(staticPage.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    `https://galgametracker.pages.dev${path}`,
+  );
+  await staticPage.goto("http://127.0.0.1:4174/");
+  await expect(staticPage.locator('a[href^="/guides/"]')).toHaveCount(36);
+  await context.close();
+  await page.goto(path);
+  await expect(
+    page.getByRole("heading", { name: /冬马和纱.*路线树/ }),
+  ).toBeVisible();
+  await expect(page).toHaveTitle("白色相簿2 · 冬马和纱 · True Ending攻略");
+  await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
+  await expect(page).toHaveURL("http://127.0.0.1:4174/");
+  await page.goBack();
+  await expect(
+    page.getByRole("heading", { name: /冬马和纱.*路线树/ }),
+  ).toBeVisible();
 });
