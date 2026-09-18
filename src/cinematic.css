@@ -426,21 +426,15 @@
 .archive-intro {
   z-index: 100;
   pointer-events: none;
-  animation: archive-intro-exit 350ms 1050ms ease forwards;
-}
-.archive-intro__slice {
-  animation-duration: 1100ms;
 }
 .archive-intro__title {
   font-size: clamp(1.8rem, 5vw, 4rem);
   line-height: 1.35;
   letter-spacing: normal;
 }
-.archive-intro__line span {
-  animation-duration: 900ms;
-}
 .archive-intro__skip {
   position: absolute;
+  z-index: 2;
   right: 24px;
   top: 24px;
   pointer-events: auto;

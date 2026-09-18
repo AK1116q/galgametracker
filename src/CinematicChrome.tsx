@@ -3,20 +3,14 @@ import "./cinematic.css";
 export default function CinematicChrome() {
   const [intro, setIntro] = useState(() => {
     try {
-      return (
-        !matchMedia("(prefers-reduced-motion: reduce)").matches &&
-        !sessionStorage.getItem("gal-intro-v1")
-      );
+      return !matchMedia("(prefers-reduced-motion: reduce)").matches;
     } catch {
       return false;
     }
   });
   useEffect(() => {
     if (!intro) return;
-    try {
-      sessionStorage.setItem("gal-intro-v1", "1");
-    } catch {}
-    const timer = setTimeout(() => setIntro(false), 1450);
+    const timer = setTimeout(() => setIntro(false), 2850);
     return () => clearTimeout(timer);
   }, [intro]);
   useEffect(() => {
