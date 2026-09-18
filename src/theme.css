@@ -543,3 +543,51 @@ input:focus-visible {
   font-weight: 700;
   color: #942c59;
 }
+
+/* Routes use an opaque reading surface; the library keeps its artwork layout. */
+.archive-background {
+  transition: opacity 220ms ease;
+}
+.reading-mode .archive-background {
+  opacity: 0.14;
+}
+.reading-mode .archive-background *,
+.reading-mode .archive-background *::before,
+.reading-mode .archive-background *::after {
+  animation-play-state: paused !important;
+}
+.reading-mode .main-content {
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: clamp(18px, 3vw, 36px);
+  background: #fffafb;
+  box-shadow: 0 12px 36px #6534480d;
+}
+.reading-mode .topbar,
+.reading-mode .page-footer {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+.reading-mode .tree-option {
+  background: #fff;
+  color: #3d222e;
+}
+.reading-mode .target-option {
+  background: #fff0f5;
+  border-color: #b34e76;
+}
+.reading-mode .route-brief,
+.reading-mode .guide-finder {
+  background: #fff;
+}
+@media (max-width: 560px) {
+  .reading-mode .main-content {
+    width: calc(100% - 24px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .archive-background {
+    transition: none;
+  }
+}

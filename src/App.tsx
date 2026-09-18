@@ -484,7 +484,9 @@ export default function App() {
     { id: "records" as View, label: "游玩记录", Icon: Notebook },
   ];
   return (
-    <div className="app-shell">
+    <div
+      className={`app-shell ${(view === "game" && navigation.target) || (view === "play" && activePack) ? "reading-mode" : ""}`}
+    >
       <CinematicChrome />
       <a className="skip-link" href="#main">
         跳到主要内容
