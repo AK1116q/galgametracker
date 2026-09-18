@@ -27,6 +27,7 @@ test("locator search handles dates, spaces, full-width input and alternative opt
   assert.equal(findGuideNodes(nodes, "１２／２４")[0].id, "coda-01");
   assert.equal(findGuideNodes(nodes, "12 月 24 日")[0].id, "coda-01");
   assert.equal(findGuideNodes(nodes, "近期准备求婚")[0].id, "coda-01");
+  assert.equal(findGuideNodes(nodes, "12/31")[0].id, "coda-02");
   assert.deepEqual(findGuideNodes(nodes, "不存在的选项"), []);
   assert.deepEqual(findGuideNodes(nodes, "  "), []);
 });

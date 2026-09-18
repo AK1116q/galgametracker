@@ -30,3 +30,32 @@ test("legacy backups remain readable and saved routes survive export/merge", () 
     validateBackup({ ...incoming, favorites: [item, item] }, [pack]),
   );
 });
+
+test("reading bookmarks merge by recency, reject invalid nodes and never create progress", () => {
+  const bookmark = {
+    packKey: packKey(pack),
+    routeId: pack.routes[0].id,
+    choiceId: pack.routes[0].entryChoiceId,
+    at: "2026-09-18T00:00:00Z",
+  };
+  const incoming = { ...emptyLibrary(), bookmarks: [bookmark] };
+  const merged = mergeBackup(
+    emptyLibrary(),
+    JSON.parse(JSON.stringify(incoming)),
+    [pack],
+  );
+  assert.deepEqual(merged.bookmarks, [bookmark]);
+  assert.deepEqual(merged.sessions, []);
+  assert.deepEqual(merged.completed, []);
+  const newer = { ...bookmark, at: "2026-09-19T00:00:00Z" };
+  assert.deepEqual(
+    mergeBackup(merged, { ...incoming, bookmarks: [newer] }, [pack]).bookmarks,
+    [newer],
+  );
+  assert.throws(() =>
+    validateBackup(
+      { ...incoming, bookmarks: [{ ...bookmark, choiceId: "missing" }] },
+      [pack],
+    ),
+  );
+});

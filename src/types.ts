@@ -78,6 +78,7 @@ export interface Library {
   completed: { packKey: string; endingId: string; at: string }[];
   favorites?: SavedRoute[];
   visits?: SavedRoute[];
+  bookmarks?: (SavedRoute & { choiceId: string })[];
 }
 export interface SavedRoute {
   packKey: string;

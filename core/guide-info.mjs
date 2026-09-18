@@ -37,6 +37,10 @@ export function normalizeLocator(value) {
     .normalize("NFKC")
     .toLowerCase()
     .replace(
+      /(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*\/\s*(\d{1,2})\s*日/g,
+      "$1月$2日 $1月$3日",
+    )
+    .replace(
       /(\d{1,2})\s*(?:月|\/|-)\s*(\d{1,2})\s*日?/g,
       (_, m, d) => `${Number(m)}月${Number(d)}日`,
     )

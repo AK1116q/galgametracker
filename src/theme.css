@@ -481,3 +481,65 @@ input:focus-visible {
     gap: 2px;
   }
 }
+
+.guide-finder {
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid #dec8d2;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+}
+.guide-finder > label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.guide-finder input[type="search"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #caa6b7;
+  border-radius: 8px;
+  color: inherit;
+  background: white;
+  font: inherit;
+}
+.guide-results {
+  max-height: 240px;
+  overflow: auto;
+  padding-left: 22px;
+}
+.guide-results button {
+  text-align: left;
+  min-height: 44px;
+  line-height: 1.7;
+}
+.guide-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+.guide-shortcuts button {
+  white-space: normal;
+  text-align: left;
+}
+.tree-step[hidden] {
+  display: none;
+}
+.tree-step.located {
+  outline: 2px solid #b83870;
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+.tree-step {
+  scroll-margin-top: 120px;
+}
+.reading-bookmark {
+  margin-bottom: 16px;
+  min-height: 40px;
+}
+.reading-bookmark[aria-pressed="true"] {
+  font-weight: 700;
+  color: #942c59;
+}

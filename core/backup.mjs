@@ -1,5 +1,6 @@
 import { validatePack } from "./validation.mjs";
 import { replay } from "./engine.mjs";
+import { guidePath } from "./guide.mjs";
 
 export const STORAGE_KEY = "galgametracker.web.v1";
 export const MAX_IMPORT_BYTES = 5 * 1024 * 1024;
@@ -85,7 +86,7 @@ export function validateBackup(data, builtins = []) {
     if (!pack?.endings.some((e) => e.id === item.endingId))
       throw new Error("通关记录缺少对应结局。");
   }
-  for (const field of ["favorites", "visits"]) {
+  for (const field of ["favorites", "visits", "bookmarks"]) {
     if (data[field] === undefined) continue;
     if (!Array.isArray(data[field]) || data[field].length > 1000)
       throw new Error("收藏或浏览记录格式不正确。");
@@ -93,10 +94,20 @@ export function validateBackup(data, builtins = []) {
     for (const item of data[field]) {
       const pack = item && packs.get(item.packKey);
       const key = `${item?.packKey}/${item?.routeId}`;
-      if (!pack?.routes.some((r) => r.id === item.routeId) ||
-          !Number.isFinite(Date.parse(item.at)) || seen.has(key))
+      if (
+        !pack?.routes.some((r) => r.id === item.routeId) ||
+        !Number.isFinite(Date.parse(item.at)) ||
+        seen.has(key)
+      )
         throw new Error("收藏或浏览记录缺少对应路线，或含有重复记录。");
       seen.add(key);
+      if (
+        field === "bookmarks" &&
+        !guidePath(pack, item.routeId).nodes.some(
+          ({ choice }) => choice.id === item.choiceId,
+        )
+      )
+        throw new Error("阅读书签不属于这条路线。");
     }
   }
   return data;
@@ -133,14 +144,19 @@ export function mergeBackup(current, incoming, builtins = []) {
     )
       next.completed.push(item);
   }
-  for (const field of ["favorites", "visits"]) {
+  for (const field of ["favorites", "visits", "bookmarks"]) {
     const merged = new Map();
     for (const item of [...(next[field] ?? []), ...(incoming[field] ?? [])]) {
       const key = `${item.packKey}/${item.routeId}`;
-      if (!merged.has(key) || Date.parse(item.at) > Date.parse(merged.get(key).at))
+      if (
+        !merged.has(key) ||
+        Date.parse(item.at) > Date.parse(merged.get(key).at)
+      )
         merged.set(key, item);
     }
-    next[field] = [...merged.values()].sort((a,b) => Date.parse(b.at) - Date.parse(a.at));
+    next[field] = [...merged.values()].sort(
+      (a, b) => Date.parse(b.at) - Date.parse(a.at),
+    );
     if (field === "visits") next[field] = next[field].slice(0, 100);
   }
   return validateBackup(next, builtins);

@@ -26,9 +26,7 @@ test("music is opt-in, survives navigation and stops on close", async ({
   await page.evaluate(() => {
     (window as any).__musicFrame = document.querySelector("iframe");
   });
-  await page
-    .getByRole("button", { name: "游玩记录", exact: true })
-    .click();
+  await page.getByRole("button", { name: "游玩记录", exact: true }).click();
   expect(
     await page.evaluate(
       () => (window as any).__musicFrame === document.querySelector("iframe"),
@@ -325,4 +323,51 @@ test("unavailable shared game or session link fails gracefully", async ({
   await expect(
     page.getByRole("heading", { name: "还没有正在导航的路线" }),
   ).toBeVisible();
+});
+
+test("guide evidence, search and reading bookmarks survive reload without creating progress", async ({
+  page,
+}) => {
+  await openTarget(page);
+  const brief = page.getByLabel("攻略使用条件");
+  await expect(brief).toContainText("多来源交叉核对 · 未实机");
+  await expect(brief).toContainText("2026-09-15");
+  await expect(brief).toContainText("CC 雪菜");
+  await page.getByLabel("查找日期或选项").fill("12/24");
+  await page.locator(".guide-results button").first().click();
+  await expect(page.locator(".tree-step.located")).toContainText("12月24日");
+  await page
+    .locator(".tree-step.located")
+    .getByRole("button", { name: "标记读到这里" })
+    .click();
+  await page.reload();
+  await page.getByRole("button", { name: /回到阅读书签/ }).click();
+  await expect(page.locator(".tree-step.located")).toContainText(
+    "阅读书签在这里",
+  );
+  const data = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("galgametracker.web.v1")!),
+  );
+  expect(data.bookmarks).toHaveLength(1);
+  expect(data.sessions).toHaveLength(0);
+  expect(data.completed).toHaveLength(0);
+  await page.getByLabel("查找日期或选项").fill("不存在的日期选项");
+  await expect(page.getByText(/找到 0 个步骤/)).toBeVisible();
+  await expect(page.locator(".tree-step")).toHaveCount(14);
+});
+
+test("recorded steps collapse and current position remains reachable", async ({
+  page,
+}) => {
+  await openTarget(page);
+  await page.getByLabel(/我已完成/).check();
+  await page.getByRole("button", { name: "开始记录进度", exact: true }).click();
+  await page.locator(".tree-step.current .target-option button").click();
+  await page.getByLabel(/折叠已记录步骤/).check();
+  await expect(page.locator(".tree-step").first()).toBeHidden();
+  await page
+    .getByRole("button", { name: "定位当前记录位置", exact: true })
+    .click();
+  await expect(page.locator(".tree-step.current")).toBeFocused();
+  await expect(page.locator(".tree-step").first()).toBeVisible();
 });

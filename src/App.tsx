@@ -317,6 +317,22 @@ export default function App() {
       return false;
     }
   }
+  function bookmarkRoute(pack: Pack, routeId: string, choiceId: string) {
+    return commit({
+      ...library,
+      bookmarks: [
+        {
+          packKey: packKey(pack),
+          routeId,
+          choiceId,
+          at: new Date().toISOString(),
+        },
+        ...(library.bookmarks ?? []).filter(
+          (b) => b.packKey !== packKey(pack) || b.routeId !== routeId,
+        ),
+      ].slice(0, 1000),
+    });
+  }
   function saveSession(session: Session) {
     const next = {
       ...library,
@@ -773,6 +789,7 @@ export default function App() {
                 target={navigation.target}
                 select={rememberRoute}
                 toggleFavorite={toggleFavorite}
+                bookmarkRoute={bookmarkRoute}
                 library={library}
                 start={start}
                 resume={resume}
@@ -802,6 +819,8 @@ export default function App() {
                 complete={() => completedSession(activePack, active)}
                 back={() => openGame(activePack.game.id)}
                 notify={setToast}
+                library={library}
+                bookmarkRoute={bookmarkRoute}
               />
             ) : (
               <Empty
@@ -1060,6 +1079,7 @@ function GameView({
   packs,
   chapter: selectedChapter,
   toggleFavorite,
+  bookmarkRoute,
   target,
   select,
   library,
@@ -1072,6 +1092,7 @@ function GameView({
   target: string;
   select: (chapter: string, target: string) => void;
   toggleFavorite: (pack: Pack, routeId: string) => void;
+  bookmarkRoute: (pack: Pack, routeId: string, choiceId: string) => boolean;
   library: Library;
   start: (p: Pack, r: string, e: string[]) => void;
   resume: (s: Session) => void;
@@ -1238,6 +1259,16 @@ function GameView({
             key={target}
             pack={selected.pack}
             routeId={selected.route.id}
+            bookmark={
+              library.bookmarks?.find(
+                (b) =>
+                  b.packKey === packKey(selected.pack) &&
+                  b.routeId === selected.route.id,
+              )?.choiceId
+            }
+            onBookmark={(choiceId) =>
+              bookmarkRoute(selected.pack, selected.route.id, choiceId)
+            }
           />
           <section className="tracking-tools">
             <h2>记录进度（可选）</h2>
@@ -1300,17 +1331,54 @@ function GuideTree({
   session,
   save,
   complete,
+  bookmark,
+  onBookmark,
 }: {
   pack: Pack;
   routeId: string;
+  bookmark?: string;
+  onBookmark?: (choiceId: string) => boolean;
   session?: Session;
   save?: (s: Session) => boolean;
   complete?: () => void;
 }) {
   const [alternatives, setAlternatives] = useState(true);
+  const [search, setSearch] = useState("");
+  const [focused, setFocused] = useState("");
+  const [collapse, setCollapse] = useState(false);
+  const [bookmarkMessage, setBookmarkMessage] = useState("");
+  const treeRef = useRef<HTMLOListElement>(null);
+  useEffect(() => {
+    if (!focused) return;
+    const node = treeRef.current?.querySelector<HTMLElement>(
+      `[data-choice-id="${CSS.escape(focused)}"]`,
+    );
+    node?.scrollIntoView({
+      block: "center",
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+    node?.focus({ preventScroll: true });
+  }, [focused]);
+  function jump(id: string) {
+    setCollapse(false);
+    setFocused("");
+    requestAnimationFrame(() => setFocused(id));
+  }
   const route = pack.routes.find((r) => r.id === routeId)!;
   const path = useMemo(() => guidePath(pack, routeId), [pack, routeId]);
   const position = session ? replay(pack, session).position : undefined;
+  const matches = useMemo(
+    () => findGuideNodes(path.nodes, search),
+    [path, search],
+  );
+  const savedNode = path.nodes.find(({ choice }) => choice.id === bookmark);
+  const collapsible = path.nodes.filter(
+    ({ choice }) =>
+      session?.events.some((e) => e.choiceId === choice.id) &&
+      !(position?.kind === "choice" && position.id === choice.id),
+  ).length;
   return (
     <section className="guide" aria-label="路线树">
       <div className="guide-title">
@@ -1333,17 +1401,6 @@ function GuideTree({
       <p>
         按路线起点和前置条件进入，再依次选择高亮选项。其他目标请在上方切换。
       </p>
-      {!pack.synthetic && (
-        <p className="guide-scope">
-          选项为中文含义提示，请对照游戏原文。{statusText(pack)}。
-        </p>
-      )}
-      {pack.id === "wa2-pc-coda-kazusa" && (
-        <p className="guide-scope">
-          年底三次选择的日期在两份资料中分别标为 12 月 28 日和 31
-          日；请按顺序和选项含义定位。1 月 21 日第 2 次选择的译意也待核对。
-        </p>
-      )}
       <div className="tree-root">
         {route.requiredEndingIds.length
           ? `前置：${route.requiredEndingIds.map((id) => pack.endings.find((e) => e.id === id)?.safeLabel ?? id).join("、")} → `
@@ -1370,14 +1427,85 @@ function GuideTree({
           实际选择已偏离本攻略路径，后续未收录。下面仍是从篇章开头出发的目标攻略；请回档后撤销上一步，再继续记录。
         </Notice>
       )}
-      <ol className="route-tree">
+      <div className="guide-finder" aria-label="定位攻略步骤">
+        <label htmlFor="guide-search">查找日期或选项</label>
+        <input
+          id="guide-search"
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="例如：12/24、求婚"
+        />
+        {search.trim() && (
+          <>
+            <p role="status">
+              找到 {matches.length} 个步骤；点击结果定位，路线顺序保持不变。
+            </p>
+            <ul className="guide-results">
+              {matches.map(
+                (match: {
+                  id: string;
+                  index: number;
+                  locator: string;
+                  prompt: string;
+                }) => (
+                  <li key={match.id}>
+                    <button
+                      className="text-button"
+                      onClick={() => jump(match.id)}
+                    >
+                      第 {match.index + 1} 步 · {match.locator} · {match.prompt}
+                    </button>
+                  </li>
+                ),
+              )}
+            </ul>
+          </>
+        )}
+        <div className="guide-shortcuts">
+          {savedNode && (
+            <button
+              className="button secondary"
+              onClick={() => jump(savedNode.choice.id)}
+            >
+              回到阅读书签：{savedNode.choice.locator}
+            </button>
+          )}
+          {position?.kind === "choice" && (
+            <button
+              className="button secondary"
+              onClick={() => jump(position.id)}
+            >
+              定位当前记录位置
+            </button>
+          )}
+          {collapsible > 0 && (
+            <label className="check-label">
+              <input
+                type="checkbox"
+                checked={collapse}
+                onChange={(e) => setCollapse(e.target.checked)}
+              />
+              折叠已记录步骤（{collapsible}）
+            </label>
+          )}
+        </div>
+        <p className="small-note">
+          阅读书签只标记看到的位置，不代表已选择或通关；保存在当前浏览器，可随备份导出。
+        </p>
+        <p role="status">{bookmarkMessage}</p>
+      </div>
+      <ol className="route-tree" ref={treeRef}>
         {path.nodes.map(({ choice, optionId }, i) => {
           const current =
             position?.kind === "choice" && position.id === choice.id;
           const event = session?.events.find((e) => e.choiceId === choice.id);
           return (
             <li
-              className={`tree-step ${current ? "current" : ""}`}
+              className={`tree-step ${current ? "current" : ""} ${focused === choice.id ? "located" : ""}`}
+              data-choice-id={choice.id}
+              tabIndex={-1}
+              hidden={collapse && !!event && !current}
               key={choice.id}
             >
               <div className="tree-date">
@@ -1387,6 +1515,20 @@ function GuideTree({
                 {event && <b>已记录</b>}
               </div>
               <p className="tree-prompt">{choice.prompt}</p>
+              {onBookmark && (
+                <button
+                  className="text-button reading-bookmark"
+                  aria-pressed={bookmark === choice.id}
+                  onClick={() => {
+                    if (onBookmark(choice.id))
+                      setBookmarkMessage(
+                        `已保存阅读书签：第 ${i + 1} 步 · ${choice.locator}`,
+                      );
+                  }}
+                >
+                  {bookmark === choice.id ? "阅读书签在这里" : "标记读到这里"}
+                </button>
+              )}
               {choice.optionsComplete === false && (
                 <p className="small-note">
                   仅列出已核对的目标选项，请按含义对照游戏。
@@ -1484,6 +1626,8 @@ function GuideTree({
   );
 }
 function PlayView({
+  library,
+  bookmarkRoute,
   pack,
   session,
   save,
@@ -1496,6 +1640,8 @@ function PlayView({
   complete: () => void;
   back: () => void;
   notify: (s: string) => void;
+  library: Library;
+  bookmarkRoute: (pack: Pack, routeId: string, choiceId: string) => boolean;
 }) {
   return (
     <>
@@ -1506,6 +1652,14 @@ function PlayView({
       <GuideTree
         pack={pack}
         routeId={session.routeId}
+        bookmark={
+          library.bookmarks?.find(
+            (b) => b.packKey === packKey(pack) && b.routeId === session.routeId,
+          )?.choiceId
+        }
+        onBookmark={(choiceId) =>
+          bookmarkRoute(pack, session.routeId, choiceId)
+        }
         session={session}
         save={save}
         complete={complete}
