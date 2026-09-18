@@ -27,7 +27,7 @@ test("music is opt-in, survives navigation and stops on close", async ({
     (window as any).__musicFrame = document.querySelector("iframe");
   });
   await page
-    .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
+    .getByRole("button", { name: "游玩记录", exact: true })
     .click();
   expect(
     await page.evaluate(

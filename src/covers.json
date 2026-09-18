@@ -1,0 +1,62 @@
+{
+  "white-album-2": {
+    "src": "/images/covers/white-album-2.jpg",
+    "width": 320,
+    "height": 460,
+    "subjectId": 22290,
+    "subjectTitle": "WHITE ALBUM2 -closing chapter-",
+    "source": "https://bgm.tv/subject/22290",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/90/78/22290_1L2aJ.jpg",
+    "checkedAt": "2026-09-18"
+  },
+  "atri": {
+    "src": "/images/covers/atri.jpg",
+    "width": 600,
+    "height": 900,
+    "subjectId": 297264,
+    "subjectTitle": "ATRI -My Dear Moments-",
+    "source": "https://bgm.tv/subject/297264",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/46/f8/297264_Llz6w.jpg",
+    "checkedAt": "2026-09-18"
+  },
+  "senren-banka": {
+    "src": "/images/covers/senren-banka.jpg",
+    "width": 500,
+    "height": 715,
+    "subjectId": 172612,
+    "subjectTitle": "千恋＊万花",
+    "source": "https://bgm.tv/subject/172612",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/a7/20/172612_sjXrE.jpg",
+    "checkedAt": "2026-09-18"
+  },
+  "sabbat-of-the-witch": {
+    "src": "/images/covers/sabbat-of-the-witch.jpg",
+    "width": 867,
+    "height": 1200,
+    "subjectId": 113290,
+    "subjectTitle": "サノバウィッチ",
+    "source": "https://bgm.tv/subject/113290",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/61/c5/113290_Mku0U.jpg",
+    "checkedAt": "2026-09-18"
+  },
+  "riddle-joker": {
+    "src": "/images/covers/riddle-joker.jpg",
+    "width": 506,
+    "height": 700,
+    "subjectId": 231798,
+    "subjectTitle": "RIDDLE JOKER",
+    "source": "https://bgm.tv/subject/231798",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/b8/52/231798_ogEH5.jpg",
+    "checkedAt": "2026-09-18"
+  },
+  "saya-no-uta": {
+    "src": "/images/covers/saya-no-uta.jpg",
+    "width": 540,
+    "height": 748,
+    "subjectId": 851,
+    "subjectTitle": "沙耶の唄",
+    "source": "https://bgm.tv/subject/851",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/92/fb/851_2QUY6.jpg",
+    "checkedAt": "2026-09-18"
+  }
+}

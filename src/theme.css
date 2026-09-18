@@ -352,10 +352,6 @@ input:focus-visible {
   content-visibility: auto;
   contain-intrinsic-size: auto 240px;
 }
-.game-card {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 410px;
-}
 
 .music-launch {
   position: fixed;
@@ -372,4 +368,59 @@ input:focus-visible {
   color: #7a3453;
   box-shadow: 0 6px 24px #77385325;
   font-weight: 600;
+}
+
+.book-cover.artwork-cover {
+  position: relative;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  overflow: hidden;
+  background: #efdfe8;
+  display: grid;
+  place-items: center;
+}
+.artwork-cover img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 240ms ease;
+}
+.game-card:hover .artwork-cover img {
+  transform: scale(1.015);
+}
+.cover-fallback {
+  padding: 28px;
+  color: #64334a;
+  font-size: 25px;
+  line-height: 1.5;
+}
+.cover-sources {
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.cover-sources summary {
+  cursor: pointer;
+  width: fit-content;
+}
+.cover-sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-left: 18px;
+}
+.cover-sources a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (min-width: 1200px) {
+  .game-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

@@ -1,3 +1,4 @@
+import GameCover, { CoverSources } from "./GameCover";
 import CinematicChrome from "./CinematicChrome";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
@@ -680,46 +681,18 @@ export default function App() {
                           (filter === "completed" ? s.completed : !s.completed),
                       ),
                   )
-                  .map((g) => (
+                  .map((g, index) => (
                     <button
                       key={g.id}
                       className="game-card"
                       aria-label={`选择作品：${g.title}`}
                       onClick={() => openGame(g.id)}
                     >
-                      <div
-                        className={`book-cover cover-${g.id} ${g.id !== "white-album-2" ? "custom-cover" : ""}`}
-                      >
-                        <div className="cover-top">
-                          <span>VISUAL NOVEL</span>
-                          <BookmarkSimple size={19} />
-                        </div>
-                        <div className="cover-title">
-                          {g.id === "white-album-2" ? (
-                            <>
-                              <span>WHITE</span>
-                              <span>
-                                ALBUM <i>2</i>
-                              </span>
-                            </>
-                          ) : (
-                            <span>{g.title}</span>
-                          )}
-                        </div>
-                        <div className="cover-line" />
-                        <div className="cover-bottom">
-                          <span>
-                            {g.id === "white-album-2"
-                              ? "白色相簿2"
-                              : "主线结局攻略"}
-                          </span>
-                          <span>
-                            {g.id === "white-album-2"
-                              ? "Leaf / AQUAPLUS"
-                              : "ROUTE GUIDE"}
-                          </span>
-                        </div>
-                      </div>
+                      <GameCover
+                        gameId={g.id}
+                        title={g.title}
+                        priority={index === 0}
+                      />
                       <div className="game-card-body">
                         <h3>
                           {g.title}
@@ -782,6 +755,7 @@ export default function App() {
                     }
                   />
                 )}
+              <CoverSources />
               <div className="library-footer">
                 <p>
                   <ShieldCheck size={17} />
