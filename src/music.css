@@ -6,10 +6,10 @@
   width: 370px;
   max-width: calc(100vw - 24px);
   padding: 18px;
-  border: 1px solid #e5b1c5;
-  border-radius: 20px;
-  background: #fff7fb;
-  box-shadow: 0 16px 55px #66254530;
+  border: 1px solid #d4d4ce;
+  border-radius: 0;
+  background: #fafaf7;
+  box-shadow: 0 12px 36px #20201818;
   animation: music-in 180ms ease-out;
   max-height: calc(100dvh - 32px);
   overflow-y: auto;
@@ -37,10 +37,10 @@
   width: 100%;
   min-width: 0;
   padding: 10px;
-  border: 1px solid #d7a5b8;
-  border-radius: 9px;
+  border: 1px solid #d4d4ce;
+  border-radius: 0;
   background: white;
-  color: #522f40;
+  color: #33352e;
   font: inherit;
 }
 .music-note {
@@ -53,8 +53,8 @@
   width: 100%;
   height: 210px;
   border: 0;
-  border-radius: 10px;
-  background: #23171d;
+  border-radius: 0;
+  background: #33352e;
 }
 .music-load {
   min-height: 210px;
@@ -63,8 +63,8 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background: #f5e6ed;
-  border-radius: 10px;
+  background: #eeeee8;
+  border-radius: 0;
   padding: 14px;
 }
 .music-load p {
@@ -84,7 +84,7 @@
   display: inline-flex;
   gap: 3px;
   align-items: center;
-  color: #8e4163;
+  color: #33352e;
 }
 @keyframes music-in {
   from {

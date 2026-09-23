@@ -47,7 +47,7 @@ test("reduced motion skips the opening animation", async ({ page }) => {
   ).toBeVisible();
   expect(
     await page
-      .locator(".archive-background__character")
+      .locator(".archive-background")
       .evaluate((el) => getComputedStyle(el).animationName),
   ).toBe("none");
 });

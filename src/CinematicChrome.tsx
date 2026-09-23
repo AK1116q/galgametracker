@@ -10,7 +10,7 @@ export default function CinematicChrome() {
   });
   useEffect(() => {
     if (!intro) return;
-    const timer = setTimeout(() => setIntro(false), 2850);
+    const timer = setTimeout(() => setIntro(false), 1850);
     return () => clearTimeout(timer);
   }, [intro]);
   useEffect(() => {
@@ -25,23 +25,7 @@ export default function CinematicChrome() {
   }, []);
   return (
     <>
-      <div className="archive-background" aria-hidden="true">
-        <div className="archive-background__orb archive-background__orb--one" />
-        <div className="archive-background__orb archive-background__orb--two" />
-        <div className="archive-background__beam" />
-        <div className="archive-background__dial">
-          <span />
-        </div>
-        <div className="archive-background__character">
-          <img
-            src="/images/catgirl-background.jpg"
-            alt=""
-            decoding="async"
-            width="900"
-            height="1350"
-          />
-        </div>
-      </div>
+      <div className="archive-background" aria-hidden="true" />
       {intro && (
         <div className="archive-intro" aria-label="开场动画">
           <button
@@ -50,8 +34,6 @@ export default function CinematicChrome() {
           >
             跳过动画
           </button>
-          <div className="archive-intro__slice" />
-          <div className="archive-intro__slice archive-intro__slice--two" />
           <div className="archive-intro__content">
             <div className="archive-intro__eyebrow">GALGAME ARCHIVE</div>
             <div className="archive-intro__title">

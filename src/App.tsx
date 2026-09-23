@@ -11,7 +11,9 @@ import StepEvidence from "./StepEvidence";
 import GuideFeedback from "./GuideFeedback";
 import RouteBrief from "./RouteBrief";
 import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
-import GameCover, { CoverSources } from "./GameCover";
+import { CoverSources } from "./GameCover";
+import DiscLibrary from "./DiscLibrary";
+import { pageTransition } from "./pageTransition";
 import CinematicChrome from "./CinematicChrome";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
@@ -348,15 +350,22 @@ export default function App() {
 
   useEffect(() => {
     const restore = () => {
-      setNavigation(readNavigation());
-      setMenu(false);
+      const restored = readNavigation();
+      pageTransition(() => {
+        setNavigation(restored);
+        setMenu(false);
+      });
     };
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
   }, []);
 
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      typeof document.startViewTransition === "function" ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
     // Do not promote a several-thousand-pixel route tree to one animated layer.
     const elements = [
       ...(mainRef.current?.querySelectorAll<HTMLElement>(
@@ -387,9 +396,11 @@ export default function App() {
     const url = navigationUrl(destination);
     if (url !== location.pathname + location.search)
       history.pushState(null, "", url);
-    setNavigation(destination);
-    setMenu(false);
-    window.scrollTo(0, 0);
+    pageTransition(() => {
+      setNavigation(destination);
+      setMenu(false);
+      window.scrollTo(0, 0);
+    });
   }
   function commit(next: Library) {
     if (problem) {
@@ -574,6 +585,7 @@ export default function App() {
   ];
   return (
     <div
+      data-view={view}
       className={`app-shell ${(view === "game" && navigation.target) || (view === "play" && activePack) ? "reading-mode" : ""}`}
     >
       <CinematicChrome />
@@ -695,7 +707,7 @@ export default function App() {
             <>
               <div className="page-heading">
                 <div>
-                  <div className="eyebrow">YOUR SMALL COLLECTION</div>
+                  <div className="eyebrow">GAME INDEX</div>
                   <h1>游戏攻略</h1>
                   <p>选择作品、篇章和目标结局，查看各个时间点的选项。</p>
                 </div>
@@ -762,8 +774,10 @@ export default function App() {
                   />
                 </label>
               </div>
-              <div className="game-grid">
-                {allGames
+              <DiscLibrary
+                initialId={gameId}
+                onOpen={openGame}
+                games={allGames
                   .filter((g) => g.id !== "demo-game")
                   .filter((g) =>
                     [g.title, ...g.aliases]
@@ -781,48 +795,14 @@ export default function App() {
                           (filter === "completed" ? s.completed : !s.completed),
                       ),
                   )
-                  .map((g, index) => (
-                    <button
-                      key={g.id}
-                      className="game-card"
-                      aria-label={`选择作品：${g.title}`}
-                      onClick={() => openGame(g.id)}
-                    >
-                      <GameCover
-                        gameId={g.id}
-                        title={g.title}
-                        priority={index === 0}
-                      />
-                      <div className="game-card-body">
-                        <h3>
-                          {g.title}
-                          <ArrowUpRight size={18} />
-                        </h3>
-                        <p>
-                          {packs
-                            .filter((p) => p.game.id === g.id)
-                            .reduce((n, p) => n + p.routes.length, 0)}{" "}
-                          条路线 · PC / 中文
-                        </p>
-                        <div className="card-foot">
-                          <span className="badge blue">
-                            {BUILTINS.some(
-                              (p) =>
-                                p.game.id === g.id &&
-                                p.status === "source_checked",
-                            )
-                              ? "资料交叉核对 · 未实机"
-                              : "私人攻略"}
-                          </span>
-                          <span>
-                            查看攻略
-                            <ArrowRight size={14} />
-                          </span>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-              </div>
+                  .map((g) => ({
+                    id: g.id,
+                    title: g.title,
+                    routes: packs
+                      .filter((p) => p.game.id === g.id)
+                      .reduce((n, p) => n + p.routes.length, 0),
+                  }))}
+              />
               {(query || filter !== "all") &&
                 !allGames.some(
                   (g) =>

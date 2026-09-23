@@ -31,3 +31,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   </React.StrictMode>,
 );
 import "./theme.css";
+import "./editorial.css";

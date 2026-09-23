@@ -1,0 +1,540 @@
+/* Original implementation, visually informed by Ravi Klaassens' A24 experiment.
+   Shared tokens apply to every view; the artwork is confined to the disc library. */
+::view-transition-old(root) {
+  animation: page-out 180ms ease both;
+}
+::view-transition-new(root) {
+  animation: page-in 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+::view-transition {
+  pointer-events: none;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  --paper: #f6f6f2;
+  --surface: #fafaf7;
+  --line: #d4d4ce;
+  --muted: #65665f;
+  --green: #34362f;
+  --dark: #24251f;
+  --serif: Georgia, "Songti SC", "STSong", SimSun, serif;
+  color: var(--dark);
+  background: var(--paper);
+  font-family: "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+body {
+  background: transparent;
+}
+.app-shell {
+  min-height: 100dvh;
+  position: relative;
+}
+h1,
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+h1 {
+  font-size: clamp(30px, 4vw, 52px);
+}
+p {
+  color: var(--muted);
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #34362f;
+  outline-offset: 5px;
+}
+.sidebar {
+  position: sticky;
+  inset: 0 0 auto;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 4%;
+  border: 0;
+  border-bottom: 1px solid #deded7;
+  background: #f6f6f2f5;
+  box-shadow: none;
+  z-index: 20;
+  transform: none;
+}
+.sidebar .brand {
+  margin: 0;
+  padding: 0;
+  max-width: 310px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0;
+}
+.brand-mark {
+  display: none;
+}
+.brand small {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  margin-top: 1px;
+}
+.sidebar nav {
+  display: flex;
+  gap: 14px;
+}
+.sidebar .nav-item {
+  width: auto;
+  display: flex;
+  gap: 7px;
+  padding: 8px 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  color: var(--muted);
+  background: none;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.sidebar .nav-item.active {
+  color: var(--dark);
+  border-bottom-color: var(--dark);
+  background: none;
+}
+.sidebar .nav-item:hover {
+  color: var(--dark);
+  background: none;
+}
+.sidebar .nav-item svg {
+  display: none;
+}
+.nav-count {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 9px;
+}
+.sidebar-label,
+.sidebar-bottom,
+.mobile-menu {
+  display: none !important;
+}
+.main-shell {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.topbar {
+  height: auto;
+  padding: 20px 0;
+  width: calc(100% - 10%);
+  max-width: 1240px;
+  margin: auto;
+  border: 0;
+  background: none;
+  font-size: 11px;
+}
+.main-content,
+.reading-mode .main-content {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto 60px;
+  padding: 28px 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.app-shell[data-view="library"] .main-content {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+.app-shell[data-view="library"] .topbar {
+  display: none;
+}
+.app-shell[data-view="library"] .page-heading {
+  position: absolute;
+  top: 14px;
+  left: 5%;
+  margin: 0;
+  z-index: 2;
+}
+.app-shell[data-view="library"] .page-heading h1 {
+  font:
+    400 11px Arial,
+    "Microsoft YaHei",
+    sans-serif;
+  margin: 0;
+}
+.app-shell[data-view="library"] .page-heading p,
+.app-shell[data-view="library"] .page-heading .eyebrow {
+  display: none;
+}
+.app-shell[data-view="library"] .section-toolbar {
+  margin: 0;
+  padding: 8px 5%;
+  border-bottom: 1px solid var(--line);
+  justify-content: flex-end;
+  min-height: 54px;
+  gap: 28px;
+}
+.app-shell[data-view="library"] .continue-panel {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 5%;
+  border-radius: 0;
+  background: #ebebe5;
+}
+.continue-panel .eyebrow,
+.continue-icon {
+  display: none;
+}
+.continue-panel h2 {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+.continue-panel p {
+  font-size: 12px;
+  margin: 0;
+}
+.tabs {
+  gap: 14px;
+}
+.tabs button {
+  padding: 8px 0;
+  font-size: 11px;
+  border-radius: 0;
+}
+.tabs button.selected {
+  color: var(--dark);
+  border-bottom-color: var(--dark);
+}
+.search {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  padding: 4px 0;
+  width: 190px;
+}
+.search input {
+  font-size: 11px;
+  background: transparent;
+  color: var(--dark);
+}
+.app-shell[data-view="library"] .cover-sources,
+.app-shell[data-view="library"] .public-directory,
+.app-shell[data-view="library"] .library-footer {
+  margin-inline: 5%;
+}
+.page-heading {
+  margin-bottom: 40px;
+}
+.eyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+.page-heading h1 {
+  color: var(--dark);
+}
+.button {
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 44px;
+}
+.button.primary {
+  background: var(--dark);
+  color: #fff;
+  border-color: var(--dark);
+}
+.button.primary:hover {
+  background: #46483f;
+}
+.button.secondary {
+  color: var(--dark);
+  background: transparent;
+  border-color: var(--line);
+}
+.button.secondary:hover {
+  background: #e8e8e1;
+}
+.chapter-button {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--dark);
+}
+.chapter-button.selected {
+  background: #e7e7df;
+  border-color: #6b6d61;
+}
+.chapter-button:hover {
+  background: #edede7;
+}
+.chapter-picker {
+  margin-block: 32px;
+}
+.target-card,
+.route-card,
+.saved-route,
+.record-card,
+.settings-card,
+.navigator-panel {
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--surface);
+  border-color: var(--line);
+}
+.target-card:hover,
+.route-card:hover,
+.saved-route:hover {
+  background: #ebebe5;
+}
+.target-option,
+.tree-root,
+.tree-ending {
+  color: var(--dark);
+  background: #e9e9e1;
+  border-color: #898d7e;
+  border-radius: 2px;
+}
+.other-option {
+  background: transparent;
+  border-color: var(--line);
+}
+.tree-option {
+  border-radius: 2px;
+}
+.tree-option strong {
+  font-family: inherit;
+  line-height: 1.9;
+}
+.tree-step {
+  border-color: #a7aa9b;
+}
+.tree-step::before {
+  background: #6b6e61;
+}
+.tree-step.located {
+  outline-color: #454a37;
+}
+.tree-date strong {
+  letter-spacing: 0;
+}
+.guide-scope,
+.notice {
+  color: var(--dark);
+  background: #eeeee7;
+  border-color: var(--line);
+  border-radius: 0;
+}
+.badge,
+.badge.blue,
+.badge.green {
+  color: #54584a;
+  background: #e8eae1;
+  border-radius: 0;
+}
+.route-brief,
+.guide-finder {
+  background: transparent;
+  border-color: var(--line);
+  border-radius: 0;
+}
+.route-brief {
+  border-inline: 0;
+  padding-inline: 0;
+}
+.guide-finder {
+  padding: 22px;
+  background: #eeeee8;
+  border: 0;
+}
+.route-brief dt,
+.evidence-locator,
+.guide-feedback > span,
+.feedback-link,
+.reading-bookmark[aria-pressed="true"] {
+  color: var(--muted);
+}
+.guide-finder input[type="search"] {
+  border-color: var(--line);
+  border-radius: 0;
+}
+.step-evidence details {
+  border-color: var(--line);
+  background: #eeeee8;
+}
+.favorite-toggle[aria-pressed="true"] {
+  color: var(--dark);
+  background: #e8eae1;
+}
+.check-label,
+input {
+  accent-color: #4c5340;
+}
+.page-footer {
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 0 75px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.music-launch {
+  position: fixed;
+  left: 20px;
+  bottom: 18px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #f6f6f2;
+  color: var(--dark);
+  font-size: 11px;
+}
+.book-cover.artwork-cover {
+  background: #e7e7e0;
+  border-radius: 0;
+}
+.cover-fallback {
+  color: var(--dark);
+}
+.choice-main,
+.choice-actions {
+  color: var(--dark);
+}
+.option.chosen {
+  border-color: #818875;
+  background: #eceee5;
+}
+.recommended-tag {
+  color: #545d43;
+}
+.radio-circle > span {
+  background: #545d43;
+}
+.toast {
+  border-radius: 0;
+  background: var(--dark);
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    padding: 12px 5%;
+  }
+  .sidebar .brand {
+    width: 100%;
+    max-width: none;
+    font-size: 11px;
+  }
+  .brand small {
+    display: none;
+  }
+  .sidebar nav {
+    flex: 1;
+    gap: 18px;
+  }
+  .sidebar .nav-item {
+    font-size: 11px;
+  }
+  .topbar {
+    width: 90%;
+  }
+  .main-content,
+  .reading-mode .main-content {
+    width: 90%;
+    padding-top: 20px;
+  }
+}
+@media (max-width: 560px) {
+  .app-shell[data-view="library"] .music-launch {
+    position: absolute;
+    top: 104px;
+    right: 6%;
+    left: auto;
+    bottom: auto;
+    padding: 6px 10px;
+  }
+  .app-shell[data-view="library"] .page-heading {
+    position: static;
+    padding: 13px 6% 0;
+  }
+  .app-shell[data-view="library"] .section-toolbar {
+    padding: 4px 6% 8px;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .search {
+    width: 145px;
+  }
+  .tabs {
+    gap: 9px;
+  }
+  .tabs button {
+    font-size: 10px;
+  }
+  .tabs button span {
+    display: none;
+  }
+  .page-heading h1 {
+    font-size: 30px;
+  }
+  .main-content,
+  .reading-mode .main-content {
+    width: 88%;
+  }
+  .guide-finder {
+    padding: 16px;
+  }
+  .continue-panel {
+    flex-wrap: wrap;
+  }
+  .continue-panel .button {
+    font-size: 11px;
+  }
+  .page-footer {
+    width: 88%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
