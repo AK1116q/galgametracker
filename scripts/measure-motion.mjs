@@ -1,5 +1,5 @@
 // Run against a production preview. Headless rAF cadence is a diagnostic, not device FPS.
-// node scripts/measure-motion.mjs [--reference] [http://127.0.0.1:4173]
+// node scripts/measure-motion.mjs [--reference] [--hover] [http://127.0.0.1:4173]
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
 
@@ -12,6 +12,7 @@ const sites = [["archive", local, 2200]];
 if (process.argv.includes("--reference"))
   sites.push(["reference", "https://a24.raviklaassens.com/", 21000]);
 const results = [];
+const hover = process.argv.includes("--hover");
 await mkdir(".artifacts", { recursive: true });
 try {
   for (const [site, url, settle] of sites) {
@@ -42,9 +43,19 @@ try {
       requestAnimationFrame(tick);
     });
     await page.mouse.move(800, 450);
-    for (let i = 0; i < 5; i++) {
-      await page.mouse.wheel(0, 110);
-      await page.waitForTimeout(900);
+    if (hover) {
+      for (let i = 0; i < 32; i++) {
+        await page.mouse.move(
+          740 + Math.cos(i / 5) * 145,
+          450 + Math.sin(i / 5) * 145,
+        );
+        await page.waitForTimeout(120);
+      }
+    } else {
+      for (let i = 0; i < 5; i++) {
+        await page.mouse.wheel(0, 110);
+        await page.waitForTimeout(900);
+      }
     }
     await page.waitForFunction(() => window.motionSample.done);
     const measurement = await page.evaluate(() => {
@@ -59,18 +70,22 @@ try {
       };
     });
     results.push({ site, ...measurement });
-    await page.screenshot({ path: `.artifacts/motion-${site}.png` });
+    await page.screenshot({
+      path: `.artifacts/${hover ? "hover" : "motion"}-${site}.png`,
+    });
     await page.close();
     console.log(site, measurement);
   }
   await writeFile(
-    ".artifacts/motion-measurements.json",
+    `.artifacts/${hover ? "hover" : "motion"}-measurements.json`,
     JSON.stringify(
       {
         measuredAt: new Date().toISOString(),
         browser: browser.version(),
         viewport: "1440x900",
-        method: "6s, five wheel gestures, sequential, production preview",
+        method: hover
+          ? "6s, pointer moving around disc, sequential, production preview"
+          : "6s, five wheel gestures, sequential, production preview",
         results,
       },
       null,
