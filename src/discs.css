@@ -194,6 +194,7 @@
   gap: 24px;
 }
 .disc-navigation {
+  background: var(--paper);
   display: flex;
   align-items: center;
   gap: 18px;
@@ -240,6 +241,8 @@
 }
 .disc-hint {
   position: absolute;
+  background: var(--paper);
+  padding: 3px 6px;
   bottom: 20px;
   left: 5%;
   font-size: 10px;
