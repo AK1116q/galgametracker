@@ -23,7 +23,9 @@ export default function DiscLibrary({
   );
   const current = games[selected];
   const stage = useRef<HTMLDivElement>(null);
-  const discs = useRef<(HTMLDivElement | null)[]>([]);
+  const discs = useRef<(HTMLButtonElement | null)[]>([]);
+  const hover = useRef({ index: -1, x: 0, y: 0 });
+  const hoverBox = useRef<DOMRect | null>(null);
   const position = useRef(selected);
   const target = useRef(selected);
   const wake = useRef<() => void>(() => {});
@@ -50,6 +52,7 @@ export default function DiscLibrary({
       visible = true;
     let width = element.clientWidth,
       height = element.clientHeight;
+    const springs = games.map(() => ({ x: 0, y: 0, vx: 0, vy: 0 }));
     const draw = () => {
       const mobile = width < 660;
       discs.current.forEach((disc, index) => {
@@ -57,11 +60,15 @@ export default function DiscLibrary({
         const distance = index - position.current;
         const active = Math.abs(distance) < 2.3;
         disc.style.visibility = active ? "visible" : "hidden";
+        disc.dataset.hovered = String(active && hover.current.index === index);
         if (!active) return;
         const x = distance * width * (mobile ? 0.91 : 0.35);
         const y = distance * height * (mobile ? -0.13 : -0.24);
         const scale = Math.max(0.55, 1 - Math.abs(distance) * 0.24);
-        disc.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale}) rotateX(24deg) rotateY(-24deg) rotateZ(${-24 + distance * 13}deg)`;
+        const spring = springs[index];
+        const rx = media.matches ? 0 : spring.x;
+        const ry = media.matches ? 0 : spring.y;
+        disc.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale}) rotateX(${24 + rx}deg) rotateY(${-24 + ry}deg) rotateZ(${-24 + distance * 13 + ry * 0.16}deg)`;
         disc.style.opacity = String(Math.min(1, 2.3 - Math.abs(distance)));
         disc.style.zIndex = String(10 - Math.round(Math.abs(distance) * 2));
       });
@@ -74,8 +81,40 @@ export default function DiscLibrary({
         (target.current - position.current) * (1 - Math.exp(-elapsed / 115));
       if (Math.abs(target.current - position.current) < 0.0008)
         position.current = target.current;
+      let moving = false;
+      // Semi-implicit damped springs, sub-stepped to remain stable on slow frames.
+      const steps = Math.ceil(elapsed / 8);
+      const dt = elapsed / steps / 1000;
+      for (let step = 0; step < steps; step++)
+        springs.forEach((spring, index) => {
+          const over = hover.current.index === index;
+          const tx = over ? hover.current.y * -9 : 0;
+          const ty = over ? hover.current.x * 11 : 0;
+          spring.vx += ((tx - spring.x) * 190 - spring.vx * 17) * dt;
+          spring.vy += ((ty - spring.y) * 190 - spring.vy * 17) * dt;
+          spring.x += spring.vx * dt;
+          spring.y += spring.vy * dt;
+          if (
+            Math.abs(tx - spring.x) +
+              Math.abs(ty - spring.y) +
+              Math.abs(spring.vx) +
+              Math.abs(spring.vy) >
+            0.012
+          )
+            moving = true;
+          else {
+            spring.x = tx;
+            spring.y = ty;
+            spring.vx = 0;
+            spring.vy = 0;
+          }
+        });
       draw();
-      if (position.current !== target.current && visible && !document.hidden)
+      if (
+        (moving || position.current !== target.current) &&
+        visible &&
+        !document.hidden
+      )
         frame = requestAnimationFrame(tick);
     };
     const start = () => {
@@ -160,7 +199,11 @@ export default function DiscLibrary({
         tabIndex={0}
         aria-label="光盘浏览，左右方向键切换作品，回车查看攻略"
         onKeyDown={(event) => {
-          if (event.target !== event.currentTarget) return;
+          if (
+            event.target !== event.currentTarget &&
+            !(event.target as HTMLElement).classList.contains("optical-disc")
+          )
+            return;
           if (
             ["ArrowRight", "ArrowLeft", "Home", "End", "Enter"].includes(
               event.key,
@@ -219,33 +262,83 @@ export default function DiscLibrary({
         }}
       >
         <div className="disc-info" key={current.id}>
-          <span className="disc-kicker">GALGAME / {pad(selected + 1)}</span>
           <h2>{current.title}</h2>
-          <dl>
-            <div>
-              <dt>攻略</dt>
-              <dd>{current.routes} 条路线</dd>
-            </div>
-            <div>
-              <dt>平台</dt>
-              <dd>PC</dd>
-            </div>
-            <div>
-              <dt>使用</dt>
-              <dd>选作品 → 篇章 → 结局</dd>
-            </div>
-          </dl>
         </div>
-        <div className="disc-scene" aria-hidden="true">
+        <div className="disc-scene">
           {games.map((game, index) => (
-            <div
-              className="optical-disc"
+            <button
+              className={`optical-disc ${index === selected ? "disc-hit" : ""}`}
               key={game.id}
+              aria-label={`${index === selected ? "打开当前光盘" : "切换到作品"}：${game.title}`}
+              tabIndex={index === selected ? 0 : -1}
+              onClick={() => {
+                if (!dragged.current) {
+                  if (index === selected) onOpen(game.id);
+                  else select(game.id);
+                }
+              }}
+              onPointerEnter={(event) => {
+                if (event.pointerType === "touch") return;
+                hoverBox.current = event.currentTarget.getBoundingClientRect();
+                hover.current = { index, x: 0.15, y: -0.1 };
+                wake.current();
+              }}
+              onPointerMove={(event) => {
+                const box = hoverBox.current;
+                if (event.pointerType === "touch" || gesture.current || !box)
+                  return;
+                hover.current = {
+                  index,
+                  x: Math.max(
+                    -1,
+                    Math.min(
+                      1,
+                      ((event.clientX - box.left) / box.width) * 2 - 1,
+                    ),
+                  ),
+                  y: Math.max(
+                    -1,
+                    Math.min(
+                      1,
+                      ((event.clientY - box.top) / box.height) * 2 - 1,
+                    ),
+                  ),
+                };
+                wake.current();
+              }}
+              onPointerLeave={() => {
+                hover.current = { index: -1, x: 0, y: 0 };
+                wake.current();
+              }}
+              onFocus={(event) => {
+                if (event.currentTarget.matches(":focus-visible")) {
+                  hover.current = { index, x: 0, y: 0 };
+                  wake.current();
+                }
+              }}
+              onBlur={() => {
+                hover.current = { index: -1, x: 0, y: 0 };
+                wake.current();
+              }}
               ref={(el) => {
                 discs.current[index] = el;
               }}
             >
-              <div className="disc-face">
+              <svg
+                className="disc-ink"
+                viewBox="0 0 600 600"
+                aria-hidden="true"
+              >
+                <path
+                  pathLength="1000"
+                  d="M111 69 C208 -8 369 -2 462 57 C557 113 605 243 581 354 C557 475 459 578 339 588 C210 604 94 551 36 435 C-15 330 4 197 75 111 C84 99 97 82 111 69"
+                />
+                <path
+                  pathLength="1000"
+                  d="M478 91 C402 10 260 -10 149 50 C42 108 -9 233 20 355 C44 479 141 575 264 589 C387 606 512 534 564 423 C614 313 584 175 495 108"
+                />
+              </svg>
+              <div className="disc-face" aria-hidden="true">
                 {art[game.id] && (
                   <img
                     src={art[game.id].src}
@@ -263,16 +356,9 @@ export default function DiscLibrary({
                 <div className="disc-sheen" />
                 <div className="disc-hub" />
               </div>
-            </div>
+            </button>
           ))}
         </div>
-        <button
-          className="disc-hit"
-          aria-label={`打开当前光盘：${current.title}`}
-          onClick={() => {
-            if (!dragged.current) onOpen(current.id);
-          }}
-        />
         <div className="disc-bottom">
           <div className="disc-navigation">
             <button
@@ -297,40 +383,47 @@ export default function DiscLibrary({
           <button className="disc-open" onClick={() => onOpen(current.id)}>
             查看攻略 <span>↗</span>
           </button>
-          <a className="disc-index-link" href="#game-index">
-            作品目录 ↓
-          </a>
         </div>
-        <span className="disc-hint">滚轮或左右滑动切换作品</span>
-      </div>
-      <div className="disc-index" id="game-index">
-        <div className="disc-index-heading">
-          <h2>作品目录</h2>
-          <span>{pad(games.length)} WORKS</span>
-        </div>
-        {games.map((game, index) => (
-          <button
-            key={game.id}
-            aria-label={`选择作品：${game.title}`}
-            className="disc-index-row"
-            onClick={() => onOpen(game.id)}
-          >
-            <span className="disc-index-number">{pad(index + 1)}</span>
-            {art[game.id] && (
-              <img
-                src={art[game.id].src}
-                alt=""
-                loading="lazy"
-                width="44"
-                height="60"
-              />
-            )}
-            <strong>{game.title}</strong>
-            <span className="disc-index-count">{game.routes} 条路线</span>
-            <span>↗</span>
-          </button>
-        ))}
       </div>
     </section>
+  );
+}
+
+export function GameIndex({
+  games,
+  onOpen,
+}: {
+  games: Work[];
+  onOpen: (id: string) => void;
+}) {
+  return (
+    <div className="disc-index" id="game-index">
+      <div className="disc-index-heading">
+        <h2>作品目录</h2>
+        <span>{pad(games.length)} WORKS</span>
+      </div>
+      {games.map((game, index) => (
+        <button
+          key={game.id}
+          aria-label={`选择作品：${game.title}`}
+          className="disc-index-row"
+          onClick={() => onOpen(game.id)}
+        >
+          <span className="disc-index-number">{pad(index + 1)}</span>
+          {art[game.id] && (
+            <img
+              src={art[game.id].src}
+              alt=""
+              loading="lazy"
+              width="44"
+              height="60"
+            />
+          )}
+          <strong>{game.title}</strong>
+          <span className="disc-index-count">{game.routes} 条路线</span>
+          <span>↗</span>
+        </button>
+      ))}
+    </div>
   );
 }

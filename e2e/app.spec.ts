@@ -1,4 +1,12 @@
 import { test, expect } from "@playwright/test";
+async function openCatalog(page) {
+  if (
+    !(await page
+      .getByRole("dialog", { name: "作品目录", exact: true })
+      .isVisible())
+  )
+    await page.getByRole("button", { name: "作品目录", exact: true }).click();
+}
 test("music is opt-in, survives navigation and stops on close", async ({
   page,
 }) => {
@@ -55,9 +63,11 @@ test("new works expose complete paths and menu actions without invented ordinals
   page,
 }) => {
   await page.goto("/");
+  await openCatalog(page);
   await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
     6,
   );
+  await openCatalog(page);
   await page
     .getByRole("button", {
       name: "选择作品：ATRI -My Dear Moments-",
@@ -72,6 +82,7 @@ test("new works expose complete paths and menu actions without invented ordinals
     page.getByRole("button", { name: "开始记录进度" }),
   ).toBeDisabled();
   await page.getByRole("button", { name: "返回游戏库" }).click();
+  await openCatalog(page);
   await page
     .getByRole("button", { name: "选择作品：千恋＊万花", exact: true })
     .click();
@@ -107,6 +118,7 @@ async function openTarget(
   target = "冬马和纱 · True Ending",
 ) {
   await page.goto("/");
+  await openCatalog(page);
   await page
     .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
     .click();
@@ -124,6 +136,7 @@ test("chapter selection opens a complete target tree without creating progress",
   ).toBeVisible();
   await expect(page.getByText("攻略工作台", { exact: true })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "录入攻略" })).toHaveCount(0);
+  await openCatalog(page);
   await page
     .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
     .click();
@@ -215,6 +228,7 @@ test("all target entries open, and optional-step text has its own space", async 
   page,
 }) => {
   await page.goto("/");
+  await openCatalog(page);
   await page
     .getByRole("button", { name: "选择作品：白色相簿2", exact: true })
     .click();
@@ -266,6 +280,7 @@ test("page return buttons keep recorded progress and allow reopening the route",
   await expect(
     page.getByRole("heading", { name: "游戏攻略", exact: true }),
   ).toBeVisible();
+  await openCatalog(page);
   await page.getByRole("button", { name: "继续导航", exact: true }).click();
   await expect(page.locator(".tracking-bar")).toContainText("已记录 1 次选择");
   expect(errors).toEqual([]);

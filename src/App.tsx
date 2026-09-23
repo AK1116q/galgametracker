@@ -12,7 +12,8 @@ import GuideFeedback from "./GuideFeedback";
 import RouteBrief from "./RouteBrief";
 import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
 import { CoverSources } from "./GameCover";
-import DiscLibrary from "./DiscLibrary";
+import DiscLibrary, { GameIndex } from "./DiscLibrary";
+import CatalogPanel from "./CatalogPanel";
 import { pageTransition } from "./pageTransition";
 import CinematicChrome from "./CinematicChrome";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
@@ -246,6 +247,7 @@ export default function App() {
   const [problem, setProblem] = useState(initial.problem);
   const [navigation, setNavigation] = useState<Navigation>(readNavigation);
   const { view, gameId, activeId } = navigation;
+  const [catalogOpen, setCatalogOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
@@ -350,6 +352,7 @@ export default function App() {
 
   useEffect(() => {
     const restore = () => {
+      setCatalogOpen(false);
       const restored = readNavigation();
       pageTransition(() => {
         setNavigation(restored);
@@ -385,6 +388,7 @@ export default function App() {
   }, [navigation]);
 
   function navigate(next: View, selection: Partial<Navigation> = {}) {
+    setCatalogOpen(false);
     const destination = {
       view: next,
       gameId,
@@ -603,9 +607,19 @@ export default function App() {
         </button>
         <div className="sidebar-label">我的空间</div>
         <nav aria-label="主导航">
+          {view === "library" && (
+            <button
+              className="nav-item catalog-toggle"
+              aria-haspopup="dialog"
+              onClick={() => setCatalogOpen(true)}
+            >
+              作品目录
+            </button>
+          )}
           {nav.map(({ id, label, Icon }) => (
             <button
               key={id}
+              data-view-link={id}
               className={`nav-item ${view === id || (id === "library" && view === "game") ? "active" : ""}`}
               onClick={() => {
                 if (id === "play" && !active && recent) resume(recent);
@@ -623,13 +637,15 @@ export default function App() {
           ))}
         </nav>
         <div className="sidebar-label second-label">整理与维护</div>
-        <button
-          className={`nav-item ${view === "settings" ? "active" : ""}`}
-          onClick={() => navigate("settings")}
-        >
-          <GearSix size={20} />
-          数据与设置
-        </button>
+        {view !== "library" && (
+          <button
+            className={`nav-item ${view === "settings" ? "active" : ""}`}
+            onClick={() => navigate("settings")}
+          >
+            <GearSix size={20} />
+            数据与设置
+          </button>
+        )}
         <div className="sidebar-bottom">
           <div className="local-note">
             <span className="tiny-icon">
@@ -705,96 +721,12 @@ export default function App() {
           )}
           {view === "library" && (
             <>
-              <div className="page-heading">
-                <div>
-                  <div className="eyebrow">GAME INDEX</div>
-                  <h1>游戏攻略</h1>
-                  <p>选择作品、篇章和目标结局，查看各个时间点的选项。</p>
-                </div>
-              </div>
-              {recent && (
-                <section className="continue-panel">
-                  <div className="continue-icon">
-                    <BookmarkSimple size={30} weight="duotone" />
-                  </div>
-                  <div className="continue-copy">
-                    <span className="eyebrow">
-                      {recent ? "CONTINUE YOUR STORY" : "START A NEW CHAPTER"}
-                    </span>
-                    <h2>
-                      {recentPack
-                        ? `继续《${recentPack.game.title}》`
-                        : "从你的第一条路线开始"}
-                    </h2>
-                    <p>
-                      {recentPack && recent
-                        ? `${recentPack.routes.find((r) => r.id === recent.routeId)?.safeLabel} · 已记录 ${recent.events.length} 次选择`
-                        : "《白色相簿2》雪菜 CC 路线已整理，等你一边游玩，一边核对。"}
-                    </p>
-                  </div>
-                  <button
-                    className="button primary"
-                    onClick={() =>
-                      recent ? resume(recent) : openGame("white-album-2")
-                    }
-                  >
-                    {recent ? "继续导航" : "选择路线"}
-                    <ArrowRight size={17} />
-                  </button>
-                </section>
-              )}
-              <div className="section-toolbar">
-                <div className="tabs" aria-label="游戏筛选">
-                  {[
-                    ["all", "全部游戏"],
-                    ["playing", "正在游玩"],
-                    ["completed", "已通关"],
-                  ].map(([id, label]) => (
-                    <button
-                      key={id}
-                      className={filter === id ? "selected" : ""}
-                      onClick={() => setFilter(id)}
-                    >
-                      {label}
-                      {id === "all" && (
-                        <span>
-                          {allGames.filter((g) => g.id !== "demo-game").length}
-                        </span>
-                      )}
-                    </button>
-                  ))}
-                </div>
-                <label className="search">
-                  <MagnifyingGlass size={18} />
-                  <input
-                    aria-label="搜索游戏"
-                    placeholder="搜索名称、别名…"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                  />
-                </label>
-              </div>
+              <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
                 initialId={gameId}
                 onOpen={openGame}
                 games={allGames
                   .filter((g) => g.id !== "demo-game")
-                  .filter((g) =>
-                    [g.title, ...g.aliases]
-                      .join(" ")
-                      .toLowerCase()
-                      .includes(query.toLowerCase()),
-                  )
-                  .filter(
-                    (g) =>
-                      filter === "all" ||
-                      library.sessions.some(
-                        (s) =>
-                          packs.find((p) => packKey(p) === sessionPackKey(s))
-                            ?.game.id === g.id &&
-                          (filter === "completed" ? s.completed : !s.completed),
-                      ),
-                  )
                   .map((g) => ({
                     id: g.id,
                     title: g.title,
@@ -803,66 +735,170 @@ export default function App() {
                       .reduce((n, p) => n + p.routes.length, 0),
                   }))}
               />
-              {(query || filter !== "all") &&
-                !allGames.some(
-                  (g) =>
-                    g.id !== "demo-game" &&
-                    [g.title, ...g.aliases]
-                      .join(" ")
-                      .toLowerCase()
-                      .includes(query.toLowerCase()) &&
-                    (filter === "all" ||
-                      library.sessions.some(
-                        (s) =>
-                          packs.find((p) => packKey(p) === sessionPackKey(s))
-                            ?.game.id === g.id &&
-                          (filter === "completed" ? s.completed : !s.completed),
-                      )),
-                ) && (
-                  <Empty
-                    title="这里还没有记录"
-                    text="换个名称搜索，或开始一段新的游玩。"
-                    action={
-                      <button
-                        className="button secondary"
-                        onClick={() => {
-                          setQuery("");
-                          setFilter("all");
-                        }}
-                      >
-                        查看全部游戏
-                      </button>
-                    }
-                  />
+              <CatalogPanel
+                open={catalogOpen}
+                close={() => setCatalogOpen(false)}
+              >
+                {recent && (
+                  <section className="continue-panel">
+                    <div className="continue-icon">
+                      <BookmarkSimple size={30} weight="duotone" />
+                    </div>
+                    <div className="continue-copy">
+                      <span className="eyebrow">
+                        {recent ? "CONTINUE YOUR STORY" : "START A NEW CHAPTER"}
+                      </span>
+                      <h2>
+                        {recentPack
+                          ? `继续《${recentPack.game.title}》`
+                          : "从你的第一条路线开始"}
+                      </h2>
+                      <p>
+                        {recentPack && recent
+                          ? `${recentPack.routes.find((r) => r.id === recent.routeId)?.safeLabel} · 已记录 ${recent.events.length} 次选择`
+                          : "《白色相簿2》雪菜 CC 路线已整理，等你一边游玩，一边核对。"}
+                      </p>
+                    </div>
+                    <button
+                      className="button primary"
+                      onClick={() =>
+                        recent ? resume(recent) : openGame("white-album-2")
+                      }
+                    >
+                      {recent ? "继续导航" : "选择路线"}
+                      <ArrowRight size={17} />
+                    </button>
+                  </section>
                 )}
-              <CoverSources />
-              <details className="public-directory">
-                <summary>按结局浏览全部攻略</summary>
-                <ul>
-                  {BUILTINS.filter((p) => !p.synthetic).flatMap((p) =>
-                    p.routes.map((r) => (
-                      <li key={`${packKey(p)}/${r.id}`}>
-                        <a href={routePathname(p, r.id)}>
-                          {p.game.title} · {r.safeLabel}
-                        </a>
-                      </li>
-                    )),
+                <div className="section-toolbar">
+                  <div className="tabs" aria-label="游戏筛选">
+                    {[
+                      ["all", "全部游戏"],
+                      ["playing", "正在游玩"],
+                      ["completed", "已通关"],
+                    ].map(([id, label]) => (
+                      <button
+                        key={id}
+                        className={filter === id ? "selected" : ""}
+                        onClick={() => setFilter(id)}
+                      >
+                        {label}
+                        {id === "all" && (
+                          <span>
+                            {
+                              allGames.filter((g) => g.id !== "demo-game")
+                                .length
+                            }
+                          </span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                  <label className="search">
+                    <MagnifyingGlass size={18} />
+                    <input
+                      aria-label="搜索游戏"
+                      placeholder="搜索名称、别名…"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                  </label>
+                </div>
+                <GameIndex
+                  onOpen={openGame}
+                  games={allGames
+                    .filter((g) => g.id !== "demo-game")
+                    .filter((g) =>
+                      [g.title, ...g.aliases]
+                        .join(" ")
+                        .toLowerCase()
+                        .includes(query.toLowerCase()),
+                    )
+                    .filter(
+                      (g) =>
+                        filter === "all" ||
+                        library.sessions.some(
+                          (s) =>
+                            packs.find((p) => packKey(p) === sessionPackKey(s))
+                              ?.game.id === g.id &&
+                            (filter === "completed"
+                              ? s.completed
+                              : !s.completed),
+                        ),
+                    )
+                    .map((g) => ({
+                      id: g.id,
+                      title: g.title,
+                      routes: packs
+                        .filter((p) => p.game.id === g.id)
+                        .reduce((n, p) => n + p.routes.length, 0),
+                    }))}
+                />
+                {(query || filter !== "all") &&
+                  !allGames.some(
+                    (g) =>
+                      g.id !== "demo-game" &&
+                      [g.title, ...g.aliases]
+                        .join(" ")
+                        .toLowerCase()
+                        .includes(query.toLowerCase()) &&
+                      (filter === "all" ||
+                        library.sessions.some(
+                          (s) =>
+                            packs.find((p) => packKey(p) === sessionPackKey(s))
+                              ?.game.id === g.id &&
+                            (filter === "completed"
+                              ? s.completed
+                              : !s.completed),
+                        )),
+                  ) && (
+                    <Empty
+                      title="这里还没有记录"
+                      text="换个名称搜索，或开始一段新的游玩。"
+                      action={
+                        <button
+                          className="button secondary"
+                          onClick={() => {
+                            setQuery("");
+                            setFilter("all");
+                          }}
+                        >
+                          查看全部游戏
+                        </button>
+                      }
+                    />
                   )}
-                </ul>
-              </details>
-              <div className="library-footer">
-                <p>
-                  <ShieldCheck size={17} />
-                  按篇章与目标结局查询攻略。
-                </p>
-                <button
-                  className="text-button"
-                  onClick={() => openGame("demo-game")}
-                >
-                  先用虚构示例试试
-                  <ArrowRight size={15} />
-                </button>
-              </div>
+                <CoverSources />
+                <details className="public-directory">
+                  <summary>按结局浏览全部攻略</summary>
+                  <ul>
+                    {BUILTINS.filter((p) => !p.synthetic).flatMap((p) =>
+                      p.routes.map((r) => (
+                        <li key={`${packKey(p)}/${r.id}`}>
+                          <a href={routePathname(p, r.id)}>
+                            {p.game.title} · {r.safeLabel}
+                          </a>
+                        </li>
+                      )),
+                    )}
+                  </ul>
+                </details>
+                <div className="library-footer">
+                  <button
+                    className="text-button"
+                    onClick={() => navigate("settings")}
+                  >
+                    数据与设置
+                  </button>
+                  <button
+                    className="text-button"
+                    onClick={() => openGame("demo-game")}
+                  >
+                    先用虚构示例试试
+                    <ArrowRight size={15} />
+                  </button>
+                </div>
+              </CatalogPanel>
             </>
           )}
           {view === "game" &&

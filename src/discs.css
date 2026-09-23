@@ -10,9 +10,11 @@
   border: 0;
 }
 .disc-stage {
+  --disc-size: min(49vw, 79svh);
   position: relative;
-  height: min(820px, calc(100svh - 144px));
-  min-height: 560px;
+  height: 100svh;
+  min-height: 520px;
+  width: 100%;
   overflow: hidden;
   isolation: isolate;
   touch-action: pan-y;
@@ -20,54 +22,79 @@
 }
 .disc-info {
   position: absolute;
-  left: 5%;
-  top: 6%;
-  width: 260px;
+  left: 32px;
+  top: 106px;
+  width: min(300px, 24vw);
   z-index: 12;
   pointer-events: none;
-  animation: disc-caption 0.45s ease both;
-}
-.disc-kicker {
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  animation: disc-caption 0.4s ease both;
 }
 .disc-info h2 {
-  font: 400 clamp(28px, 2.4vw, 36px)/1.2 var(--serif);
-  margin: 22px 0 28px;
+  font: 400 clamp(25px, 2.1vw, 36px)/1.25 var(--serif);
+  margin: 0;
   letter-spacing: -0.025em;
   text-wrap: balance;
-}
-.disc-info dl {
-  font-size: 11px;
-  margin: 0;
-}
-.disc-info dl > div {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  gap: 12px;
-  border-top: 1px solid var(--line);
-}
-.disc-info dt {
-  color: var(--muted);
-}
-.disc-info dd {
-  margin: 0;
 }
 .disc-scene {
   position: absolute;
   inset: 0;
-  perspective: 1600px;
+  perspective: 1800px;
   pointer-events: none;
 }
 .optical-disc {
   position: absolute;
-  left: calc(54% - min(23vw, 310px));
-  top: calc(48% - min(23vw, 310px));
-  width: min(46vw, 620px);
+  left: calc(52% - var(--disc-size) / 2);
+  top: calc(50% - var(--disc-size) / 2);
+  width: var(--disc-size);
   aspect-ratio: 1;
   will-change: transform;
   transform-style: preserve-3d;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  transition: none;
+  cursor: pointer;
+  outline-offset: 10px;
+}
+.optical-disc:active {
+  cursor: grabbing;
+}
+.disc-ink {
+  position: absolute;
+  inset: -4.5%;
+  width: 109%;
+  height: 109%;
+  overflow: visible;
+  fill: none;
+  stroke: #111;
+  stroke-linecap: round;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms;
+  animation: ink-orbit 12s linear infinite;
+  animation-play-state: paused;
+}
+.disc-ink path {
+  stroke-width: 2.4;
+  stroke-dasharray: 940 60;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.disc-ink path + path {
+  stroke-width: 1.3;
+  stroke-dasharray: 830 170;
+  transition-delay: 70ms;
+  transform: rotate(16deg);
+  transform-origin: center;
+}
+.optical-disc[data-hovered="true"] .disc-ink {
+  opacity: 1;
+  animation-play-state: running;
+}
+.optical-disc[data-hovered="true"] .disc-ink path {
+  stroke-dashoffset: 0;
 }
 .disc-face {
   position: absolute;
@@ -182,22 +209,27 @@
   );
   mix-blend-mode: screen;
 }
+
 .disc-bottom {
   position: absolute;
-  bottom: 55px;
-  left: 5%;
-  right: 5%;
+  bottom: 33px;
+  left: 32px;
+  right: 32px;
   z-index: 12;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: center;
+  pointer-events: none;
+}
+.disc-bottom button {
+  pointer-events: auto;
 }
 .disc-navigation {
-  background: var(--paper);
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   font:
     12px ui-monospace,
     monospace;
@@ -207,46 +239,32 @@
   background: transparent;
   width: 44px;
   height: 44px;
-  font-size: 22px;
+  font-size: 21px;
 }
 .disc-navigation button:hover:not(:disabled) {
-  background: #e8e8e5;
+  transform: translateX(2px);
 }
 .disc-navigation i {
   font-style: normal;
-  color: #767674;
+  color: var(--muted);
 }
 .disc-open {
-  background: none;
   border: 0;
-  border-bottom: 1px solid #333;
-  padding: 12px 0;
-  font: 400 24px var(--serif);
-  min-width: 180px;
+  border-bottom: 1px solid #777;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  gap: 28px;
 }
 .disc-open span {
-  transition: transform 0.3s;
+  transition: transform 0.25s;
 }
 .disc-open:hover span {
-  transform: translate(4px, -4px);
-}
-.disc-index-link {
-  font-size: 12px;
-  padding: 16px 0;
-  text-decoration: none;
-}
-.disc-hint {
-  position: absolute;
-  background: var(--paper);
-  padding: 3px 6px;
-  bottom: 20px;
-  left: 5%;
-  font-size: 10px;
-  color: var(--muted);
+  transform: translate(3px, -3px);
 }
 .disc-index {
   margin: 45px 5% 60px;
@@ -289,152 +307,102 @@
 .disc-index-row strong {
   font: 400 clamp(19px, 2vw, 28px) var(--serif);
 }
-.disc-hit {
-  position: absolute;
-  width: min(39vw, 530px);
-  aspect-ratio: 1;
-  top: calc(44% - min(19.5vw, 265px));
-  left: calc(54% - min(19.5vw, 265px));
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  z-index: 11;
-  cursor: grab;
-}
-.disc-hit:active {
-  cursor: grabbing;
-}
-.optical-disc {
-  top: calc(44% - min(23vw, 310px));
-}
-.disc-hint {
-  left: 150px;
+
+.disc-index-heading {
+  display: none;
 }
 .disc-index-number,
 .disc-index-count {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 @keyframes disc-caption {
   from {
     opacity: 0;
-    transform: translateY(7px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-@media (min-width: 1800px) {
-  .disc-stage {
-    max-width: 1800px;
-    margin-inline: auto;
+@keyframes ink-orbit {
+  to {
+    transform: rotate(360deg);
   }
 }
+:root[data-motion="paused"] .disc-ink {
+  animation-play-state: paused !important;
+}
 @media (max-width: 800px) {
+  .disc-stage {
+    --disc-size: min(78vw, 76svh);
+  }
   .disc-info {
-    width: 200px;
+    top: 92px;
+    left: 24px;
+    width: 260px;
   }
   .disc-info h2 {
-    font-size: 29px;
+    font-size: 28px;
   }
   .optical-disc {
-    left: calc(61% - 29vw);
-    top: calc(49% - 29vw);
-    width: 58vw;
+    left: calc(54% - var(--disc-size) / 2);
   }
 }
 @media (max-width: 560px) {
   .disc-stage {
-    min-height: 580px;
-    height: calc(100svh - 163px);
-    max-height: 800px;
+    --disc-size: min(96vw, 65svh);
+    min-height: 500px;
   }
   .disc-info {
-    top: 20px;
-    left: 6%;
-    width: 88%;
+    top: 100px;
+    left: 22px;
+    width: calc(100% - 44px);
   }
   .disc-info h2 {
-    font-size: 29px;
-    margin: 10px 0 14px;
-  }
-  .disc-info dl {
-    display: flex;
-    gap: 18px;
-  }
-  .disc-info dl > div {
-    gap: 8px;
-    padding: 7px 0;
-  }
-  .disc-info dl > div:last-child {
-    display: none;
+    font-size: 25px;
+    max-width: 270px;
   }
   .optical-disc {
-    width: 88vw;
-    left: 6%;
-    top: calc(52% - 44vw);
-  }
-  .disc-print strong {
-    font-size: 23px;
+    left: calc(50% - var(--disc-size) / 2);
+    top: calc(51% - var(--disc-size) / 2);
   }
   .disc-bottom {
-    bottom: 51px;
-    left: 6%;
-    right: 6%;
-    flex-wrap: wrap;
-    gap: 10px;
+    bottom: 65px;
+    left: 22px;
+    right: 22px;
+    justify-content: flex-start;
   }
   .disc-navigation {
-    gap: 5px;
-  }
-  .disc-open {
-    min-width: 140px;
-    font-size: 22px;
-    gap: 15px;
-  }
-  .disc-index-link {
-    position: absolute;
     right: 0;
-    top: 55px;
-    padding: 6px 0;
+    gap: 3px;
   }
-  .disc-hint {
-    bottom: 24px;
-    left: 6%;
-  }
-  .disc-index {
-    margin: 35px 6% 40px;
+  .disc-print strong {
+    font-size: 22px;
   }
   .disc-index-row {
+    grid-template-columns: 24px 35px 1fr 18px;
     gap: 12px;
-    grid-template-columns: 23px 35px 1fr 18px;
   }
   .disc-index-row img {
     width: 35px;
     height: 48px;
   }
-  .disc-index-count {
-    display: none;
-  }
   .disc-index-row strong {
     font-size: 20px;
   }
-  .disc-hit {
-    width: 78vw;
-    top: calc(52% - 39vw);
-    left: 11%;
-  }
-  .optical-disc {
-    top: calc(52% - 44vw);
-  }
-  .disc-hint {
-    left: 6%;
+  .disc-index-count {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .disc-info {
+  .disc-info,
+  .disc-ink {
     animation: none;
+  }
+  .disc-ink path {
+    transition: none;
   }
   .optical-disc {
     will-change: auto;
