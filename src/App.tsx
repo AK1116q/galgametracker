@@ -13,6 +13,7 @@ import RouteBrief from "./RouteBrief";
 import { reviewInfo, findGuideNodes } from "../core/guide-info.mjs";
 import { CoverSources } from "./GameCover";
 import DiscLibrary, { GameIndex } from "./DiscLibrary";
+import Turntable from "./Turntable";
 import CatalogPanel from "./CatalogPanel";
 import { pageTransition } from "./pageTransition";
 import CinematicChrome from "./CinematicChrome";
@@ -1278,170 +1279,181 @@ function GameView({
         <ArrowLeft size={16} />
         返回游戏库
       </button>
-      <div className="page-heading">
-        <div>
-          <h1>{packs[0].game.title}</h1>
-          <p>选择篇章，再选择目标结局。</p>
-        </div>
-      </div>
-      <section className="chapter-picker" aria-label="选择篇章">
-        <h2>1. 选择篇章</h2>
-        <div className="chapter-options">
-          {chapters.map((c) => (
-            <button
-              key={c.id}
-              className={`chapter-button ${chapter === c.id ? "selected" : ""}`}
-              aria-pressed={chapter === c.id}
-              onClick={() => {
-                setChapter(c.id);
-                setReady(false);
-              }}
-            >
-              <strong>{c.label}</strong>
-              <span>{c.note}</span>
-            </button>
-          ))}
-        </div>
-      </section>
-      {chapter === "ic" && (
-        <section className="chapter-info">
-          <h2>IC 没有选项</h2>
-          <p>按顺序阅读即可。完成 IC 后进入 CC。</p>
-          <button className="button secondary" onClick={() => setChapter("cc")}>
-            查看 CC 攻略
-          </button>
-        </section>
-      )}
-      {chapter && chapter !== "ic" && (
-        <section className="target-picker">
-          <h2>2. 选择目标结局</h2>
-          <div className="chapter-options">
-            {available.flatMap((pack) =>
-              pack.routes.map((route) => (
+      <div className="game-workspace">
+        <Turntable game={packs[0].game} chapters={chapters} chapter={chapter} />
+        <div className="game-workspace__content">
+          <div className="page-heading">
+            <div>
+              <h1>{packs[0].game.title}</h1>
+              <p>选择篇章，再选择目标结局。</p>
+            </div>
+          </div>
+          <section className="chapter-picker" aria-label="选择篇章">
+            <h2>1. 选择篇章</h2>
+            <div className="chapter-options">
+              {chapters.map((c) => (
                 <button
-                  key={`${packKey(pack)}/${route.id}`}
-                  aria-pressed={target === `${packKey(pack)}/${route.id}`}
-                  className={`chapter-button ${target === `${packKey(pack)}/${route.id}` ? "selected" : ""}`}
+                  key={c.id}
+                  className={`chapter-button ${chapter === c.id ? "selected" : ""}`}
+                  aria-pressed={chapter === c.id}
                   onClick={() => {
-                    setTarget(`${packKey(pack)}/${route.id}`);
+                    setChapter(c.id);
                     setReady(false);
                   }}
                 >
-                  <strong>{route.safeLabel}</strong>
-                  <span>
-                    {stepCounts.get(`${packKey(pack)}/${route.id}`)} 个攻略步骤
-                  </span>
-                  <small>
-                    前置：
-                    {route.requiredEndingIds
-                      .map(
-                        (id) =>
-                          pack.endings.find((e) => e.id === id)?.safeLabel ??
-                          id,
-                      )
-                      .join("、") || "无"}
-                  </small>
+                  <strong>{c.label}</strong>
+                  <span>{c.note}</span>
                 </button>
-              )),
-            )}
-          </div>
-          <p className="small-note">
-            {chapter === "cc"
-              ? "6 个结局。千晶 True Ending 需要先通关千晶 Normal Ending。"
-              : chapter === "coda"
-                ? "4 个结局。完成 CC 雪菜结局后进入 Coda。"
-                : ""}
-          </p>
-        </section>
-      )}
-      {selected && (
-        <>
-          <button
-            className="button secondary favorite-toggle"
-            aria-pressed={
-              !!library.favorites?.some(
-                (f) =>
-                  f.packKey === packKey(selected.pack) &&
-                  f.routeId === selected.route.id,
-              )
-            }
-            onClick={() => toggleFavorite(selected.pack, selected.route.id)}
-          >
-            <BookmarkSimple size={18} />
-            {library.favorites?.some(
-              (f) =>
-                f.packKey === packKey(selected.pack) &&
-                f.routeId === selected.route.id,
-            )
-              ? "已收藏 · 点击取消"
-              : "收藏攻略"}
-          </button>
-          <GuideTree
-            key={target}
-            pack={selected.pack}
-            routeId={selected.route.id}
-            bookmark={
-              library.bookmarks?.find(
-                (b) =>
-                  b.packKey === packKey(selected.pack) &&
-                  b.routeId === selected.route.id,
-              )?.choiceId
-            }
-            onBookmark={(choiceId) =>
-              bookmarkRoute(selected.pack, selected.route.id, choiceId)
-            }
-          />
-          <section className="tracking-tools">
-            <h2>记录进度（可选）</h2>
-            <p>查看攻略无需记录。开启后，可以逐次保存你在游戏中的实际选择。</p>
-            {previous ? (
+              ))}
+            </div>
+          </section>
+          {chapter === "ic" && (
+            <section className="chapter-info">
+              <h2>IC 没有选项</h2>
+              <p>按顺序阅读即可。完成 IC 后进入 CC。</p>
               <button
                 className="button secondary"
-                onClick={() => resume(previous)}
+                onClick={() => setChapter("cc")}
               >
-                继续已有记录
+                查看 CC 攻略
               </button>
-            ) : (
-              <>
-                {selected.route.requiredEndingIds.length > 0 && (
-                  <label className="check-label">
-                    <input
-                      type="checkbox"
-                      checked={ready}
-                      onChange={(e) => setReady(e.target.checked)}
-                    />
-                    我已完成：
-                    {selected.route.requiredEndingIds
-                      .map(
-                        (id) =>
-                          selected.pack.endings.find((e) => e.id === id)
-                            ?.safeLabel ?? id,
-                      )
-                      .join("、")}
-                  </label>
+            </section>
+          )}
+          {chapter && chapter !== "ic" && (
+            <section className="target-picker">
+              <h2>2. 选择目标结局</h2>
+              <div className="chapter-options">
+                {available.flatMap((pack) =>
+                  pack.routes.map((route) => (
+                    <button
+                      key={`${packKey(pack)}/${route.id}`}
+                      aria-pressed={target === `${packKey(pack)}/${route.id}`}
+                      className={`chapter-button ${target === `${packKey(pack)}/${route.id}` ? "selected" : ""}`}
+                      onClick={() => {
+                        setTarget(`${packKey(pack)}/${route.id}`);
+                        setReady(false);
+                      }}
+                    >
+                      <strong>{route.safeLabel}</strong>
+                      <span>
+                        {stepCounts.get(`${packKey(pack)}/${route.id}`)}{" "}
+                        个攻略步骤
+                      </span>
+                      <small>
+                        前置：
+                        {route.requiredEndingIds
+                          .map(
+                            (id) =>
+                              pack.endings.find((e) => e.id === id)
+                                ?.safeLabel ?? id,
+                          )
+                          .join("、") || "无"}
+                      </small>
+                    </button>
+                  )),
                 )}
-                <button
-                  className="button secondary"
-                  disabled={
-                    selected.pack.status === "withdrawn" ||
-                    (selected.route.requiredEndingIds.length > 0 && !ready)
-                  }
-                  onClick={() =>
-                    start(
-                      selected.pack,
-                      selected.route.id,
-                      selected.route.requiredEndingIds,
-                    )
-                  }
-                >
-                  开始记录进度
-                </button>
-              </>
-            )}
-          </section>
-          <SourceDetails pack={selected.pack} />
-        </>
-      )}
+              </div>
+              <p className="small-note">
+                {chapter === "cc"
+                  ? "6 个结局。千晶 True Ending 需要先通关千晶 Normal Ending。"
+                  : chapter === "coda"
+                    ? "4 个结局。完成 CC 雪菜结局后进入 Coda。"
+                    : ""}
+              </p>
+            </section>
+          )}
+          {selected && (
+            <>
+              <button
+                className="button secondary favorite-toggle"
+                aria-pressed={
+                  !!library.favorites?.some(
+                    (f) =>
+                      f.packKey === packKey(selected.pack) &&
+                      f.routeId === selected.route.id,
+                  )
+                }
+                onClick={() => toggleFavorite(selected.pack, selected.route.id)}
+              >
+                <BookmarkSimple size={18} />
+                {library.favorites?.some(
+                  (f) =>
+                    f.packKey === packKey(selected.pack) &&
+                    f.routeId === selected.route.id,
+                )
+                  ? "已收藏 · 点击取消"
+                  : "收藏攻略"}
+              </button>
+              <GuideTree
+                key={target}
+                pack={selected.pack}
+                routeId={selected.route.id}
+                bookmark={
+                  library.bookmarks?.find(
+                    (b) =>
+                      b.packKey === packKey(selected.pack) &&
+                      b.routeId === selected.route.id,
+                  )?.choiceId
+                }
+                onBookmark={(choiceId) =>
+                  bookmarkRoute(selected.pack, selected.route.id, choiceId)
+                }
+              />
+              <section className="tracking-tools">
+                <h2>记录进度（可选）</h2>
+                <p>
+                  查看攻略无需记录。开启后，可以逐次保存你在游戏中的实际选择。
+                </p>
+                {previous ? (
+                  <button
+                    className="button secondary"
+                    onClick={() => resume(previous)}
+                  >
+                    继续已有记录
+                  </button>
+                ) : (
+                  <>
+                    {selected.route.requiredEndingIds.length > 0 && (
+                      <label className="check-label">
+                        <input
+                          type="checkbox"
+                          checked={ready}
+                          onChange={(e) => setReady(e.target.checked)}
+                        />
+                        我已完成：
+                        {selected.route.requiredEndingIds
+                          .map(
+                            (id) =>
+                              selected.pack.endings.find((e) => e.id === id)
+                                ?.safeLabel ?? id,
+                          )
+                          .join("、")}
+                      </label>
+                    )}
+                    <button
+                      className="button secondary"
+                      disabled={
+                        selected.pack.status === "withdrawn" ||
+                        (selected.route.requiredEndingIds.length > 0 && !ready)
+                      }
+                      onClick={() =>
+                        start(
+                          selected.pack,
+                          selected.route.id,
+                          selected.route.requiredEndingIds,
+                        )
+                      }
+                    >
+                      开始记录进度
+                    </button>
+                  </>
+                )}
+              </section>
+              <SourceDetails pack={selected.pack} />
+            </>
+          )}
+        </div>
+      </div>
     </>
   );
 }

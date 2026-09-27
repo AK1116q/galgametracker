@@ -33,3 +33,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 import "./theme.css";
 import "./editorial.css";
 import "./gallery.css";
+
+import "./turntable.css";

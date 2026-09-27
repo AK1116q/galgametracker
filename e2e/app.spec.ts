@@ -482,3 +482,23 @@ test("public route pages work without JavaScript and keep canonical content afte
     page.getByRole("heading", { name: /冬马和纱.*路线树/ }),
   ).toBeVisible();
 });
+
+
+test("chapter turntable keeps its disc while the arm moves between chapters", async ({page}) => {
+  await page.goto("/");
+  await page.getByRole("button", {name: "打开当前光盘：白色相簿2", exact:true}).click();
+  const deck = page.locator(".turntable");
+  await expect(deck).toHaveAttribute("data-chapter", "parked");
+  await page.evaluate(() => { (window as any).__disc = document.querySelector(".turntable__platter"); });
+  await page.getByRole("button", {name: /IC · 序章/}).click();
+  await expect(deck).toHaveAttribute("data-chapter", "ic");
+  await expect(deck).toHaveCSS("--arm-angle", "14deg");
+  await page.getByRole("button", {name: /Coda · 最终章/}).click();
+  await expect(deck).toHaveCSS("--arm-angle", "38deg");
+  expect(await page.evaluate(() => (window as any).__disc === document.querySelector(".turntable__platter"))).toBe(true);
+  await page.getByRole("button", {name:"暂停唱盘动画"}).click();
+  await expect(deck).toHaveAttribute("data-spinning", "false");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.emulateMedia({reducedMotion:"reduce"});
+  await expect(page.locator(".turntable__platter")).toHaveCSS("animation-name", "none");
+});

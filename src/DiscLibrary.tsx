@@ -11,10 +11,12 @@ export default function DiscLibrary({
   games,
   onOpen,
   initialId,
+  onSelectionChange,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
   initialId?: string;
+  onSelectionChange?: (id: string) => void;
 }) {
   const [selectedId, select] = useState(initialId || games[0]?.id);
   const selected = Math.max(
@@ -22,6 +24,9 @@ export default function DiscLibrary({
     games.findIndex((g) => g.id === selectedId),
   );
   const current = games[selected];
+  useEffect(() => {
+    if (current) onSelectionChange?.(current.id);
+  }, [current?.id, onSelectionChange]);
   const stage = useRef<HTMLDivElement>(null);
   const discs = useRef<(HTMLButtonElement | null)[]>([]);
   const hover = useRef({ index: -1, x: 0, y: 0 });
@@ -338,24 +343,7 @@ export default function DiscLibrary({
                   d="M478 91 C402 10 260 -10 149 50 C42 108 -9 233 20 355 C44 479 141 575 264 589 C387 606 512 534 564 423 C614 313 584 175 495 108"
                 />
               </svg>
-              <div className="disc-face" aria-hidden="true">
-                {art[game.id] && (
-                  <img
-                    src={art[game.id].src}
-                    alt=""
-                    draggable={false}
-                    decoding="async"
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                  />
-                )}
-                <div className="disc-print">
-                  <span>GALGAME ARCHIVE</span>
-                  <strong>{game.title}</strong>
-                  <small>PC / GUIDE COLLECTION / {pad(index + 1)}</small>
-                </div>
-                <div className="disc-sheen" />
-                <div className="disc-hub" />
-              </div>
+              <DiscArtwork game={game} index={index} />
             </button>
           ))}
         </div>
@@ -424,6 +412,35 @@ export function GameIndex({
           <span>↗</span>
         </button>
       ))}
+    </div>
+  );
+}
+
+export function DiscArtwork({
+  game,
+  index = 0,
+}: {
+  game: { id: string; title: string };
+  index?: number;
+}) {
+  return (
+    <div className="disc-face" aria-hidden="true">
+      {art[game.id] && (
+        <img
+          src={art[game.id].src}
+          alt=""
+          draggable={false}
+          decoding="async"
+          fetchPriority={index === 0 ? "high" : "auto"}
+        />
+      )}
+      <div className="disc-print">
+        <span>GALGAME ARCHIVE</span>
+        <strong>{game.title}</strong>
+        <small>PC / GUIDE COLLECTION / {pad(index + 1)}</small>
+      </div>
+      <div className="disc-sheen" />
+      <div className="disc-hub" />
     </div>
   );
 }
