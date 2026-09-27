@@ -254,6 +254,10 @@ export default function App() {
   const [toast, setToast] = useState("");
   const [menu, setMenu] = useState(false);
   const [music, setMusic] = useState(false);
+  const [musicGameId, setMusicGameId] = useState(gameId || "white-album-2");
+  useEffect(() => {
+    if (view === "game") setMusicGameId(gameId);
+  }, [view, gameId]);
   const musicButtonRef = useRef<HTMLButtonElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const importRef = useRef<HTMLInputElement>(null);
@@ -274,6 +278,9 @@ export default function App() {
   const active = library.sessions.find((s) => s.id === activeId);
   const activePack =
     active && packs.find((p) => packKey(p) === sessionPackKey(active));
+  useEffect(() => {
+    if (view === "play" && activePack) setMusicGameId(activePack.game.id);
+  }, [view, activePack?.game.id]);
   const ongoing = [...library.sessions]
     .filter((s) => !s.completed)
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
@@ -724,6 +731,7 @@ export default function App() {
             <>
               <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
+                onSelectionChange={setMusicGameId}
                 initialId={gameId}
                 onOpen={openGame}
                 games={allGames
@@ -1159,6 +1167,7 @@ export default function App() {
           }
         >
           <MusicDock
+            gameId={musicGameId}
             close={() => {
               setMusic(false);
               requestAnimationFrame(() => musicButtonRef.current?.focus());

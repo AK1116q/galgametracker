@@ -15,6 +15,7 @@ test("music is opt-in, survives navigation and stops on close", async ({
     if (/youtube|googlevideo|ytimg/.test(request.url()))
       external.push(request.url());
   });
+  await mockMusic(page);
   await page.route("https://www.youtube-nocookie.com/**", (route) =>
     route.fulfill({
       contentType: "text/html",
@@ -26,10 +27,10 @@ test("music is opt-in, survives navigation and stops on close", async ({
   await page.getByRole("button", { name: "音乐", exact: true }).click();
   await expect(page.getByLabel("动漫音乐播放器")).toBeVisible();
   expect(external).toHaveLength(0);
-  await page.getByRole("button", { name: "加载官方播放器" }).click();
+  await page.getByRole("button", { name: "开启音乐" }).click();
   await expect(page.locator("iframe")).toHaveAttribute(
     "src",
-    /youtube-nocookie\.com\/embed\/24QGd-mX9bU.*autoplay=0/,
+    /youtube-nocookie\.com\/embed\/VdOUggE_Yoo/,
   );
   await page.evaluate(() => {
     (window as any).__musicFrame = document.querySelector("iframe");
@@ -483,22 +484,152 @@ test("public route pages work without JavaScript and keep canonical content afte
   ).toBeVisible();
 });
 
-
-test("chapter turntable keeps its disc while the arm moves between chapters", async ({page}) => {
+test("chapter turntable keeps its disc while the arm moves between chapters", async ({
+  page,
+}) => {
   await page.goto("/");
-  await page.getByRole("button", {name: "打开当前光盘：白色相簿2", exact:true}).click();
+  await page
+    .getByRole("button", { name: "打开当前光盘：白色相簿2", exact: true })
+    .click();
   const deck = page.locator(".turntable");
   await expect(deck).toHaveAttribute("data-chapter", "parked");
-  await page.evaluate(() => { (window as any).__disc = document.querySelector(".turntable__platter"); });
-  await page.getByRole("button", {name: /IC · 序章/}).click();
+  await page.evaluate(() => {
+    (window as any).__disc = document.querySelector(".turntable__platter");
+  });
+  await page.getByRole("button", { name: /IC · 序章/ }).click();
   await expect(deck).toHaveAttribute("data-chapter", "ic");
   await expect(deck).toHaveCSS("--arm-angle", "14deg");
-  await page.getByRole("button", {name: /Coda · 最终章/}).click();
+  await page.getByRole("button", { name: /Coda · 最终章/ }).click();
   await expect(deck).toHaveCSS("--arm-angle", "38deg");
-  expect(await page.evaluate(() => (window as any).__disc === document.querySelector(".turntable__platter"))).toBe(true);
-  await page.getByRole("button", {name:"暂停唱盘动画"}).click();
+  expect(
+    await page.evaluate(
+      () =>
+        (window as any).__disc ===
+        document.querySelector(".turntable__platter"),
+    ),
+  ).toBe(true);
+  await page.getByRole("button", { name: "暂停唱盘动画" }).click();
   await expect(deck).toHaveAttribute("data-spinning", "false");
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.emulateMedia({reducedMotion:"reduce"});
-  await expect(page.locator(".turntable__platter")).toHaveCSS("animation-name", "none");
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(page.locator(".turntable__platter")).toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
+
+// Mock only the external API boundary; real app state and navigation run unchanged.
+async function mockMusic(page) {
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.fulfill({
+      contentType: "application/javascript",
+      body: `window.__musicCalls = [];
+      window.YT = { Player: class {
+        constructor(el, options) {
+          this.options = options; window.__mockPlayer = this;
+          this.frame = document.createElement('iframe');
+          this.frame.src = options.host + '/embed/' + options.videoId;
+          el.replaceWith(this.frame);
+          setTimeout(() => options.events.onReady(), 10);
+        }
+        getIframe() { return this.frame; }
+        loadVideoById(id) { window.__musicCalls.push(['load',id]); this.options.events.onStateChange({data:1}); }
+        cueVideoById(id) { window.__musicCalls.push(['cue',id]); this.options.events.onStateChange({data:5}); }
+        playVideo() { this.options.events.onStateChange({data:1}); }
+        pauseVideo() { this.options.events.onStateChange({data:2}); }
+        setVolume(n) { window.__musicCalls.push(['volume',n]); }
+        destroy() { this.frame.remove(); window.__musicCalls.push(['destroy']); }
+      }};
+      window.onYouTubeIframeAPIReady();`,
+    }),
+  );
+  await page.route("https://www.youtube-nocookie.com/**", (route) =>
+    route.fulfill({
+      contentType: "text/html",
+      body: "<p>External player boundary</p>",
+    }),
+  );
+}
+
+test("music follows all six works, preserves pause and volume, and reports blocked playback", async ({
+  page,
+}) => {
+  await mockMusic(page);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: "音乐", exact: true }).click();
+  await page.getByRole("button", { name: "开启音乐", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "暂停音乐", exact: true }),
+  ).toBeVisible();
+  const stage = page.locator(".disc-stage");
+  const ids = [
+    "zSLty7g3w30",
+    "0EJ7HvJYe1M",
+    "W7ARsYs-Gq0",
+    "mgk8XTe2lEw",
+    "IazpFBFRvl8",
+  ];
+  for (const id of ids) {
+    await stage.press("ArrowRight");
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            (window as any).__musicCalls
+              .filter((c) => c[0] === "load")
+              .at(-1)?.[1],
+        ),
+      )
+      .toBe(id);
+  }
+  await page.getByLabel("音乐音量").fill("20");
+  expect(
+    await page.evaluate(() => (window as any).__musicCalls.at(-1)),
+  ).toEqual(["volume", 20]);
+  await page.getByRole("button", { name: "暂停音乐", exact: true }).click();
+  await stage.press("Home");
+  await expect
+    .poll(() => page.evaluate(() => (window as any).__musicCalls.at(-1)))
+    .toEqual(["cue", "VdOUggE_Yoo"]);
+  await expect(
+    page.getByRole("button", { name: "播放音乐", exact: true }),
+  ).toBeVisible();
+  await page.evaluate(() =>
+    (window as any).__mockPlayer.options.events.onAutoplayBlocked(),
+  );
+  await expect(page.locator(".music-status")).toContainText("浏览器阻止");
+  await page.evaluate(() =>
+    (window as any).__mockPlayer.options.events.onError(),
+  );
+  await expect(page.getByRole("button", { name: "重试播放器" })).toBeVisible();
+  await page.getByRole("button", { name: "重试播放器" }).click();
+  await expect(page.locator("iframe")).toHaveCount(1);
+  await page.getByRole("button", { name: "关闭音乐并停止播放" }).click();
+  await expect(page.locator("iframe")).toHaveCount(0);
+  await page.reload();
+  await expect(page.locator("iframe")).toHaveCount(0);
+});
+
+test("music script failure is recoverable", async ({
+  page,
+}) => {
+  await page.route("https://www.youtube.com/iframe_api", (route) =>
+    route.abort(),
+  );
+  await page.goto("/");
+  await page.getByRole("button", { name: "音乐", exact: true }).click();
+  await page.getByRole("button", { name: "开启音乐", exact: true }).click();
+  await expect(page.locator(".music-status")).toContainText("无法连接");
+  await mockMusic(page);
+  await page.getByRole("button", { name: "重试播放器" }).click();
+  await expect(
+    page.getByRole("button", { name: "暂停音乐", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "关闭音乐并停止播放" }).click();
+  await expect(page.locator("iframe")).toHaveCount(0);
 });
