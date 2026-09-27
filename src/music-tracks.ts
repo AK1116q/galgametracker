@@ -16,10 +16,10 @@ export const musicTracks: Record<
     source: "https://atri-mdm.com/news/?id=53509",
   },
   "senren-banka": {
-    id: "IazpFBFRvl8",
+    id: "oC-XPMdrUtw",
     title: "恋ひ恋ふ縁",
-    note: "千恋＊万花 · KOTOKO · 游戏 OP",
-    source: "https://www.yuzu-soft.com/products/senren/movie.html",
+    note: "千恋＊万花 · KOTOKO · 官方中文版 OP",
+    source: "https://www.youtube.com/watch?v=oC-XPMdrUtw",
   },
   "sabbat-of-the-witch": {
     id: "W7ARsYs-Gq0",

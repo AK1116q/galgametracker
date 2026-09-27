@@ -572,7 +572,7 @@ test("music follows all six works, preserves pause and volume, and reports block
     "0EJ7HvJYe1M",
     "W7ARsYs-Gq0",
     "mgk8XTe2lEw",
-    "IazpFBFRvl8",
+    "oC-XPMdrUtw",
   ];
   for (const id of ids) {
     await stage.press("ArrowRight");
