@@ -15,9 +15,18 @@ const packs = readdirSync(dir).map((f) =>
 );
 const pack = (id) => packs.find((p) => p.game.id === id);
 test("five researched works cover 26 terminating paths without claiming playtests", () => {
-  assert.equal(packs.length, 5);
+  const original = packs.filter((p) =>
+    [
+      "atri",
+      "senren-banka",
+      "sabbat-of-the-witch",
+      "riddle-joker",
+      "saya-no-uta",
+    ].includes(p.game.id),
+  );
+  assert.equal(original.length, 5);
   assert.equal(
-    packs.reduce((n, p) => n + p.routes.length, 0),
+    original.reduce((n, p) => n + p.routes.length, 0),
     26,
   );
   for (const p of packs) {

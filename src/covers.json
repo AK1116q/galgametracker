@@ -58,5 +58,15 @@
     "source": "https://bgm.tv/subject/851",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/92/fb/851_2QUY6.jpg",
     "checkedAt": "2026-09-18"
+  },
+  "planetarian": {
+    "src": "/images/covers/planetarian.jpg",
+    "width": 296,
+    "height": 427,
+    "subjectId": 859,
+    "subjectTitle": "planetarian ～ちいさなほしのゆめ～",
+    "source": "https://bgm.tv/subject/859",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/2a/08/859_2s5MH.jpg",
+    "checkedAt": "2026-09-30"
   }
 }

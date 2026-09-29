@@ -343,7 +343,11 @@ export default function DiscLibrary({
                   d="M478 91 C402 10 260 -10 149 50 C42 108 -9 233 20 355 C44 479 141 575 264 589 C387 606 512 534 564 423 C614 313 584 175 495 108"
                 />
               </svg>
-              <DiscArtwork game={game} index={index} />
+              <DiscArtwork
+                game={game}
+                index={index}
+                loadArt={Math.abs(index - selected) < 3}
+              />
             </button>
           ))}
         </div>
@@ -419,13 +423,15 @@ export function GameIndex({
 export function DiscArtwork({
   game,
   index = 0,
+  loadArt = true,
 }: {
   game: { id: string; title: string };
   index?: number;
+  loadArt?: boolean;
 }) {
   return (
     <div className="disc-face" aria-hidden="true">
-      {art[game.id] && (
+      {loadArt && art[game.id] && (
         <img
           src={art[game.id].src}
           alt=""

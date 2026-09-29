@@ -270,7 +270,22 @@ export default function App() {
     ],
     [library.packs],
   );
-  const allGames = [...new Map(packs.map((p) => [p.game.id, p.game])).values()];
+  // Keep existing shelf positions stable as new packs are added.
+  const shelfOrder = [
+    "white-album-2",
+    "atri",
+    "riddle-joker",
+    "sabbat-of-the-witch",
+    "saya-no-uta",
+    "senren-banka",
+  ];
+  const allGames = [
+    ...new Map(packs.map((p) => [p.game.id, p.game])).values(),
+  ].sort((a, b) => {
+    const rank = (id: string) =>
+      shelfOrder.includes(id) ? shelfOrder.indexOf(id) : shelfOrder.length;
+    return rank(a.id) - rank(b.id);
+  });
   const selectedPacks = useMemo(
     () => packs.filter((p) => p.game.id === gameId),
     [packs, gameId],

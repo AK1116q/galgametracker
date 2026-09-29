@@ -1,4 +1,10 @@
 import { test, expect } from "@playwright/test";
+import { readdirSync, readFileSync } from "node:fs";
+const catalogPacks = readdirSync("data/catalog")
+  .filter((f) => f.endsWith(".route.json"))
+  .map((f) => JSON.parse(readFileSync(`data/catalog/${f}`, "utf8")));
+const workCount = new Set(catalogPacks.map((p) => p.game.id)).size + 1;
+const routeCount = catalogPacks.reduce((n, p) => n + p.routes.length, 10);
 async function openCatalog(page) {
   if (
     !(await page
@@ -66,7 +72,7 @@ test("new works expose complete paths and menu actions without invented ordinals
   await page.goto("/");
   await openCatalog(page);
   await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
-    6,
+    workCount,
   );
   await openCatalog(page);
   await page
@@ -469,7 +475,9 @@ test("public route pages work without JavaScript and keep canonical content afte
     `https://galgametracker.pages.dev${path}`,
   );
   await staticPage.goto("http://127.0.0.1:4174/");
-  await expect(staticPage.locator('a[href^="/guides/"]')).toHaveCount(36);
+  await expect(staticPage.locator('a[href^="/guides/"]')).toHaveCount(
+    routeCount,
+  );
   await context.close();
   await page.goto(path);
   await expect(
@@ -615,9 +623,7 @@ test("music follows all six works, preserves pause and volume, and reports block
   await expect(page.locator("iframe")).toHaveCount(0);
 });
 
-test("music script failure is recoverable", async ({
-  page,
-}) => {
+test("music script failure is recoverable", async ({ page }) => {
   await page.route("https://www.youtube.com/iframe_api", (route) =>
     route.abort(),
   );

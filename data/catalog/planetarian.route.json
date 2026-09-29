@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "0.1",
+  "id": "planetarian-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "planetarian",
+    "title": "星之梦",
+    "aliases": [
+      "planetarian",
+      "星之夢",
+      "星野梦美"
+    ]
+  },
+  "release": {
+    "id": "planetarian-pc",
+    "label": "PC / HD Edition 本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "本篇没有路线选择，只有一条完整故事。这里提供阅读流程，不伪造分支。",
+    "本条目不包含另售的《雪圈球》，不将前传混入本篇。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://galge.seiya-saiga.com/game/key/planetarian_hd.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/859",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "开始阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "从标题画面的开始入口进入本篇。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 开始阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-02",
+      "locator": "本篇阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "按顺序读到片尾；途中无需选择路线。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 本篇阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 唯一结局",
+      "hiddenTitle": "本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "main"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "誠也的 HD 版说明与 Bangumi 的 Kinetic Novel 说明均确认本篇无选择、无分支；据此只录入本篇阅读流程。"
+    }
+  ]
+}
