@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "0.1",
+  "id": "stella-of-the-end-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "stella-of-the-end",
+    "title": "星之终途",
+    "aliases": [
+      "終のステラ",
+      "终之斯特拉",
+      "Stella of The End"
+    ]
+  },
+  "release": {
+    "id": "stella-of-the-end-pc",
+    "label": "PC / 星之终途 本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "没有路线选择；初次启动自动进入 Chapter 01。",
+    "OP 后回到标题不是坏结局；再次选择 START 即可继续 Chapter 02。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://galge.seiya-saiga.com/game/key/tsuinostella.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://key.visualarts.gr.jp/kinetic/product.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "Chapter 01",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "初次启动自动开始，阅读第一章并观看 OP。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / Chapter 01；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-02",
+      "locator": "OP 后的标题画面",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "选择 START，继续 Chapter 02。",
+          "next": {
+            "kind": "choice",
+            "id": "main-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / OP 后的标题画面；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-03",
+      "locator": "Chapter 02–19",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "按顺序阅读余下章节至片尾，无路线选择。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / Chapter 02–19；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 唯一结局",
+      "hiddenTitle": "本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "main"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "Key 官方将本作归为 Kinetic Novel；誠也确认无选项、首次自动开始、OP 后重新 START，以及 Chapter 02–19 的连续流程。"
+    }
+  ]
+}

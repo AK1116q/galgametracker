@@ -88,5 +88,15 @@
     "source": "https://bgm.tv/subject/2288",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/c3/61/2288_Y3ow5.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "stella-of-the-end": {
+    "src": "/images/covers/stella-of-the-end.jpg",
+    "width": 1000,
+    "height": 906,
+    "subjectId": 317675,
+    "subjectTitle": "終のステラ",
+    "source": "https://bgm.tv/subject/317675",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/35/cf/317675_csQ2e.jpg",
+    "checkedAt": "2026-09-30"
   }
 }
