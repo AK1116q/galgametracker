@@ -108,5 +108,15 @@
     "source": "https://bgm.tv/subject/289599",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/f8/5d/289599_NLvYY.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "witch-on-the-holy-night": {
+    "src": "/images/covers/witch-on-the-holy-night.jpg",
+    "width": 800,
+    "height": 969,
+    "subjectId": 5418,
+    "subjectTitle": "魔法使いの夜",
+    "source": "https://bgm.tv/subject/5418",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/7d/3e/5418_VTRT4.jpg",
+    "checkedAt": "2026-09-30"
   }
 }
