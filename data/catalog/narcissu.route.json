@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "0.1",
+  "id": "narcissu-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "narcissu",
+    "title": "水仙",
+    "aliases": [
+      "narcissu",
+      "ナルキッソス"
+    ]
+  },
+  "release": {
+    "id": "narcissu-pc",
+    "label": "PC / Narcissu 1st 本篇（Steam 合集中的第一作）",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "本篇无路线分歧、只有一个结局。",
+    "只覆盖第一作，不把 Side 2nd 或其他续作混为本篇。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/app/264380/discussions/0/540739861977221588/",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/1167",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "第一作 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "选择作品",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "在合集入口选择 Narcissu / 1st，而不是 Side 2nd。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "第一作 · 唯一结局 / 选择作品；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-02",
+      "locator": "本篇阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "按顺序读完第一作，无需选择路线。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "第一作 · 唯一结局 / 本篇阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "第一作 · 唯一结局",
+      "hiddenTitle": "第一作 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "main"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "Steam 社区说明确认各作均为单一路径和单一结局；与 Bangumi 第一作条目核对作品身份。"
+    }
+  ]
+}

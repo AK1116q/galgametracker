@@ -68,5 +68,15 @@
     "source": "https://bgm.tv/subject/859",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/2a/08/859_2s5MH.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "narcissu": {
+    "src": "/images/covers/narcissu.jpg",
+    "width": 271,
+    "height": 384,
+    "subjectId": 1167,
+    "subjectTitle": "narcissu",
+    "source": "https://bgm.tv/subject/1167",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/9d/a1/1167_Yymi1.jpg",
+    "checkedAt": "2026-09-30"
   }
 }
