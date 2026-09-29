@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "0.1",
+  "id": "eden-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "eden",
+    "title": "eden*",
+    "aliases": [
+      "伊甸园",
+      "eden* They were only two, on the planet."
+    ]
+  },
+  "release": {
+    "id": "eden-pc",
+    "label": "PC / eden* 全年龄本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "本篇无选项、无路线分歧。",
+    "不覆盖 PLUS+MOSAIC 追加内容。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/minori/eden.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/2288",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "标题画面",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "选择 New Game，开始本篇。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 标题画面；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-02",
+      "locator": "本篇阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "按顺序读到片尾，无需选项或路线条件。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 本篇阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 唯一结局",
+      "hiddenTitle": "本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "main"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "誠也明确说明本篇是一条无选择的故事；与 Bangumi 信息核对本篇及追加内容边界。"
+    }
+  ]
+}
