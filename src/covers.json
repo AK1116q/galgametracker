@@ -98,5 +98,15 @@
     "source": "https://bgm.tv/subject/317675",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/35/cf/317675_csQ2e.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "cafe-stella": {
+    "src": "/images/covers/cafe-stella.jpg",
+    "width": 501,
+    "height": 700,
+    "subjectId": 289599,
+    "subjectTitle": "喫茶ステラと死神の蝶",
+    "source": "https://bgm.tv/subject/289599",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/f8/5d/289599_NLvYY.jpg",
+    "checkedAt": "2026-09-30"
   }
 }

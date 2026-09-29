@@ -1,0 +1,1665 @@
+{
+  "schemaVersion": "0.1",
+  "id": "cafe-stella-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "cafe-stella",
+    "title": "星光咖啡馆与死神之蝶",
+    "aliases": [
+      "喫茶ステラと死神の蝶",
+      "Cafe Stella",
+      "咖啡死神蝶"
+    ]
+  },
+  "release": {
+    "id": "cafe-stella-pc",
+    "label": "PC / Steam 主线结局",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "五角色路线、提前结束与通常结局；不覆盖 After Story 和差分 CG。",
+    "凉音线需要先完成四条主角路线中的任意一条。通常结局采用相同后期存档起点，因此也按已完成一条主线的周目提供。",
+    "第二份指南通过署名 Chuee 的公开转载核对，Steam 原页本次遇到限流；不把转载当作额外独立来源。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/cafestella.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/sharedfiles/filedetails/?id=2784276422",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://gamepretty.com/cafe-stella-walkthrough-all-routes-guide/",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kanna",
+      "safeLabel": "明月栞那",
+      "entryChoiceId": "kanna-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "natsume",
+      "safeLabel": "四季夏目",
+      "entryChoiceId": "natsume-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "nozomi",
+      "safeLabel": "墨染希",
+      "entryChoiceId": "nozomi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mei",
+      "safeLabel": "火打谷爱衣",
+      "entryChoiceId": "mei-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "suzune",
+      "safeLabel": "汐山凉音",
+      "entryChoiceId": "suzune-01",
+      "requiredEndingIds": [
+        "any-main-end"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": [
+        "any-main-end"
+      ]
+    },
+    {
+      "id": "bad",
+      "safeLabel": "提前结束 · 拒绝邀请",
+      "entryChoiceId": "bad-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "kanna-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "蛋包饭",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪栞那练习",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "照常练习料理",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "现在休息",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与凉音一起回去",
+          "next": {
+            "kind": "choice",
+            "id": "kanna-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "kanna-08",
+      "locator": "明月栞那 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "kanna-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanna",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "明月栞那 / 明月栞那 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "natsume-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "红茶",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪希练习",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "先稍作休息",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "让凉音先休息",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与凉音一起回去",
+          "next": {
+            "kind": "choice",
+            "id": "natsume-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "natsume-08",
+      "locator": "四季夏目 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "natsume-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "natsume",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "四季夏目 / 四季夏目 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "nozomi-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "红茶",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪希练习",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "练习接待客人",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "现在休息",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "送希回家",
+          "next": {
+            "kind": "choice",
+            "id": "nozomi-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nozomi-08",
+      "locator": "墨染希 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "nozomi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "墨染希 / 墨染希 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "mei-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "mei-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "mei-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "蛋包饭",
+          "next": {
+            "kind": "choice",
+            "id": "mei-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪爱衣练习",
+          "next": {
+            "kind": "choice",
+            "id": "mei-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去看看店内前厅",
+          "next": {
+            "kind": "choice",
+            "id": "mei-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "现在休息",
+          "next": {
+            "kind": "choice",
+            "id": "mei-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与凉音一起回去",
+          "next": {
+            "kind": "choice",
+            "id": "mei-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mei-08",
+      "locator": "火打谷爱衣 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "mei-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mei",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "火打谷爱衣 / 火打谷爱衣 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "suzune-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "红茶",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪希练习",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "照常练习料理",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "现在休息",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与凉音一起回去",
+          "next": {
+            "kind": "choice",
+            "id": "suzune-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "suzune-08",
+      "locator": "汐山凉音 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "suzune-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzune",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "汐山凉音 / 汐山凉音 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "normal-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受邀请",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-03",
+      "locator": "03 · 餐点评价",
+      "prompt": "03 · 餐点评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "红茶",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 03 · 餐点评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-04",
+      "locator": "04 · 练习搭档",
+      "prompt": "04 · 练习搭档",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪希练习",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 04 · 练习搭档；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-05",
+      "locator": "05 · 接下来的安排",
+      "prompt": "05 · 接下来的安排",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "照常练习料理",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 05 · 接下来的安排；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-06",
+      "locator": "06 · 休息顺序",
+      "prompt": "06 · 休息顺序",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "现在休息",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 06 · 休息顺序；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-07",
+      "locator": "07 · 回家",
+      "prompt": "07 · 回家",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "送希回家",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 07 · 回家；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-08",
+      "locator": "通常结局 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 通常结局 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "bad-01",
+      "locator": "01 · 记忆",
+      "prompt": "01 · 记忆",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "交出自己的记忆",
+          "next": {
+            "kind": "choice",
+            "id": "bad-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 拒绝邀请 / 01 · 记忆；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "bad-02",
+      "locator": "02 · 打工邀请",
+      "prompt": "02 · 打工邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拒绝邀请",
+          "next": {
+            "kind": "ending",
+            "id": "bad-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 拒绝邀请 / 02 · 打工邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    }
+  ],
+  "endings": [
+    {
+      "id": "any-main-end",
+      "safeLabel": "已完成栞那、夏目、希或爱衣中的任意一条主线",
+      "hiddenTitle": "已完成栞那、夏目、希或爱衣中的任意一条主线",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "kanna-end",
+      "safeLabel": "明月栞那",
+      "hiddenTitle": "明月栞那",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "natsume-end",
+      "safeLabel": "四季夏目",
+      "hiddenTitle": "四季夏目",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nozomi-end",
+      "safeLabel": "墨染希",
+      "hiddenTitle": "墨染希",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mei-end",
+      "safeLabel": "火打谷爱衣",
+      "hiddenTitle": "火打谷爱衣",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "suzune-end",
+      "safeLabel": "汐山凉音",
+      "hiddenTitle": "汐山凉音",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局",
+      "hiddenTitle": "通常结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-end",
+      "safeLabel": "提前结束 · 拒绝邀请",
+      "hiddenTitle": "提前结束 · 拒绝邀请",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "kanna",
+        "natsume",
+        "nozomi",
+        "mei",
+        "suzune",
+        "normal",
+        "bad"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "将誠也的继承存档展开为完整新游戏路径，与 Chuee 的署名转载逐项对照七处共通选择。核对五角色、提前结束及通常结局；排除不改变主线结局的差分选项。"
+    }
+  ]
+}
