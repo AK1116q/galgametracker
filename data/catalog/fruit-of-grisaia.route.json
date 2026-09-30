@@ -1,0 +1,2529 @@
+{
+  "schemaVersion": "0.1",
+  "id": "fruit-of-grisaia-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "fruit-of-grisaia",
+    "title": "灰色的果实",
+    "aliases": [
+      "グリザイアの果実",
+      "The Fruit of Grisaia",
+      "灰色的果實"
+    ]
+  },
+  "release": {
+    "id": "fruit-of-grisaia-pc",
+    "label": "PC 原版主线 / 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "覆盖五位角色各两个结局，共十个目标。",
+    "从新游戏开始：各路线已补全攻略存档继承的共通选项。",
+    "两份来源出自同一作者，PSP 页面注明与 PC 选择相同；不是两个独立作者的实机验证。",
+    "未确认 2025 Remastered Box 等新版的逐字选项与兼容性。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/frontwing/grisaia.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://galge.seiya-saiga.com/game/galge/psp/grisaia_psp.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "yumiko-true",
+      "safeLabel": "榊由美子 · True Ending",
+      "entryChoiceId": "yumiko-true-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yumiko-other",
+      "safeLabel": "榊由美子 · Normal Ending",
+      "entryChoiceId": "yumiko-other-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "amane-true",
+      "safeLabel": "周防天音 · True Ending",
+      "entryChoiceId": "amane-true-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "amane-other",
+      "safeLabel": "周防天音 · Bad Ending",
+      "entryChoiceId": "amane-other-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "makina-true",
+      "safeLabel": "入巢莳菜 · True Ending",
+      "entryChoiceId": "makina-true-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "makina-other",
+      "safeLabel": "入巢莳菜 · Bad Ending",
+      "entryChoiceId": "makina-other-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "sachi-true",
+      "safeLabel": "小岭幸 · True Ending",
+      "entryChoiceId": "sachi-true-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "sachi-other",
+      "safeLabel": "小岭幸 · Bad Ending",
+      "entryChoiceId": "sachi-other-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "michiru-true",
+      "safeLabel": "松岛满 · True Ending",
+      "entryChoiceId": "michiru-true-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "michiru-other",
+      "safeLabel": "松岛满 · Bad Ending",
+      "entryChoiceId": "michiru-other-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "yumiko-true-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "提出另一个条件",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-07",
+      "locator": "共通线 · 是否有话要问",
+      "prompt": "共通线 · 是否有话要问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示没什么",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 共通线 · 是否有话要问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-08",
+      "locator": "榊由美子 · 面对困难",
+      "prompt": "榊由美子 · 面对困难",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起面对",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-true-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 榊由美子 · 面对困难；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-true-09",
+      "locator": "榊由美子 · True Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "yumiko-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · True Ending / 榊由美子 · True Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "yumiko-other-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "提出另一个条件",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-07",
+      "locator": "共通线 · 是否有话要问",
+      "prompt": "共通线 · 是否有话要问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示没什么",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 共通线 · 是否有话要问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-08",
+      "locator": "榊由美子 · 面对困难",
+      "prompt": "榊由美子 · 面对困难",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起逃走",
+          "next": {
+            "kind": "choice",
+            "id": "yumiko-other-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 榊由美子 · 面对困难；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "yumiko-other-09",
+      "locator": "榊由美子 · Normal Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "yumiko-other-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yumiko-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "榊由美子 · Normal Ending / 榊由美子 · Normal Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "amane-true-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "以亲吻回应天音",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-06",
+      "locator": "周防天音 · 逃离时的决定",
+      "prompt": "周防天音 · 逃离时的决定",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与天音一起逃走",
+          "next": {
+            "kind": "choice",
+            "id": "amane-true-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 周防天音 · 逃离时的决定；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-true-07",
+      "locator": "周防天音 · True Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "amane-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · True Ending / 周防天音 · True Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "amane-other-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "以亲吻回应天音",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-06",
+      "locator": "周防天音 · 逃离时的决定",
+      "prompt": "周防天音 · 逃离时的决定",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与天音分开逃走",
+          "next": {
+            "kind": "choice",
+            "id": "amane-other-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 周防天音 · 逃离时的决定；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "amane-other-07",
+      "locator": "周防天音 · Bad Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "amane-other-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "amane-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "周防天音 · Bad Ending / 周防天音 · Bad Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "makina-true-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "makina-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-true-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "makina-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-true-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "makina-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-true-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "收下钱",
+          "next": {
+            "kind": "choice",
+            "id": "makina-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-true-05",
+      "locator": "入巢莳菜 · 扳机",
+      "prompt": "入巢莳菜 · 扳机",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不扣动扳机",
+          "next": {
+            "kind": "choice",
+            "id": "makina-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 入巢莳菜 · 扳机；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-true-06",
+      "locator": "入巢莳菜 · True Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "makina-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · True Ending / 入巢莳菜 · True Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "makina-other-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "makina-other-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-other-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "makina-other-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-other-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "makina-other-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-other-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "收下钱",
+          "next": {
+            "kind": "choice",
+            "id": "makina-other-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-other-05",
+      "locator": "入巢莳菜 · 扳机",
+      "prompt": "入巢莳菜 · 扳机",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "扣动扳机",
+          "next": {
+            "kind": "choice",
+            "id": "makina-other-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 入巢莳菜 · 扳机；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "makina-other-06",
+      "locator": "入巢莳菜 · Bad Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "makina-other-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "makina-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "入巢莳菜 · Bad Ending / 入巢莳菜 · Bad Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "sachi-true-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表扬幸",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-07",
+      "locator": "小岭幸 · 幸线的最后选择",
+      "prompt": "小岭幸 · 幸线的最后选择",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "只能杀死母亲",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-true-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 小岭幸 · 幸线的最后选择；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-true-08",
+      "locator": "小岭幸 · True Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "sachi-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · True Ending / 小岭幸 · True Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "sachi-other-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表扬幸",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-07",
+      "locator": "小岭幸 · 幸线的最后选择",
+      "prompt": "小岭幸 · 幸线的最后选择",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "只能杀死自己",
+          "next": {
+            "kind": "choice",
+            "id": "sachi-other-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 小岭幸 · 幸线的最后选择；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sachi-other-08",
+      "locator": "小岭幸 · Bad Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "sachi-other-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sachi-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小岭幸 · Bad Ending / 小岭幸 · Bad Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "michiru-true-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "提出另一个条件",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-07",
+      "locator": "共通线 · 是否有话要问",
+      "prompt": "共通线 · 是否有话要问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示有事情想问她",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 共通线 · 是否有话要问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-08",
+      "locator": "松岛满 · 最后的挽留",
+      "prompt": "松岛满 · 最后的挽留",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "询问是否要最后一次亲吻",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-true-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 松岛满 · 最后的挽留；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-true-09",
+      "locator": "松岛满 · True Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "michiru-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · True Ending / 松岛满 · True Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "michiru-other-01",
+      "locator": "01 · 最初的帮忙",
+      "prompt": "01 · 最初的帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 01 · 最初的帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-02",
+      "locator": "02 · 昵称",
+      "prompt": "02 · 昵称",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "使用「ユジユジ」这个昵称",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 02 · 昵称；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-03",
+      "locator": "03 · 再次帮忙",
+      "prompt": "03 · 再次帮忙",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮幸做事",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 03 · 再次帮忙；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-04",
+      "locator": "共通线 · 钱的提议",
+      "prompt": "共通线 · 钱的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不收钱",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 共通线 · 钱的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-05",
+      "locator": "共通线 · 天音的提议",
+      "prompt": "共通线 · 天音的提议",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不顺着天音的激将继续行动",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 共通线 · 天音的提议；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-06",
+      "locator": "共通线 · 条件",
+      "prompt": "共通线 · 条件",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "提出另一个条件",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 共通线 · 条件；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-07",
+      "locator": "共通线 · 是否有话要问",
+      "prompt": "共通线 · 是否有话要问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示有事情想问她",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 共通线 · 是否有话要问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-08",
+      "locator": "松岛满 · 最后的挽留",
+      "prompt": "松岛满 · 最后的挽留",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "要求她留下，和自己在一起",
+          "next": {
+            "kind": "choice",
+            "id": "michiru-other-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 松岛满 · 最后的挽留；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "michiru-other-09",
+      "locator": "松岛满 · Bad Ending · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "michiru-other-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "michiru-other",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "松岛满 · Bad Ending / 松岛满 · Bad Ending · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "yumiko-true-end",
+      "safeLabel": "榊由美子 · True Ending",
+      "hiddenTitle": "榊由美子 · True Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yumiko-other-end",
+      "safeLabel": "榊由美子 · Normal Ending",
+      "hiddenTitle": "榊由美子 · Normal Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "amane-true-end",
+      "safeLabel": "周防天音 · True Ending",
+      "hiddenTitle": "周防天音 · True Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "amane-other-end",
+      "safeLabel": "周防天音 · Bad Ending",
+      "hiddenTitle": "周防天音 · Bad Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "makina-true-end",
+      "safeLabel": "入巢莳菜 · True Ending",
+      "hiddenTitle": "入巢莳菜 · True Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "makina-other-end",
+      "safeLabel": "入巢莳菜 · Bad Ending",
+      "hiddenTitle": "入巢莳菜 · Bad Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sachi-true-end",
+      "safeLabel": "小岭幸 · True Ending",
+      "hiddenTitle": "小岭幸 · True Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sachi-other-end",
+      "safeLabel": "小岭幸 · Bad Ending",
+      "hiddenTitle": "小岭幸 · Bad Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "michiru-true-end",
+      "safeLabel": "松岛满 · True Ending",
+      "hiddenTitle": "松岛满 · True Ending",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "michiru-other-end",
+      "safeLabel": "松岛满 · Bad Ending",
+      "hiddenTitle": "松岛满 · Bad Ending",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "yumiko-true",
+        "yumiko-other",
+        "amane-true",
+        "amane-other",
+        "makina-true",
+        "makina-other",
+        "sachi-true",
+        "sachi-other",
+        "michiru-true",
+        "michiru-other"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "按原版 PC 攻略展开每个存档起点；用同作者 PSP 版页面逐项对照分支、最终选择及结局。保留同源限制，不声称独立通关验证。"
+    }
+  ]
+}

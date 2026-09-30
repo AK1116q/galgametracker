@@ -118,5 +118,15 @@
     "source": "https://bgm.tv/subject/5418",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/7d/3e/5418_VTRT4.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "fruit-of-grisaia": {
+    "src": "/images/covers/fruit-of-grisaia.jpg",
+    "width": 389,
+    "height": 560,
+    "subjectId": 10869,
+    "subjectTitle": "グリザイアの果実 -LE FRUIT DE LA GRISAIA-",
+    "source": "https://bgm.tv/subject/10869",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/b1/4f/10869_J54tt.jpg",
+    "checkedAt": "2026-09-30"
   }
 }
