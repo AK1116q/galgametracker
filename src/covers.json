@@ -138,5 +138,15 @@
     "source": "https://vndb.org/v12849",
     "imageSource": "https://t.vndb.org/cv/55/79855.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "dracu-riot": {
+    "src": "/images/covers/dracu-riot.jpg",
+    "width": 1200,
+    "height": 1700,
+    "subjectId": "v8213",
+    "subjectTitle": "DRACU-RIOT!",
+    "source": "https://vndb.org/v8213",
+    "imageSource": "https://t.vndb.org/cv/68/116468.jpg",
+    "checkedAt": "2026-09-30"
   }
 }

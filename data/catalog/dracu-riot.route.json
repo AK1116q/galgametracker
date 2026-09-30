@@ -1,0 +1,1525 @@
+{
+  "schemaVersion": "0.1",
+  "id": "dracu-riot-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "dracu-riot",
+    "title": "DRACU-RIOT!",
+    "aliases": [
+      "DRACU-RIOT！",
+      "吸血鬼狂欢",
+      "魔宴吸血鬼"
+    ]
+  },
+  "release": {
+    "id": "dracu-riot-pc",
+    "label": "PC / QHD Edition（Steam）主线",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "覆盖四主角、尼古拉和通常结局；不覆盖 After Story、差分 CG 或流程图全收集。",
+    "美羽和梓达到三次好感选择后，第四次好感事件自动发生，因此各只有六次选择。",
+    "尼古拉需要先完成任意一位主角的结局。",
+    "不同攻略给出的有效好感组合可能不同。这里固定使用誠也的完整路径，不混接 NookGaming 的局部选项。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/dracuriot.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/dracu-riot-walkthrough-guide/",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "miu",
+      "safeLabel": "矢来美羽",
+      "entryChoiceId": "miu-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "elina",
+      "safeLabel": "艾莉娜",
+      "entryChoiceId": "elina-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "azusa",
+      "safeLabel": "布良梓",
+      "entryChoiceId": "azusa-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "rio",
+      "safeLabel": "稻丛莉音",
+      "entryChoiceId": "rio-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "nicola",
+      "safeLabel": "尼古拉",
+      "entryChoiceId": "nicola-01",
+      "requiredEndingIds": [
+        "any-main-end"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "miu-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与美羽同行",
+          "next": {
+            "kind": "choice",
+            "id": "miu-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "偏好丰满型",
+          "next": {
+            "kind": "choice",
+            "id": "miu-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "还是不邀请",
+          "next": {
+            "kind": "choice",
+            "id": "miu-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "没办法，动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "miu-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮忙涂抹",
+          "next": {
+            "kind": "choice",
+            "id": "miu-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "主动提出替她涂防晒",
+          "next": {
+            "kind": "choice",
+            "id": "miu-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "miu-07",
+      "locator": "矢来美羽 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "miu-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "miu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "矢来美羽 / 矢来美羽 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "elina-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与美羽同行",
+          "next": {
+            "kind": "choice",
+            "id": "elina-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "偏好丰满型",
+          "next": {
+            "kind": "choice",
+            "id": "elina-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "还是不邀请",
+          "next": {
+            "kind": "choice",
+            "id": "elina-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不能动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "elina-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮忙涂抹",
+          "next": {
+            "kind": "choice",
+            "id": "elina-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "什么也不说",
+          "next": {
+            "kind": "choice",
+            "id": "elina-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-07",
+      "locator": "07 · 最后的委托",
+      "prompt": "07 · 最后的委托",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拜托艾莉娜",
+          "next": {
+            "kind": "choice",
+            "id": "elina-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 07 · 最后的委托；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "elina-08",
+      "locator": "艾莉娜 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "elina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "艾莉娜 / 艾莉娜 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "azusa-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与布良同行",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "女性的价值不在于身材",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "为答谢而邀请稻丛",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不能动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "另想办法",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "也请布良帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "azusa-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "azusa-07",
+      "locator": "布良梓 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "azusa-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "azusa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "布良梓 / 布良梓 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "rio-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与布良同行",
+          "next": {
+            "kind": "choice",
+            "id": "rio-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "女性的价值不在于身材",
+          "next": {
+            "kind": "choice",
+            "id": "rio-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "为答谢而邀请稻丛",
+          "next": {
+            "kind": "choice",
+            "id": "rio-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不能动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "rio-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "另想办法",
+          "next": {
+            "kind": "choice",
+            "id": "rio-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "自己一个人应该可以",
+          "next": {
+            "kind": "choice",
+            "id": "rio-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-07",
+      "locator": "07 · 最后的委托",
+      "prompt": "07 · 最后的委托",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拜托稻丛",
+          "next": {
+            "kind": "choice",
+            "id": "rio-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 07 · 最后的委托；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rio-08",
+      "locator": "稻丛莉音 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "rio-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "稻丛莉音 / 稻丛莉音 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "nicola-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与美羽同行",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "偏好丰满型",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "还是不邀请",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不能动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮忙涂抹",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "什么也不说",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-07",
+      "locator": "07 · 最后的委托",
+      "prompt": "07 · 最后的委托",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拜托稻丛",
+          "next": {
+            "kind": "choice",
+            "id": "nicola-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 07 · 最后的委托；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "nicola-08",
+      "locator": "尼古拉 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "nicola-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nicola",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "尼古拉 / 尼古拉 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "normal-01",
+      "locator": "01 · 同行对象",
+      "prompt": "01 · 同行对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与美羽同行",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 01 · 同行对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-02",
+      "locator": "02 · 偏好",
+      "prompt": "02 · 偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "偏好丰满型",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 02 · 偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-03",
+      "locator": "03 · 是否邀请莉音",
+      "prompt": "03 · 是否邀请莉音",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "还是不邀请",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 03 · 是否邀请莉音；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-04",
+      "locator": "04 · 是否出手",
+      "prompt": "04 · 是否出手",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不能动手打他",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 04 · 是否出手；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-05",
+      "locator": "05 · 处理办法",
+      "prompt": "05 · 处理办法",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "帮忙涂抹",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 05 · 处理办法；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-06",
+      "locator": "06 · 帮忙涂防晒",
+      "prompt": "06 · 帮忙涂防晒",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "什么也不说",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 06 · 帮忙涂防晒；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-07",
+      "locator": "07 · 最后的委托",
+      "prompt": "07 · 最后的委托",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "这样会给她们添麻烦",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 07 · 最后的委托；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-08",
+      "locator": "通常结局 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 / 通常结局 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "any-main-end",
+      "safeLabel": "已完成美羽、梓、莉音或艾莉娜中的任意一条主线",
+      "hiddenTitle": "已完成美羽、梓、莉音或艾莉娜中的任意一条主线",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "miu-end",
+      "safeLabel": "矢来美羽",
+      "hiddenTitle": "矢来美羽",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "elina-end",
+      "safeLabel": "艾莉娜",
+      "hiddenTitle": "艾莉娜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "azusa-end",
+      "safeLabel": "布良梓",
+      "hiddenTitle": "布良梓",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "rio-end",
+      "safeLabel": "稻丛莉音",
+      "hiddenTitle": "稻丛莉音",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nicola-end",
+      "safeLabel": "尼古拉",
+      "hiddenTitle": "尼古拉",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局",
+      "hiddenTitle": "通常结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "miu",
+        "elina",
+        "azusa",
+        "rio",
+        "nicola",
+        "normal"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "誠也 2026-03-02 更新明确兼容 QHD Steam 版，并给出好感计数与自动事件。NookGaming 确认四主角、一副线、通常结局与副线解锁条件；它使用另一组有效选法，本数据保持同一来源完整起点。"
+    }
+  ]
+}
