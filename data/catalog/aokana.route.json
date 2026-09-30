@@ -1,0 +1,1659 @@
+{
+  "schemaVersion": "0.1",
+  "id": "aokana-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "aokana",
+    "title": "苍之彼方的四重奏",
+    "aliases": [
+      "蒼の彼方のフォーリズム",
+      "Aokana",
+      "苍彼"
+    ]
+  },
+  "release": {
+    "id": "aokana-pc",
+    "label": "PC / High Resolution 全年龄版",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "覆盖 High Resolution 版四条角色线和 FINAL；不含 EXTRA1 / EXTRA2。",
+    "四角色结局完成后自动进入 FINAL；再次阅读可从新游戏入口选择 FINAL。",
+    "具体选法依据誠也 High Resolution 攻略，发行商官网用于核对作品与角色；未声称官网提供路线验证。",
+    "尚未实机核对各地区 Steam、Perfect Edition 与 10th Anniversary 版是否完全一致，请先核对版本。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/sprite/aokana_hr.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://hikarifield.co.jp/aokana/",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "asuka",
+      "safeLabel": "仓科明日香",
+      "entryChoiceId": "asuka-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mashiro",
+      "safeLabel": "有坂真白",
+      "entryChoiceId": "mashiro-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "rika",
+      "safeLabel": "市之濑莉佳",
+      "entryChoiceId": "rika-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "misaki",
+      "safeLabel": "鸢泽美咲",
+      "entryChoiceId": "misaki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "final",
+      "safeLabel": "FINAL",
+      "entryChoiceId": "final-01",
+      "requiredEndingIds": [
+        "asuka-end",
+        "mashiro-end",
+        "rika-end",
+        "misaki-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "asuka-01",
+      "locator": "01 · 打招呼",
+      "prompt": "01 · 打招呼",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "主动搭话",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 01 · 打招呼；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-02",
+      "locator": "02 · 帮助她的原因",
+      "prompt": "02 · 帮助她的原因",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "希望她能够学会飞行",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 02 · 帮助她的原因；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-03",
+      "locator": "03 · 商量的事",
+      "prompt": "03 · 商量的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "谈谈美咲的积极性",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 03 · 商量的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-04",
+      "locator": "04 · 味道评价",
+      "prompt": "04 · 味道评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "也去告诉她很好吃",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 04 · 味道评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-05",
+      "locator": "05 · 练习态度",
+      "prompt": "05 · 练习态度",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "要求再认真一点",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 05 · 练习态度；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-06",
+      "locator": "06 · 练习对象",
+      "prompt": "06 · 练习对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "继续和莉佳练习",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 06 · 练习对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-07",
+      "locator": "07 · 对策",
+      "prompt": "07 · 对策",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起想必杀技",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 07 · 对策；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-08",
+      "locator": "08 · 是否告诉她",
+      "prompt": "08 · 是否告诉她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "告诉她",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 08 · 是否告诉她；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-09",
+      "locator": "09 · 向谁搭话",
+      "prompt": "09 · 向谁搭话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向美咲搭话",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 09 · 向谁搭话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-10",
+      "locator": "明日香的请求",
+      "prompt": "明日香的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "答应她",
+          "next": {
+            "kind": "choice",
+            "id": "asuka-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 明日香的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "asuka-11",
+      "locator": "仓科明日香 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "asuka-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "asuka",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓科明日香 / 仓科明日香 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "mashiro-01",
+      "locator": "01 · 打招呼",
+      "prompt": "01 · 打招呼",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "主动搭话",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 01 · 打招呼；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-02",
+      "locator": "02 · 帮助她的原因",
+      "prompt": "02 · 帮助她的原因",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "希望她能够学会飞行",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 02 · 帮助她的原因；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-03",
+      "locator": "03 · 商量的事",
+      "prompt": "03 · 商量的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "谈谈美咲的积极性",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 03 · 商量的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-04",
+      "locator": "04 · 味道评价",
+      "prompt": "04 · 味道评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "也去告诉她很好吃",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 04 · 味道评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-05",
+      "locator": "05 · 练习态度",
+      "prompt": "05 · 练习态度",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "要求再认真一点",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 05 · 练习态度；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-06",
+      "locator": "06 · 练习对象",
+      "prompt": "06 · 练习对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "继续和莉佳练习",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 06 · 练习对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-07",
+      "locator": "07 · 对策",
+      "prompt": "07 · 对策",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起想必杀技",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 07 · 对策；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-08",
+      "locator": "08 · 是否告诉她",
+      "prompt": "08 · 是否告诉她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "告诉她",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 08 · 是否告诉她；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-09",
+      "locator": "09 · 向谁搭话",
+      "prompt": "09 · 向谁搭话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向美咲搭话",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 09 · 向谁搭话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-10",
+      "locator": "明日香的请求",
+      "prompt": "明日香的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拒绝，表示无法答应",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 明日香的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-11",
+      "locator": "真白的询问",
+      "prompt": "真白的询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "希望一起继续",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 真白的询问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "mashiro-12",
+      "locator": "有坂真白 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "mashiro-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "有坂真白 / 有坂真白 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "rika-01",
+      "locator": "01 · 打招呼",
+      "prompt": "01 · 打招呼",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "主动搭话",
+          "next": {
+            "kind": "choice",
+            "id": "rika-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 01 · 打招呼；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-02",
+      "locator": "02 · 帮助她的原因",
+      "prompt": "02 · 帮助她的原因",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "希望她能够学会飞行",
+          "next": {
+            "kind": "choice",
+            "id": "rika-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 02 · 帮助她的原因；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-03",
+      "locator": "03 · 商量的事",
+      "prompt": "03 · 商量的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "谈谈美咲的积极性",
+          "next": {
+            "kind": "choice",
+            "id": "rika-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 03 · 商量的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-04",
+      "locator": "04 · 味道评价",
+      "prompt": "04 · 味道评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "也去告诉她很好吃",
+          "next": {
+            "kind": "choice",
+            "id": "rika-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 04 · 味道评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-05",
+      "locator": "05 · 练习态度",
+      "prompt": "05 · 练习态度",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "要求再认真一点",
+          "next": {
+            "kind": "choice",
+            "id": "rika-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 05 · 练习态度；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-06",
+      "locator": "06 · 练习对象",
+      "prompt": "06 · 练习对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "继续和莉佳练习",
+          "next": {
+            "kind": "choice",
+            "id": "rika-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 06 · 练习对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-07",
+      "locator": "07 · 对策",
+      "prompt": "07 · 对策",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起想必杀技",
+          "next": {
+            "kind": "choice",
+            "id": "rika-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 07 · 对策；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-08",
+      "locator": "08 · 是否告诉她",
+      "prompt": "08 · 是否告诉她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "告诉她",
+          "next": {
+            "kind": "choice",
+            "id": "rika-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 08 · 是否告诉她；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-09",
+      "locator": "09 · 向谁搭话",
+      "prompt": "09 · 向谁搭话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向美咲搭话",
+          "next": {
+            "kind": "choice",
+            "id": "rika-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 09 · 向谁搭话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-10",
+      "locator": "明日香的请求",
+      "prompt": "明日香的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拒绝，表示无法答应",
+          "next": {
+            "kind": "choice",
+            "id": "rika-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 明日香的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-11",
+      "locator": "真白的询问",
+      "prompt": "真白的询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "让她按自己的想法决定",
+          "next": {
+            "kind": "choice",
+            "id": "rika-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 真白的询问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-12",
+      "locator": "莉佳的请求",
+      "prompt": "莉佳的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示自己愿意做",
+          "next": {
+            "kind": "choice",
+            "id": "rika-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 莉佳的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "rika-13",
+      "locator": "市之濑莉佳 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "rika-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rika",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "市之濑莉佳 / 市之濑莉佳 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "misaki-01",
+      "locator": "01 · 打招呼",
+      "prompt": "01 · 打招呼",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "主动搭话",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 01 · 打招呼；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-02",
+      "locator": "02 · 帮助她的原因",
+      "prompt": "02 · 帮助她的原因",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "希望她能够学会飞行",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 02 · 帮助她的原因；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-03",
+      "locator": "03 · 商量的事",
+      "prompt": "03 · 商量的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "谈谈美咲的积极性",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 03 · 商量的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-04",
+      "locator": "04 · 味道评价",
+      "prompt": "04 · 味道评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "也去告诉她很好吃",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 04 · 味道评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-05",
+      "locator": "05 · 练习态度",
+      "prompt": "05 · 练习态度",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "要求再认真一点",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 05 · 练习态度；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-06",
+      "locator": "06 · 练习对象",
+      "prompt": "06 · 练习对象",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "继续和莉佳练习",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 06 · 练习对象；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-07",
+      "locator": "07 · 对策",
+      "prompt": "07 · 对策",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起想必杀技",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 07 · 对策；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-08",
+      "locator": "08 · 是否告诉她",
+      "prompt": "08 · 是否告诉她",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "告诉她",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 08 · 是否告诉她；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-09",
+      "locator": "09 · 向谁搭话",
+      "prompt": "09 · 向谁搭话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向美咲搭话",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 09 · 向谁搭话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-10",
+      "locator": "明日香的请求",
+      "prompt": "明日香的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拒绝，表示无法答应",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 明日香的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-11",
+      "locator": "真白的询问",
+      "prompt": "真白的询问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "让她按自己的想法决定",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 真白的询问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-12",
+      "locator": "莉佳的请求",
+      "prompt": "莉佳的请求",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "道歉，表示无法答应",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 莉佳的请求；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-13",
+      "locator": "美咲线入口",
+      "prompt": "美咲线入口",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "让她来参加社团活动",
+          "next": {
+            "kind": "choice",
+            "id": "misaki-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 美咲线入口；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "misaki-14",
+      "locator": "鸢泽美咲 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该路线后继续读到结局；本条目不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "misaki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "misaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸢泽美咲 / 鸢泽美咲 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "final-01",
+      "locator": "四条角色线完成后",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "第四条角色线结局后，继续进入自动开启的 FINAL。",
+          "next": {
+            "kind": "ending",
+            "id": "final-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "final",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "FINAL / 四条角色线完成后；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "asuka-end",
+      "safeLabel": "仓科明日香",
+      "hiddenTitle": "仓科明日香",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mashiro-end",
+      "safeLabel": "有坂真白",
+      "hiddenTitle": "有坂真白",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "rika-end",
+      "safeLabel": "市之濑莉佳",
+      "hiddenTitle": "市之濑莉佳",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "misaki-end",
+      "safeLabel": "鸢泽美咲",
+      "hiddenTitle": "鸢泽美咲",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "final-end",
+      "safeLabel": "FINAL",
+      "hiddenTitle": "FINAL",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "asuka",
+        "mashiro",
+        "rika",
+        "misaki",
+        "final"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "采用 High Resolution 原文完整共通路径，展开 SAVE01–03 的继承关系；四角色通关后的 FINAL 条件来自同页说明。发行商官网核对作品身份，不能代替第二份选项证据。"
+    }
+  ]
+}

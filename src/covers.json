@@ -128,5 +128,15 @@
     "source": "https://bgm.tv/subject/10869",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/b1/4f/10869_J54tt.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "aokana": {
+    "src": "/images/covers/aokana.jpg",
+    "width": 600,
+    "height": 900,
+    "subjectId": "v12849",
+    "subjectTitle": "Ao no Kanata no Four Rhythm",
+    "source": "https://vndb.org/v12849",
+    "imageSource": "https://t.vndb.org/cv/55/79855.jpg",
+    "checkedAt": "2026-09-30"
   }
 }

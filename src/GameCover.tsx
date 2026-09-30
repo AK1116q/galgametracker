@@ -35,7 +35,7 @@ export default function GameCover({
 export function CoverSources() {
   return (
     <details className="cover-sources">
-      <summary>封面来源：Bangumi</summary>
+      <summary>封面与盘面图片来源</summary>
       <ul>
         {Object.entries(covers).map(([id, cover]) => (
           <li key={id}>
