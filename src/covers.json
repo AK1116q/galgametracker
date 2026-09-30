@@ -148,5 +148,15 @@
     "source": "https://vndb.org/v8213",
     "imageSource": "https://t.vndb.org/cv/68/116468.jpg",
     "checkedAt": "2026-09-30"
+  },
+  "noble-works": {
+    "src": "/images/covers/noble-works.jpg",
+    "width": 511,
+    "height": 699,
+    "subjectId": "v4806",
+    "subjectTitle": "Noble ☆ Works",
+    "source": "https://vndb.org/v4806",
+    "imageSource": "https://t.vndb.org/cv/33/101533.jpg",
+    "checkedAt": "2026-09-30"
   }
 }

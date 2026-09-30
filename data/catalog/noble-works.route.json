@@ -1,0 +1,4148 @@
+{
+  "schemaVersion": "0.1",
+  "id": "noble-works-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "noble-works",
+    "title": "贵族游戏",
+    "aliases": [
+      "のーぶる☆わーくす",
+      "Noble Works",
+      "Noble☆Works"
+    ]
+  },
+  "release": {
+    "id": "noble-works-pc",
+    "label": "PC 日文原版 / 主线含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "中文为选项含义提示，不保证与汉化补丁逐字一致。",
+    "公开资料核对，未实机通关；不将来源核对称为实机验证。",
+    "覆盖六位角色和三个非角色结局；不覆盖差分 CG 或对话变体。",
+    "萤线需要先完成其他五位角色中的任意一条。四个追加选择必须连续满足；不要跳过。",
+    "濑奈路径中「在校舍内寻找」首次游玩不出现，可跳过；追加选择开放后应照此项选择。",
+    "两个攻略使用的好感组合不同，这里采用誠也完整路径，不混拼。三个非角色结局在资料中有 Normal / Bad 的命名差异，因此以触发位置区分。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/yuzu-soft/nobleworks.html",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/noble-works-walkthrough-guide/",
+      "permission": "仅整理路线、前置及操作事实，中文自行概述；不转载攻略文章、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "akari",
+      "safeLabel": "兼元灯里",
+      "entryChoiceId": "akari-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "sena",
+      "safeLabel": "月山濑奈",
+      "entryChoiceId": "sena-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "shizuru",
+      "safeLabel": "正宗静流",
+      "entryChoiceId": "shizuru-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hinata",
+      "safeLabel": "国广日向",
+      "entryChoiceId": "hinata-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "maya",
+      "safeLabel": "长光麻夜",
+      "entryChoiceId": "maya-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hotaru",
+      "safeLabel": "安纲萤",
+      "entryChoiceId": "hotaru-01",
+      "requiredEndingIds": [
+        "any-main-end"
+      ]
+    },
+    {
+      "id": "early-job",
+      "safeLabel": "提前结束 · 拒绝工作",
+      "entryChoiceId": "early-job-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "early-farewell",
+      "safeLabel": "提前结束 · 告别",
+      "entryChoiceId": "early-farewell-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "normal",
+      "safeLabel": "通常结局 · 未进入角色线",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "akari-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "akari-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "akari-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "akari-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "akari-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-05",
+      "locator": "05 · 家务",
+      "prompt": "05 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "akari-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 05 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-06",
+      "locator": "06 · 昨天的事",
+      "prompt": "06 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "再次挑战",
+          "next": {
+            "kind": "choice",
+            "id": "akari-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 06 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-07",
+      "locator": "07 · 学习问题",
+      "prompt": "07 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "教她",
+          "next": {
+            "kind": "choice",
+            "id": "akari-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 07 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-08",
+      "locator": "08 · 是否忍耐",
+      "prompt": "08 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "akari-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 08 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-09",
+      "locator": "09 · 去哪里",
+      "prompt": "09 · 去哪里",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去咖啡馆",
+          "next": {
+            "kind": "choice",
+            "id": "akari-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 09 · 去哪里；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "给出提示",
+          "next": {
+            "kind": "choice",
+            "id": "akari-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去听她说话",
+          "next": {
+            "kind": "choice",
+            "id": "akari-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "婉拒",
+          "next": {
+            "kind": "choice",
+            "id": "akari-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-13",
+      "locator": "13 · 体型偏好",
+      "prompt": "13 · 体型偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "匀称型",
+          "next": {
+            "kind": "choice",
+            "id": "akari-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 13 · 体型偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-14",
+      "locator": "14 · 惩罚偏好",
+      "prompt": "14 · 惩罚偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "电流",
+          "next": {
+            "kind": "choice",
+            "id": "akari-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 14 · 惩罚偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "聚会更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "akari-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "这次拒绝",
+          "next": {
+            "kind": "choice",
+            "id": "akari-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-17",
+      "locator": "17 · 借东西",
+      "prompt": "17 · 借东西",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向大小姐借",
+          "next": {
+            "kind": "choice",
+            "id": "akari-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 17 · 借东西；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-18",
+      "locator": "18 · 是否确认",
+      "prompt": "18 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去确认",
+          "next": {
+            "kind": "choice",
+            "id": "akari-19"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 18 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "akari-19",
+      "locator": "兼元灯里 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "akari-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "兼元灯里 / 兼元灯里 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "sena-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "sena-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "sena-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去没人的地方休息",
+          "next": {
+            "kind": "choice",
+            "id": "sena-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-04",
+      "locator": "04 · 寻找地点",
+      "prompt": "04 · 寻找地点",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "在校舍内寻找",
+          "next": {
+            "kind": "choice",
+            "id": "sena-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 04 · 寻找地点；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false,
+      "skipTo": {
+        "kind": "choice",
+        "id": "sena-05"
+      }
+    },
+    {
+      "id": "sena-05",
+      "locator": "05 · 如何回应",
+      "prompt": "05 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "sena-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 05 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-06",
+      "locator": "06 · 家务",
+      "prompt": "06 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "sena-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 06 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-07",
+      "locator": "07 · 昨天的事",
+      "prompt": "07 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不再挑战",
+          "next": {
+            "kind": "choice",
+            "id": "sena-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 07 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-08",
+      "locator": "08 · 学习问题",
+      "prompt": "08 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "介绍其他人",
+          "next": {
+            "kind": "choice",
+            "id": "sena-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 08 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-09",
+      "locator": "09 · 是否忍耐",
+      "prompt": "09 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拜托她",
+          "next": {
+            "kind": "choice",
+            "id": "sena-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 09 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "旁观",
+          "next": {
+            "kind": "choice",
+            "id": "sena-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与麻夜走一段",
+          "next": {
+            "kind": "choice",
+            "id": "sena-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "婉拒",
+          "next": {
+            "kind": "choice",
+            "id": "sena-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-13",
+      "locator": "13 · 体型偏好",
+      "prompt": "13 · 体型偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "丰满型",
+          "next": {
+            "kind": "choice",
+            "id": "sena-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 13 · 体型偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-14",
+      "locator": "14 · 惩罚偏好",
+      "prompt": "14 · 惩罚偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "冲击",
+          "next": {
+            "kind": "choice",
+            "id": "sena-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 14 · 惩罚偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "聚会更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "sena-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "这次拒绝",
+          "next": {
+            "kind": "choice",
+            "id": "sena-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-17",
+      "locator": "17 · 借东西",
+      "prompt": "17 · 借东西",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向月山借",
+          "next": {
+            "kind": "choice",
+            "id": "sena-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 17 · 借东西；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-18",
+      "locator": "18 · 是否确认",
+      "prompt": "18 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去确认",
+          "next": {
+            "kind": "choice",
+            "id": "sena-19"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 18 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "sena-19",
+      "locator": "月山濑奈 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "sena-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sena",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月山濑奈 / 月山濑奈 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "shizuru-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-05",
+      "locator": "05 · 家务",
+      "prompt": "05 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 05 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-06",
+      "locator": "06 · 昨天的事",
+      "prompt": "06 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "再次挑战",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 06 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-07",
+      "locator": "07 · 学习问题",
+      "prompt": "07 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "教她",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 07 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-08",
+      "locator": "08 · 是否忍耐",
+      "prompt": "08 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 08 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-09",
+      "locator": "09 · 去哪里",
+      "prompt": "09 · 去哪里",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去咖啡馆",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 09 · 去哪里；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "给出提示",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不在意，直接回去",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪她购物",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-13",
+      "locator": "13 · 困难的事",
+      "prompt": "13 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "聚会更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 13 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-14",
+      "locator": "14 · 一起学习",
+      "prompt": "14 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起学习",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 14 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-15",
+      "locator": "15 · 是否确认",
+      "prompt": "15 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去确认",
+          "next": {
+            "kind": "choice",
+            "id": "shizuru-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 15 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "shizuru-16",
+      "locator": "正宗静流 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "shizuru-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shizuru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "正宗静流 / 正宗静流 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "hinata-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-05",
+      "locator": "05 · 家务",
+      "prompt": "05 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 05 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-06",
+      "locator": "06 · 昨天的事",
+      "prompt": "06 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "再次挑战",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 06 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-07",
+      "locator": "07 · 学习问题",
+      "prompt": "07 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "教她",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 07 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-08",
+      "locator": "08 · 是否忍耐",
+      "prompt": "08 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 08 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-09",
+      "locator": "09 · 去哪里",
+      "prompt": "09 · 去哪里",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去咖啡馆",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 09 · 去哪里；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "给出提示",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去听她说话",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "婉拒",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-13",
+      "locator": "13 · 体型偏好",
+      "prompt": "13 · 体型偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "匀称型",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 13 · 体型偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-14",
+      "locator": "14 · 惩罚偏好",
+      "prompt": "14 · 惩罚偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "电流",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 14 · 惩罚偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "聚会更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起学习",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-17",
+      "locator": "17 · 是否确认",
+      "prompt": "17 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "应该没问题",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 17 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hinata-18",
+      "locator": "国广日向 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "hinata-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "国广日向 / 国广日向 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "maya-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "maya-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "maya-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "maya-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "maya-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-05",
+      "locator": "05 · 家务",
+      "prompt": "05 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "maya-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 05 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-06",
+      "locator": "06 · 昨天的事",
+      "prompt": "06 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "再次挑战",
+          "next": {
+            "kind": "choice",
+            "id": "maya-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 06 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-07",
+      "locator": "07 · 学习问题",
+      "prompt": "07 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "介绍其他人",
+          "next": {
+            "kind": "choice",
+            "id": "maya-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 07 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-08",
+      "locator": "08 · 是否忍耐",
+      "prompt": "08 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "maya-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 08 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-09",
+      "locator": "09 · 去哪里",
+      "prompt": "09 · 去哪里",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去食堂",
+          "next": {
+            "kind": "choice",
+            "id": "maya-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 09 · 去哪里；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "旁观",
+          "next": {
+            "kind": "choice",
+            "id": "maya-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "与麻夜走一段",
+          "next": {
+            "kind": "choice",
+            "id": "maya-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "婉拒",
+          "next": {
+            "kind": "choice",
+            "id": "maya-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-13",
+      "locator": "13 · 体型偏好",
+      "prompt": "13 · 体型偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "纤小型",
+          "next": {
+            "kind": "choice",
+            "id": "maya-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 13 · 体型偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-14",
+      "locator": "14 · 惩罚偏好",
+      "prompt": "14 · 惩罚偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "药物",
+          "next": {
+            "kind": "choice",
+            "id": "maya-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 14 · 惩罚偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "考试更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "maya-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起学习",
+          "next": {
+            "kind": "choice",
+            "id": "maya-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-17",
+      "locator": "17 · 是否确认",
+      "prompt": "17 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "应该没问题",
+          "next": {
+            "kind": "choice",
+            "id": "maya-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 17 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "maya-18",
+      "locator": "长光麻夜 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "maya-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "长光麻夜 / 长光麻夜 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "hotaru-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去没人的地方休息",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-04",
+      "locator": "04 · 追加选择 1 · 寻找地点",
+      "prompt": "04 · 追加选择 1 · 寻找地点",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "在校舍外寻找",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 04 · 追加选择 1 · 寻找地点；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-05",
+      "locator": "05 · 如何回应",
+      "prompt": "05 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 05 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-06",
+      "locator": "06 · 家务",
+      "prompt": "06 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "洗衣服",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 06 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-07",
+      "locator": "07 · 昨天的事",
+      "prompt": "07 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不再挑战",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 07 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-08",
+      "locator": "08 · 追加选择 2 · 找谁问",
+      "prompt": "08 · 追加选择 2 · 找谁问",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "问老师",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 08 · 追加选择 2 · 找谁问；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-09",
+      "locator": "09 · 学习问题",
+      "prompt": "09 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "介绍其他人",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 09 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-10",
+      "locator": "10 · 追加选择 3 · 用餐",
+      "prompt": "10 · 追加选择 3 · 用餐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去取餐",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 10 · 追加选择 3 · 用餐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-11",
+      "locator": "11 · 是否忍耐",
+      "prompt": "11 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 11 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-12",
+      "locator": "12 · 是否提示",
+      "prompt": "12 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "旁观",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 12 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-13",
+      "locator": "13 · 是否听她说话",
+      "prompt": "13 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "不在意，直接回去",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 13 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-14",
+      "locator": "14 · 购物邀请",
+      "prompt": "14 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "陪她购物",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 14 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "考试更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "一起学习",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-17",
+      "locator": "17 · 追加选择 4 · 离开",
+      "prompt": "17 · 追加选择 4 · 离开",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "赶紧回去",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 17 · 追加选择 4 · 离开；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-18",
+      "locator": "18 · 是否确认",
+      "prompt": "18 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "应该没问题",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-19"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 18 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "hotaru-19",
+      "locator": "安纲萤 · 后续阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入该角色线后继续读到结局；差分画面不在本条目范围。",
+          "next": {
+            "kind": "ending",
+            "id": "hotaru-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "安纲萤 / 安纲萤 · 后续阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "early-job-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "拒绝工作",
+          "next": {
+            "kind": "ending",
+            "id": "early-job-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "early-job",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 拒绝工作 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "early-farewell-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "early-farewell-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "early-farewell",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 告别 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "early-farewell-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "early-farewell-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "early-farewell",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 告别 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "early-farewell-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "early-farewell-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "early-farewell",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 告别 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "early-farewell-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "感谢至今的照顾，选择告别",
+          "next": {
+            "kind": "ending",
+            "id": "early-farewell-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "early-farewell",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "提前结束 · 告别 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-01",
+      "locator": "01 · 工作邀请",
+      "prompt": "01 · 工作邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "接受工作",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 01 · 工作邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-02",
+      "locator": "02 · 对她的评价",
+      "prompt": "02 · 对她的评价",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "觉得她很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 02 · 对她的评价；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-03",
+      "locator": "03 · 接下来去哪",
+      "prompt": "03 · 接下来去哪",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "汇报目前发生的事",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 03 · 接下来去哪；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-04",
+      "locator": "04 · 如何回应",
+      "prompt": "04 · 如何回应",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "表示如果可以的话，希望继续",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 04 · 如何回应；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-05",
+      "locator": "05 · 家务",
+      "prompt": "05 · 家务",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "打扫",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 05 · 家务；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-06",
+      "locator": "06 · 昨天的事",
+      "prompt": "06 · 昨天的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "再次挑战",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 06 · 昨天的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-07",
+      "locator": "07 · 学习问题",
+      "prompt": "07 · 学习问题",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "教她",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 07 · 学习问题；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-08",
+      "locator": "08 · 是否忍耐",
+      "prompt": "08 · 是否忍耐",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "忍耐",
+          "next": {
+            "kind": "choice",
+            "id": "normal-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 08 · 是否忍耐；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-09",
+      "locator": "09 · 去哪里",
+      "prompt": "09 · 去哪里",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去咖啡馆",
+          "next": {
+            "kind": "choice",
+            "id": "normal-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 09 · 去哪里；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-10",
+      "locator": "10 · 是否提示",
+      "prompt": "10 · 是否提示",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "给出提示",
+          "next": {
+            "kind": "choice",
+            "id": "normal-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 10 · 是否提示；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-11",
+      "locator": "11 · 是否听她说话",
+      "prompt": "11 · 是否听她说话",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "去听她说话",
+          "next": {
+            "kind": "choice",
+            "id": "normal-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 11 · 是否听她说话；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-12",
+      "locator": "12 · 购物邀请",
+      "prompt": "12 · 购物邀请",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "婉拒",
+          "next": {
+            "kind": "choice",
+            "id": "normal-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 12 · 购物邀请；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-13",
+      "locator": "13 · 体型偏好",
+      "prompt": "13 · 体型偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "匀称型",
+          "next": {
+            "kind": "choice",
+            "id": "normal-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 13 · 体型偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-14",
+      "locator": "14 · 惩罚偏好",
+      "prompt": "14 · 惩罚偏好",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "电流",
+          "next": {
+            "kind": "choice",
+            "id": "normal-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 14 · 惩罚偏好；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-15",
+      "locator": "15 · 困难的事",
+      "prompt": "15 · 困难的事",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "聚会更辛苦",
+          "next": {
+            "kind": "choice",
+            "id": "normal-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 15 · 困难的事；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-16",
+      "locator": "16 · 一起学习",
+      "prompt": "16 · 一起学习",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "这次拒绝",
+          "next": {
+            "kind": "choice",
+            "id": "normal-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 16 · 一起学习；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-17",
+      "locator": "17 · 借东西",
+      "prompt": "17 · 借东西",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "向大小姐借",
+          "next": {
+            "kind": "choice",
+            "id": "normal-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 17 · 借东西；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    },
+    {
+      "id": "normal-18",
+      "locator": "18 · 是否确认",
+      "prompt": "18 · 是否确认",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "应该没问题",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "通常结局 · 未进入角色线 / 18 · 是否确认；完整路径与版本边界见核对说明"
+        }
+      ],
+      "optionsComplete": false
+    }
+  ],
+  "endings": [
+    {
+      "id": "any-main-end",
+      "safeLabel": "已完成灯里、濑奈、静流、日向或麻夜中的任意一条路线",
+      "hiddenTitle": "已完成灯里、濑奈、静流、日向或麻夜中的任意一条路线",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "akari-end",
+      "safeLabel": "兼元灯里",
+      "hiddenTitle": "兼元灯里",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sena-end",
+      "safeLabel": "月山濑奈",
+      "hiddenTitle": "月山濑奈",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "shizuru-end",
+      "safeLabel": "正宗静流",
+      "hiddenTitle": "正宗静流",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hinata-end",
+      "safeLabel": "国广日向",
+      "hiddenTitle": "国广日向",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "maya-end",
+      "safeLabel": "长光麻夜",
+      "hiddenTitle": "长光麻夜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hotaru-end",
+      "safeLabel": "安纲萤",
+      "hiddenTitle": "安纲萤",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "early-job-end",
+      "safeLabel": "提前结束 · 拒绝工作",
+      "hiddenTitle": "提前结束 · 拒绝工作",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "early-farewell-end",
+      "safeLabel": "提前结束 · 告别",
+      "hiddenTitle": "提前结束 · 告别",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "通常结局 · 未进入角色线",
+      "hiddenTitle": "通常结局 · 未进入角色线",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料核对（非实机）",
+      "date": "2026-09-30",
+      "routeIds": [
+        "akari",
+        "sena",
+        "shizuru",
+        "hinata",
+        "maya",
+        "hotaru",
+        "early-job",
+        "early-farewell",
+        "normal"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "用誠也的 SAVE01–07 继承关系恢复从头路径，核对萤的四个连续追加选择和首周目隐藏节点。NookGaming 独立确认六角色、三额外结局及萤解锁条件；其有效路径不同，未据此声称每个选项相同。"
+    }
+  ]
+}
