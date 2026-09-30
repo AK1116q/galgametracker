@@ -129,7 +129,7 @@ test("small wheel deltas accumulate once per gesture; dragging does not open a g
   ).toBeVisible();
   await page.getByRole("button", { name: "查看全部游戏" }).click();
   await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
-    6,
+    16,
   );
   await page.keyboard.press("Escape");
   await expect(

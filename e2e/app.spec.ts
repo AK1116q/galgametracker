@@ -5,6 +5,46 @@ const catalogPacks = readdirSync("data/catalog")
   .map((f) => JSON.parse(readFileSync(`data/catalog/${f}`, "utf8")));
 const workCount = new Set(catalogPacks.map((p) => p.game.id)).size + 1;
 const routeCount = catalogPacks.reduce((n, p) => n + p.routes.length, 10);
+const additions = catalogPacks.filter(
+  (p) =>
+    ![
+      "atri",
+      "senren-banka",
+      "sabbat-of-the-witch",
+      "riddle-joker",
+      "saya-no-uta",
+    ].includes(p.game.id),
+);
+for (const pack of additions) {
+  test(`expanded catalog opens ${pack.game.id} with artwork and guide`, async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    await openCatalog(page);
+    await page
+      .getByRole("button", {
+        name: `选择作品：${pack.game.title}`,
+        exact: true,
+      })
+      .click();
+    await expect(page.locator(".turntable")).toBeVisible();
+    const route = pack.routes[0];
+    await page
+      .getByRole("button", {
+        name: new RegExp(
+          `^${route.safeLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
+        ),
+      })
+      .click();
+    await expect(page.locator(".tree-step").first()).toBeVisible();
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth + 1,
+      ),
+    ).toBe(true);
+  });
+}
 async function openCatalog(page) {
   if (
     !(await page

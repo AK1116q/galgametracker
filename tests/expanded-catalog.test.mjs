@@ -14,6 +14,20 @@ const packs = readdirSync(dir).map((f) =>
   JSON.parse(readFileSync(new URL(f, dir), "utf8")),
 );
 const pack = (id) => packs.find((p) => p.game.id === id);
+test("kinetic works remain reading flows and FINAL requires all four character endings", () => {
+  for (const id of ["planetarian", "narcissu", "eden", "stella-of-the-end"])
+    assert.ok(pack(id).choices.every((c) => c.kind === "instruction"));
+  const aokana = pack("aokana");
+  const final = aokana.routes.find((r) => r.safeLabel === "FINAL");
+  assert.equal(final.requiredEndingIds.length, 4);
+  assert.throws(
+    () => createSession(aokana, final.id, final.requiredEndingIds.slice(0, 3)),
+    /前置/,
+  );
+  assert.doesNotThrow(() =>
+    createSession(aokana, final.id, final.requiredEndingIds),
+  );
+});
 test("five researched works cover 26 terminating paths without claiming playtests", () => {
   const original = packs.filter((p) =>
     [
