@@ -1,14 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import covers from "./covers.json";
+import metadata from "./gallery-metadata.json";
 import "./discs.css";
 
 type Work = { id: string; title: string; routes: number };
 const art = covers as Record<string, { src: string }>;
 const pad = (n: number) => String(n).padStart(2, "0");
+const PAGE_SIZE = 8;
+const reviews = metadata as Record<
+  string,
+  {
+    score: number;
+    votes: number;
+    url: string;
+    checkedAt: string;
+    comment: string;
+    scope: string;
+  }
+>;
 
 /** Compositor-only disc motion. No React renders or layout reads inside a frame. */
 export default function DiscLibrary({
-  games,
+  games: allGames,
   onOpen,
   initialId,
   onSelectionChange,
@@ -20,6 +34,53 @@ export default function DiscLibrary({
   onSelectionChange?: (id: string) => void;
   paused?: boolean;
 }) {
+  const [page, setPage] = useState(() =>
+    Math.floor(
+      Math.max(
+        0,
+        allGames.findIndex((g) => g.id === initialId),
+      ) / PAGE_SIZE,
+    ),
+  );
+  const pageCount = Math.ceil(allGames.length / PAGE_SIZE);
+  const games = allGames.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const [flight, setFlight] = useState<"idle" | "out" | "in">("idle");
+  const flightRef = useRef(false);
+  const animations = useRef<Animation[]>([]);
+  const alive = useRef(true);
+  const [browsing, setBrowsing] = useState(false);
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+  function activity() {
+    setBrowsing(true);
+    clearTimeout(settleTimer.current);
+    const settle = () => {
+      if (
+        gesture.current ||
+        Math.abs(position.current - target.current) > 0.002
+      ) {
+        settleTimer.current = setTimeout(settle, 100);
+      } else setBrowsing(false);
+    };
+    settleTimer.current = setTimeout(settle, 420);
+  }
+  useEffect(() => {
+    alive.current = true;
+    const reveal = (event: KeyboardEvent) => {
+      if (event.key === "Tab") {
+        clearTimeout(settleTimer.current);
+        setBrowsing(false);
+      }
+    };
+    document.addEventListener("keydown", reveal);
+    return () => {
+      alive.current = false;
+      clearTimeout(settleTimer.current);
+      animations.current.forEach((a) => a.cancel());
+      document.removeEventListener("keydown", reveal);
+    };
+  }, []);
   const [selectedId, select] = useState(initialId || games[0]?.id);
   const selected = Math.max(
     0,
@@ -37,16 +98,20 @@ export default function DiscLibrary({
   const target = useRef(selected);
   const wake = useRef<() => void>(() => {});
   const suspended = useRef(paused);
-  suspended.current = paused;
+  suspended.current = paused || flight !== "idle";
   useEffect(() => {
     wake.current();
-  }, [paused]);
+  }, [paused, flight]);
   const gesture = useRef<{ x: number; y: number; width: number } | null>(null);
   const dragged = useRef(false);
   const selectRef = useRef<(direction: number) => void>(() => {});
   selectRef.current = (direction) => {
+    if (flightRef.current) return;
     const next = Math.max(0, Math.min(games.length - 1, selected + direction));
-    if (games[next]) select(games[next].id);
+    if (games[next] && next !== selected) {
+      activity();
+      select(games[next].id);
+    }
   };
   const ids = games.map((g) => g.id).join("|");
 
@@ -55,9 +120,10 @@ export default function DiscLibrary({
     wake.current();
   }, [selected, ids]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = stage.current;
     if (!element) return;
+    discs.current.length = games.length;
     const media = matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0,
       last = 0,
@@ -206,6 +272,11 @@ export default function DiscLibrary({
     const wheel = (event: WheelEvent) => {
       if (event.ctrlKey || Math.abs(event.deltaY) < Math.abs(event.deltaX))
         return;
+      if (flightRef.current) {
+        event.preventDefault();
+        return;
+      }
+      activity();
       const direction = Math.sign(event.deltaY);
       const now = performance.now();
       const atEdge =
@@ -241,35 +312,169 @@ export default function DiscLibrary({
     };
   }, [ids]);
 
+  async function changePage(next: number) {
+    if (flightRef.current || next === page || next < 0 || next >= pageCount)
+      return;
+    flightRef.current = true;
+    clearTimeout(settleTimer.current);
+    hover.current = { index: -1, x: 0, y: 0 };
+    gesture.current = null;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
+    // Decode only the incoming focal artwork; a slow image must not trap navigation.
+    const preload = nextGames.slice(0, 3).map((game) => {
+      if (!art[game.id]) return Promise.resolve();
+      const image = new Image();
+      image.src = art[game.id].src;
+      return image.decode().catch(() => {});
+    });
+    const play = (
+      el: HTMLElement,
+      frames: Keyframe[],
+      duration: number,
+      easing: string,
+      delay = 0,
+    ) => {
+      const animation = el.animate(frames, {
+        duration,
+        easing,
+        delay,
+        fill: "both",
+      });
+      animations.current.push(animation);
+      return animation.finished.catch(() => {});
+    };
+    flushSync(() => {
+      setBrowsing(false);
+      setFlight("out");
+    });
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    try {
+      if (!reduced) {
+        const outgoing = discs.current
+          .filter((disc): disc is HTMLButtonElement => disc !== null)
+          .map((disc, index) => {
+            const pose = disc.style.transform;
+            return play(
+              disc,
+              [
+                { transform: pose, opacity: disc.style.opacity },
+                {
+                  transform: `${pose} rotateY(${next > page ? 90 : -90}deg) scale(${index === selected ? 1.45 : 0})`,
+                  opacity: index === selected ? 1 : 0,
+                },
+              ],
+              500,
+              "cubic-bezier(.55,.055,.675,.19)",
+            );
+          });
+        await Promise.all([
+          ...outgoing,
+          Promise.race([
+            Promise.all(preload),
+            new Promise<void>((resolve) => {
+              timeout = setTimeout(resolve, 900);
+            }),
+          ]),
+        ]);
+      }
+      if (!alive.current) return;
+      animations.current.forEach((a) => a.cancel());
+      animations.current = [];
+      position.current = target.current = 0;
+      flushSync(() => {
+        setPage(next);
+        select(nextGames[0].id);
+        setFlight("in");
+      });
+      if (!reduced) {
+        await Promise.all(
+          discs.current
+            .filter((disc): disc is HTMLButtonElement => disc !== null)
+            .slice(0, 3)
+            .map((disc, index) => {
+              const pose = disc.style.transform;
+              return play(
+                disc,
+                [
+                  {
+                    transform: `${pose} rotateY(${next > page ? -90 : 90}deg) scale(${index === 0 ? 1.45 : 0})`,
+                    opacity: index === 0 ? 1 : 0,
+                  },
+                  { transform: pose, opacity: disc.style.opacity },
+                ],
+                index === 0 ? 1050 : 890,
+                index === 0 ? "cubic-bezier(.215,.61,.355,1)" : "linear",
+                index === 0 ? 0 : 290,
+              );
+            }),
+        );
+      }
+    } finally {
+      clearTimeout(timeout);
+      animations.current.forEach((a) => a.cancel());
+      animations.current = [];
+      flightRef.current = false;
+      if (alive.current) setFlight("idle");
+    }
+  }
+
   if (!current) return null;
   return (
-    <section className="disc-library" aria-label="光盘游戏库">
+    <section
+      className="disc-library"
+      aria-label="光盘游戏库"
+      data-browsing={browsing || flight !== "idle"}
+      data-flight={flight}
+      data-page={page + 1}
+    >
       <div
         className="disc-stage"
         ref={stage}
         tabIndex={0}
         aria-label="光盘浏览，左右方向键切换作品，回车查看攻略"
         onKeyDown={(event) => {
+          if (flightRef.current) return;
           if (
             event.target !== event.currentTarget &&
             !(event.target as HTMLElement).classList.contains("optical-disc")
           )
             return;
           if (
-            ["ArrowRight", "ArrowLeft", "Home", "End", "Enter"].includes(
-              event.key,
-            )
+            [
+              "ArrowRight",
+              "ArrowLeft",
+              "Home",
+              "End",
+              "Enter",
+              "PageDown",
+              "PageUp",
+            ].includes(event.key)
           )
             event.preventDefault();
           if (event.key === "ArrowRight") selectRef.current(1);
           if (event.key === "ArrowLeft") selectRef.current(-1);
-          if (event.key === "Home") select(games[0].id);
-          if (event.key === "End") select(games[games.length - 1].id);
+          if (event.key === "Home") {
+            activity();
+            select(games[0].id);
+          }
+          if (event.key === "End") {
+            activity();
+            select(games[games.length - 1].id);
+          }
+          if (event.key === "PageDown") void changePage(page + 1);
+          if (event.key === "PageUp") void changePage(page - 1);
           if (event.key === "Enter") onOpen(current.id);
         }}
         onPointerDown={(event) => {
+          if (flightRef.current) return;
           if (!event.isPrimary || event.button !== 0) return;
-          if ((event.target as HTMLElement).closest(".disc-bottom")) return;
+          if (
+            (event.target as HTMLElement).closest(
+              ".disc-bottom, .disc-info, .disc-pagination",
+            )
+          )
+            return;
           dragged.current = false;
           gesture.current = {
             x: event.clientX,
@@ -284,6 +489,7 @@ export default function DiscLibrary({
           const dx = event.clientX - origin.x;
           const dy = event.clientY - origin.y;
           if (Math.abs(dx) <= 8 || Math.abs(dx) < Math.abs(dy)) return;
+          activity();
           target.current = Math.max(
             0,
             Math.min(
@@ -312,10 +518,36 @@ export default function DiscLibrary({
             selectRef.current(dx < 0 ? 1 : -1);
         }}
       >
-        <div className="disc-info" key={current.id}>
+        <div className="disc-info">
           <h2>{current.title}</h2>
+          {reviews[current.id] ? (
+            <>
+              <a
+                className="disc-rating"
+                href={reviews[current.id].url}
+                target="_blank"
+                rel="noreferrer"
+                title={`${reviews[current.id].scope} · ${reviews[current.id].votes} 人评分 · 更新于 ${reviews[current.id].checkedAt}`}
+              >
+                <strong>{reviews[current.id].score.toFixed(1)}</strong>
+                <span>
+                  Bangumi{current.id === "white-album-2" ? " · CC" : ""}
+                  <small>
+                    {reviews[current.id].votes.toLocaleString("zh-CN")} 人评分 ·{" "}
+                    {reviews[current.id].checkedAt}
+                  </small>
+                </span>
+              </a>
+              <p className="disc-comment">
+                <span>本站简评</span>
+                {reviews[current.id].comment}
+              </p>
+            </>
+          ) : (
+            <p className="disc-comment">Bangumi 评分暂未收录</p>
+          )}
         </div>
-        <div className="disc-scene">
+        <div className="disc-scene" inert={flight !== "idle"}>
           {games.map((game, index) => (
             <button
               className={`optical-disc ${index === selected ? "disc-hit" : ""}`}
@@ -325,7 +557,10 @@ export default function DiscLibrary({
               onClick={() => {
                 if (!dragged.current) {
                   if (index === selected) onOpen(game.id);
-                  else select(game.id);
+                  else {
+                    activity();
+                    select(game.id);
+                  }
                 }
               }}
               onPointerEnter={(event) => {
@@ -422,6 +657,42 @@ export default function DiscLibrary({
             查看攻略 <span>↗</span>
           </button>
         </div>
+        <nav className="disc-pagination" aria-label="作品分页">
+          <button
+            aria-label="上一页作品"
+            disabled={page === 0 || flight !== "idle"}
+            onClick={() => void changePage(page - 1)}
+          >
+            ←
+          </button>
+          {Array.from({ length: pageCount }, (_, n) => n)
+            .filter(
+              (n) => n === 0 || n === pageCount - 1 || Math.abs(n - page) <= 1,
+            )
+            .map((n, i, items) => (
+              <span key={n}>
+                {i > 0 && n - items[i - 1] > 1 && (
+                  <span className="page-gap">…</span>
+                )}
+                <button
+                  aria-label={`第 ${n + 1} 页作品`}
+                  aria-current={n === page ? "page" : undefined}
+                  disabled={flight !== "idle"}
+                  onClick={() => void changePage(n)}
+                >
+                  {pad(n + 1)}
+                </button>
+              </span>
+            ))}
+          <button
+            aria-label="下一页作品"
+            disabled={page === pageCount - 1 || flight !== "idle"}
+            onClick={() => void changePage(page + 1)}
+          >
+            →
+          </button>
+          <small>每页 {PAGE_SIZE} 部</small>
+        </nav>
       </div>
     </section>
   );

@@ -9,6 +9,13 @@
   white-space: nowrap;
   border: 0;
 }
+@font-face {
+  font-family: "Gallery Serif";
+  src: url("/fonts/gallery-title.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 .disc-stage {
   --disc-size: min(49vw, 79svh);
   position: relative;
@@ -410,5 +417,215 @@
   }
   .optical-disc {
     will-change: auto;
+  }
+}
+
+/* A quiet caption beneath the focal disc; the shelf stays the primary object. */
+.disc-stage {
+  --disc-size: min(48vw, 62svh);
+  min-height: 0;
+}
+.optical-disc {
+  left: calc(50% - var(--disc-size) / 2);
+  top: calc(39svh - var(--disc-size) / 2);
+}
+.disc-library .disc-info {
+  top: calc(39svh + var(--disc-size) * 0.43 + 22px);
+  left: 50%;
+  translate: -50% 0;
+  width: min(760px, calc(100% - 40px));
+  text-align: center;
+  pointer-events: auto;
+  animation: none;
+}
+.disc-library .disc-info h2 {
+  max-width: none;
+  font-family:
+    "Gallery Serif", "Noto Serif SC", "Songti SC", STSong, var(--serif);
+  font-weight: 600;
+  font-size: clamp(26px, 3.1vw, 48px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.disc-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  text-decoration: none;
+  color: var(--dark);
+  text-align: left;
+}
+.disc-rating > strong {
+  font:
+    500 34px/1 Georgia,
+    serif;
+  letter-spacing: -0.05em;
+}
+.disc-rating > span {
+  font-size: 12px;
+  line-height: 1.4;
+}
+.disc-rating small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+}
+.disc-comment {
+  margin: 12px auto 0;
+  font-size: 14px;
+  line-height: 1.6;
+  text-wrap: pretty;
+  color: #45463f;
+}
+.disc-comment > span {
+  font-size: 10px;
+  color: var(--muted);
+  margin-right: 10px;
+  white-space: nowrap;
+}
+.disc-bottom {
+  justify-content: flex-end;
+}
+.disc-navigation {
+  left: 0;
+  right: auto;
+}
+.disc-pagination {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  translate: -50% 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.disc-pagination button {
+  min-width: 40px;
+  min-height: 44px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  font:
+    13px ui-monospace,
+    monospace;
+}
+.disc-pagination button[aria-current="page"] {
+  box-shadow: inset 0 -2px var(--dark);
+}
+.disc-pagination small {
+  margin-left: 12px;
+  white-space: nowrap;
+  color: var(--muted);
+  font-size: 10px;
+}
+.page-gap {
+  font-size: 12px;
+  color: var(--muted);
+}
+.app-shell[data-view="library"] .music-launch {
+  bottom: 94px;
+}
+.app-shell[data-view="library"] :is(.sidebar, .music-launch, .music-dock),
+.disc-library :is(.disc-info, .disc-bottom, .disc-pagination) {
+  transition:
+    opacity 220ms ease,
+    visibility 0s;
+}
+.app-shell[data-view="library"]:has(.disc-library[data-browsing="true"])
+  :is(.sidebar, .music-launch, .music-dock),
+.disc-library[data-browsing="true"]
+  :is(.disc-info, .disc-bottom, .disc-pagination) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 140ms ease,
+    visibility 0s 140ms;
+}
+@media (max-width: 800px) {
+  .disc-stage {
+    --disc-size: min(76vw, 57svh);
+  }
+  .disc-library .disc-info h2 {
+    font-size: clamp(25px, 4.5vw, 38px);
+  }
+  .disc-comment {
+    font-size: 13px;
+  }
+  .disc-pagination small {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .disc-stage {
+    --disc-size: min(92vw, 47svh);
+  }
+  .optical-disc {
+    top: calc(35svh - var(--disc-size) / 2);
+  }
+  .disc-library .disc-info {
+    top: calc(35svh + var(--disc-size) * 0.43 + 18px);
+  }
+  .disc-library .disc-info h2 {
+    font-size: 27px;
+  }
+  .disc-rating {
+    margin-top: 10px;
+  }
+  .disc-rating > strong {
+    font-size: 30px;
+  }
+  .disc-comment {
+    max-width: 330px;
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .disc-bottom {
+    bottom: 78px;
+  }
+  .disc-pagination {
+    bottom: 20px;
+  }
+  .disc-pagination button {
+    min-width: 36px;
+  }
+  .app-shell[data-view="library"] .music-launch {
+    bottom: 22px;
+    left: 10px;
+    font-size: 10px;
+    padding: 8px;
+  }
+}
+@media (max-height: 680px) {
+  .disc-stage {
+    --disc-size: min(84vw, 46svh);
+  }
+  .optical-disc {
+    top: calc(32svh - var(--disc-size) / 2);
+  }
+  .disc-library .disc-info {
+    top: calc(32svh + var(--disc-size) * 0.43 + 12px);
+  }
+  .disc-library .disc-info h2 {
+    font-size: clamp(21px, 3vw, 30px);
+  }
+  .disc-rating {
+    margin-top: 6px;
+  }
+  .disc-rating > strong {
+    font-size: 27px;
+  }
+  .disc-comment {
+    margin-top: 6px;
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .disc-library *,
+  .app-shell[data-view="library"] .sidebar {
+    transition: none !important;
   }
 }

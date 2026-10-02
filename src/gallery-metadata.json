@@ -1,0 +1,178 @@
+{
+  "white-album-2": {
+    "subjectId": 22290,
+    "title": "WHITE ALBUM2 -closing chapter-",
+    "score": 9.1,
+    "votes": 7182,
+    "source": "https://api.bgm.tv/search/subject/WHITE%20ALBUM2?type=4&responseGroup=large&max_results=25",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/22290",
+    "comment": "以音乐串起的三人关系，适合慢慢读完。",
+    "scope": "CC 条目评分（含 Coda）"
+  },
+  "atri": {
+    "subjectId": 297264,
+    "title": "ATRI -My Dear Moments-",
+    "score": 7.1,
+    "votes": 7132,
+    "source": "https://api.bgm.tv/v0/subjects/297264",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/297264",
+    "comment": "海边日常与机器人少女，篇幅紧凑的科幻恋爱。",
+    "scope": "作品条目评分"
+  },
+  "senren-banka": {
+    "subjectId": 172612,
+    "title": "千恋＊万花",
+    "score": 6.8,
+    "votes": 7448,
+    "source": "https://api.bgm.tv/search/subject/%E5%8D%83%E6%81%8B%EF%BC%8A%E4%B8%87%E8%8A%B1?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/172612",
+    "comment": "和风小镇与神社传说，角色日常轻松热闹。",
+    "scope": "作品条目评分"
+  },
+  "sabbat-of-the-witch": {
+    "subjectId": 113290,
+    "title": "サノバウィッチ",
+    "score": 7.1,
+    "votes": 5841,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%B5%E3%83%8E%E3%83%90%E3%82%A6%E3%82%A3%E3%83%83%E3%83%81?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/113290",
+    "comment": "校园恋爱融入魔女设定，适合偏爱角色互动的玩家。",
+    "scope": "作品条目评分"
+  },
+  "riddle-joker": {
+    "subjectId": 231798,
+    "title": "RIDDLE JOKER",
+    "score": 6.5,
+    "votes": 4435,
+    "source": "https://api.bgm.tv/search/subject/RIDDLE%20JOKER?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/231798",
+    "comment": "超能力与潜入任务，恋爱日常里带一点悬念。",
+    "scope": "作品条目评分"
+  },
+  "saya-no-uta": {
+    "subjectId": 851,
+    "title": "沙耶の唄",
+    "score": 7.5,
+    "votes": 7602,
+    "source": "https://api.bgm.tv/v0/subjects/851",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/851",
+    "comment": "视角错位的恐怖短篇，气氛压抑，余味很重。",
+    "scope": "作品条目评分"
+  },
+  "planetarian": {
+    "subjectId": 859,
+    "title": "planetarian ～ちいさなほしのゆめ～",
+    "score": 7.9,
+    "votes": 4436,
+    "source": "https://api.bgm.tv/v0/subjects/859",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/859",
+    "comment": "废墟中的一次相遇，用很短的篇幅留下温柔。",
+    "scope": "作品条目评分"
+  },
+  "narcissu": {
+    "subjectId": 1167,
+    "title": "narcissu",
+    "score": 8.4,
+    "votes": 6588,
+    "source": "https://api.bgm.tv/v0/subjects/1167",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/1167",
+    "comment": "关于生命尽头的公路短篇，叙述安静而克制。",
+    "scope": "作品条目评分"
+  },
+  "eden": {
+    "subjectId": 2288,
+    "title": "eden* They were only two, on the planet.",
+    "score": 7.8,
+    "votes": 5658,
+    "source": "https://api.bgm.tv/v0/subjects/2288",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/2288",
+    "comment": "末日背景下的两人故事，画面与音乐值得细看。",
+    "scope": "作品条目评分"
+  },
+  "stella-of-the-end": {
+    "subjectId": 317675,
+    "title": "終のステラ",
+    "score": 7.5,
+    "votes": 3193,
+    "source": "https://api.bgm.tv/v0/subjects/317675",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/317675",
+    "comment": "人类与机器少女的旅途，科幻设定里留着温度。",
+    "scope": "作品条目评分"
+  },
+  "cafe-stella": {
+    "subjectId": 289599,
+    "title": "喫茶ステラと死神の蝶",
+    "score": 6.4,
+    "votes": 3898,
+    "source": "https://api.bgm.tv/search/subject/%E5%96%AB%E8%8C%B6%E3%82%B9%E3%83%86%E3%83%A9%E3%81%A8%E6%AD%BB%E7%A5%9E%E3%81%AE%E8%9D%B6?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/289599",
+    "comment": "咖啡馆日常与死神相遇，轻松互动中谈及生死。",
+    "scope": "作品条目评分"
+  },
+  "witch-on-the-holy-night": {
+    "subjectId": 5418,
+    "title": "魔法使いの夜",
+    "score": 8.6,
+    "votes": 7167,
+    "source": "https://api.bgm.tv/v0/subjects/5418",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/5418",
+    "comment": "现代魔术与三人同居，演出是阅读体验的重心。",
+    "scope": "作品条目评分"
+  },
+  "fruit-of-grisaia": {
+    "subjectId": 10869,
+    "title": "グリザイアの果実 -LE FRUIT DE LA GRISAIA-",
+    "score": 7.7,
+    "votes": 1511,
+    "source": "https://api.bgm.tv/v0/subjects/10869",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/10869",
+    "comment": "封闭校园中的群像，轻快日常背后藏着各自的过去。",
+    "scope": "作品条目评分"
+  },
+  "aokana": {
+    "subjectId": 76912,
+    "title": "蒼の彼方のフォーリズム",
+    "score": 7.8,
+    "votes": 4454,
+    "source": "https://api.bgm.tv/search/subject/%E8%92%BC%E3%81%AE%E5%BD%BC%E6%96%B9%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AA%E3%82%BA%E3%83%A0?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/76912",
+    "comment": "架空飞行运动与青春恋爱，喜欢竞技成长可以一试。",
+    "scope": "原作条目评分"
+  },
+  "dracu-riot": {
+    "subjectId": 25370,
+    "title": "DRACU-RIOT!",
+    "score": 7,
+    "votes": 2674,
+    "source": "https://api.bgm.tv/search/subject/DRACU-RIOT?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/25370",
+    "comment": "人类与吸血鬼共处的城市，恋爱与事件调查并行。",
+    "scope": "原作条目评分"
+  },
+  "noble-works": {
+    "subjectId": 10106,
+    "title": "のーぶる☆わーくす",
+    "score": 6.6,
+    "votes": 958,
+    "source": "https://api.bgm.tv/search/subject/%E3%81%AE%E3%83%BC%E3%81%B6%E3%82%8B?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-10-03",
+    "url": "https://bgm.tv/subject/10106",
+    "comment": "替身身份带来的校园喜剧，主打角色互动与反差。",
+    "scope": "作品条目评分"
+  }
+}
