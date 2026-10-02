@@ -87,6 +87,11 @@ export default function DiscLibrary({
     games.findIndex((g) => g.id === selectedId),
   );
   const current = games[selected];
+  const [caption, setCaption] = useState(current);
+  useLayoutEffect(() => {
+    // Keep the outgoing text intact while it fades; swap before the reveal paints.
+    if (!browsing && flight === "idle") setCaption(current);
+  }, [current, browsing, flight]);
   useEffect(() => {
     if (current) onSelectionChange?.(current.id);
   }, [current?.id, onSelectionChange]);
@@ -421,7 +426,7 @@ export default function DiscLibrary({
     }
   }
 
-  if (!current) return null;
+  if (!current || !caption) return null;
   return (
     <section
       className="disc-library"
@@ -521,28 +526,28 @@ export default function DiscLibrary({
         }}
       >
         <div className="disc-info">
-          <h2>{current.title}</h2>
-          {reviews[current.id] ? (
+          <h2>{caption.title}</h2>
+          {reviews[caption.id] ? (
             <div className="disc-review">
               <a
                 className="disc-rating"
-                href={reviews[current.id].url}
+                href={reviews[caption.id].url}
                 target="_blank"
                 rel="noreferrer"
-                title={`${reviews[current.id].scope} · ${reviews[current.id].votes} 人评分 · 更新于 ${reviews[current.id].checkedAt}`}
+                title={`${reviews[caption.id].scope} · ${reviews[caption.id].votes} 人评分 · 更新于 ${reviews[caption.id].checkedAt}`}
               >
-                <strong>{reviews[current.id].score.toFixed(1)}</strong>
+                <strong>{reviews[caption.id].score.toFixed(1)}</strong>
                 <span>
-                  Bangumi{current.id === "white-album-2" ? " · CC" : ""}
+                  Bangumi{caption.id === "white-album-2" ? " · CC" : ""}
                   <small>
-                    {reviews[current.id].votes.toLocaleString("zh-CN")} 人评分 ·{" "}
-                    {reviews[current.id].checkedAt}
+                    {reviews[caption.id].votes.toLocaleString("zh-CN")} 人评分 ·{" "}
+                    {reviews[caption.id].checkedAt}
                   </small>
                 </span>
               </a>
               <p className="disc-comment">
                 <span>本站简评</span>
-                {reviews[current.id].comment}
+                {reviews[caption.id].comment}
               </p>
             </div>
           ) : (

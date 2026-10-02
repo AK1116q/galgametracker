@@ -2,6 +2,64 @@ import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 const metadata = JSON.parse(readFileSync("src/gallery-metadata.json", "utf8"));
 
+test("scrolling fades the outgoing caption without swapping text or flashing between wheel events", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  await page.getByRole("button", { name: "跳过动画" }).click();
+  const original = await page.locator(".disc-info h2").textContent();
+  const samples = await page.evaluate(async () => {
+    const stage = document.querySelector(".disc-stage")!;
+    const caption = document.querySelector(".disc-info")!;
+    const samples: { text: string | null; opacity: number }[] = [];
+    const start = performance.now();
+    stage.dispatchEvent(
+      new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
+    );
+    await new Promise<void>((resolve) => {
+      const sample = () => {
+        samples.push({
+          text: caption.querySelector("h2")!.textContent,
+          opacity: Number(getComputedStyle(caption).opacity),
+        });
+        if (performance.now() - start < 350) requestAnimationFrame(sample);
+        else resolve();
+      };
+      requestAnimationFrame(sample);
+    });
+    return samples;
+  });
+  expect(samples.every((sample) => sample.text === original)).toBe(true);
+  expect(
+    samples.some((sample) => sample.opacity > 0 && sample.opacity < 1),
+  ).toBe(true);
+  for (let n = 0; n < 3; n++) {
+    await page
+      .locator(".disc-stage")
+      .evaluate((el) =>
+        el.dispatchEvent(
+          new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
+        ),
+      );
+    await page.waitForTimeout(180);
+    await expect(page.locator(".disc-library")).toHaveAttribute(
+      "data-browsing",
+      "true",
+    );
+    await expect(page.locator(".disc-info")).toBeHidden();
+  }
+  const selected = (await page
+    .locator(".disc-hit")
+    .getAttribute("aria-label"))!.replace("打开当前光盘：", "");
+  await expect(page.locator(".disc-info h2")).toHaveText(selected);
+  await expect
+    .poll(() =>
+      page.locator(".disc-info").evaluate((el) => getComputedStyle(el).opacity),
+    )
+    .toBe("1");
+});
+
 test("wheel activity hides the UI until the disc settles, then exposes a sourced caption", async ({
   page,
 }) => {
