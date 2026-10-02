@@ -12,7 +12,8 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
   const samples = await page.evaluate(async () => {
     const stage = document.querySelector(".disc-stage")!;
     const caption = document.querySelector(".disc-info")!;
-    const samples: { text: string | null; opacity: number }[] = [];
+    const samples: { text: string | null; opacity: number; shift: number }[] =
+      [];
     const start = performance.now();
     stage.dispatchEvent(
       new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
@@ -22,6 +23,7 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
         samples.push({
           text: caption.querySelector("h2")!.textContent,
           opacity: Number(getComputedStyle(caption).opacity),
+          shift: new DOMMatrix(getComputedStyle(caption).transform).m42,
         });
         if (performance.now() - start < 350) requestAnimationFrame(sample);
         else resolve();
@@ -34,6 +36,9 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
   expect(
     samples.some((sample) => sample.opacity > 0 && sample.opacity < 1),
   ).toBe(true);
+  expect(samples.some((sample) => sample.shift > 0 && sample.shift < 8)).toBe(
+    true,
+  );
   for (let n = 0; n < 3; n++) {
     await page
       .locator(".disc-stage")
