@@ -165,7 +165,9 @@ export default function DiscLibrary({
         if (disc.dataset.hovered !== over) disc.dataset.hovered = over;
         if (!active) return;
         const x = distance * width * (mobile ? 0.91 : 0.35);
-        const y = distance * height * (mobile ? -0.13 : -0.24);
+        // Keep the trailing disc above the wide title/review band.
+        const y =
+          distance * height * (mobile ? -0.13 : distance < 0 ? -0.06 : -0.24);
         const scale = Math.max(0.55, 1 - Math.abs(distance) * 0.24);
         const spring = springs[index];
         const rx = media.matches ? 0 : spring.x;
@@ -521,7 +523,7 @@ export default function DiscLibrary({
         <div className="disc-info">
           <h2>{current.title}</h2>
           {reviews[current.id] ? (
-            <>
+            <div className="disc-review">
               <a
                 className="disc-rating"
                 href={reviews[current.id].url}
@@ -542,7 +544,7 @@ export default function DiscLibrary({
                 <span>本站简评</span>
                 {reviews[current.id].comment}
               </p>
-            </>
+            </div>
           ) : (
             <p className="disc-comment">Bangumi 评分暂未收录</p>
           )}

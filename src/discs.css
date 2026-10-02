@@ -420,20 +420,26 @@
   }
 }
 
-/* A quiet caption beneath the focal disc; the shelf stays the primary object. */
+/* Large artwork above an editorial title and a two-column review band. */
 .disc-stage {
-  --disc-size: min(48vw, 62svh);
+  --disc-size: min(56vw, calc(100svh - 290px));
+  --disc-center: 37svh;
+  --caption-offset: 0.48;
+  --caption-gap: 20px;
   min-height: 0;
 }
 .optical-disc {
   left: calc(50% - var(--disc-size) / 2);
-  top: calc(39svh - var(--disc-size) / 2);
+  top: calc(var(--disc-center) - var(--disc-size) / 2);
 }
 .disc-library .disc-info {
-  top: calc(39svh + var(--disc-size) * 0.43 + 22px);
+  top: calc(
+    var(--disc-center) + var(--disc-size) * var(--caption-offset) +
+      var(--caption-gap)
+  );
   left: 50%;
   translate: -50% 0;
-  width: min(760px, calc(100% - 40px));
+  width: min(1320px, calc(100% - 64px));
   text-align: center;
   pointer-events: auto;
   animation: none;
@@ -443,59 +449,74 @@
   font-family:
     "Gallery Serif", "Noto Serif SC", "Songti SC", STSong, var(--serif);
   font-weight: 600;
-  font-size: clamp(26px, 3.1vw, 48px);
-  line-height: 1.2;
+  font-size: clamp(40px, 5.5vw, 84px);
+  line-height: 1.08;
   letter-spacing: -0.035em;
   text-wrap: balance;
+}
+.disc-review {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 5vw, 80px);
+  margin: 18px auto 0;
 }
 .disc-rating {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 12px;
+  flex-shrink: 0;
   text-decoration: none;
   color: var(--dark);
   text-align: left;
 }
 .disc-rating > strong {
   font:
-    500 34px/1 Georgia,
+    500 clamp(48px, 4.5vw, 72px)/1 Georgia,
     serif;
   letter-spacing: -0.05em;
 }
 .disc-rating > span {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.4;
 }
 .disc-rating small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .disc-comment {
-  margin: 12px auto 0;
-  font-size: 14px;
-  line-height: 1.6;
+  margin: 0;
+  max-width: 520px;
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.45;
+  text-align: left;
   text-wrap: pretty;
   color: #45463f;
 }
 .disc-comment > span {
-  font-size: 10px;
+  display: block;
+  font-size: 12px;
   color: var(--muted);
-  margin-right: 10px;
+  margin-bottom: 4px;
   white-space: nowrap;
 }
 .disc-bottom {
   justify-content: flex-end;
+  bottom: 20px;
 }
 .disc-navigation {
   left: 0;
   right: auto;
+  font-size: 15px;
+}
+.disc-open {
+  font-size: 19px;
 }
 .disc-pagination {
   position: absolute;
   left: 50%;
-  bottom: 32px;
+  bottom: 20px;
   translate: -50% 0;
   z-index: 12;
   display: flex;
@@ -509,7 +530,7 @@
   border: 0;
   background: transparent;
   font:
-    13px ui-monospace,
+    16px ui-monospace,
     monospace;
 }
 .disc-pagination button[aria-current="page"] {
@@ -519,7 +540,7 @@
   margin-left: 12px;
   white-space: nowrap;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .page-gap {
   font-size: 12px;
@@ -547,13 +568,23 @@
 }
 @media (max-width: 800px) {
   .disc-stage {
-    --disc-size: min(76vw, 57svh);
+    --disc-size: min(86vw, calc(100svh - 350px));
+    --disc-center: max(198px, calc(45svh - 100px));
+    --caption-offset: 0.43;
+    --caption-gap: 20px;
   }
   .disc-library .disc-info h2 {
-    font-size: clamp(25px, 4.5vw, 38px);
+    font-size: clamp(32px, 5.5vw, 48px);
+  }
+  .disc-review {
+    gap: 24px;
+    margin-top: 14px;
+  }
+  .disc-rating > strong {
+    font-size: 48px;
   }
   .disc-comment {
-    font-size: 13px;
+    font-size: 18px;
   }
   .disc-pagination small {
     display: none;
@@ -561,27 +592,38 @@
 }
 @media (max-width: 560px) {
   .disc-stage {
-    --disc-size: min(92vw, 47svh);
-  }
-  .optical-disc {
-    top: calc(35svh - var(--disc-size) / 2);
+    --disc-size: min(106vw, calc(100svh - 350px));
   }
   .disc-library .disc-info {
-    top: calc(35svh + var(--disc-size) * 0.43 + 18px);
+    width: calc(100% - 32px);
   }
   .disc-library .disc-info h2 {
-    font-size: 27px;
+    font-size: clamp(32px, 8.8vw, 42px);
   }
-  .disc-rating {
-    margin-top: 10px;
+  .disc-review {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
   }
   .disc-rating > strong {
-    font-size: 30px;
+    font-size: 44px;
+  }
+  .disc-rating > span {
+    font-size: 14px;
+  }
+  .disc-rating small {
+    font-size: 11px;
   }
   .disc-comment {
-    max-width: 330px;
-    margin-top: 10px;
+    max-width: 360px;
+    font-size: 17px;
+    text-align: center;
     line-height: 1.5;
+  }
+  .disc-comment > span {
+    display: inline;
+    font-size: 11px;
+    margin-right: 8px;
   }
   .disc-bottom {
     bottom: 78px;
@@ -595,32 +637,84 @@
   .app-shell[data-view="library"] .music-launch {
     bottom: 22px;
     left: 10px;
-    font-size: 10px;
+    font-size: 12px;
     padding: 8px;
   }
 }
-@media (max-height: 680px) {
+@media (max-height: 800px) and (min-width: 801px) {
+  .disc-library .disc-info h2 {
+    font-size: clamp(40px, 5vw, 64px);
+  }
+  .disc-review {
+    margin-top: 12px;
+  }
+  .disc-rating > strong {
+    font-size: 52px;
+  }
+  .disc-comment {
+    font-size: 20px;
+  }
+}
+@media (max-height: 680px) and (max-width: 560px) {
   .disc-stage {
-    --disc-size: min(84vw, 46svh);
+    --caption-gap: 12px;
   }
-  .optical-disc {
-    top: calc(32svh - var(--disc-size) / 2);
+  .disc-bottom {
+    bottom: 70px;
   }
-  .disc-library .disc-info {
-    top: calc(32svh + var(--disc-size) * 0.43 + 12px);
+  .disc-review {
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .disc-comment {
+    font-size: 16px;
+  }
+}
+@media (max-height: 680px) and (min-width: 801px) {
+  .disc-stage {
+    --disc-size: min(50vw, 50svh);
+    --disc-center: 34svh;
   }
   .disc-library .disc-info h2 {
-    font-size: clamp(21px, 3vw, 30px);
+    font-size: clamp(32px, 4vw, 48px);
   }
-  .disc-rating {
+  .disc-review {
     margin-top: 6px;
   }
   .disc-rating > strong {
-    font-size: 27px;
+    font-size: 44px;
   }
   .disc-comment {
-    margin-top: 6px;
-    font-size: 12px;
+    font-size: 18px;
+  }
+}
+@media (max-height: 500px) and (min-width: 561px) {
+  .disc-stage {
+    --disc-size: 45svh;
+    --disc-center: 30svh;
+    --caption-gap: 18px;
+  }
+  .disc-library .disc-info h2 {
+    font-size: 30px;
+  }
+  .disc-review {
+    margin-top: 8px;
+    gap: 24px;
+  }
+  .disc-rating > strong {
+    font-size: 34px;
+  }
+  .disc-rating > span,
+  .disc-comment {
+    font-size: 14px;
+  }
+  .disc-rating small,
+  .disc-comment > span {
+    font-size: 10px;
+  }
+  .disc-bottom,
+  .disc-pagination {
+    bottom: 16px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
