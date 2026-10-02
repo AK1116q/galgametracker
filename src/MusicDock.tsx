@@ -22,6 +22,33 @@ export default function MusicDock({
   const closeRef = useRef<HTMLButtonElement>(null);
   const mount = useRef<HTMLDivElement>(null);
   const player = useRef<Player | null>(null);
+  const panel = useRef<HTMLElement>(null);
+  const closing = useRef(false);
+  const exitAnimation = useRef<Animation | null>(null);
+  useEffect(() => () => exitAnimation.current?.cancel(), []);
+  function dismiss() {
+    if (closing.current) return;
+    closing.current = true;
+    if (panel.current) panel.current.inert = true;
+    intent.current = false;
+    player.current?.pauseVideo();
+    if (
+      !panel.current ||
+      matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      close();
+      return;
+    }
+    const animation = panel.current.animate(
+      [
+        { opacity: 1, transform: "translateY(0)" },
+        { opacity: 0, transform: "translateY(8px)" },
+      ],
+      { duration: 160, easing: "ease-out", fill: "forwards" },
+    );
+    exitAnimation.current = animation;
+    void animation.finished.then(close, () => {});
+  }
   const intent = useRef(true);
   const switching = useRef(false);
   const track = musicTracks[settledGame];
@@ -124,7 +151,7 @@ export default function MusicDock({
   }, [enabled, retry]);
 
   useEffect(() => {
-    if (!ready || !player.current) return;
+    if (!ready || !player.current || closing.current) return;
     if (!track) {
       switching.current = false;
       player.current.pauseVideo();
@@ -145,10 +172,11 @@ export default function MusicDock({
 
   return (
     <aside
+      ref={panel}
       className="music-dock"
       aria-label="动漫音乐播放器"
       onKeyDown={(event) => {
-        if (event.key === "Escape") close();
+        if (event.key === "Escape") dismiss();
       }}
     >
       <div className="music-heading">
@@ -160,7 +188,7 @@ export default function MusicDock({
           ref={closeRef}
           className="icon-button"
           aria-label="关闭音乐并停止播放"
-          onClick={close}
+          onClick={dismiss}
         >
           <X size={20} />
         </button>

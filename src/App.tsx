@@ -16,6 +16,7 @@ import DiscLibrary, { GameIndex } from "./DiscLibrary";
 import Turntable from "./Turntable";
 import CatalogPanel from "./CatalogPanel";
 import { pageTransition } from "./pageTransition";
+import { useInteractionMotion } from "./useInteractionMotion";
 import CinematicChrome from "./CinematicChrome";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
@@ -244,6 +245,7 @@ function SourceDetails({ pack }: { pack: Pack }) {
 
 export default function App() {
   const [initial] = useState(readInitial);
+  useInteractionMotion();
   const [library, setLibrary] = useState<Library>(initial.library);
   const [problem, setProblem] = useState(initial.problem);
   const [navigation, setNavigation] = useState<Navigation>(readNavigation);
@@ -395,7 +397,7 @@ export default function App() {
     // Do not promote a several-thousand-pixel route tree to one animated layer.
     const elements = [
       ...(mainRef.current?.querySelectorAll<HTMLElement>(
-        ".page-heading, .chapter-picker, .target-picker, .guide-title",
+        ".page-heading, .chapter-picker, .target-picker, .guide-title, .disc-info, .settings-section, .saved-section, .empty",
       ) ?? []),
     ];
     const animations = elements.slice(0, 3).map((el) =>
@@ -746,6 +748,7 @@ export default function App() {
             <>
               <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
+                paused={catalogOpen}
                 onSelectionChange={setMusicGameId}
                 initialId={gameId}
                 onOpen={openGame}
@@ -1139,8 +1142,12 @@ export default function App() {
                 <div>
                   <h2>关于偷吃猫娘达咩哟的galgame攻略收集站</h2>
                   <p>
-                    一个面向小规模中文 Galgame 玩家的非官方工具。已收录 6
-                    部作品、36
+                    一个面向小规模中文 Galgame 玩家的非官方工具。已收录{" "}
+                    {allGames.filter((g) => g.id !== "demo-game").length}
+                    部作品、
+                    {packs
+                      .filter((p) => !p.synthetic)
+                      .reduce((n, p) => n + p.routes.length, 0)}
                     条主线／结局路径，资料已核对，仍待实机检查。游戏名称权利属于其权利人。
                   </p>
                   <a

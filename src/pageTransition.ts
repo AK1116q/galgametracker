@@ -9,6 +9,7 @@ export function pageTransition(update: () => void) {
   active?.skipTransition();
   if (
     !document.startViewTransition ||
+    document.hidden ||
     matchMedia("(prefers-reduced-motion: reduce)").matches
   ) {
     update();
@@ -20,7 +21,8 @@ export function pageTransition(update: () => void) {
   });
   // Skipping an animation rejects ready, but does not cancel the DOM update.
   void active.ready.catch(() => {});
-  void active.finished.finally(() => {
+  const clear = () => {
     if (request === generation) active = undefined;
-  });
+  };
+  void active.finished.then(clear, clear);
 }

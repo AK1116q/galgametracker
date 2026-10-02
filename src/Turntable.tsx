@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { DiscArtwork } from "./DiscLibrary";
 
 /** Chapter position, not a representation of audio playback or reading progress. */
@@ -16,6 +16,15 @@ export default function Turntable({
     index < 0 ? -8 : 14 + (index / Math.max(1, chapters.length - 1)) * 24;
   const [moving, setMoving] = useState(true);
   const [visible, setVisible] = useState(!document.hidden);
+  const element = useRef<HTMLElement>(null);
+  const [inViewport, setInViewport] = useState(true);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) =>
+      setInViewport(entry.isIntersecting),
+    );
+    if (element.current) observer.observe(element.current);
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     const update = () => setVisible(!document.hidden);
     document.addEventListener("visibilitychange", update);
@@ -23,10 +32,11 @@ export default function Turntable({
   }, []);
   return (
     <aside
+      ref={element}
       className="turntable"
       aria-label={`${game.title} · 篇章唱盘`}
       data-chapter={chapter || "parked"}
-      data-spinning={moving && visible && index >= 0}
+      data-spinning={moving && visible && inViewport && index >= 0}
       style={{ "--arm-angle": `${angle}deg` } as CSSProperties}
     >
       <div className="turntable__deck" aria-hidden="true">

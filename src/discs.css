@@ -47,7 +47,7 @@
   top: calc(50% - var(--disc-size) / 2);
   width: var(--disc-size);
   aspect-ratio: 1;
-  will-change: transform;
+  will-change: auto;
   transform-style: preserve-3d;
   pointer-events: auto;
   border: 0;
@@ -92,6 +92,10 @@
 .optical-disc[data-hovered="true"] .disc-ink {
   opacity: 1;
   animation-play-state: running;
+}
+:root[data-motion="paused"] .disc-ink,
+.app-shell:has(.catalog-panel[open]) .disc-ink {
+  animation-play-state: paused;
 }
 .optical-disc[data-hovered="true"] .disc-ink path {
   stroke-dashoffset: 0;

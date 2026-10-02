@@ -12,11 +12,13 @@ export default function DiscLibrary({
   onOpen,
   initialId,
   onSelectionChange,
+  paused = false,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
   initialId?: string;
   onSelectionChange?: (id: string) => void;
+  paused?: boolean;
 }) {
   const [selectedId, select] = useState(initialId || games[0]?.id);
   const selected = Math.max(
@@ -34,6 +36,11 @@ export default function DiscLibrary({
   const position = useRef(selected);
   const target = useRef(selected);
   const wake = useRef<() => void>(() => {});
+  const suspended = useRef(paused);
+  suspended.current = paused;
+  useEffect(() => {
+    wake.current();
+  }, [paused]);
   const gesture = useRef<{ x: number; y: number; width: number } | null>(null);
   const dragged = useRef(false);
   const selectRef = useRef<(direction: number) => void>(() => {});
@@ -58,14 +65,38 @@ export default function DiscLibrary({
     let width = element.clientWidth,
       height = element.clientHeight;
     const springs = games.map(() => ({ x: 0, y: 0, vx: 0, vy: 0 }));
+    // Avoid repeated style invalidation for unchanged or offscreen discs.
+    const written = new WeakMap<HTMLElement, Record<string, string>>();
+    const style = (
+      el: HTMLElement,
+      property:
+        "visibility" | "transform" | "opacity" | "zIndex" | "willChange",
+      value: string,
+    ) => {
+      let previous = written.get(el);
+      if (!previous) {
+        previous = {};
+        written.set(el, previous);
+      }
+      if (previous[property] !== value) {
+        el.style[property] = value;
+        previous[property] = value;
+      }
+    };
     const draw = () => {
       const mobile = width < 660;
       discs.current.forEach((disc, index) => {
         if (!disc) return;
         const distance = index - position.current;
         const active = Math.abs(distance) < 2.3;
-        disc.style.visibility = active ? "visible" : "hidden";
-        disc.dataset.hovered = String(active && hover.current.index === index);
+        style(disc, "visibility", active ? "visible" : "hidden");
+        style(
+          disc,
+          "willChange",
+          active && frame && !media.matches ? "transform" : "auto",
+        );
+        const over = String(active && hover.current.index === index);
+        if (disc.dataset.hovered !== over) disc.dataset.hovered = over;
         if (!active) return;
         const x = distance * width * (mobile ? 0.91 : 0.35);
         const y = distance * height * (mobile ? -0.13 : -0.24);
@@ -73,13 +104,23 @@ export default function DiscLibrary({
         const spring = springs[index];
         const rx = media.matches ? 0 : spring.x;
         const ry = media.matches ? 0 : spring.y;
-        disc.style.transform = `translate3d(${x}px,${y}px,0) scale(${scale}) rotateX(${24 + rx}deg) rotateY(${-24 + ry}deg) rotateZ(${-24 + distance * 13 + ry * 0.16}deg)`;
-        disc.style.opacity = String(Math.min(1, 2.3 - Math.abs(distance)));
-        disc.style.zIndex = String(10 - Math.round(Math.abs(distance) * 2));
+        style(
+          disc,
+          "transform",
+          `translate3d(${x.toFixed(3)}px,${y.toFixed(3)}px,0) scale(${scale.toFixed(5)}) rotateX(${(24 + rx).toFixed(4)}deg) rotateY(${(-24 + ry).toFixed(4)}deg) rotateZ(${(-24 + distance * 13 + ry * 0.16).toFixed(4)}deg)`,
+        );
+        style(disc, "opacity", String(Math.min(1, 2.3 - Math.abs(distance))));
+        style(disc, "zIndex", String(10 - Math.round(Math.abs(distance) * 2)));
       });
     };
     const tick = (time: number) => {
       frame = 0;
+      // On high-refresh screens, avoid simulating 240+ times per second.
+      // Keep up to 120 Hz on desktop and 60 Hz on narrow mobile layouts.
+      if (last && time - last < (width < 660 ? 15 : 7.5)) {
+        frame = requestAnimationFrame(tick);
+        return;
+      }
       const elapsed = Math.min(40, last ? time - last : 16.67);
       last = time;
       position.current +=
@@ -114,19 +155,24 @@ export default function DiscLibrary({
             spring.vy = 0;
           }
         });
-      draw();
       if (
         (moving || position.current !== target.current) &&
         visible &&
-        !document.hidden
+        !document.hidden &&
+        !suspended.current
       )
         frame = requestAnimationFrame(tick);
+      draw();
     };
     const start = () => {
+      if (suspended.current || document.hidden || media.matches) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
       if (media.matches) {
         position.current = target.current;
         draw();
-      } else if (!frame && visible && !document.hidden) {
+      } else if (!frame && visible && !document.hidden && !suspended.current) {
         last = 0;
         frame = requestAnimationFrame(tick);
       }
