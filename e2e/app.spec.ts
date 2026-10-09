@@ -1,3 +1,4 @@
+import { openCatalog } from "./catalog-helper";
 import { test, expect } from "@playwright/test";
 import { readdirSync, readFileSync } from "node:fs";
 const catalogPacks = readdirSync("data/catalog")
@@ -45,14 +46,7 @@ for (const pack of additions) {
     ).toBe(true);
   });
 }
-async function openCatalog(page) {
-  if (
-    !(await page
-      .getByRole("dialog", { name: "作品目录", exact: true })
-      .isVisible())
-  )
-    await page.getByRole("button", { name: "作品目录", exact: true }).click();
-}
+
 test("music is opt-in, survives navigation and stops on close", async ({
   page,
 }) => {
@@ -81,6 +75,9 @@ test("music is opt-in, survives navigation and stops on close", async ({
   await page.evaluate(() => {
     (window as any).__musicFrame = document.querySelector("iframe");
   });
+  if (await page.locator('.app-shell[data-view="library"]').count())
+    // The expanded player covers the bottom controls on phones; use shelf keyboard navigation.
+    await page.locator(".disc-stage").press("Enter");
   await page.getByRole("button", { name: "游玩记录", exact: true }).click();
   expect(
     await page.evaluate(
@@ -146,6 +143,8 @@ test("guest favorites and browsing history persist without registration", async 
   await expect(
     page.getByRole("button", { name: "已收藏 · 点击取消" }),
   ).toHaveAttribute("aria-pressed", "true");
+  if (await page.locator('.app-shell[data-view="library"]').count())
+    await page.getByRole("button", { name: /查看攻略/ }).click();
   await page.getByRole("button", { name: "游玩记录", exact: true }).click();
   await expect(
     page.locator(".saved-section").first().getByRole("button"),

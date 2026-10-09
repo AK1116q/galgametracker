@@ -1,3 +1,4 @@
+import { openCatalog } from "./catalog-helper";
 import { test, expect } from "@playwright/test";
 
 async function open(page) {
@@ -47,7 +48,7 @@ test("catalog closes with a transition and rapidly interrupted navigation reache
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await open(page);
-  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  await openCatalog(page);
   await expect(page.locator(".catalog-panel")).toBeVisible();
   await page.waitForTimeout(260);
   const exit = await page.evaluate(() => {
@@ -79,6 +80,7 @@ test("fallback navigation animates and reduced motion suppresses click animation
     }),
   );
   await open(page);
+  await page.getByRole("button", { name: /查看攻略/ }).click();
   await page.getByRole("button", { name: "游玩记录", exact: true }).click();
   await page
     .getByRole("button", { name: "数据与设置", exact: true })

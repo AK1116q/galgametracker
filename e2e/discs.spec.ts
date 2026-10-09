@@ -1,3 +1,4 @@
+import { openCatalog } from "./catalog-helper";
 import { test, expect } from "@playwright/test";
 
 test("hover draws an ink outline, tilts with the pointer and settles after leaving", async ({
@@ -38,16 +39,19 @@ test("home stays one viewport and catalog focus is contained and restored", asyn
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
-    0,
-  );
+  await expect(
+    page.getByRole("button", { name: "作品目录", exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "游玩记录", exact: true }),
+  ).toHaveCount(0);
   await expect(page.getByLabel("搜索游戏")).not.toBeVisible();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollHeight <= innerHeight,
     ),
   ).toBe(true);
-  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  await openCatalog(page);
   await expect(
     page.getByRole("dialog", { name: "作品目录", exact: true }),
   ).toBeVisible();
@@ -86,7 +90,7 @@ test("disc keyboard navigation, direct opening, search and return remain usable"
   await expect(page.locator(".disc-info h2")).toHaveText(
     "ATRI -My Dear Moments-",
   );
-  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  await openCatalog(page);
   await page.getByLabel("搜索游戏").fill("千恋");
   await expect(page.getByRole("button", { name: /^选择作品：/ })).toHaveCount(
     1,
@@ -122,7 +126,7 @@ test("small wheel deltas accumulate once per gesture; dragging does not open a g
   await page.mouse.up();
   await expect(page.locator(".disc-info h2")).toHaveText("RIDDLE JOKER");
   await expect(stage).toBeVisible();
-  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  await openCatalog(page);
   await page.getByLabel("搜索游戏").fill("不存在的作品");
   await expect(
     page.getByRole("heading", { name: "这里还没有记录" }),
