@@ -91,11 +91,29 @@ test("fallback navigation animates and reduced motion suppresses click animation
     "settings",
   );
   await page.emulateMedia({ reducedMotion: "reduce" });
+  // Chromium applies the emulated media change on a rendering tick. Let its
+  // change listeners cancel existing motion before testing the next click.
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+      }),
+  );
+  expect(
+    await page.evaluate(
+      () => matchMedia("(prefers-reduced-motion: reduce)").matches,
+    ),
+  ).toBe(true);
   await page.getByRole("button", { name: /^我的游戏库/ }).click();
   await expect(page.locator(".disc-stage")).toBeVisible();
-  const active = await page.evaluate(
-    () =>
-      document.getAnimations().filter((a) => a.playState === "running").length,
+  const active = await page.evaluate(() =>
+    document
+      .getAnimations()
+      .filter((a) => a.playState === "running")
+      .map((a) => ({
+        target: ((a.effect as KeyframeEffect)?.target as Element)?.className,
+        duration: a.effect?.getTiming().duration,
+      })),
   );
-  expect(active).toBe(0);
+  expect(active).toEqual([]);
 });
