@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "status": { "type": "string", "enum": ["published", "partial", "blocked"] },
+    "games": { "type": "array", "items": { "type": "string" } },
+    "summary": { "type": "string" }
+  },
+  "required": ["status", "games", "summary"],
+  "additionalProperties": false
+}
