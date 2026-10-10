@@ -112,13 +112,22 @@ test("page changes flip the disc, keep eight works mounted and restore the selec
   await page.getByRole("button", { name: "跳过动画" }).click();
   await expect(page.locator(".optical-disc")).toHaveCount(8);
   const first = await page.locator(".disc-info h2").textContent();
-  await page.getByRole("button", { name: "下一页作品", exact: true }).click();
+  const pagination = page.locator(".disc-pagination");
+  await expect(pagination.locator(".page-dot")).toHaveCount(2);
+  await expect(pagination).toHaveText("");
+  await expect(
+    page.getByRole("button", { name: "第 1 页作品", exact: true }),
+  ).toHaveAttribute("aria-current", "page");
+  await page.getByRole("button", { name: "第 2 页作品", exact: true }).click();
   await expect(page.locator(".disc-library")).toHaveAttribute(
     "data-flight",
     "out",
   );
   await expect(page.locator(".sidebar")).toBeHidden();
   await expect(page.locator(".disc-library")).toHaveAttribute("data-page", "2");
+  await expect(
+    page.getByRole("button", { name: "第 2 页作品", exact: true }),
+  ).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".disc-library")).toHaveAttribute(
     "data-flight",
     "idle",

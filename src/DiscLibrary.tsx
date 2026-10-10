@@ -5,7 +5,10 @@ import metadata from "./gallery-metadata.json";
 import "./discs.css";
 
 type Work = { id: string; title: string; routes: number };
-const art = covers as Record<string, { src: string }>;
+const art = covers as Record<
+  string,
+  { src: string; disc?: { src: string; position: string } }
+>;
 const pad = (n: number) => String(n).padStart(2, "0");
 const PAGE_SIZE = 8;
 const reviews = metadata as Record<
@@ -332,7 +335,7 @@ export default function DiscLibrary({
     const preload = nextGames.slice(0, 3).map((game) => {
       if (!art[game.id]) return Promise.resolve();
       const image = new Image();
-      image.src = art[game.id].src;
+      image.src = art[game.id].disc?.src ?? art[game.id].src;
       return image.decode().catch(() => {});
     });
     const play = (
@@ -665,40 +668,17 @@ export default function DiscLibrary({
           </button>
         </div>
         <nav className="disc-pagination" aria-label="作品分页">
-          <button
-            aria-label="上一页作品"
-            disabled={page === 0 || flight !== "idle"}
-            onClick={() => void changePage(page - 1)}
-          >
-            ←
-          </button>
-          {Array.from({ length: pageCount }, (_, n) => n)
-            .filter(
-              (n) => n === 0 || n === pageCount - 1 || Math.abs(n - page) <= 1,
-            )
-            .map((n, i, items) => (
-              <span key={n}>
-                {i > 0 && n - items[i - 1] > 1 && (
-                  <span className="page-gap">…</span>
-                )}
-                <button
-                  aria-label={`第 ${n + 1} 页作品`}
-                  aria-current={n === page ? "page" : undefined}
-                  disabled={flight !== "idle"}
-                  onClick={() => void changePage(n)}
-                >
-                  {pad(n + 1)}
-                </button>
-              </span>
-            ))}
-          <button
-            aria-label="下一页作品"
-            disabled={page === pageCount - 1 || flight !== "idle"}
-            onClick={() => void changePage(page + 1)}
-          >
-            →
-          </button>
-          <small>每页 {PAGE_SIZE} 部</small>
+          {Array.from({ length: pageCount }, (_, n) => (
+            <button
+              key={n}
+              aria-label={`第 ${n + 1} 页作品`}
+              aria-current={n === page ? "page" : undefined}
+              disabled={flight !== "idle"}
+              onClick={() => void changePage(n)}
+            >
+              <span className="page-dot" aria-hidden="true" />
+            </button>
+          ))}
         </nav>
       </div>
     </section>
@@ -753,11 +733,13 @@ export function DiscArtwork({
   index?: number;
   loadArt?: boolean;
 }) {
+  const cover = art[game.id];
   return (
     <div className="disc-face" aria-hidden="true">
       {loadArt && art[game.id] && (
         <img
-          src={art[game.id].src}
+          src={cover.disc?.src ?? cover.src}
+          style={{ objectPosition: cover.disc?.position }}
           alt=""
           draggable={false}
           decoding="async"

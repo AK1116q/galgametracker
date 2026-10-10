@@ -529,22 +529,24 @@
   padding: 8px;
   border: 0;
   background: transparent;
-  font:
-    16px ui-monospace,
-    monospace;
+  display: grid;
+  place-items: center;
 }
-.disc-pagination button[aria-current="page"] {
-  box-shadow: inset 0 -2px var(--dark);
+.page-dot {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--dark);
+  border-radius: 50%;
+  background: transparent;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
 }
-.disc-pagination small {
-  margin-left: 12px;
-  white-space: nowrap;
-  color: var(--muted);
-  font-size: 12px;
+.disc-pagination button[aria-current="page"] .page-dot {
+  background: var(--dark);
 }
-.page-gap {
-  font-size: 12px;
-  color: var(--muted);
+.disc-pagination button:hover .page-dot {
+  transform: scale(1.15);
 }
 .app-shell[data-view="library"] .music-launch {
   bottom: 94px;
@@ -596,9 +598,6 @@
   }
   .disc-comment {
     font-size: 18px;
-  }
-  .disc-pagination small {
-    display: none;
   }
 }
 @media (max-width: 560px) {
