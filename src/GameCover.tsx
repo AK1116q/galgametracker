@@ -42,6 +42,15 @@ export function CoverSources() {
             <a href={cover.source} target="_blank" rel="noreferrer">
               {cover.subjectTitle}
             </a>
+            {"disc" in cover && (
+              <>
+                {" "}
+                ·{" "}
+                <a href={cover.disc.source} target="_blank" rel="noreferrer">
+                  盘面图片
+                </a>
+              </>
+            )}
           </li>
         ))}
       </ul>

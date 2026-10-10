@@ -7,7 +7,16 @@
     "subjectTitle": "WHITE ALBUM2 -closing chapter-",
     "source": "https://bgm.tv/subject/22290",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/90/78/22290_1L2aJ.jpg",
-    "checkedAt": "2026-09-18"
+    "checkedAt": "2026-09-18",
+    "disc": {
+      "src": "/images/discs/white-album-2.webp",
+      "width": 1920,
+      "height": 1200,
+      "source": "https://leaf.aquaplus.jp/product/wa2cc/special_wp.html",
+      "imageSource": "https://leaf.aquaplus.jp/product/wa2cc/wp/a1920x1200.jpg",
+      "position": "50% 50%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "atri": {
     "src": "/images/covers/atri.jpg",
@@ -17,7 +26,16 @@
     "subjectTitle": "ATRI -My Dear Moments-",
     "source": "https://bgm.tv/subject/297264",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/46/f8/297264_Llz6w.jpg",
-    "checkedAt": "2026-09-18"
+    "checkedAt": "2026-09-18",
+    "disc": {
+      "src": "/images/discs/atri.webp",
+      "width": 750,
+      "height": 1120,
+      "source": "https://atri-mdm.com/",
+      "imageSource": "https://atri-mdm.com/assets/img/top/main_sp.jpg",
+      "position": "50% 32%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "senren-banka": {
     "src": "/images/covers/senren-banka.jpg",
@@ -27,7 +45,16 @@
     "subjectTitle": "千恋＊万花",
     "source": "https://bgm.tv/subject/172612",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/a7/20/172612_sjXrE.jpg",
-    "checkedAt": "2026-09-18"
+    "checkedAt": "2026-09-18",
+    "disc": {
+      "src": "/images/discs/senren-banka.webp",
+      "width": 1920,
+      "height": 1200,
+      "source": "https://www.yuzu-soft.com/products/senren/download.html",
+      "imageSource": "https://www.yuzu-soft.com/products/senren/bin/sen_wall.zip",
+      "position": "100% 50%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "sabbat-of-the-witch": {
     "src": "/images/covers/sabbat-of-the-witch.jpg",
@@ -57,7 +84,16 @@
     "subjectTitle": "沙耶の唄",
     "source": "https://bgm.tv/subject/851",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/92/fb/851_2QUY6.jpg",
-    "checkedAt": "2026-09-18"
+    "checkedAt": "2026-09-18",
+    "disc": {
+      "src": "/images/discs/saya-no-uta.webp",
+      "width": 2000,
+      "height": 1400,
+      "source": "https://www.nitroplus.co.jp/pc/lineup/into_06/",
+      "imageSource": "https://www.nitroplus.co.jp/pc/lineup/into_06/img/mv_pc.jpg",
+      "position": "35% 50%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "planetarian": {
     "src": "/images/covers/planetarian.jpg",
@@ -67,7 +103,16 @@
     "subjectTitle": "planetarian ～ちいさなほしのゆめ～",
     "source": "https://bgm.tv/subject/859",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/2a/08/859_2s5MH.jpg",
-    "checkedAt": "2026-09-30"
+    "checkedAt": "2026-09-30",
+    "disc": {
+      "src": "/images/discs/planetarian.webp",
+      "width": 600,
+      "height": 900,
+      "source": "https://store.steampowered.com/app/623080/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/623080/library_600x900_2x.jpg",
+      "position": "50% 32%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "narcissu": {
     "src": "/images/covers/narcissu.jpg",
@@ -77,7 +122,16 @@
     "subjectTitle": "narcissu",
     "source": "https://bgm.tv/subject/1167",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/9d/a1/1167_Yymi1.jpg",
-    "checkedAt": "2026-09-30"
+    "checkedAt": "2026-09-30",
+    "disc": {
+      "src": "/images/discs/narcissu.webp",
+      "width": 600,
+      "height": 900,
+      "source": "https://store.steampowered.com/app/264380/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/264380/library_600x900_2x.jpg",
+      "position": "50% 32%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "eden": {
     "src": "/images/covers/eden.jpg",
@@ -87,7 +141,16 @@
     "subjectTitle": "eden* They were only two, on the planet.",
     "source": "https://bgm.tv/subject/2288",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/c3/61/2288_Y3ow5.jpg",
-    "checkedAt": "2026-09-30"
+    "checkedAt": "2026-09-30",
+    "disc": {
+      "src": "/images/discs/eden.webp",
+      "width": 600,
+      "height": 900,
+      "source": "https://store.steampowered.com/app/315810/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/315810/library_600x900_2x.jpg",
+      "position": "50% 32%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "stella-of-the-end": {
     "src": "/images/covers/stella-of-the-end.jpg",
@@ -127,7 +190,16 @@
     "subjectTitle": "グリザイアの果実 -LE FRUIT DE LA GRISAIA-",
     "source": "https://bgm.tv/subject/10869",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/b1/4f/10869_J54tt.jpg",
-    "checkedAt": "2026-09-30"
+    "checkedAt": "2026-09-30",
+    "disc": {
+      "src": "/images/discs/fruit-of-grisaia.webp",
+      "width": 600,
+      "height": 900,
+      "source": "https://store.steampowered.com/app/345610/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/345610/library_600x900_2x.jpg",
+      "position": "50% 32%",
+      "checkedAt": "2026-10-11"
+    }
   },
   "aokana": {
     "src": "/images/covers/aokana.jpg",
@@ -157,6 +229,15 @@
     "subjectTitle": "Noble ☆ Works",
     "source": "https://vndb.org/v4806",
     "imageSource": "https://t.vndb.org/cv/33/101533.jpg",
-    "checkedAt": "2026-09-30"
+    "checkedAt": "2026-09-30",
+    "disc": {
+      "src": "/images/discs/noble-works.webp",
+      "width": 1200,
+      "height": 800,
+      "source": "https://legacy.yuzu-soft.com/nw/",
+      "imageSource": "https://legacy.yuzu-soft.com/nw/images/header/header.jpg",
+      "position": "50% 50%",
+      "checkedAt": "2026-10-11"
+    }
   }
 }
