@@ -29,13 +29,11 @@ export default function DiscLibrary({
   games: allGames,
   onOpen,
   initialId,
-  onSelectionChange,
   paused = false,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
   initialId?: string;
-  onSelectionChange?: (id: string) => void;
   paused?: boolean;
 }) {
   const [page, setPage] = useState(() =>
@@ -96,9 +94,6 @@ export default function DiscLibrary({
     // Keep the outgoing text intact while it fades; swap before the reveal paints.
     if (!browsing && flight === "idle") setCaption(current);
   }, [current, browsing, flight]);
-  useEffect(() => {
-    if (current) onSelectionChange?.(current.id);
-  }, [current?.id, onSelectionChange]);
   const stage = useRef<HTMLDivElement>(null);
   const discs = useRef<(HTMLButtonElement | null)[]>([]);
   const hover = useRef({ index: -1, x: 0, y: 0 });
@@ -656,26 +651,9 @@ export default function DiscLibrary({
           ))}
         </div>
         <div className="disc-bottom">
-          <div className="disc-navigation">
-            <button
-              aria-label="上一部作品"
-              disabled={selected === 0}
-              onClick={() => selectRef.current(-1)}
-            >
-              ←
-            </button>
-            <span aria-live="polite" aria-atomic="true">
-              {pad(selected + 1)} <i>/ {pad(games.length)}</i>
-              <span className="sr-only"> {current.title}</span>
-            </span>
-            <button
-              aria-label="下一部作品"
-              disabled={selected === games.length - 1}
-              onClick={() => selectRef.current(1)}
-            >
-              →
-            </button>
-          </div>
+          <span className="sr-only" aria-live="polite" aria-atomic="true">
+            {current.title}
+          </span>
           <button className="disc-open" onClick={() => onOpen(current.id)}>
             查看攻略 <span>↗</span>
           </button>

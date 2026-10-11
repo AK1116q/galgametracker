@@ -152,7 +152,7 @@ test("opening animation finishes automatically and replays after reload without 
   await page.reload();
   await expect(page.getByLabel("开场动画")).toBeVisible();
   await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 4000 });
-  await page.getByRole("button", { name: "下一部作品" }).click();
+  await page.locator(".disc-stage").press("ArrowRight");
   await expect(page.locator(".disc-info h2")).toHaveText(
     "ATRI -My Dear Moments-",
   );

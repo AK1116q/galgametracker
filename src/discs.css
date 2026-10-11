@@ -235,30 +235,6 @@
 .disc-bottom button {
   pointer-events: auto;
 }
-.disc-navigation {
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font:
-    12px ui-monospace,
-    monospace;
-}
-.disc-navigation button {
-  border: 0;
-  background: transparent;
-  width: 44px;
-  height: 44px;
-  font-size: 21px;
-}
-.disc-navigation button:hover:not(:disabled) {
-  transform: translateX(2px);
-}
-.disc-navigation i {
-  font-style: normal;
-  color: var(--muted);
-}
 .disc-open {
   border: 0;
   border-bottom: 1px solid #777;
@@ -385,10 +361,6 @@
     right: 22px;
     justify-content: flex-start;
   }
-  .disc-navigation {
-    right: 0;
-    gap: 3px;
-  }
   .disc-print strong {
     font-size: 22px;
   }
@@ -505,11 +477,6 @@
   justify-content: flex-end;
   bottom: 12px;
 }
-.disc-navigation {
-  left: 0;
-  right: auto;
-  font-size: 15px;
-}
 .disc-open {
   font-size: 19px;
 }
@@ -548,10 +515,7 @@
 .disc-pagination button:hover .page-dot {
   transform: scale(1.15);
 }
-.app-shell[data-view="library"] .music-launch {
-  bottom: 94px;
-}
-.app-shell[data-view="library"] :is(.sidebar, .music-launch, .music-dock),
+.app-shell[data-view="library"] .sidebar,
 .disc-library :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
   transition:
     opacity 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
@@ -566,7 +530,7 @@
     visibility 0s;
 }
 .app-shell[data-view="library"]:has(.disc-library[data-browsing="true"])
-  :is(.sidebar, .music-launch, .music-dock),
+  .sidebar,
 .disc-library[data-browsing="true"]
   :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
   opacity: 0;
@@ -644,12 +608,6 @@
   }
   .disc-pagination button {
     min-width: 36px;
-  }
-  .app-shell[data-view="library"] .music-launch {
-    bottom: 22px;
-    left: 10px;
-    font-size: 12px;
-    padding: 8px;
   }
 }
 @media (max-height: 800px) and (min-width: 801px) {

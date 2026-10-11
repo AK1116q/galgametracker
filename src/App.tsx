@@ -18,7 +18,7 @@ import CatalogPanel from "./CatalogPanel";
 import { pageTransition } from "./pageTransition";
 import { useInteractionMotion } from "./useInteractionMotion";
 import CinematicChrome from "./CinematicChrome";
-import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ChangeEvent, ReactNode } from "react";
 import {
   BookOpen,
@@ -42,7 +42,6 @@ import {
   FileText,
   FolderOpen,
   List,
-  MusicNotes,
 } from "@phosphor-icons/react";
 import {
   createSession,
@@ -66,7 +65,6 @@ import kazusaData from "../data/wa2/kazusa-coda.route.json";
 import demoData from "../data/examples/demo.route.json";
 import wa2Data from "../data/wa2/setsuna-cc.route.json";
 import type { Pack, Session, Library, SavedRoute } from "./types";
-const MusicDock = lazy(() => import("./MusicDock"));
 
 const extraPacks = Object.values(
   import.meta.glob<Pack>("../data/**/*.route.json", {
@@ -258,12 +256,6 @@ export default function App() {
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
   const [menu, setMenu] = useState(false);
-  const [music, setMusic] = useState(false);
-  const [musicGameId, setMusicGameId] = useState(gameId || "white-album-2");
-  useEffect(() => {
-    if (view === "game") setMusicGameId(gameId);
-  }, [view, gameId]);
-  const musicButtonRef = useRef<HTMLButtonElement>(null);
   const mainRef = useRef<HTMLElement>(null);
   const importRef = useRef<HTMLInputElement>(null);
   const packs = useMemo(
@@ -298,9 +290,6 @@ export default function App() {
   const active = library.sessions.find((s) => s.id === activeId);
   const activePack =
     active && packs.find((p) => packKey(p) === sessionPackKey(active));
-  useEffect(() => {
-    if (view === "play" && activePack) setMusicGameId(activePack.game.id);
-  }, [view, activePack?.game.id]);
   const ongoing = [...library.sessions]
     .filter((s) => !s.completed)
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
@@ -751,7 +740,6 @@ export default function App() {
               <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
                 paused={catalogOpen}
-                onSelectionChange={setMusicGameId}
                 initialId={gameId}
                 onOpen={openGame}
                 games={allGames
@@ -1162,33 +1150,6 @@ export default function App() {
           <span>LOCAL FIRST · v0.1</span>
         </footer>
       </div>
-      {!music && (
-        <button
-          ref={musicButtonRef}
-          className="music-launch"
-          onClick={() => setMusic(true)}
-        >
-          <MusicNotes size={19} />
-          音乐
-        </button>
-      )}
-      {music && (
-        <Suspense
-          fallback={
-            <button className="music-launch" onClick={() => setMusic(false)}>
-              正在加载音乐面板 · 取消
-            </button>
-          }
-        >
-          <MusicDock
-            gameId={musicGameId}
-            close={() => {
-              setMusic(false);
-              requestAnimationFrame(() => musicButtonRef.current?.focus());
-            }}
-          />
-        </Suspense>
-      )}
       <input
         ref={importRef}
         className="visually-hidden"

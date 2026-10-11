@@ -37,13 +37,6 @@
 .app-shell[data-view="library"] .page-footer {
   display: none;
 }
-.app-shell[data-view="library"] .music-launch {
-  position: fixed;
-  inset: auto auto 94px 24px;
-  background: transparent;
-  border: 0;
-  font-size: 12px;
-}
 .catalog-panel {
   width: min(960px, calc(100% - 48px));
   max-height: calc(100dvh - 64px);
@@ -191,9 +184,6 @@
   .app-shell[data-view="library"] .sidebar .nav-item {
     font-size: 12px;
     padding-block: 4px;
-  }
-  .app-shell[data-view="library"] .music-launch {
-    inset: auto auto 16px 14px;
   }
   .catalog-panel {
     width: calc(100% - 24px);

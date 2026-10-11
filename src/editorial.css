@@ -406,21 +406,6 @@ input {
   color: var(--muted);
   font-size: 10px;
 }
-.music-launch {
-  position: fixed;
-  left: 20px;
-  bottom: 18px;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 0;
-  background: #f6f6f2;
-  color: var(--dark);
-  font-size: 11px;
-}
 .book-cover.artwork-cover {
   background: #e7e7e0;
   border-radius: 0;
@@ -478,14 +463,6 @@ input {
   }
 }
 @media (max-width: 560px) {
-  .app-shell[data-view="library"] .music-launch {
-    position: absolute;
-    top: 104px;
-    right: 6%;
-    left: auto;
-    bottom: auto;
-    padding: 6px 10px;
-  }
   .app-shell[data-view="library"] .page-heading {
     position: static;
     padding: 13px 6% 0;
