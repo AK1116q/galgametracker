@@ -7,13 +7,20 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  await page.getByRole("button", { name: "跳过动画" }).click();
+  await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 5000 });
   const original = await page.locator(".disc-info h2").textContent();
+  const originalCredits = await page.locator(".disc-credits").textContent();
   const samples = await page.evaluate(async () => {
     const stage = document.querySelector(".disc-stage")!;
     const caption = document.querySelector(".disc-info")!;
-    const samples: { text: string | null; opacity: number; shift: number }[] =
-      [];
+    const credits = document.querySelector(".disc-credits")!;
+    const samples: {
+      text: string | null;
+      opacity: number;
+      shift: number;
+      credits: string | null;
+      creditsOpacity: number;
+    }[] = [];
     const start = performance.now();
     stage.dispatchEvent(
       new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
@@ -24,6 +31,8 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
           text: caption.querySelector("h2")!.textContent,
           opacity: Number(getComputedStyle(caption).opacity),
           shift: new DOMMatrix(getComputedStyle(caption).transform).m42,
+          credits: credits.textContent,
+          creditsOpacity: Number(getComputedStyle(credits).opacity),
         });
         if (performance.now() - start < 350) requestAnimationFrame(sample);
         else resolve();
@@ -33,27 +42,44 @@ test("scrolling fades the outgoing caption without swapping text or flashing bet
     return samples;
   });
   expect(samples.every((sample) => sample.text === original)).toBe(true);
+  expect(samples.every((sample) => sample.credits === originalCredits)).toBe(
+    true,
+  );
+  expect(
+    samples.some(
+      (sample) => sample.creditsOpacity > 0 && sample.creditsOpacity < 1,
+    ),
+  ).toBe(true);
   expect(
     samples.some((sample) => sample.opacity > 0 && sample.opacity < 1),
   ).toBe(true);
   expect(samples.some((sample) => sample.shift > 0 && sample.shift < 8)).toBe(
     true,
   );
-  for (let n = 0; n < 3; n++) {
-    await page
-      .locator(".disc-stage")
-      .evaluate((el) =>
-        el.dispatchEvent(
-          new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
-        ),
+  // Keep the gesture cadence in the browser; runner IPC delays must not become user pauses.
+  const continuous = await page.evaluate(async () => {
+    const stage = document.querySelector(".disc-stage")!;
+    const shelf = document.querySelector(".disc-library")!;
+    const caption = document.querySelector(".disc-info")!;
+    const states: { browsing: string | null; opacity: number }[] = [];
+    for (let n = 0; n < 4; n++) {
+      stage.dispatchEvent(
+        new WheelEvent("wheel", { deltaY: 50, cancelable: true }),
       );
-    await page.waitForTimeout(180);
-    await expect(page.locator(".disc-library")).toHaveAttribute(
-      "data-browsing",
-      "true",
-    );
-    await expect(page.locator(".disc-info")).toBeHidden();
-  }
+      await new Promise((resolve) => setTimeout(resolve, 180));
+      if (n > 0)
+        states.push({
+          browsing: shelf.getAttribute("data-browsing"),
+          opacity: Number(getComputedStyle(caption).opacity),
+        });
+    }
+    return states;
+  });
+  expect(
+    continuous.every(
+      (state) => state.browsing === "true" && state.opacity === 0,
+    ),
+  ).toBe(true);
   const selected = (await page
     .locator(".disc-hit")
     .getAttribute("aria-label"))!.replace("打开当前光盘：", "");
@@ -69,7 +95,7 @@ test("wheel activity hides the UI until the disc settles, then exposes a sourced
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "跳过动画" }).click();
+  await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 5000 });
   const shelf = page.locator(".disc-library");
   await page
     .locator(".disc-stage")
@@ -85,6 +111,8 @@ test("wheel activity hides the UI until the disc settles, then exposes a sourced
   await expect(page.locator(".disc-info h2")).toHaveText(
     "ATRI -My Dear Moments-",
   );
+  await expect(page.locator(".disc-credits")).toContainText("Frontwing × 枕");
+  await expect(page.locator(".disc-credits")).toContainText("2020");
   await expect(page.locator(".disc-rating")).toHaveAttribute(
     "href",
     metadata.atri.url,
@@ -109,7 +137,7 @@ test("page changes flip the disc, keep eight works mounted and restore the selec
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/");
-  await page.getByRole("button", { name: "跳过动画" }).click();
+  await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 5000 });
   await expect(page.locator(".optical-disc")).toHaveCount(8);
   const first = await page.locator(".disc-info h2").textContent();
   const pagination = page.locator(".disc-pagination");

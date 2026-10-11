@@ -141,12 +141,13 @@ test("small wheel deltas accumulate once per gesture; dragging does not open a g
   ).toBeFocused();
 });
 
-test("opening animation replays after reload and can be skipped", async ({
+test("opening animation finishes automatically and replays after reload without a skip button", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  await page.getByRole("button", { name: "跳过动画" }).click();
+  await expect(page.getByRole("button", { name: "跳过动画" })).toHaveCount(0);
+  await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 5000 });
   await expect(page.getByLabel("开场动画")).toHaveCount(0);
   await page.reload();
   await expect(page.getByLabel("开场动画")).toBeVisible();

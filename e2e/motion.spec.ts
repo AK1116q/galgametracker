@@ -4,7 +4,7 @@ import { test, expect } from "@playwright/test";
 async function open(page) {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
-  await page.getByRole("button", { name: "跳过动画" }).click();
+  await expect(page.getByLabel("开场动画")).toHaveCount(0, { timeout: 5000 });
 }
 
 test("disc animation settles without idle writes or permanent GPU hints", async ({

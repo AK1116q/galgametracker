@@ -1,18 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import "./cinematic.css";
-export default function CinematicChrome() {
-  const [intro, setIntro] = useState(() => {
-    try {
-      return !matchMedia("(prefers-reduced-motion: reduce)").matches;
-    } catch {
-      return false;
-    }
-  });
+
+export default function CinematicChrome({
+  onIntroChange,
+}: {
+  onIntroChange: (active: boolean) => void;
+}) {
+  const [phase, setPhase] = useState<"loading" | "revealing" | "done">(() =>
+    matchMedia("(prefers-reduced-motion: reduce)").matches ? "done" : "loading",
+  );
+  useLayoutEffect(() => {
+    onIntroChange(phase !== "done");
+  }, [phase, onIntroChange]);
   useEffect(() => {
-    if (!intro) return;
-    const timer = setTimeout(() => setIntro(false), 1850);
-    return () => clearTimeout(timer);
-  }, [intro]);
+    const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const stop = () => {
+      if (media.matches) setPhase("done");
+    };
+    media.addEventListener("change", stop);
+    return () => media.removeEventListener("change", stop);
+  }, []);
+  useEffect(() => {
+    if (phase === "done") return;
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const delay = (ms: number) =>
+      new Promise<void>((resolve) => {
+        timers.push(setTimeout(resolve, ms));
+      });
+    if (phase === "loading") {
+      const image = document.querySelector<HTMLImageElement>(
+        ".disc-hit .disc-face img",
+      );
+      // Decode the selected cover before revealing it, with a bounded wait on slow networks.
+      void Promise.all([
+        delay(350),
+        Promise.race([image?.decode().catch(() => {}), delay(1200)]),
+      ]).then(() => {
+        if (!cancelled) setPhase("revealing");
+      });
+    } else {
+      void delay(1500).then(() => {
+        if (!cancelled) setPhase("done");
+      });
+    }
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
+  }, [phase]);
   useEffect(() => {
     const update = () => {
       document.documentElement.dataset.motion = document.hidden
@@ -26,25 +62,12 @@ export default function CinematicChrome() {
   return (
     <>
       <div className="archive-background" aria-hidden="true" />
-      {intro && (
-        <div className="archive-intro" aria-label="开场动画">
-          <button
-            className="archive-intro__skip"
-            onClick={() => setIntro(false)}
-          >
-            跳过动画
-          </button>
-          <div className="archive-intro__content">
-            <div className="archive-intro__eyebrow">GALGAME ARCHIVE</div>
-            <div className="archive-intro__title">
-              偷吃猫娘达咩哟的
-              <br />
-              galgame攻略收集站
-            </div>
-            <div className="archive-intro__line">
-              <span />
-            </div>
-          </div>
+      {phase !== "done" && (
+        <div className="archive-intro" data-phase={phase} aria-label="开场动画">
+          <span className="archive-intro__status">
+            读取光盘
+            <span aria-hidden="true" />
+          </span>
         </div>
       )}
     </>

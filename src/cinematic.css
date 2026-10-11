@@ -16,80 +16,113 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: #f6f6f2;
-  display: grid;
-  place-items: center;
-  animation: intro-exit 0.65s cubic-bezier(0.76, 0, 0.24, 1) 1.15s both;
+  cursor: wait;
 }
-.archive-intro__skip {
+.archive-intro__status {
   position: absolute;
-  right: 30px;
-  top: 25px;
-  padding: 12px;
-  border: 0;
-  background: none;
+  top: 24px;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 12px;
+  letter-spacing: 0.08em;
+  transition: opacity 300ms ease;
 }
-.archive-intro__content {
-  text-align: center;
-  animation: intro-word 0.8s ease both;
+.archive-intro__status > span {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #b2b2aa;
+  border-top-color: #292a26;
+  border-radius: 50%;
+  animation: disc-loading 800ms linear infinite;
 }
-.archive-intro__eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.3em;
-  margin-bottom: 28px;
+.archive-intro[data-phase="revealing"] .archive-intro__status {
+  opacity: 0;
 }
-.archive-intro__title {
-  font:
-    400 clamp(26px, 4vw, 50px)/1.5 Georgia,
-    "Songti SC",
-    SimSun,
-    serif;
+.app-shell:has(.archive-intro) .disc-scene {
+  transform-origin: 50% var(--disc-center);
 }
-.archive-intro__line {
-  width: 180px;
-  height: 1px;
-  background: #ddd;
-  margin: 30px auto 0;
-  overflow: hidden;
+.app-shell:has(.archive-intro[data-phase="loading"]) .disc-scene {
+  opacity: 0;
+  transform: translateY(48px) scale(0.62) rotateY(-24deg);
 }
-.archive-intro__line span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: #292a26;
-  transform-origin: left;
-  animation: intro-line 1.1s ease both;
+.app-shell:has(.archive-intro[data-phase="revealing"]) .disc-scene {
+  animation: archive-disc-arrive 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-@keyframes intro-line {
-  from {
-    transform: scaleX(0);
+.app-shell:has(.archive-intro[data-phase="loading"])
+  .optical-disc:not(.disc-hit)
+  .disc-face {
+  opacity: 0;
+}
+.app-shell:has(.archive-intro[data-phase="revealing"])
+  .optical-disc:not(.disc-hit)
+  .disc-face {
+  animation: archive-neighbor-arrive 700ms ease 500ms both;
+}
+.app-shell:has(.archive-intro)
+  :is(
+    .disc-credits,
+    .disc-info,
+    .disc-bottom,
+    .disc-pagination,
+    .music-launch,
+    .sidebar
+  ) {
+  opacity: 0;
+  visibility: hidden;
+}
+.app-shell:has(.archive-intro[data-phase="revealing"])
+  :is(
+    .disc-credits,
+    .disc-info,
+    .disc-bottom,
+    .disc-pagination,
+    .music-launch,
+    .sidebar
+  ) {
+  visibility: visible;
+  animation: archive-type-arrive 600ms cubic-bezier(0.22, 1, 0.36, 1) 850ms both;
+}
+@keyframes archive-disc-arrive {
+  0% {
+    opacity: 0;
+    transform: translateY(48px) scale(0.62) rotateY(-24deg);
   }
-  to {
-    transform: scaleX(1);
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateY(0);
   }
 }
-@keyframes intro-word {
+@keyframes archive-neighbor-arrive {
   from {
     opacity: 0;
-    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes archive-type-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-@keyframes intro-exit {
-  from {
-    transform: translateY(0);
-  }
+@keyframes disc-loading {
   to {
-    transform: translateY(-101%);
+    transform: rotate(360deg);
   }
 }
-:root[data-motion="paused"] .archive-intro,
-:root[data-motion="paused"] .archive-intro * {
-  animation-play-state: paused;
+:root[data-motion="paused"] .app-shell:has(.archive-intro) * {
+  animation-play-state: paused !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .archive-intro {

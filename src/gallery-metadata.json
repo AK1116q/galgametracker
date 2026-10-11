@@ -8,7 +8,17 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/22290",
     "comment": "以音乐串起的三人关系，适合慢慢读完。",
-    "scope": "CC 条目评分（含 Coda）"
+    "scope": "CC 条目评分（含 Coda）",
+    "production": {
+      "developer": "Leaf / AQUAPLUS",
+      "year": "2010–2011",
+      "source": "https://bgm.tv/subject/22290",
+      "checkedAt": "2026-10-11",
+      "sources": [
+        "https://leaf.aquaplus.jp/product/wa2ic/product.html",
+        "https://leaf.aquaplus.jp/product/wa2cc/product.html"
+      ]
+    }
   },
   "atri": {
     "subjectId": 297264,
@@ -19,7 +29,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/297264",
     "comment": "海边日常与机器人少女，篇幅紧凑的科幻恋爱。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Frontwing × 枕",
+      "year": "2020",
+      "source": "https://bgm.tv/subject/297264",
+      "checkedAt": "2026-10-11"
+    }
   },
   "senren-banka": {
     "subjectId": 172612,
@@ -30,7 +46,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/172612",
     "comment": "和风小镇与神社传说，角色日常轻松热闹。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2016",
+      "source": "https://bgm.tv/subject/172612",
+      "checkedAt": "2026-10-11"
+    }
   },
   "sabbat-of-the-witch": {
     "subjectId": 113290,
@@ -41,7 +63,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/113290",
     "comment": "校园恋爱融入魔女设定，适合偏爱角色互动的玩家。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2015",
+      "source": "https://bgm.tv/subject/113290",
+      "checkedAt": "2026-10-11"
+    }
   },
   "riddle-joker": {
     "subjectId": 231798,
@@ -52,7 +80,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/231798",
     "comment": "超能力与潜入任务，恋爱日常里带一点悬念。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2018",
+      "source": "https://bgm.tv/subject/231798",
+      "checkedAt": "2026-10-11"
+    }
   },
   "saya-no-uta": {
     "subjectId": 851,
@@ -63,7 +97,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/851",
     "comment": "视角错位的恐怖短篇，气氛压抑，余味很重。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Nitroplus",
+      "year": "2003",
+      "source": "https://bgm.tv/subject/851",
+      "checkedAt": "2026-10-11"
+    }
   },
   "planetarian": {
     "subjectId": 859,
@@ -74,7 +114,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/859",
     "comment": "废墟中的一次相遇，用很短的篇幅留下温柔。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Key",
+      "year": "2004",
+      "source": "https://bgm.tv/subject/859",
+      "checkedAt": "2026-10-11"
+    }
   },
   "narcissu": {
     "subjectId": 1167,
@@ -85,7 +131,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/1167",
     "comment": "关于生命尽头的公路短篇，叙述安静而克制。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ステージなな",
+      "year": "2005",
+      "source": "https://bgm.tv/subject/1167",
+      "checkedAt": "2026-10-11"
+    }
   },
   "eden": {
     "subjectId": 2288,
@@ -96,7 +148,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/2288",
     "comment": "末日背景下的两人故事，画面与音乐值得细看。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "minori",
+      "year": "2009",
+      "source": "https://bgm.tv/subject/2288",
+      "checkedAt": "2026-10-11"
+    }
   },
   "stella-of-the-end": {
     "subjectId": 317675,
@@ -107,7 +165,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/317675",
     "comment": "人类与机器少女的旅途，科幻设定里留着温度。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Key",
+      "year": "2022",
+      "source": "https://bgm.tv/subject/317675",
+      "checkedAt": "2026-10-11"
+    }
   },
   "cafe-stella": {
     "subjectId": 289599,
@@ -118,7 +182,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/289599",
     "comment": "咖啡馆日常与死神相遇，轻松互动中谈及生死。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2019",
+      "source": "https://bgm.tv/subject/289599",
+      "checkedAt": "2026-10-11"
+    }
   },
   "witch-on-the-holy-night": {
     "subjectId": 5418,
@@ -129,7 +199,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/5418",
     "comment": "现代魔术与三人同居，演出是阅读体验的重心。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "TYPE-MOON",
+      "year": "2012",
+      "source": "https://bgm.tv/subject/5418",
+      "checkedAt": "2026-10-11"
+    }
   },
   "fruit-of-grisaia": {
     "subjectId": 10869,
@@ -140,7 +216,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/10869",
     "comment": "封闭校园中的群像，轻快日常背后藏着各自的过去。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Frontwing",
+      "year": "2011",
+      "source": "https://bgm.tv/subject/10869",
+      "checkedAt": "2026-10-11"
+    }
   },
   "aokana": {
     "subjectId": 76912,
@@ -151,7 +233,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/76912",
     "comment": "架空飞行运动与青春恋爱，喜欢竞技成长可以一试。",
-    "scope": "原作条目评分"
+    "scope": "原作条目评分",
+    "production": {
+      "developer": "sprite",
+      "year": "2014",
+      "source": "https://bgm.tv/subject/76912",
+      "checkedAt": "2026-10-11"
+    }
   },
   "dracu-riot": {
     "subjectId": 25370,
@@ -162,7 +250,13 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/25370",
     "comment": "人类与吸血鬼共处的城市，恋爱与事件调查并行。",
-    "scope": "原作条目评分"
+    "scope": "原作条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2012",
+      "source": "https://bgm.tv/subject/25370",
+      "checkedAt": "2026-10-11"
+    }
   },
   "noble-works": {
     "subjectId": 10106,
@@ -173,6 +267,12 @@
     "checkedAt": "2026-10-03",
     "url": "https://bgm.tv/subject/10106",
     "comment": "替身身份带来的校园喜剧，主打角色互动与反差。",
-    "scope": "作品条目评分"
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft",
+      "year": "2010",
+      "source": "https://bgm.tv/subject/10106",
+      "checkedAt": "2026-10-11"
+    }
   }
 }

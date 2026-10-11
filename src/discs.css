@@ -422,8 +422,8 @@
 
 /* Large artwork above an editorial title and a two-column review band. */
 .disc-stage {
-  --disc-size: min(56vw, calc(100svh - 290px));
-  --disc-center: calc(37svh - 28px);
+  --disc-size: min(56vw, calc(100svh - 330px));
+  --disc-center: calc(37svh + 4px);
   --caption-offset: 0.48;
   --caption-gap: 64px;
   min-height: 0;
@@ -503,7 +503,7 @@
 }
 .disc-bottom {
   justify-content: flex-end;
-  bottom: 20px;
+  bottom: 12px;
 }
 .disc-navigation {
   left: 0;
@@ -516,7 +516,7 @@
 .disc-pagination {
   position: absolute;
   left: 50%;
-  bottom: 20px;
+  bottom: 12px;
   translate: -50% 0;
   z-index: 12;
   display: flex;
@@ -552,11 +552,12 @@
   bottom: 94px;
 }
 .app-shell[data-view="library"] :is(.sidebar, .music-launch, .music-dock),
-.disc-library :is(.disc-info, .disc-bottom, .disc-pagination) {
+.disc-library :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
   transition:
     opacity 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
     visibility 0s;
 }
+.disc-library .disc-credits,
 .disc-library .disc-info {
   transform: translateY(0);
   transition:
@@ -567,7 +568,7 @@
 .app-shell[data-view="library"]:has(.disc-library[data-browsing="true"])
   :is(.sidebar, .music-launch, .music-dock),
 .disc-library[data-browsing="true"]
-  :is(.disc-info, .disc-bottom, .disc-pagination) {
+  :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -576,13 +577,13 @@
     transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 0s 280ms;
 }
-.disc-library[data-browsing="true"] .disc-info {
+.disc-library[data-browsing="true"] :is(.disc-credits, .disc-info) {
   transform: translateY(8px);
 }
 @media (max-width: 800px) {
   .disc-stage {
     --disc-size: min(86vw, calc(100svh - 350px));
-    --disc-center: max(182px, calc(45svh - 116px));
+    --disc-center: max(206px, calc(45svh - 92px));
     --caption-offset: 0.43;
     --caption-gap: 36px;
   }
@@ -731,5 +732,61 @@
   .disc-library *,
   .app-shell[data-view="library"] .sidebar {
     transition: none !important;
+  }
+}
+
+.disc-credits {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  z-index: 12;
+  width: clamp(220px, 21vw, 320px);
+  margin: 0;
+  color: var(--dark);
+}
+.disc-credits > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 8px 0;
+  border-bottom: 1px solid #c8c8c0;
+}
+.disc-credits dt {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+.disc-credits dd {
+  margin: 0;
+  text-align: right;
+  font-size: clamp(16px, 1.25vw, 20px);
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 560px) {
+  .disc-credits {
+    top: 12px;
+    left: 20px;
+    width: min(250px, calc(100% - 40px));
+  }
+  .disc-credits > div {
+    padding: 5px 0;
+  }
+  .disc-credits dd {
+    font-size: 15px;
+  }
+}
+@media (max-height: 500px) and (min-width: 561px) {
+  .disc-credits {
+    top: 10px;
+    left: 20px;
+    width: 200px;
+  }
+  .disc-credits > div {
+    padding: 4px 0;
+  }
+  .disc-credits dd {
+    font-size: 14px;
   }
 }

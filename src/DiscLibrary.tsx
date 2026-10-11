@@ -20,6 +20,7 @@ const reviews = metadata as Record<
     checkedAt: string;
     comment: string;
     scope: string;
+    production?: { developer: string; year: string; source: string };
   }
 >;
 
@@ -528,6 +529,18 @@ export default function DiscLibrary({
             selectRef.current(dx < 0 ? 1 : -1);
         }}
       >
+        {reviews[caption.id]?.production && (
+          <dl className="disc-credits" aria-label="作品制作信息">
+            <div>
+              <dt>制作</dt>
+              <dd>{reviews[caption.id].production!.developer}</dd>
+            </div>
+            <div>
+              <dt>发行年份</dt>
+              <dd>{reviews[caption.id].production!.year}</dd>
+            </div>
+          </dl>
+        )}
         <div className="disc-info">
           <h2>{caption.title}</h2>
           {reviews[caption.id] ? (

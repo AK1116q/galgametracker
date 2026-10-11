@@ -244,6 +244,9 @@ function SourceDetails({ pack }: { pack: Pack }) {
 }
 
 export default function App() {
+  const [entering, setEntering] = useState(
+    () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
   const [initial] = useState(readInitial);
   useInteractionMotion();
   const [library, setLibrary] = useState<Library>(initial.library);
@@ -617,21 +620,21 @@ export default function App() {
       data-view={view}
       className={`app-shell ${(view === "game" && navigation.target) || (view === "play" && activePack) ? "reading-mode" : ""}`}
     >
-      <CinematicChrome />
+      <CinematicChrome onIntroChange={setEntering} />
       <a className="skip-link" href="#main">
         跳到主要内容
       </a>
-      <aside className={`sidebar ${menu ? "open" : ""}`}>
-        <button className="brand" onClick={() => navigate("library")}>
-          <span className="brand-mark">
-            <BookmarkSimple size={23} weight="fill" />
-          </span>
-          <span>
-            偷吃猫娘达咩哟的galgame攻略收集站<small>GALGAME ARCHIVE</small>
-          </span>
-        </button>
-        <div className="sidebar-label">我的空间</div>
-        {view !== "library" && (
+      {view !== "library" && (
+        <aside className={`sidebar ${menu ? "open" : ""}`} inert={entering}>
+          <button className="brand" onClick={() => navigate("library")}>
+            <span className="brand-mark">
+              <BookmarkSimple size={23} weight="fill" />
+            </span>
+            <span>
+              偷吃猫娘达咩哟的galgame攻略收集站<small>GALGAME ARCHIVE</small>
+            </span>
+          </button>
+          <div className="sidebar-label">我的空间</div>
           <nav aria-label="主导航">
             <button
               className="nav-item catalog-toggle"
@@ -660,9 +663,7 @@ export default function App() {
               </button>
             ))}
           </nav>
-        )}
-        <div className="sidebar-label second-label">整理与维护</div>
-        {view !== "library" && (
+          <div className="sidebar-label second-label">整理与维护</div>
           <button
             className={`nav-item ${view === "settings" ? "active" : ""}`}
             onClick={() => navigate("settings")}
@@ -670,29 +671,29 @@ export default function App() {
             <GearSix size={20} />
             数据与设置
           </button>
-        )}
-        <div className="sidebar-bottom">
-          <div className="local-note">
-            <span className="tiny-icon">
-              <ShieldCheck size={21} />
-            </span>
-            <strong>本地记录</strong>
-            <p>
-              记录保存在当前浏览器。
-              <br />
-              支持导出备份。
-            </p>
-            <button className="text-button" onClick={backup}>
-              备份我的记录
-              <ArrowUpRight size={15} />
-            </button>
+          <div className="sidebar-bottom">
+            <div className="local-note">
+              <span className="tiny-icon">
+                <ShieldCheck size={21} />
+              </span>
+              <strong>本地记录</strong>
+              <p>
+                记录保存在当前浏览器。
+                <br />
+                支持导出备份。
+              </p>
+              <button className="text-button" onClick={backup}>
+                备份我的记录
+                <ArrowUpRight size={15} />
+              </button>
+            </div>
+            <div className="sidebar-version">
+              <span></span>
+              <span>v0.1</span>
+            </div>
           </div>
-          <div className="sidebar-version">
-            <span></span>
-            <span>v0.1</span>
-          </div>
-        </div>
-      </aside>
+        </aside>
+      )}
       <div className="main-shell">
         <header className="topbar">
           <div className="breadcrumb">
@@ -724,6 +725,7 @@ export default function App() {
           </span>
         </header>
         <main
+          inert={entering}
           ref={mainRef}
           id="main"
           className={`main-content ${view === "play" ? "play-content" : ""}`}
