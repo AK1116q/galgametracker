@@ -100,9 +100,8 @@ test("guest favorites and browsing history persist without registration", async 
   await expect(
     page.getByRole("button", { name: "已收藏 · 点击取消" }),
   ).toHaveAttribute("aria-pressed", "true");
-  if (await page.locator('.app-shell[data-view="library"]').count())
-    await page.getByRole("button", { name: /查看攻略/ }).click();
-  await page.getByRole("button", { name: "游玩记录", exact: true }).click();
+  await page.getByRole("button", { name: "数据与设置", exact: true }).click();
+  await page.getByRole("button", { name: "收藏与记录", exact: true }).click();
   await expect(
     page.locator(".saved-section").first().getByRole("button"),
   ).toContainText("冬马和纱");

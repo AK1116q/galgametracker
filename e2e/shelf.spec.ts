@@ -163,7 +163,7 @@ test("page changes flip the disc, keep eight works mounted and restore the selec
   await expect(page.locator(".disc-info h2")).not.toHaveText(first!);
   await expect(page.locator(".optical-disc")).toHaveCount(8);
   const next = await page.locator(".disc-info h2").textContent();
-  await page.getByRole("button", { name: /查看攻略/ }).click();
+  await page.locator(".disc-stage").press("Enter");
   await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
   await expect(page.locator(".disc-library")).toHaveAttribute("data-page", "2");
   await expect(page.locator(".disc-info h2")).toHaveText(next!);

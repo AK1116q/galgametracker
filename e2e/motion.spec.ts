@@ -58,9 +58,11 @@ test("catalog closes with a transition and rapidly interrupted navigation reache
   });
   expect(exit).toContain("overlay");
   await expect(page.locator(".catalog-panel")).not.toBeVisible();
+  await page.locator(".disc-stage").press("Enter");
+  await expect(page.locator(".game-workspace")).toBeVisible();
   await page.evaluate(() => {
     (
-      document.querySelector('[data-view-link="records"]') as HTMLButtonElement
+      document.querySelector(".sidebar > button.nav-item") as HTMLButtonElement
     ).click();
     (document.querySelector(".brand") as HTMLButtonElement).click();
   });
@@ -80,8 +82,7 @@ test("fallback navigation animates and reduced motion suppresses click animation
     }),
   );
   await open(page);
-  await page.getByRole("button", { name: /查看攻略/ }).click();
-  await page.getByRole("button", { name: "游玩记录", exact: true }).click();
+  await page.locator(".disc-stage").press("Enter");
   await page
     .getByRole("button", { name: "数据与设置", exact: true })
     .first()

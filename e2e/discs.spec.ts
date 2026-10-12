@@ -41,7 +41,7 @@ test("home stays one viewport and catalog focus is contained and restored", asyn
   await page.goto("/");
   await expect(
     page.getByRole("button", { name: "作品目录", exact: true }),
-  ).toHaveCount(0);
+  ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "游玩记录", exact: true }),
   ).toHaveCount(0);

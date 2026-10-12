@@ -28,11 +28,13 @@ const reviews = metadata as Record<
 export default function DiscLibrary({
   games: allGames,
   onOpen,
+  onCatalog,
   initialId,
   paused = false,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
+  onCatalog: () => void;
   initialId?: string;
   paused?: boolean;
 }) {
@@ -477,7 +479,7 @@ export default function DiscLibrary({
           if (!event.isPrimary || event.button !== 0) return;
           if (
             (event.target as HTMLElement).closest(
-              ".disc-bottom, .disc-info, .disc-pagination",
+              ".disc-catalog, .disc-info, .disc-pagination",
             )
           )
             return;
@@ -650,14 +652,16 @@ export default function DiscLibrary({
             </button>
           ))}
         </div>
-        <div className="disc-bottom">
-          <span className="sr-only" aria-live="polite" aria-atomic="true">
-            {current.title}
-          </span>
-          <button className="disc-open" onClick={() => onOpen(current.id)}>
-            查看攻略 <span>↗</span>
-          </button>
-        </div>
+        <span className="sr-only" aria-live="polite" aria-atomic="true">
+          {current.title}
+        </span>
+        <button
+          className="disc-catalog"
+          aria-haspopup="dialog"
+          onClick={onCatalog}
+        >
+          作品目录
+        </button>
         <nav className="disc-pagination" aria-label="作品分页">
           {Array.from({ length: pageCount }, (_, n) => (
             <button

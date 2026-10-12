@@ -23,8 +23,6 @@ import type { ChangeEvent, ReactNode } from "react";
 import {
   BookOpen,
   BookmarkSimple,
-  Compass,
-  Notebook,
   GearSix,
   ArrowUpRight,
   ArrowRight,
@@ -599,11 +597,7 @@ export default function App() {
     );
   }
 
-  const nav = [
-    { id: "library" as View, label: "我的游戏库", Icon: BookOpen },
-    { id: "play" as View, label: "路线导航", Icon: Compass },
-    { id: "records" as View, label: "游玩记录", Icon: Notebook },
-  ];
+  const nav = [{ id: "library" as View, label: "我的游戏库", Icon: BookOpen }];
   return (
     <div
       data-view={view}
@@ -625,13 +619,6 @@ export default function App() {
           </button>
           <div className="sidebar-label">我的空间</div>
           <nav aria-label="主导航">
-            <button
-              className="nav-item catalog-toggle"
-              aria-haspopup="dialog"
-              onClick={() => setCatalogOpen(true)}
-            >
-              作品目录
-            </button>
             {nav.map(({ id, label, Icon }) => (
               <button
                 key={id}
@@ -739,6 +726,7 @@ export default function App() {
             <>
               <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
+                onCatalog={() => setCatalogOpen(true)}
                 paused={catalogOpen}
                 initialId={gameId}
                 onOpen={openGame}
@@ -1087,6 +1075,12 @@ export default function App() {
                     收藏、浏览记录、游玩进度和导入的攻略仅保存在当前浏览器，不会上传到服务器。换设备、换网址或清除浏览器数据前，请先导出备份。
                   </p>
                   <div className="button-row">
+                    <button
+                      className="button secondary"
+                      onClick={() => navigate("records")}
+                    >
+                      收藏与记录
+                    </button>
                     <button className="button primary" onClick={backup}>
                       <DownloadSimple size={17} />
                       导出全部记录

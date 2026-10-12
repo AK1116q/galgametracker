@@ -62,12 +62,12 @@
   animation: archive-neighbor-arrive 700ms ease 500ms both;
 }
 .app-shell:has(.archive-intro)
-  :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination, .sidebar) {
+  :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination, .sidebar) {
   opacity: 0;
   visibility: hidden;
 }
 .app-shell:has(.archive-intro[data-phase="revealing"])
-  :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination, .sidebar) {
+  :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination, .sidebar) {
   visibility: visible;
   animation: archive-type-arrive 600ms cubic-bezier(0.22, 1, 0.36, 1) 850ms both;
 }

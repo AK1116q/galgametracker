@@ -221,38 +221,6 @@
   mix-blend-mode: screen;
 }
 
-.disc-bottom {
-  position: absolute;
-  bottom: 33px;
-  left: 32px;
-  right: 32px;
-  z-index: 12;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-.disc-bottom button {
-  pointer-events: auto;
-}
-.disc-open {
-  border: 0;
-  border-bottom: 1px solid #777;
-  background: transparent;
-  padding: 10px 0;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.4;
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-.disc-open span {
-  transition: transform 0.25s;
-}
-.disc-open:hover span {
-  transform: translate(3px, -3px);
-}
 .disc-index {
   margin: 45px 5% 60px;
   scroll-margin-top: 95px;
@@ -354,12 +322,6 @@
   .optical-disc {
     left: calc(50% - var(--disc-size) / 2);
     top: calc(51% - var(--disc-size) / 2);
-  }
-  .disc-bottom {
-    bottom: 65px;
-    left: 22px;
-    right: 22px;
-    justify-content: flex-start;
   }
   .disc-print strong {
     font-size: 22px;
@@ -473,13 +435,6 @@
   margin-bottom: 4px;
   white-space: nowrap;
 }
-.disc-bottom {
-  justify-content: flex-end;
-  bottom: 12px;
-}
-.disc-open {
-  font-size: 19px;
-}
 .disc-pagination {
   position: absolute;
   left: 50%;
@@ -516,7 +471,7 @@
   transform: scale(1.15);
 }
 .app-shell[data-view="library"] .sidebar,
-.disc-library :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
+.disc-library :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination) {
   transition:
     opacity 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
     visibility 0s;
@@ -532,7 +487,7 @@
 .app-shell[data-view="library"]:has(.disc-library[data-browsing="true"])
   .sidebar,
 .disc-library[data-browsing="true"]
-  :is(.disc-credits, .disc-info, .disc-bottom, .disc-pagination) {
+  :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination) {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -600,9 +555,6 @@
     font-size: 11px;
     margin-right: 8px;
   }
-  .disc-bottom {
-    bottom: 78px;
-  }
   .disc-pagination {
     bottom: 20px;
   }
@@ -627,9 +579,6 @@
 @media (max-height: 680px) and (max-width: 560px) {
   .disc-stage {
     --caption-gap: 28px;
-  }
-  .disc-bottom {
-    bottom: 70px;
   }
   .disc-review {
     gap: 8px;
@@ -681,7 +630,6 @@
   .disc-comment > span {
     font-size: 10px;
   }
-  .disc-bottom,
   .disc-pagination {
     bottom: 16px;
   }
@@ -746,5 +694,30 @@
   }
   .disc-credits dd {
     font-size: 14px;
+  }
+}
+
+.disc-catalog {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  z-index: 12;
+  padding: 10px 14px;
+  border: 0;
+  border-bottom: 1px solid var(--dark);
+  background: var(--paper);
+  color: var(--dark);
+  font-size: 18px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .disc-catalog {
+    top: 14px;
+    right: 20px;
+    font-size: 15px;
+  }
+  .disc-credits {
+    width: min(250px, calc(100% - 150px));
   }
 }
