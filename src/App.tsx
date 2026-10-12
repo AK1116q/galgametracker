@@ -737,7 +737,13 @@ export default function App() {
               />
             </>
           )}
-          <CatalogPanel open={catalogOpen} close={() => setCatalogOpen(false)}>
+          <CatalogPanel
+            open={catalogOpen}
+            close={() => {
+              setPreviewId("");
+              setCatalogOpen(false);
+            }}
+          >
             {recent && (
               <section className="continue-panel">
                 <div className="continue-icon">

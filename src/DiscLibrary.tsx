@@ -444,7 +444,7 @@ export default function DiscLibrary({
 
   const previewAnimation = useRef<Animation | null>(null);
   useEffect(() => {
-    if (!previewId || flight !== "idle") return;
+    if (!catalogOpen || !previewId || flight !== "idle") return;
     const index = allGames.findIndex((game) => game.id === previewId);
     if (index < 0 || current?.id === previewId) return;
     const nextPage = Math.floor(index / PAGE_SIZE);
@@ -466,7 +466,7 @@ export default function DiscLibrary({
       }
     }
     select(previewId);
-  }, [previewId, flight]);
+  }, [catalogOpen, previewId, flight]);
   useEffect(() => () => previewAnimation.current?.cancel(), []);
 
   if (!current || !caption) return null;

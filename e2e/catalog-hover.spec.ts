@@ -44,3 +44,33 @@ test("bottom catalog previews hovered and focused works across pages without ope
     "ATRI -My Dear Moments-",
   );
 });
+
+test("closing a preview does not pull the shelf back after an animated page change", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  await page
+    .getByRole("button", {
+      name: "选择作品：ATRI -My Dear Moments-",
+      exact: true,
+    })
+    .focus();
+  await expect(page.locator(".disc-hit .disc-face")).toHaveAttribute(
+    "data-game-id",
+    "atri",
+  );
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "第 2 页作品", exact: true }).click();
+  const shelf = page.locator(".disc-library");
+  await expect(shelf).toHaveAttribute("data-flight", "out");
+  await expect(shelf).toHaveAttribute("data-page", "2");
+  await expect(shelf).toHaveAttribute("data-flight", "idle");
+  await expect(page.locator(".disc-hit .disc-face")).not.toHaveAttribute(
+    "data-game-id",
+    "atri",
+  );
+  await expect(shelf).toHaveAttribute("data-page", "2");
+});
