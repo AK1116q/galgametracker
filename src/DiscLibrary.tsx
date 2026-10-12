@@ -30,12 +30,18 @@ export default function DiscLibrary({
   onOpen,
   onCatalog,
   initialId,
+  previewId,
+  onSelectionChange,
+  catalogOpen = false,
   paused = false,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
   onCatalog: () => void;
   initialId?: string;
+  previewId?: string;
+  onSelectionChange?: (id: string) => void;
+  catalogOpen?: boolean;
   paused?: boolean;
 }) {
   const [page, setPage] = useState(() =>
@@ -56,6 +62,12 @@ export default function DiscLibrary({
   const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+  useLayoutEffect(() => {
+    if (!catalogOpen) {
+      clearTimeout(settleTimer.current);
+      setBrowsing(false);
+    }
+  }, [catalogOpen]);
   function activity() {
     setBrowsing(true);
     clearTimeout(settleTimer.current);
@@ -91,6 +103,9 @@ export default function DiscLibrary({
     games.findIndex((g) => g.id === selectedId),
   );
   const current = games[selected];
+  useEffect(() => {
+    if (current) onSelectionChange?.(current.id);
+  }, [current?.id, onSelectionChange]);
   const [caption, setCaption] = useState(current);
   useLayoutEffect(() => {
     // Keep the outgoing text intact while it fades; swap before the reveal paints.
@@ -427,6 +442,33 @@ export default function DiscLibrary({
     }
   }
 
+  const previewAnimation = useRef<Animation | null>(null);
+  useEffect(() => {
+    if (!previewId || flight !== "idle") return;
+    const index = allGames.findIndex((game) => game.id === previewId);
+    if (index < 0 || current?.id === previewId) return;
+    const nextPage = Math.floor(index / PAGE_SIZE);
+    hover.current = { index: -1, x: 0, y: 0 };
+    activity();
+    previewAnimation.current?.cancel();
+    if (nextPage !== page) {
+      position.current = target.current = index % PAGE_SIZE;
+      setPage(nextPage);
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        previewAnimation.current =
+          stage.current?.querySelector(".disc-scene")?.animate(
+            [
+              { opacity: 0, translate: `${nextPage > page ? 48 : -48}px 0` },
+              { opacity: 1, translate: "0 0" },
+            ],
+            { duration: 460, easing: "cubic-bezier(.2,.8,.2,1)" },
+          ) ?? null;
+      }
+    }
+    select(previewId);
+  }, [previewId, flight]);
+  useEffect(() => () => previewAnimation.current?.cancel(), []);
+
   if (!current || !caption) return null;
   return (
     <section
@@ -435,6 +477,7 @@ export default function DiscLibrary({
       data-browsing={browsing || flight !== "idle"}
       data-flight={flight}
       data-page={page + 1}
+      data-catalog-open={catalogOpen}
     >
       <div
         className="disc-stage"
@@ -658,6 +701,8 @@ export default function DiscLibrary({
         <button
           className="disc-catalog"
           aria-haspopup="dialog"
+          aria-expanded={catalogOpen}
+          aria-controls="catalog-panel"
           onClick={onCatalog}
         >
           作品目录
@@ -683,12 +728,21 @@ export default function DiscLibrary({
 export function GameIndex({
   games,
   onOpen,
+  onPreview,
+  selectedId,
 }: {
   games: Work[];
   onOpen: (id: string) => void;
+  onPreview?: (id: string) => void;
+  selectedId?: string;
 }) {
+  const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+  const cancelPreview = () => clearTimeout(hoverTimer.current);
+  useEffect(() => cancelPreview, []);
   return (
-    <div className="disc-index" id="game-index">
+    <div className="disc-index" id="game-index" onPointerLeave={cancelPreview}>
       <div className="disc-index-heading">
         <h2>作品目录</h2>
         <span>{pad(games.length)} WORKS</span>
@@ -697,8 +751,22 @@ export function GameIndex({
         <button
           key={game.id}
           aria-label={`选择作品：${game.title}`}
+          aria-current={selectedId === game.id ? "true" : undefined}
           className="disc-index-row"
-          onClick={() => onOpen(game.id)}
+          onPointerEnter={(event) => {
+            cancelPreview();
+            if (event.pointerType === "mouse")
+              hoverTimer.current = setTimeout(() => onPreview?.(game.id), 110);
+          }}
+          onPointerLeave={cancelPreview}
+          onFocus={() => {
+            cancelPreview();
+            onPreview?.(game.id);
+          }}
+          onClick={() => {
+            cancelPreview();
+            onOpen(game.id);
+          }}
         >
           <span className="disc-index-number">{pad(index + 1)}</span>
           {art[game.id] && (
@@ -712,7 +780,7 @@ export function GameIndex({
           )}
           <strong>{game.title}</strong>
           <span className="disc-index-count">{game.routes} 条路线</span>
-          <span>↗</span>
+          <span aria-hidden="true">↗</span>
         </button>
       ))}
     </div>
@@ -730,7 +798,7 @@ export function DiscArtwork({
 }) {
   const cover = art[game.id];
   return (
-    <div className="disc-face" aria-hidden="true">
+    <div className="disc-face" data-game-id={game.id} aria-hidden="true">
       {loadArt && art[game.id] && (
         <img
           src={cover.disc?.src ?? cover.src}

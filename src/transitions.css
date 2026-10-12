@@ -1,0 +1,79 @@
+/* A named disc keeps its identity while the surrounding page changes. */
+html[data-page-transition]::view-transition {
+  pointer-events: none;
+}
+html[data-page-transition]::view-transition-old(root) {
+  animation: archive-page-leave 220ms ease both;
+}
+html[data-page-transition]::view-transition-new(root) {
+  animation: archive-page-enter 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+html[data-page-transition="disc"]::view-transition-old(root) {
+  animation-duration: 300ms;
+}
+html[data-page-transition="disc"]::view-transition-new(root) {
+  animation-duration: 560ms;
+  animation-delay: 140ms;
+}
+html[data-page-transition="disc"]::view-transition-group(travelling-disc) {
+  z-index: 2;
+  animation-duration: 820ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+html[data-page-transition="disc"]::view-transition-image-pair(travelling-disc) {
+  isolation: isolate;
+}
+html[data-page-transition="disc"]::view-transition-old(travelling-disc) {
+  height: 100%;
+  width: 100%;
+  animation: none;
+  opacity: 0;
+  mix-blend-mode: normal;
+}
+html[data-page-transition="disc"]::view-transition-new(travelling-disc) {
+  height: 100%;
+  width: 100%;
+  /* The artwork is identical. Use one crisp face throughout its 3D movement,
+     rather than crossfading two differently sized labels into a double image. */
+  animation: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+html[data-page-transition="disc"] .turntable__platter {
+  animation-play-state: paused !important;
+}
+.disc-transfer-fallback {
+  position: fixed;
+  z-index: 200;
+  pointer-events: none;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.disc-transfer-fallback > .disc-face {
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+@keyframes archive-page-leave {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes archive-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-page-transition]::view-transition-group(*),
+  html[data-page-transition]::view-transition-old(*),
+  html[data-page-transition]::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+  }
+}

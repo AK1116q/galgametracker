@@ -699,13 +699,14 @@
 
 .disc-catalog {
   position: absolute;
-  top: 28px;
-  right: 32px;
+  bottom: 12px;
+  left: 32px;
   z-index: 12;
-  padding: 10px 14px;
+  min-height: 44px;
+  padding: 8px 0;
   border: 0;
   border-bottom: 1px solid var(--dark);
-  background: var(--paper);
+  background: transparent;
   color: var(--dark);
   font-size: 18px;
   line-height: 1.5;
@@ -713,11 +714,19 @@
 }
 @media (max-width: 800px) {
   .disc-catalog {
-    top: 14px;
-    right: 20px;
+    bottom: 20px;
+    left: 20px;
     font-size: 15px;
   }
-  .disc-credits {
-    width: min(250px, calc(100% - 150px));
+}
+@media (max-height: 500px) and (min-width: 561px) {
+  .disc-catalog {
+    bottom: 16px;
   }
+}
+
+.disc-library[data-catalog-open="true"] .disc-catalog {
+  opacity: 1;
+  visibility: visible;
+  color: var(--accent);
 }

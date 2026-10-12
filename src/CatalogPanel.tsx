@@ -20,12 +20,15 @@ export default function CatalogPanel({
     return () => {
       el.close();
       document.body.style.overflow = overflow;
-      if (previous?.isConnected) previous.focus({ preventScroll: true });
+      requestAnimationFrame(() => {
+        if (previous?.isConnected) previous.focus({ preventScroll: true });
+      });
     };
   }, [open]);
   return (
     <dialog
       ref={dialog}
+      id="catalog-panel"
       className="catalog-panel"
       aria-labelledby="catalog-title"
       onCancel={close}

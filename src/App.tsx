@@ -250,6 +250,10 @@ export default function App() {
   const [navigation, setNavigation] = useState<Navigation>(readNavigation);
   const { view, gameId, activeId } = navigation;
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const [previewId, setPreviewId] = useState("");
+  const [shelfSelection, setShelfSelection] = useState(
+    gameId || "white-album-2",
+  );
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
   const [toast, setToast] = useState("");
@@ -369,38 +373,24 @@ export default function App() {
     const restore = () => {
       setCatalogOpen(false);
       const restored = readNavigation();
-      pageTransition(() => {
-        setNavigation(restored);
-        setMenu(false);
-      });
+      const previousView =
+        document.querySelector<HTMLElement>(".app-shell")?.dataset.view;
+      pageTransition(
+        () => {
+          setNavigation(restored);
+          setMenu(false);
+        },
+        {
+          shareDisc:
+            (previousView === "library" && restored.view === "game") ||
+            (previousView === "game" && restored.view === "library"),
+          discGameId: restored.gameId,
+        },
+      );
     };
     window.addEventListener("popstate", restore);
     return () => window.removeEventListener("popstate", restore);
   }, []);
-
-  useEffect(() => {
-    if (
-      typeof document.startViewTransition === "function" ||
-      matchMedia("(prefers-reduced-motion: reduce)").matches
-    )
-      return;
-    // Do not promote a several-thousand-pixel route tree to one animated layer.
-    const elements = [
-      ...(mainRef.current?.querySelectorAll<HTMLElement>(
-        ".page-heading, .chapter-picker, .target-picker, .guide-title, .disc-info, .settings-section, .saved-section, .empty",
-      ) ?? []),
-    ];
-    const animations = elements.slice(0, 3).map((el) =>
-      el.animate(
-        [
-          { opacity: 0, transform: "translate3d(0,8px,0)" },
-          { opacity: 1, transform: "translate3d(0,0,0)" },
-        ],
-        { duration: 220, easing: "cubic-bezier(.16,1,.3,1)" },
-      ),
-    );
-    return () => animations.forEach((animation) => animation.cancel());
-  }, [navigation]);
 
   function navigate(next: View, selection: Partial<Navigation> = {}) {
     setCatalogOpen(false);
@@ -415,11 +405,19 @@ export default function App() {
     const url = navigationUrl(destination);
     if (url !== location.pathname + location.search)
       history.pushState(null, "", url);
-    pageTransition(() => {
-      setNavigation(destination);
-      setMenu(false);
-      window.scrollTo(0, 0);
-    });
+    pageTransition(
+      () => {
+        setNavigation(destination);
+        setMenu(false);
+        window.scrollTo(0, 0);
+      },
+      {
+        shareDisc:
+          (view === "library" && next === "game") ||
+          (view === "game" && next === "library"),
+        discGameId: destination.gameId,
+      },
+    );
   }
   function commit(next: Library) {
     if (problem) {
@@ -609,14 +607,6 @@ export default function App() {
       </a>
       {view !== "library" && (
         <aside className={`sidebar ${menu ? "open" : ""}`} inert={entering}>
-          <button className="brand" onClick={() => navigate("library")}>
-            <span className="brand-mark">
-              <BookmarkSimple size={23} weight="fill" />
-            </span>
-            <span>
-              偷吃猫娘达咩哟的galgame攻略收集站<small>GALGAME ARCHIVE</small>
-            </span>
-          </button>
           <div className="sidebar-label">我的空间</div>
           <nav aria-label="主导航">
             {nav.map(({ id, label, Icon }) => (
@@ -726,8 +716,13 @@ export default function App() {
             <>
               <h1 className="sr-only">游戏攻略</h1>
               <DiscLibrary
-                onCatalog={() => setCatalogOpen(true)}
-                paused={catalogOpen}
+                onCatalog={() => {
+                  setPreviewId("");
+                  setCatalogOpen(true);
+                }}
+                catalogOpen={catalogOpen}
+                previewId={previewId}
+                onSelectionChange={setShelfSelection}
                 initialId={gameId}
                 onOpen={openGame}
                 games={allGames
@@ -807,6 +802,8 @@ export default function App() {
             </div>
             <GameIndex
               onOpen={openGame}
+              onPreview={setPreviewId}
+              selectedId={shelfSelection}
               games={allGames
                 .filter((g) => g.id !== "demo-game")
                 .filter((g) =>
@@ -1139,7 +1136,7 @@ export default function App() {
           )}
         </main>
         <footer className="page-footer">
-          <span>偷吃猫娘达咩哟的galgame攻略收集站</span>
+          <span>Galgame Archive</span>
           <span></span>
           <span>LOCAL FIRST · v0.1</span>
         </footer>

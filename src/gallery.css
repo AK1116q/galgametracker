@@ -38,16 +38,23 @@
   display: none;
 }
 .catalog-panel {
-  width: min(960px, calc(100% - 48px));
-  max-height: calc(100dvh - 64px);
-  padding: 28px 36px;
+  position: fixed;
+  inset: auto auto 76px 32px;
+  margin: 0;
+  width: min(440px, calc(100% - 64px));
+  max-height: min(680px, calc(100dvh - 130px));
+  padding: 22px 24px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  box-shadow: 0 12px 45px #35254812;
+  border-radius: 3px;
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--dark);
   overscroll-behavior: contain;
 }
 .catalog-panel::backdrop {
-  background: #f6f6f2df;
+  background: transparent;
 }
 .catalog-panel[open] {
   animation: catalog-enter 240ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
@@ -55,7 +62,7 @@
 @supports (transition-behavior: allow-discrete) {
   .catalog-panel {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(24px);
     transition:
       opacity 180ms ease,
       transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -80,7 +87,7 @@
   @starting-style {
     .catalog-panel[open] {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(24px);
     }
     .catalog-panel[open]::backdrop {
       opacity: 0;
@@ -99,17 +106,17 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 .catalog-heading h2 {
   margin: 0;
-  font: 400 30px var(--serif);
+  font: 400 26px var(--serif);
 }
 .catalog-heading button {
   border: 0;
   background: none;
   padding: 12px 0;
-  font-size: 13px;
+  font-size: 15px;
 }
 .app-shell[data-view="library"] .catalog-panel .section-toolbar {
   padding: 10px 0 18px;
@@ -122,7 +129,7 @@
 }
 .catalog-panel .search input,
 .catalog-panel .tabs button {
-  font-size: 13px;
+  font-size: 15px;
 }
 .app-shell[data-view="library"] .catalog-panel .continue-panel {
   padding: 18px 0;
@@ -144,7 +151,7 @@
 @keyframes catalog-enter {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -186,14 +193,79 @@
     padding-block: 4px;
   }
   .catalog-panel {
-    width: calc(100% - 24px);
-    max-height: calc(100dvh - 32px);
-    padding: 20px;
+    inset: auto auto 80px 16px;
+    width: calc(100% - 32px);
+    max-height: min(520px, 60svh);
+    padding: 18px;
   }
   .catalog-heading h2 {
     font-size: 25px;
   }
   .catalog-panel .search {
     width: 100%;
+  }
+}
+
+/* The list floats above its bottom-left trigger; discs stay visible behind it. */
+.catalog-panel .disc-index-heading {
+  display: none;
+}
+.catalog-panel .disc-index-row {
+  grid-template-columns: 22px 34px minmax(0, 1fr) 18px;
+  gap: 12px;
+  padding: 12px 4px;
+  border-color: var(--line);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
+.catalog-panel .disc-index-row img {
+  width: 34px;
+  height: 46px;
+}
+.catalog-panel .disc-index-row strong {
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.catalog-panel .disc-index-row .disc-index-count {
+  display: none;
+}
+.catalog-panel .disc-index-row[aria-current="true"],
+.catalog-panel .disc-index-row:hover,
+.catalog-panel .disc-index-row:focus-visible {
+  background: var(--surface);
+  color: var(--accent);
+}
+.catalog-panel .disc-index-number {
+  font-size: 12px;
+}
+.catalog-panel .tabs {
+  gap: 14px;
+}
+.catalog-panel .tabs button {
+  font-size: 14px;
+}
+.catalog-panel .search {
+  width: 100%;
+}
+.catalog-panel .continue-panel {
+  flex-wrap: wrap;
+}
+.catalog-panel .continue-copy h2 {
+  font-size: 20px;
+}
+.catalog-panel .continue-icon {
+  display: none;
+}
+.catalog-panel .cover-sources,
+.catalog-panel .public-directory,
+.catalog-panel .library-footer {
+  font-size: 13px;
+}
+@media (max-width: 560px) {
+  .catalog-panel .disc-index-row strong {
+    font-size: 16px;
   }
 }

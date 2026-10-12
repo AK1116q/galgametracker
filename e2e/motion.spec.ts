@@ -64,7 +64,9 @@ test("catalog closes with a transition and rapidly interrupted navigation reache
     (
       document.querySelector(".sidebar > button.nav-item") as HTMLButtonElement
     ).click();
-    (document.querySelector(".brand") as HTMLButtonElement).click();
+    (
+      document.querySelector('[data-view-link="library"]') as HTMLButtonElement
+    ).click();
   });
   await expect(page.locator(".app-shell")).toHaveAttribute(
     "data-view",
