@@ -47,10 +47,10 @@
   width: 82%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #d1d1cb;
+  background: #d8d0df;
   box-shadow:
-    0 3px 0 #8c8f85,
-    0 10px 22px #20271916;
+    0 3px 0 #978c9f,
+    0 10px 22px #30283f16;
   animation: record-turn 40s linear infinite;
   animation-play-state: paused;
 }
@@ -85,7 +85,7 @@
   width: 2%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: linear-gradient(120deg, #fff, #777b72);
+  background: linear-gradient(120deg, #fff, #82768c);
   box-shadow: 1px 2px 2px #0003;
 }
 .turntable__arm {
@@ -125,8 +125,8 @@
 .turntable__caption button {
   border: 1px solid var(--line);
   background: transparent;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -134,14 +134,14 @@
   display: block;
   margin: 0 3%;
   color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  letter-spacing: 0.06em;
 }
 
 .app-shell[data-view="game"] .topbar {
   width: 94%;
   max-width: 2200px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .game-workspace__content .page-heading {
   margin-bottom: 36px;
