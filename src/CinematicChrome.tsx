@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
+import GlyphRain from "./GlyphRain";
 import "./cinematic.css";
 
 export default function CinematicChrome({
@@ -34,13 +35,13 @@ export default function CinematicChrome({
       );
       // Decode the selected cover before revealing it, with a bounded wait on slow networks.
       void Promise.all([
-        delay(350),
-        Promise.race([image?.decode().catch(() => {}), delay(1200)]),
+        delay(1100),
+        Promise.race([image?.decode().catch(() => {}), delay(1400)]),
       ]).then(() => {
         if (!cancelled) setPhase("revealing");
       });
     } else {
-      void delay(1500).then(() => {
+      void delay(1200).then(() => {
         if (!cancelled) setPhase("done");
       });
     }
@@ -64,10 +65,13 @@ export default function CinematicChrome({
       <div className="archive-background" aria-hidden="true" />
       {phase !== "done" && (
         <div className="archive-intro" data-phase={phase} aria-label="开场动画">
-          <span className="archive-intro__status">
-            读取光盘
-            <span aria-hidden="true" />
-          </span>
+          <div className="archive-intro__rain" aria-hidden="true">
+            <GlyphRain />
+            <div className="archive-intro__label">
+              <span>GALGAME ARCHIVE</span>
+              <small>读取光盘</small>
+            </div>
+          </div>
         </div>
       )}
     </>

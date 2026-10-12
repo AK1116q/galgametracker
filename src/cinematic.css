@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #f6f6f2;
+  background: var(--paper, #f7f4fa);
   pointer-events: none;
 }
 .archive-background::after {
@@ -18,27 +18,44 @@
   z-index: 100;
   cursor: wait;
 }
-.archive-intro__status {
+.archive-intro__rain {
   position: absolute;
-  top: 24px;
-  left: 50%;
-  translate: -50% 0;
+  inset: 0;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 42%, #382347 0%, #1c1428 74%);
+  transition: opacity 850ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.archive-glyph-rain {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.86;
+}
+.archive-intro__label {
+  position: absolute;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  transition: opacity 300ms ease;
+  justify-content: center;
+  gap: 18px;
+  color: #f0e6fc;
+  background: radial-gradient(
+    ellipse 260px 120px at center,
+    #24182bbb,
+    transparent
+  );
+  font: 500 clamp(16px, 1.5vw, 23px) / 1.4
+    var(--font-mono, ui-monospace, monospace);
+  letter-spacing: 0.24em;
+  animation: archive-label-arrive 650ms ease both;
 }
-.archive-intro__status > span {
-  width: 9px;
-  height: 9px;
-  border: 1px solid #b2b2aa;
-  border-top-color: #292a26;
-  border-radius: 50%;
-  animation: disc-loading 800ms linear infinite;
+.archive-intro__label small {
+  color: #c3abcf;
+  font: 400 14px / 1.6 var(--font-sans, sans-serif);
+  letter-spacing: 0.18em;
 }
-.archive-intro[data-phase="revealing"] .archive-intro__status {
+.archive-intro[data-phase="revealing"] .archive-intro__rain {
   opacity: 0;
 }
 .app-shell:has(.archive-intro) .disc-scene {
@@ -49,7 +66,7 @@
   transform: translateY(48px) scale(0.62) rotateY(-24deg);
 }
 .app-shell:has(.archive-intro[data-phase="revealing"]) .disc-scene {
-  animation: archive-disc-arrive 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: archive-disc-arrive 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .app-shell:has(.archive-intro[data-phase="loading"])
   .optical-disc:not(.disc-hit)
@@ -59,7 +76,7 @@
 .app-shell:has(.archive-intro[data-phase="revealing"])
   .optical-disc:not(.disc-hit)
   .disc-face {
-  animation: archive-neighbor-arrive 700ms ease 500ms both;
+  animation: archive-neighbor-arrive 650ms ease 400ms both;
 }
 .app-shell:has(.archive-intro)
   :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination, .sidebar) {
@@ -69,7 +86,7 @@
 .app-shell:has(.archive-intro[data-phase="revealing"])
   :is(.disc-credits, .disc-info, .disc-catalog, .disc-pagination, .sidebar) {
   visibility: visible;
-  animation: archive-type-arrive 600ms cubic-bezier(0.22, 1, 0.36, 1) 850ms both;
+  animation: archive-type-arrive 600ms cubic-bezier(0.22, 1, 0.36, 1) 550ms both;
 }
 @keyframes archive-disc-arrive {
   0% {
@@ -102,9 +119,14 @@
     transform: translateY(0);
   }
 }
-@keyframes disc-loading {
+@keyframes archive-label-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 :root[data-motion="paused"] .app-shell:has(.archive-intro) * {
