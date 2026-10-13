@@ -74,3 +74,103 @@ test("closing a preview does not pull the shelf back after an animated page chan
   );
   await expect(shelf).toHaveAttribute("data-page", "2");
 });
+
+test("hovering across catalog pages uses the full disc flip and lands on the hovered work", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  const panel = page.getByRole("dialog", { name: "作品目录", exact: true });
+  const last = panel.getByRole("button", { name: /^选择作品：/ }).last();
+  const title = await last.locator("strong").innerText();
+  await last.hover();
+  const shelf = page.locator(".disc-library");
+  await expect(shelf).toHaveAttribute("data-flight", "out");
+  const departing = await page.locator(".disc-hit").evaluate((el) =>
+    el.getAnimations().some((animation) => {
+      const effect = animation.effect as KeyframeEffect;
+      return effect
+        .getKeyframes()
+        .some((frame) =>
+          String(frame.transform).includes("rotateY(90deg) scale(1.45)"),
+        );
+    }),
+  );
+  expect(departing).toBe(true);
+  await expect(shelf).toHaveAttribute("data-flight", "in");
+  await expect(shelf).toHaveAttribute("data-page", "2");
+  await expect(page.locator(".disc-hit .disc-print strong")).toHaveText(title);
+  const arriving = await page.locator(".disc-hit").evaluate((el) =>
+    el.getAnimations().some((animation) => {
+      const effect = animation.effect as KeyframeEffect;
+      return effect
+        .getKeyframes()
+        .some((frame) =>
+          String(frame.transform).includes("rotateY(-90deg) scale(1.45)"),
+        );
+    }),
+  );
+  expect(arriving).toBe(true);
+  await expect(shelf).toHaveAttribute("data-flight", "idle");
+  await expect(last).toHaveAttribute("aria-current", "true");
+  expect(
+    await page
+      .locator(".optical-disc")
+      .evaluateAll(
+        (elements) => elements.flatMap((el) => el.getAnimations()).length,
+      ),
+  ).toBe(0);
+
+  const first = panel.getByRole("button", {
+    name: "选择作品：白色相簿2",
+    exact: true,
+  });
+  await first.hover();
+  await expect(shelf).toHaveAttribute("data-flight", "out");
+  await expect(shelf).toHaveAttribute("data-flight", "idle");
+  await expect(shelf).toHaveAttribute("data-page", "1");
+  await expect(page.locator(".disc-hit .disc-face")).toHaveAttribute(
+    "data-game-id",
+    "white-album-2",
+  );
+});
+
+test("a newer hover replaces the pending page destination instead of queuing stale rows", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  const panel = page.getByRole("dialog", { name: "作品目录", exact: true });
+  const rows = panel.getByRole("button", { name: /^选择作品：/ });
+  await rows.last().focus();
+  const shelf = page.locator(".disc-library");
+  await expect(shelf).toHaveAttribute("data-flight", "out");
+  await rows.nth(10).focus();
+  const atri = panel.getByRole("button", {
+    name: "选择作品：ATRI -My Dear Moments-",
+    exact: true,
+  });
+  await atri.focus();
+  // Closing during the outgoing flip must preserve the last hover target.
+  await page.keyboard.press("Escape");
+  await expect(shelf).toHaveAttribute("data-flight", "idle");
+  await expect(shelf).toHaveAttribute("data-page", "1");
+  await expect(page.locator(".disc-hit .disc-face")).toHaveAttribute(
+    "data-game-id",
+    "atri",
+  );
+  await page.locator(".disc-stage").press("Enter");
+  await expect(page.locator(".game-workspace h1")).toHaveText(
+    "ATRI -My Dear Moments-",
+  );
+  expect(errors).toEqual([]);
+});

@@ -11,6 +11,12 @@ const art = covers as Record<
 >;
 const pad = (n: number) => String(n).padStart(2, "0");
 const PAGE_SIZE = 8;
+function decodeDisc(id: string) {
+  if (!art[id]) return Promise.resolve();
+  const image = new Image();
+  image.src = art[id].disc?.src ?? art[id].src;
+  return image.decode().catch(() => {});
+}
 const reviews = metadata as Record<
   string,
   {
@@ -56,6 +62,10 @@ export default function DiscLibrary({
   const games = allGames.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
   const [flight, setFlight] = useState<"idle" | "out" | "in">("idle");
   const flightRef = useRef(false);
+  const latestPreview = useRef(previewId);
+  // Closing stops new previews, but an in-flight flip must still land on the
+  // last hovered work rather than falling back to the original request.
+  if (catalogOpen && previewId) latestPreview.current = previewId;
   const animations = useRef<Animation[]>([]);
   const alive = useRef(true);
   const [browsing, setBrowsing] = useState(false);
@@ -118,6 +128,7 @@ export default function DiscLibrary({
   const position = useRef(selected);
   const target = useRef(selected);
   const wake = useRef<() => void>(() => {});
+  const paint = useRef<() => void>(() => {});
   const suspended = useRef(paused);
   suspended.current = paused || flight !== "idle";
   useEffect(() => {
@@ -202,6 +213,7 @@ export default function DiscLibrary({
         style(disc, "zIndex", String(10 - Math.round(Math.abs(distance) * 2)));
       });
     };
+    paint.current = draw;
     const tick = (time: number) => {
       frame = 0;
       // On high-refresh screens, avoid simulating 240+ times per second.
@@ -332,10 +344,11 @@ export default function DiscLibrary({
       document.removeEventListener("visibilitychange", visibility);
       media.removeEventListener("change", start);
       wake.current = () => {};
+      paint.current = () => {};
     };
   }, [ids]);
 
-  async function changePage(next: number) {
+  async function changePage(next: number, requestedId?: string) {
     if (flightRef.current || next === page || next < 0 || next >= pageCount)
       return;
     flightRef.current = true;
@@ -343,14 +356,16 @@ export default function DiscLibrary({
     hover.current = { index: -1, x: 0, y: 0 };
     gesture.current = null;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
-    // Decode only the incoming focal artwork; a slow image must not trap navigation.
-    const preload = nextGames.slice(0, 3).map((game) => {
-      if (!art[game.id]) return Promise.resolve();
-      const image = new Image();
-      image.src = art[game.id].disc?.src ?? art[game.id].src;
-      return image.decode().catch(() => {});
-    });
+    let nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
+    let focal = Math.max(
+      0,
+      nextGames.findIndex((game) => game.id === requestedId),
+    );
+    // A catalog jump can land anywhere on a page, including its last work.
+    const preload = nextGames
+      .filter((_, index) => Math.abs(index - focal) < 3)
+      .map((game) => decodeDisc(game.id));
+    const direction = next > page ? 1 : -1;
     const play = (
       el: HTMLElement,
       frames: Keyframe[],
@@ -375,15 +390,19 @@ export default function DiscLibrary({
     try {
       if (!reduced) {
         const outgoing = discs.current
-          .filter((disc): disc is HTMLButtonElement => disc !== null)
-          .map((disc, index) => {
+          .map((disc, index) => ({ disc, index }))
+          .filter(
+            ({ disc }) => disc !== null && disc.style.visibility !== "hidden",
+          )
+          .map(({ disc: element, index }) => {
+            const disc = element!;
             const pose = disc.style.transform;
             return play(
               disc,
               [
                 { transform: pose, opacity: disc.style.opacity },
                 {
-                  transform: `${pose} rotateY(${next > page ? 90 : -90}deg) scale(${index === selected ? 1.45 : 0})`,
+                  transform: `${pose} rotateY(${direction * 90}deg) scale(${index === selected ? 1.45 : 0})`,
                   opacity: index === selected ? 1 : 0,
                 },
               ],
@@ -402,33 +421,49 @@ export default function DiscLibrary({
         ]);
       }
       if (!alive.current) return;
+      // Retarget at the concealed midpoint; rapid hovering must not queue every row.
+      const latestIndex = requestedId
+        ? allGames.findIndex((game) => game.id === latestPreview.current)
+        : -1;
+      if (latestIndex >= 0) {
+        next = Math.floor(latestIndex / PAGE_SIZE);
+        focal = latestIndex % PAGE_SIZE;
+        nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
+      }
       animations.current.forEach((a) => a.cancel());
       animations.current = [];
-      position.current = target.current = 0;
+      position.current = target.current = focal;
       flushSync(() => {
         setPage(next);
-        select(nextGames[0].id);
+        select(nextGames[focal].id);
         setFlight("in");
       });
+      // A last-moment hover may return to the original page, whose layout effect
+      // has not remounted. Paint that page at its new focal position as well.
+      paint.current();
       if (!reduced) {
         await Promise.all(
           discs.current
-            .filter((disc): disc is HTMLButtonElement => disc !== null)
-            .slice(0, 3)
-            .map((disc, index) => {
+            .map((disc, index) => ({ disc, index }))
+            .filter(
+              ({ disc, index }) => disc !== null && Math.abs(index - focal) < 3,
+            )
+            .map(({ disc: element, index }) => {
+              const disc = element!;
+              const isFocal = index === focal;
               const pose = disc.style.transform;
               return play(
                 disc,
                 [
                   {
-                    transform: `${pose} rotateY(${next > page ? -90 : 90}deg) scale(${index === 0 ? 1.45 : 0})`,
-                    opacity: index === 0 ? 1 : 0,
+                    transform: `${pose} rotateY(${-direction * 90}deg) scale(${isFocal ? 1.45 : 0})`,
+                    opacity: isFocal ? 1 : 0,
                   },
                   { transform: pose, opacity: disc.style.opacity },
                 ],
-                index === 0 ? 1050 : 890,
-                index === 0 ? "cubic-bezier(.215,.61,.355,1)" : "linear",
-                index === 0 ? 0 : 290,
+                isFocal ? 1050 : 890,
+                isFocal ? "cubic-bezier(.215,.61,.355,1)" : "linear",
+                isFocal ? 0 : 290,
               );
             }),
         );
@@ -442,32 +477,30 @@ export default function DiscLibrary({
     }
   }
 
-  const previewAnimation = useRef<Animation | null>(null);
   useEffect(() => {
-    if (!catalogOpen || !previewId || flight !== "idle") return;
+    if (!catalogOpen || !previewId) return;
     const index = allGames.findIndex((game) => game.id === previewId);
     if (index < 0 || current?.id === previewId) return;
+    if (flight !== "idle") {
+      // Warm the most recent target while the current flip completes.
+      void decodeDisc(previewId);
+      return;
+    }
     const nextPage = Math.floor(index / PAGE_SIZE);
     hover.current = { index: -1, x: 0, y: 0 };
-    activity();
-    previewAnimation.current?.cancel();
     if (nextPage !== page) {
-      position.current = target.current = index % PAGE_SIZE;
-      setPage(nextPage);
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        previewAnimation.current =
-          stage.current?.querySelector(".disc-scene")?.animate(
-            [
-              { opacity: 0, translate: `${nextPage > page ? 48 : -48}px 0` },
-              { opacity: 1, translate: "0 0" },
-            ],
-            { duration: 460, easing: "cubic-bezier(.2,.8,.2,1)" },
-          ) ?? null;
-      }
+      // Let the effect finish before the shared transition flushes its midpoint.
+      let cancelled = false;
+      queueMicrotask(() => {
+        if (!cancelled && alive.current) void changePage(nextPage, previewId);
+      });
+      return () => {
+        cancelled = true;
+      };
     }
+    activity();
     select(previewId);
   }, [catalogOpen, previewId, flight]);
-  useEffect(() => () => previewAnimation.current?.cancel(), []);
 
   if (!current || !caption) return null;
   return (
