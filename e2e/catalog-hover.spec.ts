@@ -1,5 +1,35 @@
 import { test, expect } from "@playwright/test";
 
+test("keyboard focus survives scroll-induced hover until mouse input resumes", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.getByRole("button", { name: "作品目录", exact: true }).click();
+  const rows = page
+    .getByRole("dialog")
+    .getByRole("button", { name: /^选择作品：/ });
+  await rows.nth(1).hover();
+  await expect(rows.nth(1)).toHaveAttribute("aria-current", "true");
+  await rows.last().focus();
+  await expect(rows.last()).toHaveAttribute("aria-current", "true");
+  // Native focus scrolling can put a different row below the stationary mouse.
+  await rows.nth(12).dispatchEvent("pointerover", { pointerType: "mouse" });
+  await page.waitForTimeout(180);
+  await expect(rows.last()).toHaveAttribute("aria-current", "true");
+  await rows.nth(12).dispatchEvent("pointermove", {
+    pointerType: "mouse",
+    movementY: 4,
+  });
+  await expect(rows.nth(12)).toHaveAttribute("aria-current", "true");
+  await rows.nth(14).focus();
+  await rows.last().focus();
+  await expect(rows.last()).toHaveAttribute("aria-current", "true");
+  await rows.nth(10).dispatchEvent("wheel", { deltaY: 30 });
+  await rows.nth(10).dispatchEvent("pointerover", { pointerType: "mouse" });
+  await expect(rows.nth(10)).toHaveAttribute("aria-current", "true");
+});
+
 test("bottom catalog previews hovered and focused works across pages without opening a guide", async ({
   page,
 }) => {

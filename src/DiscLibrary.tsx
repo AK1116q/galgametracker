@@ -772,10 +772,23 @@ export function GameIndex({
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+  const pointerPreview = useRef(true);
   const cancelPreview = () => clearTimeout(hoverTimer.current);
+  const queuePreview = (id: string) => {
+    cancelPreview();
+    if (pointerPreview.current)
+      hoverTimer.current = setTimeout(() => onPreview?.(id), 110);
+  };
   useEffect(() => cancelPreview, []);
   return (
-    <div className="disc-index" id="game-index" onPointerLeave={cancelPreview}>
+    <div
+      className="disc-index"
+      id="game-index"
+      onPointerLeave={cancelPreview}
+      onWheelCapture={() => {
+        pointerPreview.current = true;
+      }}
+    >
       <div className="disc-index-heading">
         <h2>作品目录</h2>
         <span>{pad(games.length)} WORKS</span>
@@ -788,12 +801,24 @@ export function GameIndex({
           className="disc-index-row"
           onPointerEnter={(event) => {
             cancelPreview();
-            if (event.pointerType === "mouse")
-              hoverTimer.current = setTimeout(() => onPreview?.(game.id), 110);
+            if (event.pointerType === "mouse") queuePreview(game.id);
           }}
           onPointerLeave={cancelPreview}
+          onPointerMove={(event) => {
+            if (
+              event.pointerType === "mouse" &&
+              !pointerPreview.current &&
+              (event.movementX !== 0 || event.movementY !== 0)
+            ) {
+              pointerPreview.current = true;
+              queuePreview(game.id);
+            }
+          }}
           onFocus={() => {
             cancelPreview();
+            // Focusing scrolls the list. Rows sliding beneath a stationary
+            // pointer must not override keyboard selection until mouse input resumes.
+            pointerPreview.current = false;
             onPreview?.(game.id);
           }}
           onClick={() => {
