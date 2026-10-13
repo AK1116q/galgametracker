@@ -1,5 +1,4 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import GlyphRain from "./GlyphRain";
 import "./cinematic.css";
 
 export default function CinematicChrome({
@@ -7,7 +6,7 @@ export default function CinematicChrome({
 }: {
   onIntroChange: (active: boolean) => void;
 }) {
-  const [phase, setPhase] = useState<"loading" | "revealing" | "done">(() =>
+  const [phase, setPhase] = useState<"loading" | "spinning" | "done">(() =>
     matchMedia("(prefers-reduced-motion: reduce)").matches ? "done" : "loading",
   );
   useLayoutEffect(() => {
@@ -22,32 +21,121 @@ export default function CinematicChrome({
     return () => media.removeEventListener("change", stop);
   }, []);
   useEffect(() => {
-    if (phase === "done") return;
+    if (phase !== "loading") return;
     let cancelled = false;
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    const delay = (ms: number) =>
-      new Promise<void>((resolve) => {
-        timers.push(setTimeout(resolve, ms));
-      });
-    if (phase === "loading") {
-      const image = document.querySelector<HTMLImageElement>(
-        ".disc-hit .disc-face img",
-      );
-      // Decode the selected cover before revealing it, with a bounded wait on slow networks.
-      void Promise.all([
-        delay(1100),
-        Promise.race([image?.decode().catch(() => {}), delay(1400)]),
-      ]).then(() => {
-        if (!cancelled) setPhase("revealing");
-      });
-    } else {
-      void delay(1200).then(() => {
-        if (!cancelled) setPhase("done");
-      });
-    }
+    let timer: ReturnType<typeof setTimeout>;
+    const image = document.querySelector<HTMLImageElement>(
+      ".disc-hit > .disc-face img",
+    );
+    // The real selected disc is already mounted. Wait briefly for its artwork, never for a second copy.
+    const deadline = new Promise<void>((resolve) => {
+      timer = setTimeout(resolve, 400);
+    });
+    void Promise.race([image?.decode().catch(() => {}), deadline]).then(() => {
+      if (!cancelled) setPhase("spinning");
+    });
     return () => {
       cancelled = true;
-      timers.forEach(clearTimeout);
+      clearTimeout(timer);
+    };
+  }, [phase]);
+  useLayoutEffect(() => {
+    if (phase !== "spinning") return;
+    const disc = document.querySelector<HTMLElement>(".disc-hit");
+    const face = disc?.querySelector<HTMLElement>(":scope > .disc-face");
+    if (!disc || !face) {
+      // Deep links open their destination directly; the entrance belongs to the home shelf.
+      setPhase("done");
+      return;
+    }
+    let cancelled = false;
+    const animations: Animation[] = [];
+    const play = (
+      element: HTMLElement,
+      id: string,
+      keyframes: Keyframe[],
+      options: KeyframeAnimationOptions,
+    ) => {
+      const animation = element.animate(keyframes, {
+        fill: "both",
+        ...options,
+      });
+      animation.id = id;
+      animations.push(animation);
+      if (document.hidden) animation.pause();
+      return animation;
+    };
+    // Rotate the actual artwork inside its existing 3D pose, then leave that same DOM in place.
+    play(
+      face,
+      "archive-spin",
+      [{ transform: "rotateZ(-1800deg)" }, { transform: "rotateZ(0deg)" }],
+      { duration: 2600, easing: "cubic-bezier(0.2, 0.72, 0.26, 1)" },
+    );
+    play(
+      disc,
+      "archive-position",
+      [
+        {
+          transform:
+            "translate3d(0,0,0) scale(0.72) rotateX(0deg) rotateY(0deg) rotateZ(0deg)",
+        },
+        { transform: disc.style.transform || getComputedStyle(disc).transform },
+      ],
+      { duration: 2600, easing: "cubic-bezier(0.22, 0.8, 0.28, 1)" },
+    );
+    play(face, "archive-cover", [{ opacity: 0.2 }, { opacity: 1 }], {
+      duration: 220,
+      easing: "ease-out",
+    });
+    document
+      .querySelectorAll<HTMLElement>(
+        ".optical-disc:not(.disc-hit) > .disc-face",
+      )
+      .forEach((element) => {
+        play(element, "archive-neighbor", [{ opacity: 0 }, { opacity: 1 }], {
+          duration: 750,
+          delay: 1450,
+          easing: "ease-out",
+        });
+      });
+    document
+      .querySelectorAll<HTMLElement>(
+        ".disc-credits, .disc-info, .disc-catalog, .disc-pagination",
+      )
+      .forEach((element) => {
+        play(
+          element,
+          "archive-interface",
+          [
+            { opacity: 0, transform: "translateY(8px)" },
+            { opacity: 1, transform: "translateY(0)" },
+          ],
+          {
+            duration: 600,
+            delay: 1950,
+            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          },
+        );
+      });
+    const visibility = () => {
+      animations.forEach((animation) => {
+        if (animation.playState === "finished") return;
+        if (document.hidden) animation.pause();
+        else animation.play();
+      });
+    };
+    document.addEventListener("visibilitychange", visibility);
+    // Finished promises respect paused/background time; no timeout can cut the spin short.
+    void Promise.all(animations.map((animation) => animation.finished))
+      .then(() => {
+        if (!cancelled) setPhase("done");
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+      document.removeEventListener("visibilitychange", visibility);
+      animations.forEach((animation) => animation.cancel());
     };
   }, [phase]);
   useEffect(() => {
@@ -65,13 +153,7 @@ export default function CinematicChrome({
       <div className="archive-background" aria-hidden="true" />
       {phase !== "done" && (
         <div className="archive-intro" data-phase={phase} aria-label="开场动画">
-          <div className="archive-intro__rain" aria-hidden="true">
-            <GlyphRain />
-            <div className="archive-intro__label">
-              <span>GALGAME ARCHIVE</span>
-              <small>读取光盘</small>
-            </div>
-          </div>
+          <span className="sr-only">光盘正在旋转，随后进入作品首页</span>
         </div>
       )}
     </>
