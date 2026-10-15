@@ -274,5 +274,22 @@
       "source": "https://bgm.tv/subject/10106",
       "checkedAt": "2026-10-11"
     }
+  },
+  "loopers": {
+    "subjectId": 317672,
+    "title": "LOOPERS",
+    "score": 6,
+    "votes": 1426,
+    "source": "https://api.bgm.tv/v0/subjects/317672",
+    "checkedAt": "2026-10-16",
+    "url": "https://bgm.tv/subject/317672",
+    "comment": "寻宝少年卷入时间循环，短篇节奏鲜明，画面色彩大胆。",
+    "scope": "原作游戏条目评分",
+    "production": {
+      "developer": "Key",
+      "year": "2021",
+      "source": "https://bgm.tv/subject/317672",
+      "checkedAt": "2026-10-16"
+    }
   }
 }

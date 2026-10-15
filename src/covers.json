@@ -239,5 +239,15 @@
       "position": "50% 50%",
       "checkedAt": "2026-10-11"
     }
+  },
+  "loopers": {
+    "src": "/images/covers/loopers.jpg",
+    "width": 950,
+    "height": 1340,
+    "subjectId": 317672,
+    "subjectTitle": "LOOPERS",
+    "source": "https://bgm.tv/subject/317672",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/d2/42/317672_0MP6J.jpg",
+    "checkedAt": "2026-10-16"
   }
 }

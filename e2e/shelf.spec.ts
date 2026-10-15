@@ -141,7 +141,9 @@ test("page changes flip the disc, keep eight works mounted and restore the selec
   await expect(page.locator(".optical-disc")).toHaveCount(8);
   const first = await page.locator(".disc-info h2").textContent();
   const pagination = page.locator(".disc-pagination");
-  await expect(pagination.locator(".page-dot")).toHaveCount(2);
+  const { readdirSync } = await import('node:fs');
+  const workCount = readdirSync('data/catalog').filter((name) => name.endsWith('.route.json')).length + 1;
+  await expect(pagination.locator(".page-dot")).toHaveCount(Math.ceil(workCount / 8));
   await expect(pagination).toHaveText("");
   await expect(
     page.getByRole("button", { name: "第 1 页作品", exact: true }),
