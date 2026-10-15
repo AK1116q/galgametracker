@@ -19,6 +19,15 @@ export function validatePack(pack) {
   const choices = index(pack.choices, "choices");
   const endings = index(pack.endings, "endings");
   const sources = index(pack.sources, "sources");
+  for (const source of pack.sources) {
+    if (!/^https?:/i.test(source.reference.trim())) continue;
+    try {
+      const url = new URL(source.reference);
+      if (!url.hostname) throw new Error("Missing hostname");
+    } catch {
+      errors.push(`source ${source.id}: invalid HTTP(S) URL`);
+    }
+  }
   const options = new Map(
     pack.choices.map((c) => [c.id, index(c.options, `choice ${c.id} options`)]),
   );

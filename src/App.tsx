@@ -101,14 +101,23 @@ function readNavigation(): Navigation {
       chapter: "",
       target: "",
     };
+  const gameId = params.get("game") || "white-album-2";
+  const target = params.get("target") || "";
+  const targetPack =
+    requested === "game" &&
+    BUILTINS.find(
+      (p) =>
+        p.game.id === gameId &&
+        p.routes.some((r) => `${packKey(p)}/${r.id}` === target),
+    );
   return {
     view: ["library", "game", "play", "records", "settings"].includes(requested)
       ? requested
       : "library",
-    gameId: params.get("game") || "white-album-2",
+    gameId,
     activeId: params.get("session") || "",
-    chapter: params.get("chapter") || "",
-    target: params.get("target") || "",
+    chapter: targetPack ? chapterFor(targetPack) : params.get("chapter") || "",
+    target,
   };
 }
 function navigationUrl(next: Navigation) {
@@ -154,18 +163,28 @@ function download(name: string, data: unknown) {
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-function readInitial(): { library: Library; problem: string } {
+function readInitial(): {
+  library: Library;
+  problem: string;
+  raw: string | null | undefined;
+} {
+  let raw: string | null | undefined;
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    raw = localStorage.getItem(STORAGE_KEY);
     return {
-      library: raw ? validateBackup(JSON.parse(raw), BUILTINS) : emptyLibrary(),
+      library:
+        raw !== null
+          ? validateBackup(JSON.parse(raw), BUILTINS)
+          : emptyLibrary(),
       problem: "",
+      raw,
     };
   } catch {
     return {
       library: emptyLibrary(),
       problem:
         "本地记录暂时无法读取。原数据已保留，请先下载原始备份，避免覆盖。",
+      raw,
     };
   }
 }
@@ -247,6 +266,9 @@ export default function App() {
   useInteractionMotion();
   const [library, setLibrary] = useState<Library>(initial.library);
   const [problem, setProblem] = useState(initial.problem);
+  const libraryRef = useRef(initial.library);
+  const problemRef = useRef(initial.problem);
+  const storedRaw = useRef(initial.raw);
   const [navigation, setNavigation] = useState<Navigation>(readNavigation);
   const { view, gameId, activeId } = navigation;
   const [catalogOpen, setCatalogOpen] = useState(false);
@@ -306,11 +328,8 @@ export default function App() {
   }, [toast]);
   useEffect(() => {
     const onStorage = (event: StorageEvent) => {
-      if (event.key === STORAGE_KEY) {
-        const result = readInitial();
-        setLibrary(result.library);
-        setProblem(result.problem);
-      }
+      if (event.key === STORAGE_KEY || event.key === null)
+        acceptStorage(readInitial());
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
@@ -419,14 +438,39 @@ export default function App() {
       },
     );
   }
-  function commit(next: Library) {
-    if (problem) {
+  function acceptStorage(result: ReturnType<typeof readInitial>) {
+    storedRaw.current = result.raw;
+    problemRef.current = result.problem;
+    setProblem(result.problem);
+    // Keep the last valid in-memory copy available for export after corruption.
+    if (!result.problem) {
+      libraryRef.current = result.library;
+      setLibrary(result.library);
+    }
+  }
+  function commit(next: Library, base: Library = library) {
+    if (problemRef.current) {
       setToast("请先处理本地数据读取问题。");
       return false;
     }
+    // Storage notifications update the ref before React commits the next render.
+    // An event from the old UI must not write a draft made from its stale snapshot.
+    if (base !== libraryRef.current) {
+      setToast("记录已更新，本次操作未保存。请确认后重试。");
+      return false;
+    }
     try {
+      // A background tab may not have received its storage notification yet.
+      if (localStorage.getItem(STORAGE_KEY) !== storedRaw.current) {
+        acceptStorage(readInitial());
+        setToast("记录已在其他页面更新，本次操作未保存。请确认后重试。");
+        return false;
+      }
       validateBackup(next, BUILTINS);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      const raw = JSON.stringify(next);
+      localStorage.setItem(STORAGE_KEY, raw);
+      storedRaw.current = raw;
+      libraryRef.current = next;
       setLibrary(next);
       return true;
     } catch (error) {
@@ -579,10 +623,23 @@ export default function App() {
         data.format === "galgametracker-backup"
           ? data
           : { ...emptyLibrary(), packs: [data] };
-      const next = mergeBackup(library, incoming, BUILTINS);
-      if (commit(next)) setToast("导入完成，已有记录已保留。");
+      const base = libraryRef.current;
+      const next = mergeBackup(base, incoming, BUILTINS);
+      if (commit(next, base)) setToast("导入完成，已有记录已保留。");
     } catch (e) {
       setToast(`无法导入：${(e as Error).message}`);
+    }
+  }
+  function backupRaw() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw === null) {
+        setToast("当前浏览器没有可导出的原始数据。");
+        return;
+      }
+      download("偷吃猫娘达咩哟的galgame攻略收集站-原始数据.json", { raw });
+    } catch {
+      setToast("无法读取原始数据，请检查浏览器是否允许本站使用本地存储。");
     }
   }
   function backup() {
@@ -699,15 +756,7 @@ export default function App() {
           {problem && (
             <Notice kind="error">
               {problem}
-              <button
-                className="text-button"
-                onClick={() => {
-                  const raw = localStorage.getItem(STORAGE_KEY);
-                  download("偷吃猫娘达咩哟的galgame攻略收集站-原始数据.json", {
-                    raw,
-                  });
-                }}
-              >
+              <button className="text-button" onClick={backupRaw}>
                 下载原始数据
               </button>
             </Notice>
@@ -1241,6 +1290,7 @@ function GameView({
       ]
     : [{ id: "other", label: "已收录攻略", note: "" }];
   const available = packs.filter((p) => chapterOf(p) === chapter);
+  const invalidChapter = !!chapter && !chapters.some((c) => c.id === chapter);
   const selected = available
     .flatMap((pack) => pack.routes.map((route) => ({ pack, route })))
     .find(({ pack, route }) => `${packKey(pack)}/${route.id}` === target);
@@ -1288,6 +1338,11 @@ function GameView({
               ))}
             </div>
           </section>
+          {invalidChapter ? (
+            <Notice>链接中的篇章不存在，请重新选择篇章。</Notice>
+          ) : target && !selected ? (
+            <Notice>此攻略版本或路线不可用，请重新选择目标结局。</Notice>
+          ) : null}
           {chapter === "ic" && (
             <section className="chapter-info">
               <h2>IC 没有选项</h2>
@@ -1300,7 +1355,7 @@ function GameView({
               </button>
             </section>
           )}
-          {chapter && chapter !== "ic" && (
+          {chapter && !invalidChapter && chapter !== "ic" && (
             <section className="target-picker">
               <h2>2. 选择目标结局</h2>
               <div className="chapter-options">

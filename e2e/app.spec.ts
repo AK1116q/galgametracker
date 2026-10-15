@@ -403,7 +403,9 @@ test("feedback opens a public draft with the selected step and preserves the gui
         body: "<h1>Draft boundary</h1>",
       }),
   );
-  await openTarget(page);
+  await page.goto(
+    "/guides/white-album-2/wa2-pc-coda-kazusa/1/kazusa-true/",
+  );
   await expect(page.locator(".guide-feedback")).toContainText(
     "需要 GitHub 账号",
   );
