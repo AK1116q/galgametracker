@@ -355,7 +355,22 @@ export default function DiscLibrary({
     clearTimeout(settleTimer.current);
     hover.current = { index: -1, x: 0, y: 0 };
     gesture.current = null;
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const preference = matchMedia("(prefers-reduced-motion: reduce)");
+    let reduced = preference.matches || document.hidden;
+    let releasePreload: () => void;
+    const interrupted = new Promise<void>((resolve) => {
+      releasePreload = resolve;
+    });
+    const stopMotion = () => {
+      if (!preference.matches && !document.hidden) return;
+      // Complete the requested navigation when motion becomes inappropriate,
+      // including any incoming half that has not started yet.
+      reduced = true;
+      animations.current.forEach((animation) => animation.cancel());
+      releasePreload();
+    };
+    preference.addEventListener("change", stopMotion);
+    document.addEventListener("visibilitychange", stopMotion);
     let nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
     let focal = Math.max(
       0,
@@ -414,6 +429,7 @@ export default function DiscLibrary({
           ...outgoing,
           Promise.race([
             Promise.all(preload),
+            interrupted,
             new Promise<void>((resolve) => {
               timeout = setTimeout(resolve, 900);
             }),
@@ -470,6 +486,8 @@ export default function DiscLibrary({
       }
     } finally {
       clearTimeout(timeout);
+      preference.removeEventListener("change", stopMotion);
+      document.removeEventListener("visibilitychange", stopMotion);
       animations.current.forEach((a) => a.cancel());
       animations.current = [];
       flightRef.current = false;

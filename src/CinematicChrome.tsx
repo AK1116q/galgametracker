@@ -14,11 +14,20 @@ export default function CinematicChrome({
   }, [phase, onIntroChange]);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const leave = () => setPhase("done");
     const stop = () => {
-      if (media.matches) setPhase("done");
+      if (media.matches) leave();
     };
     media.addEventListener("change", stop);
-    return () => media.removeEventListener("change", stop);
+    // History navigation can replace the shelf while its animations are paused.
+    // Never carry that shelf's input shield into a different page or a BFCache restore.
+    window.addEventListener("popstate", leave);
+    window.addEventListener("pagehide", leave);
+    return () => {
+      media.removeEventListener("change", stop);
+      window.removeEventListener("popstate", leave);
+      window.removeEventListener("pagehide", leave);
+    };
   }, []);
   useEffect(() => {
     if (phase !== "loading") return;
@@ -127,11 +136,15 @@ export default function CinematicChrome({
     };
     document.addEventListener("visibilitychange", visibility);
     // Finished promises respect paused/background time; no timeout can cut the spin short.
-    void Promise.all(animations.map((animation) => animation.finished))
-      .then(() => {
-        if (!cancelled) setPhase("done");
-      })
-      .catch(() => {});
+    const finish = () => {
+      if (!cancelled) setPhase("done");
+    };
+    // A browser/route interruption can cancel a running animation. It must
+    // release the input shield just like a normal completion, not strand it.
+    void Promise.all(animations.map((animation) => animation.finished)).then(
+      finish,
+      finish,
+    );
     return () => {
       cancelled = true;
       document.removeEventListener("visibilitychange", visibility);
