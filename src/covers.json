@@ -249,5 +249,15 @@
     "source": "https://bgm.tv/subject/317672",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/d2/42/317672_0MP6J.jpg",
     "checkedAt": "2026-10-16"
+  },
+  "harmonia": {
+    "src": "/images/covers/harmonia.jpg",
+    "width": 500,
+    "height": 659,
+    "subjectId": 130051,
+    "subjectTitle": "ハルモニア",
+    "source": "https://bgm.tv/subject/130051",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/2d/69/130051_518r6.jpg",
+    "checkedAt": "2026-10-16"
   }
 }

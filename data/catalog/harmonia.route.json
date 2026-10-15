@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "0.1",
+  "id": "harmonia-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "harmonia",
+    "title": "Harmonia",
+    "aliases": [
+      "ハルモニア"
+    ]
+  },
+  "release": {
+    "id": "harmonia-pc",
+    "label": "2016 PC 原版 · 本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "公开资料交叉核对，尚未实机通关；操作文字为中文概述，不对应游戏中的原文选项。",
+    "本篇无日期选项、分支、先决结局或解锁要求；只提供线性阅读导航。",
+    "仅限 2016 年 PC 原版本篇；Switch 移植版未单独验证。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://th0ughtreviews.wordpress.com/2017/12/02/visual-thoughts-harmonia/",
+      "permission": "仅归纳玩法与版本事实，不转载攻略正文、剧情或截图。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://chcse.blogspot.com/2021/02/harmonia-pc.html",
+      "permission": "仅归纳玩法与版本事实，不转载攻略正文、剧情或截图。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/130051",
+      "permission": "仅归纳玩法与版本事实，不转载攻略正文、剧情或截图。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "开始阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "从标题画面的开始入口进入本篇。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 开始阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    },
+    {
+      "id": "main-02",
+      "locator": "本篇阅读",
+      "prompt": "阅读／操作步骤",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "顺序阅读至片尾；过程中无路线选项。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "target"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · 唯一结局 / 本篇阅读；完整路径与版本边界见核对说明"
+        }
+      ],
+      "kind": "instruction"
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 唯一结局",
+      "hiddenTitle": "本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料交叉核对（非实机）",
+      "date": "2026-10-16",
+      "routeIds": [
+        "main"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "两位独立作者的 PC 版通关评论分别确认无路线、无选项，以及单一路径和唯一结局。"
+    }
+  ]
+}

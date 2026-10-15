@@ -291,5 +291,22 @@
       "source": "https://bgm.tv/subject/317672",
       "checkedAt": "2026-10-16"
     }
+  },
+  "harmonia": {
+    "subjectId": 130051,
+    "title": "ハルモニア",
+    "score": 6.5,
+    "votes": 540,
+    "source": "https://api.bgm.tv/v0/subjects/130051",
+    "checkedAt": "2026-10-16",
+    "url": "https://bgm.tv/subject/130051",
+    "comment": "末世小镇与仿生人的短篇故事，配乐和绘本气息相得益彰。",
+    "scope": "原作游戏条目评分",
+    "production": {
+      "developer": "Key",
+      "year": "2016",
+      "source": "https://bgm.tv/subject/130051",
+      "checkedAt": "2026-10-16"
+    }
   }
 }
