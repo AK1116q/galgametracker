@@ -73,7 +73,7 @@ html[data-page-transition="disc"] .turntable__platter {
   html[data-page-transition]::view-transition-group(*),
   html[data-page-transition]::view-transition-old(*),
   html[data-page-transition]::view-transition-new(*) {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
+    animation: none !important;
+    transition: none !important;
   }
 }

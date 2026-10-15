@@ -109,6 +109,26 @@ test("fallback navigation animates and reduced motion suppresses click animation
   ).toBe(true);
   await page.getByRole("button", { name: /^我的游戏库/ }).click();
   await expect(page.locator(".disc-stage")).toBeVisible();
+  // A near-zero duration still creates transitions, especially on hub pseudo-elements.
+  // Check their rules directly so a fast completion cannot hide the regression.
+  const hubMotion = await page.locator(".disc-hub").evaluateAll((elements) =>
+    elements.flatMap((element) =>
+      ["::before", "::after"].map((pseudo) => {
+        const style = getComputedStyle(element, pseudo);
+        return {
+          animation: style.animationName,
+          transition: style.transitionProperty,
+        };
+      }),
+    ),
+  );
+  expect(hubMotion.length).toBeGreaterThan(0);
+  expect(
+    hubMotion.every(
+      ({ animation, transition }) =>
+        animation === "none" && transition === "none",
+    ),
+  ).toBe(true);
   const active = await page.evaluate(() =>
     document
       .getAnimations()
