@@ -22,31 +22,33 @@ test("selected disc visibly travels to the turntable and back, then releases sna
   page,
 }) => {
   await openWithoutIntro(page);
+  await page.evaluate(() => {
+    const record = (window as Window & { transitionRecord?: { states: string[]; transforms: string[] } }).transitionRecord = {
+      states: [], transforms: [],
+    };
+    const observe = new MutationObserver(() => {
+      const state = document.documentElement.dataset.pageTransition;
+      if (state) record.states.push(state);
+    });
+    observe.observe(document.documentElement, { attributes: true, attributeFilter: ["data-page-transition"] });
+    const sample = () => {
+      const transform = getComputedStyle(document.documentElement, "::view-transition-group(travelling-disc)").transform;
+      if (transform && transform !== "none") record.transforms.push(transform);
+      requestAnimationFrame(sample);
+    };
+    requestAnimationFrame(sample);
+  });
   await page.locator(".disc-stage").press("Enter");
   await expect(page.locator(".turntable")).toBeVisible();
-  await expect(page.locator("html")).toHaveAttribute(
-    "data-page-transition",
-    "disc",
-  );
-  const transform = () =>
-    page.evaluate(
-      () =>
-        getComputedStyle(
-          document.documentElement,
-          "::view-transition-group(travelling-disc)",
-        ).transform,
-    );
-  await expect.poll(transform).not.toBe("none");
-  const first = await transform();
-  await expect.poll(transform).not.toBe(first);
   await settled(page);
+  const outbound = await page.evaluate(() => (window as Window & { transitionRecord?: { states: string[]; transforms: string[] } }).transitionRecord!);
+  expect(outbound.states).toContain("disc");
+  expect(new Set(outbound.transforms).size).toBeGreaterThan(1);
   await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
   await expect(page.locator(".disc-stage")).toBeVisible();
-  await expect(page.locator("html")).toHaveAttribute(
-    "data-page-transition",
-    "disc",
-  );
   await settled(page);
+  const roundtrip = await page.evaluate(() => (window as Window & { transitionRecord?: { states: string[]; transforms: string[] } }).transitionRecord!);
+  expect(roundtrip.states.filter((state) => state === "disc").length).toBeGreaterThanOrEqual(2);
   await expect(page.locator(".disc-info h2")).toHaveText("白色相簿2");
 });
 
@@ -79,17 +81,30 @@ test("browsers without View Transitions animate a disc overlay and clean it up",
     });
   });
   await openWithoutIntro(page);
+  await page.evaluate(() => {
+    const original = Element.prototype.animate;
+    (window as Window & { transferFrames?: string[] }).transferFrames = [];
+    Element.prototype.animate = function (frames, options) {
+      if (this.classList.contains("disc-transfer-fallback"))
+        (window as Window & { transferFrames?: string[] }).transferFrames!.push(
+          JSON.stringify(frames),
+        );
+      return original.call(this, frames, options);
+    };
+  });
   await page.locator(".disc-stage").press("Enter");
-  const overlay = page.locator(".disc-transfer-fallback");
-  await expect(overlay).toBeVisible();
-  const first = await overlay.evaluate((el) => getComputedStyle(el).transform);
   await expect
-    .poll(() => overlay.evaluate((el) => getComputedStyle(el).transform))
-    .not.toBe(first);
+    .poll(() => page.evaluate(() => (window as Window & { transferFrames?: string[] }).transferFrames?.length ?? 0))
+    .toBeGreaterThan(0);
+  const frames = await page.evaluate(() => (window as Window & { transferFrames?: string[] }).transferFrames ?? []);
+  expect(frames[0]).toContain("translate(0, 0) scale(1)");
+  expect(JSON.parse(frames[0])[1].transform).not.toBe("translate(0, 0) scale(1)");
   await settled(page);
   await expect(page.locator(".turntable__platter .disc-face")).toBeVisible();
   await page.getByRole("button", { name: "返回游戏库", exact: true }).click();
-  await expect(overlay).toBeVisible();
+  await expect
+    .poll(() => page.evaluate(() => (window as Window & { transferFrames?: string[] }).transferFrames?.length ?? 0))
+    .toBeGreaterThan(1);
   await settled(page);
   await expect(page.locator(".disc-hit .disc-face")).toBeVisible();
 });

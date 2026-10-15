@@ -372,6 +372,7 @@ export default function DiscLibrary({
     preference.addEventListener("change", stopMotion);
     document.addEventListener("visibilitychange", stopMotion);
     let nextGames = allGames.slice(next * PAGE_SIZE, (next + 1) * PAGE_SIZE);
+    let landedId: string | undefined;
     let focal = Math.max(
       0,
       nextGames.findIndex((game) => game.id === requestedId),
@@ -449,9 +450,10 @@ export default function DiscLibrary({
       animations.current.forEach((a) => a.cancel());
       animations.current = [];
       position.current = target.current = focal;
+      landedId = nextGames[focal].id;
       flushSync(() => {
         setPage(next);
-        select(nextGames[focal].id);
+        select(landedId!);
         setFlight("in");
       });
       // A last-moment hover may return to the original page, whose layout effect
@@ -491,7 +493,24 @@ export default function DiscLibrary({
       animations.current.forEach((a) => a.cancel());
       animations.current = [];
       flightRef.current = false;
-      if (alive.current) setFlight("idle");
+      if (alive.current) {
+        // A focus change during the incoming half must still win if the
+        // catalog closes before its preview effect can run again.
+        const latestIndex = requestedId
+          ? allGames.findIndex((game) => game.id === latestPreview.current)
+          : -1;
+        if (latestIndex >= 0 && allGames[latestIndex].id !== landedId) {
+          const finalPage = Math.floor(latestIndex / PAGE_SIZE);
+          const finalFocal = latestIndex % PAGE_SIZE;
+          position.current = target.current = finalFocal;
+          flushSync(() => {
+            setPage(finalPage);
+            select(allGames[latestIndex].id);
+          });
+          paint.current();
+        }
+        setFlight("idle");
+      }
     }
   }
 

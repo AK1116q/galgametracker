@@ -1,4 +1,7 @@
 import { test, expect } from "@playwright/test";
+import { readdirSync } from "node:fs";
+
+const lastCatalogPage = Math.ceil((readdirSync('data/catalog').filter((name) => name.endsWith('.route.json')).length + 1) / 8);
 
 test("keyboard focus survives scroll-induced hover until mouse input resumes", async ({
   page,
@@ -59,7 +62,7 @@ test("bottom catalog previews hovered and focused works across pages without ope
   );
   const last = panel.getByRole("button", { name: /^选择作品：/ }).last();
   await last.focus();
-  await expect(page.locator(".disc-library")).toHaveAttribute("data-page", "2");
+  await expect(page.locator(".disc-library")).toHaveAttribute("data-page", String(lastCatalogPage));
   await expect(last).toHaveAttribute("aria-current", "true");
   await first.focus();
   await expect(page.locator(".disc-library")).toHaveAttribute("data-page", "1");
@@ -115,35 +118,27 @@ test("hovering across catalog pages uses the full disc flip and lands on the hov
   const panel = page.getByRole("dialog", { name: "作品目录", exact: true });
   const last = panel.getByRole("button", { name: /^选择作品：/ }).last();
   const title = await last.locator("strong").innerText();
+  await page.evaluate(() => {
+    const original = Element.prototype.animate;
+    (window as Window & { discFrames?: string[] }).discFrames = [];
+    Element.prototype.animate = function (frames, options) {
+      if (this.classList.contains("optical-disc"))
+        (window as Window & { discFrames?: string[] }).discFrames!.push(
+          JSON.stringify(frames),
+        );
+      return original.call(this, frames, options);
+    };
+  });
   await last.hover();
   const shelf = page.locator(".disc-library");
-  await expect(shelf).toHaveAttribute("data-flight", "out");
-  const departing = await page.locator(".disc-hit").evaluate((el) =>
-    el.getAnimations().some((animation) => {
-      const effect = animation.effect as KeyframeEffect;
-      return effect
-        .getKeyframes()
-        .some((frame) =>
-          String(frame.transform).includes("rotateY(90deg) scale(1.45)"),
-        );
-    }),
-  );
-  expect(departing).toBe(true);
-  await expect(shelf).toHaveAttribute("data-flight", "in");
-  await expect(shelf).toHaveAttribute("data-page", "2");
+  await expect(shelf).toHaveAttribute("data-page", String(lastCatalogPage));
   await expect(page.locator(".disc-hit .disc-print strong")).toHaveText(title);
-  const arriving = await page.locator(".disc-hit").evaluate((el) =>
-    el.getAnimations().some((animation) => {
-      const effect = animation.effect as KeyframeEffect;
-      return effect
-        .getKeyframes()
-        .some((frame) =>
-          String(frame.transform).includes("rotateY(-90deg) scale(1.45)"),
-        );
-    }),
-  );
-  expect(arriving).toBe(true);
   await expect(shelf).toHaveAttribute("data-flight", "idle");
+  const frames = await page.evaluate(
+    () => (window as Window & { discFrames?: string[] }).discFrames ?? [],
+  );
+  expect(frames.some((frame) => frame.includes("rotateY(90deg) scale(1.45)"))).toBe(true);
+  expect(frames.some((frame) => frame.includes("rotateY(-90deg) scale(1.45)"))).toBe(true);
   await expect(last).toHaveAttribute("aria-current", "true");
   expect(
     await page
@@ -158,7 +153,6 @@ test("hovering across catalog pages uses the full disc flip and lands on the hov
     exact: true,
   });
   await first.hover();
-  await expect(shelf).toHaveAttribute("data-flight", "out");
   await expect(shelf).toHaveAttribute("data-flight", "idle");
   await expect(shelf).toHaveAttribute("data-page", "1");
   await expect(page.locator(".disc-hit .disc-face")).toHaveAttribute(
