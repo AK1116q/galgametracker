@@ -101,7 +101,17 @@ function readNavigation(): Navigation {
       chapter: "",
       target: "",
     };
-  const gameId = params.get("game") || "white-album-2";
+  const view = ["library", "game", "play", "records", "settings"].includes(
+    requested,
+  )
+    ? requested
+    : "library";
+  const rememberedGame =
+    view === "library" &&
+    typeof history.state?.galgameLibrarySelection === "string"
+      ? history.state.galgameLibrarySelection
+      : "";
+  const gameId = params.get("game") || rememberedGame || "white-album-2";
   const target = params.get("target") || "";
   const targetPack =
     requested === "game" &&
@@ -111,9 +121,7 @@ function readNavigation(): Navigation {
         p.routes.some((r) => `${packKey(p)}/${r.id}` === target),
     );
   return {
-    view: ["library", "game", "play", "records", "settings"].includes(requested)
-      ? requested
-      : "library",
+    view,
     gameId,
     activeId: params.get("session") || "",
     chapter: targetPack ? chapterFor(targetPack) : params.get("chapter") || "",
@@ -422,8 +430,29 @@ export default function App() {
       ...selection,
     };
     const url = navigationUrl(destination);
-    if (url !== location.pathname + location.search)
-      history.pushState(null, "", url);
+    if (url !== location.pathname + location.search) {
+      // The clean home URL carries no work ID. Keep the selected disc on its
+      // history entry so browser Back can match both sides of the transfer.
+      if (view === "library") {
+        history.replaceState(
+          {
+            ...(history.state && typeof history.state === "object"
+              ? history.state
+              : {}),
+            galgameLibrarySelection:
+              next === "game" ? destination.gameId : shelfSelection,
+          },
+          "",
+        );
+      }
+      history.pushState(
+        next === "library"
+          ? { galgameLibrarySelection: destination.gameId }
+          : null,
+        "",
+        url,
+      );
+    }
     pageTransition(
       () => {
         setNavigation(destination);
