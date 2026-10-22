@@ -326,5 +326,23 @@
       "checkedAt": "2026-10-23",
       "sources": ["https://key.visualarts.gr.jp/kinetic/lunaria/"]
     }
+  },
+  "christmas-tina": {
+    "subjectId": 259471,
+    "title": "Christmas Tina -泡沫冬景-",
+    "score": 6.9,
+    "votes": 1119,
+    "source": "https://api.bgm.tv/v0/subjects/259471",
+    "checkedAt": "2026-10-23",
+    "url": "https://bgm.tv/subject/259471",
+    "comment": "东京旧站房里的跨语言相处，章节短小，适合分次阅读。",
+    "scope": "原作游戏条目评分，不含扩展包单独评分",
+    "production": {
+      "developer": "Nekoday",
+      "year": "2019",
+      "source": "https://bgm.tv/subject/259471",
+      "checkedAt": "2026-10-23",
+      "sources": ["https://www.gamer.ne.jp/news/202102200001/"]
+    }
   }
 }

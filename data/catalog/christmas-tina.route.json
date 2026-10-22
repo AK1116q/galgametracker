@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "0.1",
+  "id": "christmas-tina-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "christmas-tina",
+    "title": "Christmas Tina -泡沫冬景-",
+    "aliases": ["Christmas Tina", "圣诞快乐，蒂娜"]
+  },
+  "release": {
+    "id": "christmas-tina-pc",
+    "label": "2020 PC 本篇 · Steam 基础游戏（原作 2019）",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "公开资料交叉核对，尚未实机通关；中文步骤是操作概述，不是游戏原文选项的翻译。",
+    "PC 基础游戏本篇无分支选项；按章节顺序读到主线片尾。无日期选择、前置结局或路线解锁要求。",
+    "一位 PC 英文版通关作者记载片尾后另有短章，且中途有额外小故事；具体解锁与入口缺少第二份独立核对，不列为已验证路线。",
+    "Gamer 核对的是日文 PC 版，New Leaf Journal 核对的是 Steam 英文版；中文、日文、英文界面按钮和 DLC 的差异未实机核验。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.gamer.ne.jp/news/202102200001/",
+      "permission": "仅归纳日文 PC 版无选项、按章阅读与版本事实；不转载评论正文。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://thenewleafjournal.com/christmas-tina-visual-novel-review/",
+      "permission": "仅归纳另一位作者的 Steam PC 版通关与章节结构事实；不转载评论正文或画面。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/259471",
+      "permission": "仅用于游戏条目、开发方及最初发行年份核对。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 主线片尾",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "kind": "instruction",
+      "locator": "本篇开始",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入 PC 基础游戏的本篇，从首章开始阅读。",
+          "next": { "kind": "choice", "id": "main-02" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "正文第二段确认 PC 基础游戏无选项；章节描述见正文中段，source-2 的 UI and Chapter Structure Notes 独立核对"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "kind": "instruction",
+      "locator": "顺序阅读章节",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "每章读完后继续下一章，直至本篇片尾；过程中没有影响路线的选项。",
+          "next": { "kind": "ending", "id": "main-end" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-2",
+          "sourceLocator": "Game-Play、UI and Chapter Structure Notes：无互动分支，每章结束回章节选择页；source-1 确认无选项并以章节推进"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 主线片尾",
+      "hiddenTitle": "本篇 · 主线片尾",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料交叉核对（非实机）",
+      "date": "2026-10-23",
+      "routeIds": ["main"],
+      "method": "source_crosscheck",
+      "evidence": "Gamer 的日文 PC 版评论与 New Leaf Journal 的 Steam 英文版独立通关评论均确认本篇无分支选项、以短章节推进至主线片尾。片尾后短章仅有后者直接说明，未列为已核实路线。"
+    }
+  ]
+}

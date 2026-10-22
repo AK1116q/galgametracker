@@ -278,5 +278,24 @@
       "position": "18% 50%",
       "checkedAt": "2026-10-23"
     }
+  },
+  "christmas-tina": {
+    "src": "/images/covers/christmas-tina.jpg",
+    "width": 600,
+    "height": 900,
+    "subjectId": 259471,
+    "subjectTitle": "Christmas Tina -泡沫冬景-",
+    "source": "https://bgm.tv/subject/259471",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/29/d3/259471_1UDPM.jpg",
+    "checkedAt": "2026-10-23",
+    "disc": {
+      "src": "/images/discs/christmas-tina.webp",
+      "width": 3840,
+      "height": 1240,
+      "source": "https://store.steampowered.com/app/1049100/Christmas_Tina/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1049100/library_hero_2x.jpg",
+      "position": "36% 50%",
+      "checkedAt": "2026-10-23"
+    }
   }
 }
