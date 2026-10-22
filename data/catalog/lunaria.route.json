@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "0.1",
+  "id": "lunaria-steam-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "lunaria",
+    "title": "LUNARiA -Virtualized Moonchild-",
+    "aliases": ["LUNARiA", "虚拟月之少女"]
+  },
+  "release": {
+    "id": "lunaria-steam-pc",
+    "label": "2024 Steam PC 英文版 · 本篇（原作 2021）",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "公开资料交叉核对，尚未实机通关；中文文字仅为阅读操作概述，不是游戏原文选项的翻译。",
+    "Steam PC 本篇为单线阅读，无日期选项、前置结局或解锁要求；从开始阅读到唯一结局。",
+    "Otaku Lair 对应 Steam 英文版；另一位作者体验的是 Switch 版。跨版本无选项结论一致，但 2021 日文 PC 原版、画面文字及附加内容未单独实机验证。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.otakulair.com/english-visual-novel-walkthroughs/lunaria-virtualized-moonchild-walkthrough-key-prototype-visual-arts/",
+      "permission": "只归纳开始、无选项与版本事实；不转载攻略正文。该文注明参考 Seiya Saiga，故两者不算独立证据。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://starcrossedanime.com/guest-post-unearthed-baubles-with-firechick-lunaria-virtualized-moonchild-77-100/",
+      "permission": "只归纳独立通关作者关于无选项、唯一结局的事实；不转载评论正文。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/317674",
+      "permission": "仅用于原作游戏类型、开发与发行年份核对。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "kind": "instruction",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "从标题画面开始本篇。",
+          "next": { "kind": "choice", "id": "main-02" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "Main Route: Start；独立结构核对见 source-2"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "kind": "instruction",
+      "locator": "本篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "顺序阅读至片尾；过程中无需选择，抵达唯一结局。",
+          "next": { "kind": "ending", "id": "main-end" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "Main Route: No choices needed；source-2 首段确认无选项及单一结局"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · 唯一结局",
+      "hiddenTitle": "本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料交叉核对（非实机）",
+      "date": "2026-10-23",
+      "routeIds": ["main"],
+      "method": "source_crosscheck",
+      "evidence": "Otaku Lair 的 Steam PC 阅读攻略列出 Start 和 No choices needed；Firechick 独立通关评论确认无选项且只有一个结局。版本差异和画面原文未实机核验。"
+    }
+  ]
+}

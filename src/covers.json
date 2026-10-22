@@ -259,5 +259,24 @@
     "source": "https://bgm.tv/subject/130051",
     "imageSource": "https://lain.bgm.tv/pic/cover/l/2d/69/130051_518r6.jpg",
     "checkedAt": "2026-10-16"
+  },
+  "lunaria": {
+    "src": "/images/covers/lunaria.jpg",
+    "width": 707,
+    "height": 1000,
+    "subjectId": 317674,
+    "subjectTitle": "LUNARiA -Virtualized Moonchild-",
+    "source": "https://bgm.tv/subject/317674",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/2a/75/317674_5ysYi.jpg",
+    "checkedAt": "2026-10-23",
+    "disc": {
+      "src": "/images/discs/lunaria.webp",
+      "width": 3840,
+      "height": 1240,
+      "source": "https://store.steampowered.com/app/2983260/LUNARiA_Virtualized_Moonchild/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2983260/library_hero_2x.jpg",
+      "position": "18% 50%",
+      "checkedAt": "2026-10-23"
+    }
   }
 }

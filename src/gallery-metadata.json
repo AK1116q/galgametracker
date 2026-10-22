@@ -308,5 +308,23 @@
       "source": "https://bgm.tv/subject/130051",
       "checkedAt": "2026-10-16"
     }
+  },
+  "lunaria": {
+    "subjectId": 317674,
+    "title": "LUNARiA -Virtualized Moonchild-",
+    "score": 6.7,
+    "votes": 673,
+    "source": "https://api.bgm.tv/v0/subjects/317674",
+    "checkedAt": "2026-10-23",
+    "url": "https://bgm.tv/subject/317674",
+    "comment": "月面 AI 与竞速少年的短篇相遇，科幻背景下的情感渐进很动人。",
+    "scope": "原作游戏条目评分",
+    "production": {
+      "developer": "Key",
+      "year": "2021",
+      "source": "https://bgm.tv/subject/317674",
+      "checkedAt": "2026-10-23",
+      "sources": ["https://key.visualarts.gr.jp/kinetic/lunaria/"]
+    }
   }
 }
