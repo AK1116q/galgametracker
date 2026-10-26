@@ -2,7 +2,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import covers from "./covers.json";
 import metadata from "./gallery-metadata.json";
+import "./disc-artwork.css";
 import "./discs.css";
+import "./disc-layout.css";
 
 type Work = { id: string; title: string; routes: number };
 const art = covers as Record<

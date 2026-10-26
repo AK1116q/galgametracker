@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles.css";
+import { finishStartup, startupStylesReady } from "./startup";
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -10,6 +11,9 @@ class ErrorBoundary extends React.Component<
   state = { failed: false };
   static getDerivedStateFromError() {
     return { failed: true };
+  }
+  componentDidCatch() {
+    finishStartup();
   }
   render() {
     return this.state.failed ? (
@@ -23,12 +27,18 @@ class ErrorBoundary extends React.Component<
     );
   }
 }
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </React.StrictMode>,
+void startupStylesReady().then(
+  () =>
+    ReactDOM.createRoot(document.getElementById("root")!).render(
+      <React.StrictMode>
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      </React.StrictMode>,
+    ),
+  () => {
+    // Keep the build-time readable guide if the interactive stylesheet failed.
+  },
 );
 import "./theme.css";
 import "./editorial.css";

@@ -3,6 +3,7 @@ import { resolve, dirname } from "node:path";
 import { guidePath } from "../core/guide.mjs";
 import { reviewInfo } from "../core/guide-info.mjs";
 import { routeIssues } from "../core/evidence.mjs";
+import { withStartup, startupHash } from "./startup.mjs";
 import {
   routePathname,
   routeTitle,
@@ -73,11 +74,22 @@ for (const pack of packs)
   }
 writeFileSync(
   "dist/index.html",
-  page(
-    "偷吃猫娘达咩哟的galgame攻略收集站",
-    "按作品、篇章和目标结局查询 Galgame 攻略，核对版本、查找选项与存档安排。",
-    "/",
-    `<h1>Galgame 攻略目录</h1><p>按作品与目标结局查找攻略。中文为含义提示，来源及核验范围见各路线。</p><ul>${links.map((l) => `<li><a href="${escape(l.path)}">${escape(l.title)}</a></li>`).join("")}</ul>`,
+  withStartup(
+    page(
+      "偷吃猫娘达咩哟的galgame攻略收集站",
+      "按作品、篇章和目标结局查询 Galgame 攻略，核对版本、查找选项与存档安排。",
+      "/",
+      `<h1>Galgame 攻略目录</h1><p>按作品与目标结局查找攻略。中文为含义提示，来源及核验范围见各路线。</p><ul>${links.map((l) => `<li><a href="${escape(l.path)}">${escape(l.title)}</a></li>`).join("")}</ul>`,
+    ),
+  ),
+);
+// Authorize only the exact build-generated bootstrap, without allowing arbitrary inline JS.
+const headers = readFileSync("dist/_headers", "utf8");
+writeFileSync(
+  "dist/_headers",
+  headers.replace(
+    "script-src 'self'",
+    `script-src 'self' 'sha256-${startupHash}'`,
   ),
 );
 writeFileSync(

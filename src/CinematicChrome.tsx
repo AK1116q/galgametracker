@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import "./cinematic.css";
+import { finishStartup, startupAngle } from "./startup";
 
 export default function CinematicChrome({
   onIntroChange,
@@ -11,6 +12,7 @@ export default function CinematicChrome({
   );
   useLayoutEffect(() => {
     onIntroChange(phase !== "done");
+    if (phase === "done") finishStartup();
   }, [phase, onIntroChange]);
   useEffect(() => {
     const media = matchMedia("(prefers-reduced-motion: reduce)");
@@ -59,6 +61,7 @@ export default function CinematicChrome({
     }
     let cancelled = false;
     const animations: Animation[] = [];
+    const initialAngle = startupAngle();
     const play = (
       element: HTMLElement,
       id: string,
@@ -78,7 +81,10 @@ export default function CinematicChrome({
     play(
       face,
       "archive-spin",
-      [{ transform: "rotateZ(-1800deg)" }, { transform: "rotateZ(0deg)" }],
+      [
+        { transform: `rotateZ(${-1800 + (initialAngle ?? 0)}deg)` },
+        { transform: "rotateZ(0deg)" },
+      ],
       { duration: 2600, easing: "cubic-bezier(0.2, 0.72, 0.26, 1)" },
     );
     play(
@@ -93,10 +99,15 @@ export default function CinematicChrome({
       ],
       { duration: 2600, easing: "cubic-bezier(0.22, 0.8, 0.28, 1)" },
     );
-    play(face, "archive-cover", [{ opacity: 0.2 }, { opacity: 1 }], {
-      duration: 220,
-      easing: "ease-out",
-    });
+    play(
+      face,
+      "archive-cover",
+      [{ opacity: initialAngle === null ? 0.2 : 1 }, { opacity: 1 }],
+      {
+        duration: 220,
+        easing: "ease-out",
+      },
+    );
     document
       .querySelectorAll<HTMLElement>(
         ".optical-disc:not(.disc-hit) > .disc-face",
@@ -127,6 +138,8 @@ export default function CinematicChrome({
           },
         );
       });
+    // Both discs share geometry; swap before paint, after the new spin is configured.
+    finishStartup();
     const visibility = () => {
       animations.forEach((animation) => {
         if (animation.playState === "finished") return;

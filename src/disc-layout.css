@@ -1,0 +1,33 @@
+/* Shared with the HTML startup disc so loading and interactive layouts align. */
+.disc-stage,
+#startup-screen {
+  --disc-size: min(56vw, calc(100svh - 330px));
+  --disc-center: calc(37svh + 4px);
+}
+@media (max-width: 800px) {
+  .disc-stage,
+  #startup-screen {
+    --disc-size: min(86vw, calc(100svh - 350px));
+    --disc-center: max(206px, calc(45svh - 92px));
+  }
+}
+@media (max-width: 560px) {
+  .disc-stage,
+  #startup-screen {
+    --disc-size: min(106vw, calc(100svh - 350px));
+  }
+}
+@media (max-height: 680px) and (min-width: 801px) {
+  .disc-stage,
+  #startup-screen {
+    --disc-size: min(50vw, 50svh);
+    --disc-center: calc(34svh - 28px);
+  }
+}
+@media (max-height: 500px) and (min-width: 561px) {
+  .disc-stage,
+  #startup-screen {
+    --disc-size: 45svh;
+    --disc-center: 30svh;
+  }
+}

@@ -130,26 +130,67 @@ test("cancelled outgoing and incoming page animations still settle the selected 
   page,
 }) => {
   await openShelf(page);
+  const cancellations = await page.evaluateHandle(() => {
+    const original = Element.prototype.animate;
+    const records: {
+      phase: string;
+      before: AnimationPlayState;
+      after: AnimationPlayState;
+      rejected: boolean;
+    }[] = [];
+    Element.prototype.animate = function (keyframes, options) {
+      const animation = original.call(this, keyframes, options);
+      const phase = this.closest<HTMLElement>(".disc-library")?.dataset.flight;
+      if (
+        this.matches(".optical-disc") &&
+        (phase === "out" || phase === "in")
+      ) {
+        const record = {
+          phase,
+          before: animation.playState,
+          after: animation.playState,
+          rejected: false,
+        };
+        records.push(record);
+        void animation.finished.catch(() => {
+          record.rejected = true;
+        });
+        // Cancel the real animation immediately after its caller has attached
+        // completion handlers. Browser round trips can otherwise miss "out"
+        // and accidentally cancel "in" before the test even observes it.
+        queueMicrotask(() => {
+          record.before = animation.playState;
+          animation.cancel();
+          record.after = animation.playState;
+        });
+      }
+      return animation;
+    };
+    return {
+      records,
+      restore: () => {
+        Element.prototype.animate = original;
+      },
+    };
+  });
   await page.getByRole("button", { name: "第 2 页作品", exact: true }).click();
   const shelf = page.locator(".disc-library");
-  await expect(shelf).toHaveAttribute("data-flight", "out");
-  await page
-    .locator(".optical-disc")
-    .evaluateAll((elements) =>
-      elements.forEach((element) =>
-        element.getAnimations().forEach((animation) => animation.cancel()),
-      ),
-    );
-  await expect(shelf).toHaveAttribute("data-flight", "in");
-  await page
-    .locator(".optical-disc")
-    .evaluateAll((elements) =>
-      elements.forEach((element) =>
-        element.getAnimations().forEach((animation) => animation.cancel()),
-      ),
-    );
   await shelfReady(page);
   await expect(shelf).toHaveAttribute("data-page", "2");
+  const records = await cancellations.evaluate((instrumentation) => {
+    instrumentation.restore();
+    return instrumentation.records;
+  });
+  expect([...new Set(records.map((record) => record.phase))]).toEqual([
+    "out",
+    "in",
+  ]);
+  for (const record of records) {
+    expect(record.before).toBe("running");
+    expect(record.after).toBe("idle");
+    expect(record.rejected).toBe(true);
+  }
+  await cancellations.dispose();
   await page.locator(".disc-stage").press("PageUp");
   await shelfReady(page);
   await expect(shelf).toHaveAttribute("data-page", "1");

@@ -1,0 +1,82 @@
+/* Inlined into the production homepage: no bundle, font or image is needed to spin. */
+#startup-screen,
+#startup-failure {
+  display: none;
+}
+#startup-screen * {
+  box-sizing: border-box;
+}
+html[data-startup="loading"] {
+  background: #f7f4fa;
+  overflow: hidden;
+}
+html[data-startup="loading"] #root > .app-shell:has(.static-guide) {
+  display: none;
+}
+html[data-startup="loading"] #startup-screen {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #f7f4fa;
+  cursor: wait;
+}
+#startup-position {
+  position: absolute;
+  left: calc(50% - var(--disc-size) / 2);
+  top: calc(var(--disc-center) - var(--disc-size) / 2);
+  width: var(--disc-size);
+  aspect-ratio: 1;
+  transform: scale(0.72);
+}
+#startup-disc {
+  animation: startup-spin 145ms linear infinite;
+}
+#startup-disc .startup-art {
+  position: absolute;
+  inset: 1.1%;
+  border-radius: 50%;
+  background-image: var(--startup-art);
+  background-size: cover;
+  background-position: var(--startup-position, 50% 32%);
+  filter: saturate(0.82);
+}
+#startup-screen > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+html[data-startup="failed"] #startup-failure {
+  display: block;
+  margin: 24px auto;
+  max-width: 1000px;
+  padding: 16px 24px;
+  color: #30283f;
+  background: #ede6f4;
+  font:
+    16px/1.7 Arial,
+    "Microsoft YaHei",
+    sans-serif;
+}
+#startup-failure a {
+  color: inherit;
+  margin-left: 12px;
+}
+@keyframes startup-spin {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+html[data-startup-paused] #startup-disc {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  #startup-disc {
+    animation: none;
+  }
+}
