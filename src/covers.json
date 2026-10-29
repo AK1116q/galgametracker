@@ -316,5 +316,24 @@
       "position": "50% 50%",
       "checkedAt": "2026-10-30"
     }
+  },
+  "fault-milestone-two": {
+    "src": "/images/covers/fault-milestone-two.jpg",
+    "width": 600,
+    "height": 773,
+    "subjectId": 166034,
+    "subjectTitle": "fault - milestone two 上",
+    "source": "https://bgm.tv/subject/166034",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/e7/41/166034_YoPWo.jpg",
+    "checkedAt": "2026-10-30",
+    "disc": {
+      "src": "/images/discs/fault-milestone-two.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/344770/fault__milestone_two_sideabove/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/344770/library_hero.jpg",
+      "position": "68% 50%",
+      "checkedAt": "2026-10-30"
+    }
   }
 }

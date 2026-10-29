@@ -362,5 +362,23 @@
       "checkedAt": "2026-10-30",
       "sources": ["https://www.igdb.com/games/nekopara-vol-0/presskit"]
     }
+  },
+  "fault-milestone-two": {
+    "subjectId": 166034,
+    "title": "fault - milestone two side:above",
+    "score": 7.5,
+    "votes": 315,
+    "source": "https://api.bgm.tv/v0/subjects/166034",
+    "checkedAt": "2026-10-30",
+    "url": "https://bgm.tv/subject/166034",
+    "comment": "奇幻旅途延续前篇，镜头与配乐让港口新章更有临场感。",
+    "scope": "side:above 原作游戏条目评分，不含 side:below 或主机版单独评分",
+    "production": {
+      "developer": "ALICE IN DISSONANCE",
+      "year": "2015",
+      "source": "https://bgm.tv/subject/166034",
+      "checkedAt": "2026-10-30",
+      "sources": ["https://www.projectwritten.com/en/ms2a"]
+    }
   }
 }

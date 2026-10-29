@@ -6,6 +6,7 @@ const workCount = Object.keys(JSON.parse(readFileSync("src/gallery-metadata.json
 
 for (const work of [
   { id: "nekopara-vol-0", title: "NEKOPARA Vol. 0", pack: "nekopara-vol-0-pc", route: /^Vol\. 0 本篇/ },
+  { id: "fault-milestone-two", title: "fault - milestone two side:above", pack: "fault-milestone-two-pc", route: /^side:above 本篇/ },
 ]) {
   test(`${work.id} cover, long-title layout, pagination and guide`, async ({ page }) => {
     const errors: string[] = [];

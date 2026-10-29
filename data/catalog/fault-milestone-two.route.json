@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "0.1",
+  "id": "fault-milestone-two-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "fault-milestone-two",
+    "title": "fault - milestone two side:above",
+    "aliases": ["fault - milestone two 上", "fault milestone two side: above"]
+  },
+  "release": {
+    "id": "fault-milestone-two-pc",
+    "label": "PC 本篇 · 2015 原作／2018 视觉更新",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "公开资料交叉核对，尚未实机通关；中文步骤是阅读操作概述，不是游戏按钮或分支选项的原文译文。",
+    "本篇无剧情选项或游戏内日期选择，按顺序阅读到 side:above 片尾；此处不是整个 fault 系列的终结。",
+    "milestone one 是故事前作，建议先读以理解人物，但没有证据表明它是本作游戏内解锁条件；本篇无前置结局或路线解锁。",
+    "适用 PC 本篇。开发方称 2018 PC 视觉更新及主机版改动素材与演出，剧本相同；各版本的具体 UI、按钮文字和片尾附加内容未实机核验。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/id/berzha101/recommended/344770",
+      "permission": "仅归纳独立 Steam PC 通关作者关于无选项、顺序阅读及前作关系的事实；不转载评论正文。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://www.gog.com/en/game/fault_milestone_two_sideabove?page=1",
+      "permission": "仅归纳 GOG PC 购入者独立评论的无选项、线性阅读事实；不转载评论正文。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://www.projectwritten.com/en/ms2a",
+      "permission": "仅核对开发方、PC 原作年份、视觉更新与跨版本剧本范围。"
+    },
+    {
+      "id": "source-4",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/166034",
+      "permission": "仅核对原作游戏条目、发行年份与开发方。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "side:above 本篇 · 片尾",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "kind": "instruction",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入 side:above 本篇，从开头阅读。",
+          "next": { "kind": "choice", "id": "main-02" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "Steam PC review: click and read as the game progress；标题入口按钮原文未核验。"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "kind": "instruction",
+      "locator": "side:above 本篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "顺序阅读，无需作剧情选择，抵达本篇片尾。",
+          "next": { "kind": "ending", "id": "main-end" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "Steam PC review: no choices; source-2 GOG 购入者评论：linear visual novel, no choices。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "side:above 本篇 · 片尾",
+      "hiddenTitle": "side:above 本篇 · 片尾",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料交叉核对（非实机）",
+      "date": "2026-10-30",
+      "routeIds": ["main"],
+      "method": "source_crosscheck",
+      "evidence": "Steam PC 作者和 GOG PC 购入者的独立评论均确认线性阅读、无剧情选项；开发方确认原作 PC 年份及视觉更新不改剧本。UI 与附加内容未实机核验。"
+    }
+  ]
+}
