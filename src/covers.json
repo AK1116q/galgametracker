@@ -297,5 +297,24 @@
       "position": "36% 50%",
       "checkedAt": "2026-10-23"
     }
+  },
+  "nekopara-vol-0": {
+    "src": "/images/covers/nekopara-vol-0.jpg",
+    "width": 600,
+    "height": 900,
+    "subjectId": 144173,
+    "subjectTitle": "ネコぱら vol.0 水無月ネコたちの日常！",
+    "source": "https://bgm.tv/subject/144173",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/60/59/144173_zR0Zy.jpg",
+    "checkedAt": "2026-10-30",
+    "disc": {
+      "src": "/images/discs/nekopara-vol-0.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/385800/NEKOPARA_Vol_0/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/385800/library_hero.jpg",
+      "position": "50% 50%",
+      "checkedAt": "2026-10-30"
+    }
   }
 }

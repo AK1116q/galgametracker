@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "0.1",
+  "id": "nekopara-vol-0-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "nekopara-vol-0",
+    "title": "NEKOPARA Vol. 0",
+    "aliases": ["ネコぱら vol.0 水無月ネコたちの日常！", "猫娘乐园 Vol. 0"]
+  },
+  "release": {
+    "id": "nekopara-vol-0-pc",
+    "label": "2015 PC / Steam 全年龄版 · Vol. 0 本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "公开资料交叉核对，尚未实机通关；下列中文是阅读操作概述，不是游戏画面原文或汉化按钮译文。",
+    "Vol. 0 本篇没有剧情选项、游戏内日期选择、前置结局或路线解锁；从开始顺序阅读到唯一结局。",
+    "本作是独立发售的 Vol. 0 短篇，不等同于 Vol. 1 或动画。先读 Vol. 1 有助于认识角色，但公开资料未提出游戏内解锁要求；其他平台或补丁版本未核验。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://guardianacorn.com/2017/06/06/quick-review-nekopara-vol-0-pc/",
+      "permission": "仅提炼 PC 版无选项、无多结局和 Vol. 0 与 Vol. 1 的关系；不转载评论正文。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/id/veggieeggroll/recommended/385800/",
+      "permission": "仅提炼独立 Steam 通关作者所述无选项、单一路径；不转载评论正文。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://bgm.tv/subject/144173",
+      "permission": "仅核对游戏条目、开发者与 2015 年原版发行日期。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "Vol. 0 本篇 · 唯一结局",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "kind": "instruction",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "进入 Vol. 0 本篇，开始阅读。",
+          "next": { "kind": "choice", "id": "main-02" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "PC review: straight up visual novel; source-2: move on with the story。标题按钮原文未核验。"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "kind": "instruction",
+      "locator": "Vol. 0 本篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "target",
+          "text": "顺序阅读至片尾；无需作剧情选择，抵达唯一结局。",
+          "next": { "kind": "ending", "id": "main-end" }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": { "all": [] },
+          "recommendedOptionIds": ["target"],
+          "sourceId": "source-1",
+          "sourceLocator": "PC review: no choices / no multiple endings; source-2: no choices, one set path。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "Vol. 0 本篇 · 唯一结局",
+      "hiddenTitle": "Vol. 0 本篇 · 唯一结局",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开资料交叉核对（非实机）",
+      "date": "2026-10-30",
+      "routeIds": ["main"],
+      "method": "source_crosscheck",
+      "evidence": "Guardian Acorn 的 PC 通关评论确认无选项、无多结局；Eggroll 的独立 Steam 通关评论确认无选项且只有固定路径。标题按钮、不同补丁与具体画面未实机核验。"
+    }
+  ]
+}

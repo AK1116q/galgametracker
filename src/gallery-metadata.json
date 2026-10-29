@@ -344,5 +344,23 @@
       "checkedAt": "2026-10-23",
       "sources": ["https://www.gamer.ne.jp/news/202102200001/"]
     }
+  },
+  "nekopara-vol-0": {
+    "subjectId": 144173,
+    "title": "NEKOPARA Vol. 0",
+    "score": 5.7,
+    "votes": 906,
+    "source": "https://api.bgm.tv/v0/subjects/144173",
+    "checkedAt": "2026-10-30",
+    "url": "https://bgm.tv/subject/144173",
+    "comment": "猫娘们的一日家居小品，动画演出轻快，适合短时间阅读。",
+    "scope": "Vol. 0 原作游戏条目评分，不含 Vol. 1 或动画",
+    "production": {
+      "developer": "NEKO WORKs",
+      "year": "2015",
+      "source": "https://bgm.tv/subject/144173",
+      "checkedAt": "2026-10-30",
+      "sources": ["https://www.igdb.com/games/nekopara-vol-0/presskit"]
+    }
   }
 }

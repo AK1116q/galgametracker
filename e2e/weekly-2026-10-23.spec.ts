@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
 import { openCatalog } from "./catalog-helper";
+
+const workCount = Object.keys(JSON.parse(readFileSync("src/gallery-metadata.json", "utf8"))).length;
 
 for (const work of [
   { id: "lunaria", title: "LUNARiA -Virtualized Moonchild-", pack: "lunaria-steam-pc" },
@@ -14,7 +17,7 @@ for (const work of [
     const entry = page.getByRole("button", { name: `选择作品：${work.title}`, exact: true });
     await entry.focus();
     await expect(page.locator(".disc-hit .disc-face")).toHaveAttribute("data-game-id", work.id);
-    await expect(page.locator(".disc-pagination .page-dot")).toHaveCount(3);
+    await expect(page.locator(".disc-pagination .page-dot")).toHaveCount(Math.ceil(workCount / 8));
     await expect(entry.locator("img")).toHaveJSProperty("complete", true);
     expect(await entry.locator("img").evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
     await entry.click();
