@@ -354,5 +354,24 @@
       "position": "90% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "amatsutsumi": {
+    "src": "/images/covers/amatsutsumi.jpg",
+    "width": 500,
+    "height": 715,
+    "subjectId": 165894,
+    "subjectTitle": "アマツツミ",
+    "source": "https://bgm.tv/subject/165894",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/4b/d2/165894_CCyPX.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/amatsutsumi.webp",
+      "width": 1317,
+      "height": 1800,
+      "source": "https://www.purplesoftware.jp/products/amatsutsumi/",
+      "imageSource": "https://www.purplesoftware.jp/products/amatsutsumi/img/bg.jpg",
+      "position": "40% 50%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

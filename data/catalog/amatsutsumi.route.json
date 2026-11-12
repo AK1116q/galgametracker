@@ -1,0 +1,756 @@
+{
+  "schemaVersion": "0.1",
+  "id": "amatsutsumi-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "amatsutsumi",
+    "title": "天津罪",
+    "aliases": [
+      "アマツツミ"
+    ]
+  },
+  "release": {
+    "id": "amatsutsumi-pc",
+    "label": "2016 PC 完整版本篇（非主机移植）",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "前三人按阶梯分流；前面未进入人物路线才能继续下一处选项。",
+    "萤 END 2 的省略号选项仅在 END 1 完成后开放，可读最终分歧前的旧存档；无需重复完成心、响子和爱。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/amatsutsumi-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/purplesoftware/amatsutsumi.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kokoro",
+      "safeLabel": "织部心",
+      "entryChoiceId": "kokoro-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "kyouko",
+      "safeLabel": "朝比奈响子",
+      "entryChoiceId": "kyouko-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mana",
+      "safeLabel": "恋塚爱",
+      "entryChoiceId": "mana-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hotaru-normal",
+      "safeLabel": "水无月萤 · END 1",
+      "entryChoiceId": "hotaru-normal-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hotaru-true",
+      "safeLabel": "水无月萤 · END 2",
+      "entryChoiceId": "hotaru-true-01",
+      "requiredEndingIds": [
+        "hotaru-normal-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "kokoro-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kokoro-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kokoro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "织部心 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kokoro-02",
+      "locator": "共通篇 · 对心的感情",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着心",
+          "next": {
+            "kind": "ending",
+            "id": "kokoro-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kokoro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "织部心 / 共通篇 · 对心的感情；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kyouko-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kyouko-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kyouko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝比奈响子 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kyouko-02",
+      "locator": "共通篇 · 对心的感情",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "还没想好",
+          "next": {
+            "kind": "choice",
+            "id": "kyouko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kyouko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝比奈响子 / 共通篇 · 对心的感情；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kyouko-03",
+      "locator": "共通篇 · 与响子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想一直和响子在一起",
+          "next": {
+            "kind": "ending",
+            "id": "kyouko-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kyouko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝比奈响子 / 共通篇 · 与响子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mana-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mana-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "恋塚爱 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mana-02",
+      "locator": "共通篇 · 对心的感情",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "还没想好",
+          "next": {
+            "kind": "choice",
+            "id": "mana-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "恋塚爱 / 共通篇 · 对心的感情；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mana-03",
+      "locator": "共通篇 · 与响子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想一直和响子在一起",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "响子是重要的朋友",
+          "next": {
+            "kind": "choice",
+            "id": "mana-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "恋塚爱 / 共通篇 · 与响子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mana-04",
+      "locator": "共通篇 · 与爱的婚约",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与爱的婚约",
+          "next": {
+            "kind": "ending",
+            "id": "mana-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "恋塚爱 / 共通篇 · 与爱的婚约；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-normal-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 1 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-normal-02",
+      "locator": "共通篇 · 对心的感情",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "还没想好",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 1 / 共通篇 · 对心的感情；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-normal-03",
+      "locator": "共通篇 · 与响子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想一直和响子在一起",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "响子是重要的朋友",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 1 / 共通篇 · 与响子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-normal-04",
+      "locator": "共通篇 · 与爱的婚约",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与爱的婚约",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "解除与爱的婚约",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 1 / 共通篇 · 与爱的婚约；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-normal-05",
+      "locator": "萤篇 · 最后的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "答应结束她的生命",
+          "next": {
+            "kind": "ending",
+            "id": "hotaru-normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 1 / 萤篇 · 最后的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-true-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 2 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-true-02",
+      "locator": "共通篇 · 对心的感情",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着心",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "还没想好",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 2 / 共通篇 · 对心的感情；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-true-03",
+      "locator": "共通篇 · 与响子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想一直和响子在一起",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "响子是重要的朋友",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 2 / 共通篇 · 与响子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-true-04",
+      "locator": "共通篇 · 与爱的婚约",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续与爱的婚约",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "解除与爱的婚约",
+          "next": {
+            "kind": "choice",
+            "id": "hotaru-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 2 / 共通篇 · 与爱的婚约；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hotaru-true-05",
+      "locator": "萤篇 · 最后的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择沉默的省略号选项",
+          "next": {
+            "kind": "ending",
+            "id": "hotaru-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hotaru-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "水无月萤 · END 2 / 萤篇 · 最后的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kokoro-end",
+      "safeLabel": "织部心",
+      "hiddenTitle": "织部心",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "kyouko-end",
+      "safeLabel": "朝比奈响子",
+      "hiddenTitle": "朝比奈响子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mana-end",
+      "safeLabel": "恋塚爱",
+      "hiddenTitle": "恋塚爱",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hotaru-normal-end",
+      "safeLabel": "水无月萤 · END 1",
+      "hiddenTitle": "水无月萤 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hotaru-true-end",
+      "safeLabel": "水无月萤 · END 2",
+      "hiddenTitle": "水无月萤 · END 2",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kokoro",
+        "kyouko",
+        "mana",
+        "hotaru-normal",
+        "hotaru-true"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

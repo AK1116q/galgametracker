@@ -405,5 +405,22 @@
       "source": "https://bgm.tv/subject/402654",
       "checkedAt": "2026-11-12"
     }
+  },
+  "amatsutsumi": {
+    "subjectId": 165894,
+    "title": "アマツツミ",
+    "score": 7.5,
+    "votes": 3168,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%A2%E3%83%9E%E3%83%84%E3%83%84%E3%83%9F?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/165894",
+    "comment": "言语拥有改变现实的力量，相遇也因此变得不同。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Purple software",
+      "year": "2016",
+      "source": "https://bgm.tv/subject/165894",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
