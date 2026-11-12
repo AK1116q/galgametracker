@@ -373,5 +373,24 @@
       "position": "40% 50%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "kinkoi": {
+    "src": "/images/covers/kinkoi.jpg",
+    "width": 600,
+    "height": 388,
+    "subjectId": 225784,
+    "subjectTitle": "金色ラブリッチェ",
+    "source": "https://bgm.tv/subject/225784",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/e9/de/225784_uEb3Y.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/kinkoi.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/1277940/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1277940/library_hero.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

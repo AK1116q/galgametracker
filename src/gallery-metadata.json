@@ -422,5 +422,22 @@
       "source": "https://bgm.tv/subject/165894",
       "checkedAt": "2026-11-12"
     }
+  },
+  "kinkoi": {
+    "subjectId": 225784,
+    "title": "金色ラブリッチェ",
+    "score": 7.6,
+    "votes": 3380,
+    "source": "https://api.bgm.tv/search/subject/%E9%87%91%E8%89%B2%E3%83%A9%E3%83%96%E3%83%AA%E3%83%83%E3%83%81%E3%82%A7?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/225784",
+    "comment": "寄宿学校里的跨国相遇，在热闹日常中寻找珍贵时刻。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "SAGA PLANETS",
+      "year": "2017",
+      "source": "https://bgm.tv/subject/225784",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

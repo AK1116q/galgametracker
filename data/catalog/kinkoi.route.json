@@ -1,0 +1,968 @@
+{
+  "schemaVersion": "0.1",
+  "id": "kinkoi-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "kinkoi",
+    "title": "金辉恋曲四重奏",
+    "aliases": [
+      "金色ラブリッチェ",
+      "Kinkoi: Golden Loveriche"
+    ]
+  },
+  "release": {
+    "id": "kinkoi-pc",
+    "label": "PC 原版 / Steam 完整内容版 · 主线",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "茜需要先完成席尔薇、玲奈、艾尔中的任意一人；GOLDEN TIME 入口要求四条角色路线完成。",
+    "本作标题菜单 GOLDEN TIME 是理亚路线，不能与另售续作《Golden Time》混为一谈。",
+    "席尔薇的餐桌选择影响场景分支，本页固定到她的结局；不将米娜的差分场景当成独立结局。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/kinkoi-golden-loveriche-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/sagaplanets/kinkoi.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://steamcommunity.com/sharedfiles/filedetails/?id=2513869928",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "sylvia",
+      "safeLabel": "席尔薇",
+      "entryChoiceId": "sylvia-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "reina",
+      "safeLabel": "妃玲奈",
+      "entryChoiceId": "reina-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "elle",
+      "safeLabel": "艾尔",
+      "entryChoiceId": "elle-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "akane",
+      "safeLabel": "栗生茜",
+      "entryChoiceId": "akane-01",
+      "requiredEndingIds": [
+        "initial-route-completed"
+      ]
+    },
+    {
+      "id": "ria",
+      "safeLabel": "僧间理亚",
+      "entryChoiceId": "ria-01",
+      "requiredEndingIds": [
+        "sylvia-end",
+        "reina-end",
+        "elle-end",
+        "akane-end"
+      ]
+    },
+    {
+      "id": "epilogue",
+      "safeLabel": "席尔薇 · 追加尾声",
+      "entryChoiceId": "epilogue-01",
+      "requiredEndingIds": [
+        "ria-end",
+        "sylvia-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "sylvia-01",
+      "locator": "序章",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "首次先读 PROLOGUE；前段三选一不决定路线，可按喜好选择。",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 序章；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-02",
+      "locator": "角色选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在 START 的角色选择画面选择席尔薇。",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 角色选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-03",
+      "locator": "称呼",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "亲爱的",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 称呼；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-04",
+      "locator": "评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-05",
+      "locator": "个人篇 · 演出差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "遇到只改变场景差分的选择按喜好阅读；继续到交流与餐桌礼仪。",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 个人篇 · 演出差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-06",
+      "locator": "交流",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "尝试沟通",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 交流；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-07",
+      "locator": "餐桌 · 餐具",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拿最外侧的刀与叉",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 餐具；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-08",
+      "locator": "餐桌 · 喝汤",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从远侧舀起",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 喝汤；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-09",
+      "locator": "餐桌 · 用餐",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "保持原样吃",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 用餐；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-10",
+      "locator": "餐桌 · 饮品",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先不要喝",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 饮品；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-11",
+      "locator": "餐桌 · 掉落物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "捡起来",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 掉落物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-12",
+      "locator": "餐桌 · 餐具放置",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "略微斜着放",
+          "next": {
+            "kind": "choice",
+            "id": "sylvia-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 餐桌 · 餐具放置；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sylvia-13",
+      "locator": "席尔薇篇 · 门外",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先忍住，不贸然进入",
+          "next": {
+            "kind": "ending",
+            "id": "sylvia-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sylvia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 / 席尔薇篇 · 门外；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-01",
+      "locator": "序章",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "首次先读 PROLOGUE；前段三选一不决定路线，可按喜好选择。",
+          "next": {
+            "kind": "choice",
+            "id": "reina-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "妃玲奈 / 序章；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-02",
+      "locator": "角色选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在 START 的角色选择画面选择玲奈。",
+          "next": {
+            "kind": "choice",
+            "id": "reina-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "妃玲奈 / 角色选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-03",
+      "locator": "围裙评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "纸围裙很适合你",
+          "next": {
+            "kind": "choice",
+            "id": "reina-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "妃玲奈 / 围裙评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-04",
+      "locator": "颜色",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是红色",
+          "next": {
+            "kind": "choice",
+            "id": "reina-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "妃玲奈 / 颜色；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-05",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "reina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "妃玲奈 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "elle-01",
+      "locator": "序章",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "首次先读 PROLOGUE；前段三选一不决定路线，可按喜好选择。",
+          "next": {
+            "kind": "choice",
+            "id": "elle-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elle",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "艾尔 / 序章；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "elle-02",
+      "locator": "角色选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在 START 的角色选择画面选择艾尔（Eloina / Elle）。",
+          "next": {
+            "kind": "choice",
+            "id": "elle-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elle",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "艾尔 / 角色选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "elle-03",
+      "locator": "对话",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "问是谁",
+          "next": {
+            "kind": "choice",
+            "id": "elle-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elle",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "艾尔 / 对话；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "elle-04",
+      "locator": "艾尔篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "后续差分选择不改变本页目标；顺序读到艾尔片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "elle-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "elle",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "艾尔 / 艾尔篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在 START 的角色选择画面选择茜，读到片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "akane-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "栗生茜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ria-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择 GOLDEN TIME，阅读理亚篇到片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "ria-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ria",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "僧间理亚 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "epilogue-01",
+      "locator": "重新阅读席尔薇篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "理亚篇完成后重读席尔薇路线末段；可读取片尾前存档。",
+          "next": {
+            "kind": "choice",
+            "id": "epilogue-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "epilogue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 · 追加尾声 / 重新阅读席尔薇篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "epilogue-02",
+      "locator": "席尔薇篇 · 门外",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "告知她自己要进来了",
+          "next": {
+            "kind": "choice",
+            "id": "epilogue-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "epilogue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 · 追加尾声 / 席尔薇篇 · 门外；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "epilogue-03",
+      "locator": "片尾之后",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续读完席尔薇片尾新增的尾声。",
+          "next": {
+            "kind": "ending",
+            "id": "epilogue-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "epilogue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "席尔薇 · 追加尾声 / 片尾之后；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "initial-route-completed",
+      "safeLabel": "已完成席尔薇／玲奈／艾尔中的任意一条",
+      "hiddenTitle": "已完成席尔薇／玲奈／艾尔中的任意一条",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sylvia-end",
+      "safeLabel": "席尔薇",
+      "hiddenTitle": "席尔薇",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "reina-end",
+      "safeLabel": "妃玲奈",
+      "hiddenTitle": "妃玲奈",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "elle-end",
+      "safeLabel": "艾尔",
+      "hiddenTitle": "艾尔",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "akane-end",
+      "safeLabel": "栗生茜",
+      "hiddenTitle": "栗生茜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ria-end",
+      "safeLabel": "僧间理亚",
+      "hiddenTitle": "僧间理亚",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "epilogue-end",
+      "safeLabel": "席尔薇 · 追加尾声",
+      "hiddenTitle": "席尔薇 · 追加尾声",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "sylvia",
+        "reina",
+        "elle",
+        "akane",
+        "ria",
+        "epilogue"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}
