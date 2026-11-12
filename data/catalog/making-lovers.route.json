@@ -1,0 +1,909 @@
+{
+  "schemaVersion": "0.1",
+  "id": "making-lovers-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "making-lovers",
+    "title": "Making＊Lovers",
+    "aliases": [
+      "Making*Lovers",
+      "突然＊恋人"
+    ]
+  },
+  "release": {
+    "id": "making-lovers-pc",
+    "label": "2017 PC / Steam 本篇（非 First Blush）",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "本页每条路径都从新游戏展开，不把攻略中“读档 1／2”的后半段直接拼成新游戏流程。",
+    "亚子、玲奈采用北大路交谈起点；两份攻略也列有从洗手间出发的另一种选法，本页不混用两条前缀。",
+    "不收录另售 After Stories 或《心动初恋》。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/making-lovers-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/smee/makinglovers.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://steamah.com/making-lovers-walkthrough-with-100-achievement-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "karen",
+      "safeLabel": "北大路可怜",
+      "entryChoiceId": "karen-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ako",
+      "safeLabel": "小鸟游亚子",
+      "entryChoiceId": "ako-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "reina",
+      "safeLabel": "鹿目玲奈",
+      "entryChoiceId": "reina-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "saki",
+      "safeLabel": "鸣濑咲",
+      "entryChoiceId": "saki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mashiro",
+      "safeLabel": "月野真白",
+      "entryChoiceId": "mashiro-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "karen-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "karen-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "karen-02",
+      "locator": "序章 01 · 与北大路交谈",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听北大路谈自己的事",
+          "next": {
+            "kind": "choice",
+            "id": "karen-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 序章 01 · 与北大路交谈；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "karen-03",
+      "locator": "序章 02 · 翔的邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这次算了",
+          "next": {
+            "kind": "choice",
+            "id": "karen-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 序章 02 · 翔的邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "karen-04",
+      "locator": "序章 03 · 是否前往",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不去",
+          "next": {
+            "kind": "choice",
+            "id": "karen-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 序章 03 · 是否前往；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "karen-05",
+      "locator": "序章 03 · 是否追上",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "追上北大路",
+          "next": {
+            "kind": "choice",
+            "id": "karen-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 序章 03 · 是否追上；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "karen-06",
+      "locator": "角色路线与两次约会",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约会地点及后续答复按喜好选择，继续到片尾；这些选择影响场景差分，本页不承诺全 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "karen-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "karen",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "北大路可怜 / 角色路线与两次约会；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "ako-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-02",
+      "locator": "序章 01 · 与北大路交谈",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听北大路谈自己的事",
+          "next": {
+            "kind": "choice",
+            "id": "ako-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 序章 01 · 与北大路交谈；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-03",
+      "locator": "序章 02 · 翔的邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这次算了",
+          "next": {
+            "kind": "choice",
+            "id": "ako-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 序章 02 · 翔的邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-04",
+      "locator": "序章 03 · 是否前往",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不去",
+          "next": {
+            "kind": "choice",
+            "id": "ako-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 序章 03 · 是否前往；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-05",
+      "locator": "序章 03 · 是否追上",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不追上去",
+          "next": {
+            "kind": "choice",
+            "id": "ako-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 序章 03 · 是否追上；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ako-06",
+      "locator": "角色路线与两次约会",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约会地点及后续答复按喜好选择，继续到片尾；这些选择影响场景差分，本页不承诺全 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "ako-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ako",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小鸟游亚子 / 角色路线与两次约会；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "reina-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鹿目玲奈 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-02",
+      "locator": "序章 01 · 与北大路交谈",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听北大路谈自己的事",
+          "next": {
+            "kind": "choice",
+            "id": "reina-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鹿目玲奈 / 序章 01 · 与北大路交谈；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-03",
+      "locator": "序章 02 · 翔的邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这次算了",
+          "next": {
+            "kind": "choice",
+            "id": "reina-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鹿目玲奈 / 序章 02 · 翔的邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-04",
+      "locator": "序章 03 · 是否前往",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "前往女生宿舍",
+          "next": {
+            "kind": "choice",
+            "id": "reina-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鹿目玲奈 / 序章 03 · 是否前往；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "reina-05",
+      "locator": "角色路线与两次约会",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约会地点及后续答复按喜好选择，继续到片尾；这些选择影响场景差分，本页不承诺全 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "reina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "reina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鹿目玲奈 / 角色路线与两次约会；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "saki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸣濑咲 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-02",
+      "locator": "序章 01 · 与北大路交谈",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去洗手间",
+          "next": {
+            "kind": "choice",
+            "id": "saki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸣濑咲 / 序章 01 · 与北大路交谈；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-03",
+      "locator": "序章 02 · 翔的邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受翔的邀请",
+          "next": {
+            "kind": "choice",
+            "id": "saki-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸣濑咲 / 序章 02 · 翔的邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-04",
+      "locator": "角色路线与两次约会",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约会地点及后续答复按喜好选择，继续到片尾；这些选择影响场景差分，本页不承诺全 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "saki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸣濑咲 / 角色路线与两次约会；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mashiro-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月野真白 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mashiro-02",
+      "locator": "序章 01 · 与北大路交谈",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去洗手间",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月野真白 / 序章 01 · 与北大路交谈；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mashiro-03",
+      "locator": "序章 02 · 翔的邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这次算了",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月野真白 / 序章 02 · 翔的邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mashiro-04",
+      "locator": "序章 02 · 找工作",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去昨天的餐厅问打工的事",
+          "next": {
+            "kind": "choice",
+            "id": "mashiro-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月野真白 / 序章 02 · 找工作；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mashiro-05",
+      "locator": "角色路线与两次约会",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "约会地点及后续答复按喜好选择，继续到片尾；这些选择影响场景差分，本页不承诺全 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "mashiro-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月野真白 / 角色路线与两次约会；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "karen-end",
+      "safeLabel": "北大路可怜",
+      "hiddenTitle": "北大路可怜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ako-end",
+      "safeLabel": "小鸟游亚子",
+      "hiddenTitle": "小鸟游亚子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "reina-end",
+      "safeLabel": "鹿目玲奈",
+      "hiddenTitle": "鹿目玲奈",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "saki-end",
+      "safeLabel": "鸣濑咲",
+      "hiddenTitle": "鸣濑咲",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mashiro-end",
+      "safeLabel": "月野真白",
+      "hiddenTitle": "月野真白",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "karen",
+        "ako",
+        "reina",
+        "saki",
+        "mashiro"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

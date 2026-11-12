@@ -392,5 +392,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "making-lovers": {
+    "src": "/images/covers/making-lovers.jpg",
+    "width": 256,
+    "height": 384,
+    "subjectId": 220369,
+    "subjectTitle": "Making*Lovers",
+    "source": "https://bgm.tv/subject/220369",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/7c/c0/220369_gEikh.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/making-lovers.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/1200720/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1200720/library_hero.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

@@ -439,5 +439,22 @@
       "source": "https://bgm.tv/subject/225784",
       "checkedAt": "2026-11-12"
     }
+  },
+  "making-lovers": {
+    "subjectId": 220369,
+    "title": "Making*Lovers",
+    "score": 7.4,
+    "votes": 2301,
+    "source": "https://api.bgm.tv/search/subject/Making%20Lovers?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/220369",
+    "comment": "先成为恋人再了解彼此，以约会与工作日常推进感情。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "SMEE",
+      "year": "2017",
+      "source": "https://bgm.tv/subject/220369",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
