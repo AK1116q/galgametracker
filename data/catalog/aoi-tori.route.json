@@ -1,0 +1,443 @@
+{
+  "schemaVersion": "0.1",
+  "id": "aoi-tori-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "aoi-tori",
+    "title": "青鸟",
+    "aliases": [
+      "アオイトリ",
+      "Aoi Tori"
+    ]
+  },
+  "release": {
+    "id": "aoi-tori-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "明里从标题的独立入口开始，不能在首轮人物选择里直接进入。",
+    "鉴赏模式追加场景不算新的角色结局，本页只收录四条本篇路线。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/aoi-tori-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/purplesoftware/aoitori.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "mary",
+      "safeLabel": "玛丽",
+      "entryChoiceId": "mary-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "sayo",
+      "safeLabel": "黑崎小夜",
+      "entryChoiceId": "sayo-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "risa",
+      "safeLabel": "赤锈理沙",
+      "entryChoiceId": "risa-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "akari",
+      "safeLabel": "海野明里",
+      "entryChoiceId": "akari-01",
+      "requiredEndingIds": [
+        "mary-end",
+        "sayo-end",
+        "risa-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "mary-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mary-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mary",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "玛丽 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mary-02",
+      "locator": "共通篇 · 人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玛丽",
+          "next": {
+            "kind": "choice",
+            "id": "mary-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mary",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "玛丽 / 共通篇 · 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mary-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "mary-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mary",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "玛丽 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sayo-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "sayo-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sayo",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "黑崎小夜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sayo-02",
+      "locator": "共通篇 · 人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "小夜",
+          "next": {
+            "kind": "choice",
+            "id": "sayo-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sayo",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "黑崎小夜 / 共通篇 · 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sayo-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "sayo-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sayo",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "黑崎小夜 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "risa-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "risa-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "risa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "赤锈理沙 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "risa-02",
+      "locator": "共通篇 · 人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "理沙",
+          "next": {
+            "kind": "choice",
+            "id": "risa-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "risa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "赤锈理沙 / 共通篇 · 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "risa-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "risa-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "risa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "赤锈理沙 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akari-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "三条路线完成后，进入“明里剧情”（Akari’s Story）。",
+          "next": {
+            "kind": "choice",
+            "id": "akari-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "海野明里 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akari-02",
+      "locator": "明里篇 · 对世界的回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "喜欢这个世界",
+          "next": {
+            "kind": "ending",
+            "id": "akari-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "海野明里 / 明里篇 · 对世界的回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "mary-end",
+      "safeLabel": "玛丽",
+      "hiddenTitle": "玛丽",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sayo-end",
+      "safeLabel": "黑崎小夜",
+      "hiddenTitle": "黑崎小夜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "risa-end",
+      "safeLabel": "赤锈理沙",
+      "hiddenTitle": "赤锈理沙",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "akari-end",
+      "safeLabel": "海野明里",
+      "hiddenTitle": "海野明里",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "mary",
+        "sayo",
+        "risa",
+        "akari"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

@@ -456,5 +456,22 @@
       "source": "https://bgm.tv/subject/220369",
       "checkedAt": "2026-11-12"
     }
+  },
+  "aoi-tori": {
+    "subjectId": 220311,
+    "title": "アオイトリ",
+    "score": 7.3,
+    "votes": 2133,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%A2%E3%82%AA%E3%82%A4%E3%83%88%E3%83%AA?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/220311",
+    "comment": "教会与封闭校园里的群像，讨论愿望、信仰和归属。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Purple software",
+      "year": "2017",
+      "source": "https://bgm.tv/subject/220311",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

@@ -411,5 +411,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "aoi-tori": {
+    "src": "/images/covers/aoi-tori.jpg",
+    "width": 600,
+    "height": 849,
+    "subjectId": 220311,
+    "subjectTitle": "アオイトリ",
+    "source": "https://bgm.tv/subject/220311",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/4d/0e/220311_ha5rS.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/aoi-tori.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/2741260/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2741260/library_hero_2x.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
