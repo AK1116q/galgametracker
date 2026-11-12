@@ -324,7 +324,9 @@
       "year": "2021",
       "source": "https://bgm.tv/subject/317674",
       "checkedAt": "2026-10-23",
-      "sources": ["https://key.visualarts.gr.jp/kinetic/lunaria/"]
+      "sources": [
+        "https://key.visualarts.gr.jp/kinetic/lunaria/"
+      ]
     }
   },
   "christmas-tina": {
@@ -342,7 +344,9 @@
       "year": "2019",
       "source": "https://bgm.tv/subject/259471",
       "checkedAt": "2026-10-23",
-      "sources": ["https://www.gamer.ne.jp/news/202102200001/"]
+      "sources": [
+        "https://www.gamer.ne.jp/news/202102200001/"
+      ]
     }
   },
   "nekopara-vol-0": {
@@ -360,7 +364,9 @@
       "year": "2015",
       "source": "https://bgm.tv/subject/144173",
       "checkedAt": "2026-10-30",
-      "sources": ["https://www.igdb.com/games/nekopara-vol-0/presskit"]
+      "sources": [
+        "https://www.igdb.com/games/nekopara-vol-0/presskit"
+      ]
     }
   },
   "fault-milestone-two": {
@@ -378,7 +384,26 @@
       "year": "2015",
       "source": "https://bgm.tv/subject/166034",
       "checkedAt": "2026-10-30",
-      "sources": ["https://www.projectwritten.com/en/ms2a"]
+      "sources": [
+        "https://www.projectwritten.com/en/ms2a"
+      ]
+    }
+  },
+  "ginka": {
+    "subjectId": 402654,
+    "title": "GINKA",
+    "score": 5.8,
+    "votes": 1675,
+    "source": "https://api.bgm.tv/search/subject/GINKA?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/402654",
+    "comment": "海岛夏日与失去的记忆，围绕一次重逢展开。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Frontwing",
+      "year": "2023",
+      "source": "https://bgm.tv/subject/402654",
+      "checkedAt": "2026-11-12"
     }
   }
 }

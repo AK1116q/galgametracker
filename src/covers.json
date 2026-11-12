@@ -335,5 +335,24 @@
       "position": "68% 50%",
       "checkedAt": "2026-10-30"
     }
+  },
+  "ginka": {
+    "src": "/images/covers/ginka.jpg",
+    "width": 600,
+    "height": 900,
+    "subjectId": 402654,
+    "subjectTitle": "GINKA",
+    "source": "https://bgm.tv/subject/402654",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/19/43/402654_uo8T1.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/ginka.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/2536840/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2536840/library_hero_2x.jpg",
+      "position": "90% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

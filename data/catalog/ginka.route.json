@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": "0.1",
+  "id": "ginka-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "ginka",
+    "title": "GINKA",
+    "aliases": []
+  },
+  "release": {
+    "id": "ginka-pc",
+    "label": "2023 PC / Steam 本篇与 NEXT",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "覆盖两种主线结局及四个 BAD END。NEXT 只要求本篇完成，不要求先看 BAD END。",
+    "清扫、女孩评价、身体动作、视线和最后的回答不改变目标结局；这里固定一种一致选法。",
+    "后日谈入口在来源中有 AFTER／EXTRA 的记述差异，本页不将它虚构成额外主线结局。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/ginka-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://kannagi35.com/content/ginka-walkthrough",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇 · ENDING 1",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "next",
+      "safeLabel": "NEXT · ENDING 2",
+      "entryChoiceId": "next-01",
+      "requiredEndingIds": [
+        "main-end"
+      ]
+    },
+    {
+      "id": "bad-one",
+      "safeLabel": "BAD END 1",
+      "entryChoiceId": "bad-one-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "bad-two",
+      "safeLabel": "BAD END 2",
+      "entryChoiceId": "bad-two-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "bad-three",
+      "safeLabel": "BAD END 3",
+      "entryChoiceId": "bad-three-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "bad-four",
+      "safeLabel": "BAD END 4",
+      "entryChoiceId": "bad-four-01",
+      "requiredEndingIds": [
+        "main-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "locator": "神隐少女 · 清扫",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "仔细打扫",
+          "next": {
+            "kind": "choice",
+            "id": "main-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 神隐少女 · 清扫；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-03",
+      "locator": "神隐少女 · 日常",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若出现仅有省略号的确认项，确认继续。",
+          "next": {
+            "kind": "choice",
+            "id": "main-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 神隐少女 · 日常；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-04",
+      "locator": "神隐少女 · 邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起吃",
+          "next": {
+            "kind": "choice",
+            "id": "main-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 神隐少女 · 邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-05",
+      "locator": "神明居住的岛 · 鸟居",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "穿过鸟居",
+          "next": {
+            "kind": "choice",
+            "id": "main-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "转身回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 神明居住的岛 · 鸟居；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-06",
+      "locator": "夏祭执行委员",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "说她是个很好的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "main-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 夏祭执行委员；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-07",
+      "locator": "银花的愿望",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "试着动一动",
+          "next": {
+            "kind": "choice",
+            "id": "main-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 银花的愿望；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-08",
+      "locator": "来自海上的东西",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "尽力活下去",
+          "next": {
+            "kind": "choice",
+            "id": "main-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "即使死去也可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 来自海上的东西；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-09",
+      "locator": "银花 · 视线",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大大方方地看",
+          "next": {
+            "kind": "choice",
+            "id": "main-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 银花 · 视线；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-10",
+      "locator": "熄灭的火",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "还是想留在这里",
+          "next": {
+            "kind": "choice",
+            "id": "main-11"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "明天就拜托了",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 熄灭的火；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-11",
+      "locator": "银花的愿望 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "告诉她实情",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 · ENDING 1 / 银花的愿望 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "next-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "完成本篇后选择 NEXT。",
+          "next": {
+            "kind": "choice",
+            "id": "next-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "next",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NEXT · ENDING 2 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "next-02",
+      "locator": "梦的终点",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不实现神明的愿望",
+          "next": {
+            "kind": "ending",
+            "id": "next-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "实现神明的愿望",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "next",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NEXT · ENDING 2 / 梦的终点；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-one-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-one-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 1 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-one-02",
+      "locator": "神隐少女 · 清扫",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "仔细打扫",
+          "next": {
+            "kind": "choice",
+            "id": "bad-one-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 1 / 神隐少女 · 清扫；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-one-03",
+      "locator": "神隐少女 · 日常",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若出现仅有省略号的确认项，确认继续。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-one-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 1 / 神隐少女 · 日常；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-one-04",
+      "locator": "神隐少女 · 邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起吃",
+          "next": {
+            "kind": "choice",
+            "id": "bad-one-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 1 / 神隐少女 · 邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-one-05",
+      "locator": "神明居住的岛 · 鸟居",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "转身回去",
+          "next": {
+            "kind": "ending",
+            "id": "bad-one-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 1 / 神明居住的岛 · 鸟居；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-02",
+      "locator": "神隐少女 · 清扫",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "仔细打扫",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 神隐少女 · 清扫；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-03",
+      "locator": "神隐少女 · 日常",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若出现仅有省略号的确认项，确认继续。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 神隐少女 · 日常；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-04",
+      "locator": "神隐少女 · 邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起吃",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 神隐少女 · 邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-05",
+      "locator": "神明居住的岛 · 鸟居",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "穿过鸟居",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "转身回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 神明居住的岛 · 鸟居；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-06",
+      "locator": "夏祭执行委员",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "说她是个很好的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 夏祭执行委员；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-07",
+      "locator": "银花的愿望",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "试着动一动",
+          "next": {
+            "kind": "choice",
+            "id": "bad-two-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 银花的愿望；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-two-08",
+      "locator": "来自海上的东西",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "即使死去也可以",
+          "next": {
+            "kind": "ending",
+            "id": "bad-two-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 2 / 来自海上的东西；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-02",
+      "locator": "神隐少女 · 清扫",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "仔细打扫",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 神隐少女 · 清扫；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-03",
+      "locator": "神隐少女 · 日常",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若出现仅有省略号的确认项，确认继续。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 神隐少女 · 日常；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-04",
+      "locator": "神隐少女 · 邀请",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起吃",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 神隐少女 · 邀请；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-05",
+      "locator": "神明居住的岛 · 鸟居",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "穿过鸟居",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-06"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "转身回去",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 神明居住的岛 · 鸟居；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-06",
+      "locator": "夏祭执行委员",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "说她是个很好的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 夏祭执行委员；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-07",
+      "locator": "银花的愿望",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "试着动一动",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 银花的愿望；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-08",
+      "locator": "来自海上的东西",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "尽力活下去",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-09"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "即使死去也可以",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 来自海上的东西；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-09",
+      "locator": "银花 · 视线",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大大方方地看",
+          "next": {
+            "kind": "choice",
+            "id": "bad-three-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 银花 · 视线；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-three-10",
+      "locator": "熄灭的火",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "明天就拜托了",
+          "next": {
+            "kind": "ending",
+            "id": "bad-three-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-three",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 3 / 熄灭的火；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-four-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "完成本篇后选择 NEXT。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-four-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-four",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 4 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-four-02",
+      "locator": "梦的终点",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "实现神明的愿望",
+          "next": {
+            "kind": "ending",
+            "id": "bad-four-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad-four",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END 4 / 梦的终点；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇 · ENDING 1",
+      "hiddenTitle": "本篇 · ENDING 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "next-end",
+      "safeLabel": "NEXT · ENDING 2",
+      "hiddenTitle": "NEXT · ENDING 2",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-one-end",
+      "safeLabel": "BAD END 1",
+      "hiddenTitle": "BAD END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-two-end",
+      "safeLabel": "BAD END 2",
+      "hiddenTitle": "BAD END 2",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-three-end",
+      "safeLabel": "BAD END 3",
+      "hiddenTitle": "BAD END 3",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-four-end",
+      "safeLabel": "BAD END 4",
+      "hiddenTitle": "BAD END 4",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "main",
+        "next",
+        "bad-one",
+        "bad-two",
+        "bad-three",
+        "bad-four"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}
