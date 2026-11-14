@@ -1,0 +1,2977 @@
+{
+  "schemaVersion": "0.1",
+  "id": "hatsuyuki-sakura-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "hatsuyuki-sakura",
+    "title": "初雪樱",
+    "aliases": [
+      "はつゆきさくら",
+      "Hatsuyuki Sakura"
+    ]
+  },
+  "release": {
+    "id": "hatsuyuki-sakura-pc",
+    "label": "PC 完整内容版 · 序章与十一结局",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "PROLOGUE 完成后从 START 进入兰；兰之后开放绫／夜；绫之后开放希；夜之后开放白熊。",
+    "希之后开放直子／惠，白熊之后开放眠图标。眠图标对应独自用餐短篇，并非独立可攻略女主。",
+    "毕业篇要求兰、绫、夜、白熊、希完成。亲吻绫为第二结局，拥抱绫后再完成地点选择进入樱 TRUE。",
+    "序章地图访问顺序及 BAD END 有不同可行排列；本站固定采用誠也的一整套排列。两份攻略活动中部分文本属版本译名差异，按中文含义核对。",
+    "本页编号为本站步骤而非游戏日期。普通日常／演出差分与成就收集不在范围内。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/hatsuyuki-sakura-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/sagaplanets/hatuyuki.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "prologue",
+      "safeLabel": "PROLOGUE · 序章完成",
+      "entryChoiceId": "prologue-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ran",
+      "safeLabel": "兰",
+      "entryChoiceId": "ran-01",
+      "requiredEndingIds": [
+        "prologue-end"
+      ]
+    },
+    {
+      "id": "aya",
+      "safeLabel": "小坂井绫",
+      "entryChoiceId": "aya-01",
+      "requiredEndingIds": [
+        "ran-end"
+      ]
+    },
+    {
+      "id": "yoru",
+      "safeLabel": "吾妻夜",
+      "entryChoiceId": "yoru-01",
+      "requiredEndingIds": [
+        "ran-end"
+      ]
+    },
+    {
+      "id": "shirokuma",
+      "safeLabel": "白熊",
+      "entryChoiceId": "shirokuma-01",
+      "requiredEndingIds": [
+        "yoru-end"
+      ]
+    },
+    {
+      "id": "nozomu",
+      "safeLabel": "东云希",
+      "entryChoiceId": "nozomu-01",
+      "requiredEndingIds": [
+        "aya-end"
+      ]
+    },
+    {
+      "id": "naoko",
+      "safeLabel": "竹田直子 · 短结局",
+      "entryChoiceId": "naoko-01",
+      "requiredEndingIds": [
+        "nozomu-end"
+      ]
+    },
+    {
+      "id": "megumi",
+      "safeLabel": "金崎惠 · 短结局",
+      "entryChoiceId": "megumi-01",
+      "requiredEndingIds": [
+        "nozomu-end"
+      ]
+    },
+    {
+      "id": "nemu",
+      "safeLabel": "独自用餐 · 短结局",
+      "entryChoiceId": "nemu-01",
+      "requiredEndingIds": [
+        "shirokuma-end"
+      ]
+    },
+    {
+      "id": "bad",
+      "safeLabel": "BAD END",
+      "entryChoiceId": "bad-01",
+      "requiredEndingIds": [
+        "nozomu-end",
+        "shirokuma-end"
+      ]
+    },
+    {
+      "id": "aya-two",
+      "safeLabel": "小坂井绫 · 第二结局",
+      "entryChoiceId": "aya-two-01",
+      "requiredEndingIds": [
+        "ran-end",
+        "aya-end",
+        "yoru-end",
+        "shirokuma-end",
+        "nozomu-end"
+      ]
+    },
+    {
+      "id": "sakura",
+      "safeLabel": "玉树樱 · TRUE",
+      "entryChoiceId": "sakura-01",
+      "requiredEndingIds": [
+        "ran-end",
+        "aya-end",
+        "yoru-end",
+        "shirokuma-end",
+        "nozomu-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "prologue-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择 PROLOGUE。",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-02",
+      "locator": "序章地图 · 第 1 轮第 1 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "车站前",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 1 轮第 1 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-03",
+      "locator": "序章地图 · 第 1 轮第 2 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "十字路口",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 1 轮第 2 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-04",
+      "locator": "序章地图 · 第 1 轮第 3 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商场",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 1 轮第 3 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-05",
+      "locator": "序章 · 第一次坚持",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续努力",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 第一次坚持；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-06",
+      "locator": "序章 · 第二次坚持",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续努力",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 第二次坚持；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-07",
+      "locator": "序章地图 · 第 2 轮第 1 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 2 轮第 1 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-08",
+      "locator": "序章地图 · 第 2 轮第 2 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商场",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 2 轮第 2 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-09",
+      "locator": "序章地图 · 第 2 轮第 3 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "十字路口",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 2 轮第 3 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-10",
+      "locator": "序章地图 · 第 3 轮第 1 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "车站前",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 3 轮第 1 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-11",
+      "locator": "序章地图 · 第 3 轮第 2 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商场",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 3 轮第 2 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-12",
+      "locator": "序章地图 · 第 3 轮第 3 处",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "十字路口",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章地图 · 第 3 轮第 3 处；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-13",
+      "locator": "序章 · 玩偶回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "兔子",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 玩偶回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-14",
+      "locator": "序章 · 玩偶选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "企鹅玩偶",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 玩偶选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-15",
+      "locator": "序章 · 姓名称呼 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玉树",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 姓名称呼 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-16",
+      "locator": "序章 · 姓名称呼 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "希",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 姓名称呼 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-17",
+      "locator": "序章 · 姓名称呼 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吾妻",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 姓名称呼 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-18",
+      "locator": "序章 · 姓名称呼 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田",
+          "next": {
+            "kind": "choice",
+            "id": "prologue-19"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 姓名称呼 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "prologue-19",
+      "locator": "序章 · 姓名称呼 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "久保",
+          "next": {
+            "kind": "ending",
+            "id": "prologue-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "prologue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "PROLOGUE · 序章完成 / 序章 · 姓名称呼 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ran-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "ran-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ran",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "兰 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ran-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玉树樱",
+          "next": {
+            "kind": "choice",
+            "id": "ran-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ran",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "兰 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ran-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玉树樱",
+          "next": {
+            "kind": "choice",
+            "id": "ran-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ran",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "兰 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ran-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玉树樱",
+          "next": {
+            "kind": "ending",
+            "id": "ran-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ran",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "兰 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "aya-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "小坂井绫",
+          "next": {
+            "kind": "ending",
+            "id": "aya-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "yoru-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吾妻夜",
+          "next": {
+            "kind": "choice",
+            "id": "yoru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吾妻夜",
+          "next": {
+            "kind": "choice",
+            "id": "yoru-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吾妻夜",
+          "next": {
+            "kind": "choice",
+            "id": "yoru-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-05",
+      "locator": "地图 · 第 4 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吾妻夜",
+          "next": {
+            "kind": "choice",
+            "id": "yoru-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 地图 · 第 4 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yoru-06",
+      "locator": "夜篇 · 约定",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "遵守约定",
+          "next": {
+            "kind": "ending",
+            "id": "yoru-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yoru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "吾妻夜 / 夜篇 · 约定；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shirokuma-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "shirokuma-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shirokuma",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "白熊 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shirokuma-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "白熊",
+          "next": {
+            "kind": "choice",
+            "id": "shirokuma-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shirokuma",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "白熊 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shirokuma-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "白熊",
+          "next": {
+            "kind": "choice",
+            "id": "shirokuma-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shirokuma",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "白熊 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shirokuma-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "白熊",
+          "next": {
+            "kind": "choice",
+            "id": "shirokuma-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shirokuma",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "白熊 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shirokuma-05",
+      "locator": "白熊篇 · 协助",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮忙",
+          "next": {
+            "kind": "ending",
+            "id": "shirokuma-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shirokuma",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "白熊 / 白熊篇 · 协助；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nozomu-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "nozomu-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "东云希 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nozomu-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "东云希",
+          "next": {
+            "kind": "choice",
+            "id": "nozomu-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "东云希 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nozomu-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "东云希",
+          "next": {
+            "kind": "choice",
+            "id": "nozomu-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "东云希 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nozomu-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "东云希",
+          "next": {
+            "kind": "choice",
+            "id": "nozomu-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "东云希 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nozomu-05",
+      "locator": "希篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不能放任不管",
+          "next": {
+            "kind": "ending",
+            "id": "nozomu-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nozomu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "东云希 / 希篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "naoko-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "naoko-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "naoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "竹田直子 · 短结局 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "naoko-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田直子",
+          "next": {
+            "kind": "choice",
+            "id": "naoko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "naoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "竹田直子 · 短结局 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "naoko-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田直子",
+          "next": {
+            "kind": "choice",
+            "id": "naoko-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "naoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "竹田直子 · 短结局 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "naoko-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田直子",
+          "next": {
+            "kind": "ending",
+            "id": "naoko-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "naoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "竹田直子 · 短结局 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "megumi-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "megumi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "megumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "金崎惠 · 短结局 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "megumi-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "金崎惠",
+          "next": {
+            "kind": "choice",
+            "id": "megumi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "megumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "金崎惠 · 短结局 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "megumi-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "金崎惠",
+          "next": {
+            "kind": "choice",
+            "id": "megumi-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "megumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "金崎惠 · 短结局 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "megumi-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "金崎惠",
+          "next": {
+            "kind": "ending",
+            "id": "megumi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "megumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "金崎惠 · 短结局 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nemu-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在已完成前置的存档环境中选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "nemu-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nemu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "独自用餐 · 短结局 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nemu-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "独自走走（眠图标）",
+          "next": {
+            "kind": "choice",
+            "id": "nemu-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nemu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "独自用餐 · 短结局 / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nemu-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "独自走走（眠图标）",
+          "next": {
+            "kind": "choice",
+            "id": "nemu-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nemu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "独自用餐 · 短结局 / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nemu-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "独自走走（眠图标）",
+          "next": {
+            "kind": "ending",
+            "id": "nemu-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nemu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "独自用餐 · 短结局 / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择 START。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-02",
+      "locator": "地图 · 第 1 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田直子",
+          "next": {
+            "kind": "choice",
+            "id": "bad-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 地图 · 第 1 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-03",
+      "locator": "地图 · 第 2 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "竹田直子",
+          "next": {
+            "kind": "choice",
+            "id": "bad-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 地图 · 第 2 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-04",
+      "locator": "地图 · 第 3 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "金崎惠",
+          "next": {
+            "kind": "choice",
+            "id": "bad-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 地图 · 第 3 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-05",
+      "locator": "地图 · 第 4 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "金崎惠",
+          "next": {
+            "kind": "choice",
+            "id": "bad-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 地图 · 第 4 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-06",
+      "locator": "地图 · 第 5 次",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "独自走走（眠图标）",
+          "next": {
+            "kind": "ending",
+            "id": "bad-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "BAD END / 地图 · 第 5 次；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "五条人物路线完成后选择 GRADUATION。",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-02",
+      "locator": "毕业篇 · 活动 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "游泳大会",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-03",
+      "locator": "毕业篇 · 活动 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "合唱大会",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-04",
+      "locator": "毕业篇 · 活动 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "球类大会",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-05",
+      "locator": "毕业篇 · 活动 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "感谢日",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-06",
+      "locator": "毕业篇 · 场景差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "场景差分选择不改变目标；继续到后续活动。",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 场景差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-07",
+      "locator": "毕业篇 · 活动与问答 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "男性活动",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动与问答 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-08",
+      "locator": "毕业篇 · 活动与问答 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请享用",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动与问答 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-09",
+      "locator": "毕业篇 · 活动与问答 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择表示胸口发麻的答复",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动与问答 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-10",
+      "locator": "毕业篇 · 活动与问答 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择可能会出奶的玩笑答复",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动与问答 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-11",
+      "locator": "毕业篇 · 活动与问答 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择兴奋得快爆炸的答复",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 活动与问答 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-12",
+      "locator": "毕业篇 · 继续",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "出现继续选项时向后阅读，到与绫的选择处分流。",
+          "next": {
+            "kind": "choice",
+            "id": "aya-two-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 继续；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "aya-two-13",
+      "locator": "毕业篇 · 与绫的分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "亲吻绫",
+          "next": {
+            "kind": "ending",
+            "id": "aya-two-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "aya-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小坂井绫 · 第二结局 / 毕业篇 · 与绫的分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "五条人物路线完成后选择 GRADUATION。",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-02",
+      "locator": "毕业篇 · 活动 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "游泳大会",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-03",
+      "locator": "毕业篇 · 活动 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "合唱大会",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-04",
+      "locator": "毕业篇 · 活动 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "球类大会",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-05",
+      "locator": "毕业篇 · 活动 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "感谢日",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-06",
+      "locator": "毕业篇 · 场景差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "场景差分选择不改变目标；继续到后续活动。",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 场景差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-07",
+      "locator": "毕业篇 · 活动与问答 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "男性活动",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动与问答 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-08",
+      "locator": "毕业篇 · 活动与问答 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请享用",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动与问答 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-09",
+      "locator": "毕业篇 · 活动与问答 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择表示胸口发麻的答复",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动与问答 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-10",
+      "locator": "毕业篇 · 活动与问答 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择可能会出奶的玩笑答复",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动与问答 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-11",
+      "locator": "毕业篇 · 活动与问答 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择兴奋得快爆炸的答复",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 活动与问答 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-12",
+      "locator": "毕业篇 · 继续",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "出现继续选项时向后阅读，到与绫的选择处分流。",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 继续；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-13",
+      "locator": "毕业篇 · 与绫的分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "拥抱绫",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 与绫的分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-14",
+      "locator": "毕业篇 · 地点 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "中庭",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-15"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-15",
+      "locator": "毕业篇 · 地点 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "走廊",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-16"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-16",
+      "locator": "毕业篇 · 地点 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "指导室",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-17"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-17",
+      "locator": "毕业篇 · 地点 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "中庭",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-18"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-18",
+      "locator": "毕业篇 · 地点 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "指导室",
+          "next": {
+            "kind": "choice",
+            "id": "sakura-19"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sakura-19",
+      "locator": "毕业篇 · 地点 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "走廊",
+          "next": {
+            "kind": "ending",
+            "id": "sakura-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sakura",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "玉树樱 · TRUE / 毕业篇 · 地点 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "prologue-end",
+      "safeLabel": "PROLOGUE · 序章完成",
+      "hiddenTitle": "PROLOGUE · 序章完成",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ran-end",
+      "safeLabel": "兰",
+      "hiddenTitle": "兰",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "aya-end",
+      "safeLabel": "小坂井绫",
+      "hiddenTitle": "小坂井绫",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yoru-end",
+      "safeLabel": "吾妻夜",
+      "hiddenTitle": "吾妻夜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "shirokuma-end",
+      "safeLabel": "白熊",
+      "hiddenTitle": "白熊",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nozomu-end",
+      "safeLabel": "东云希",
+      "hiddenTitle": "东云希",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "naoko-end",
+      "safeLabel": "竹田直子 · 短结局",
+      "hiddenTitle": "竹田直子 · 短结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "megumi-end",
+      "safeLabel": "金崎惠 · 短结局",
+      "hiddenTitle": "金崎惠 · 短结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nemu-end",
+      "safeLabel": "独自用餐 · 短结局",
+      "hiddenTitle": "独自用餐 · 短结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-end",
+      "safeLabel": "BAD END",
+      "hiddenTitle": "BAD END",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "aya-two-end",
+      "safeLabel": "小坂井绫 · 第二结局",
+      "hiddenTitle": "小坂井绫 · 第二结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sakura-end",
+      "safeLabel": "玉树樱 · TRUE",
+      "hiddenTitle": "玉树樱 · TRUE",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "prologue",
+        "ran",
+        "aya",
+        "yoru",
+        "shirokuma",
+        "nozomu",
+        "naoko",
+        "megumi",
+        "nemu",
+        "bad",
+        "aya-two",
+        "sakura"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "誠也与 NookGaming 对照解锁链、人物地图次数及两种毕业结局；序章和 BAD END 使用誠也的连续排列，不拼接 Nook 的不同地图顺序。未实机核验汉化按钮。"
+    }
+  ]
+}

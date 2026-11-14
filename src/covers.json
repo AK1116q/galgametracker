@@ -639,5 +639,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "hatsuyuki-sakura": {
+    "src": "/images/covers/hatsuyuki-sakura.jpg",
+    "width": 411,
+    "height": 560,
+    "subjectId": 19002,
+    "subjectTitle": "はつゆきさくら",
+    "source": "https://bgm.tv/subject/19002",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/f1/78/19002_nO49l.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/hatsuyuki-sakura.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/3171460/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/3171460/library_hero_2x.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

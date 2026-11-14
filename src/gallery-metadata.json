@@ -660,5 +660,22 @@
       "source": "https://bgm.tv/subject/137664",
       "checkedAt": "2026-11-12"
     }
+  },
+  "hatsuyuki-sakura": {
+    "subjectId": 19002,
+    "title": "はつゆきさくら",
+    "score": 7.4,
+    "votes": 3233,
+    "source": "https://api.bgm.tv/search/subject/%E3%81%AF%E3%81%A4%E3%82%86%E3%81%8D%E3%81%95%E3%81%8F%E3%82%89?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/19002",
+    "comment": "冬日街道与毕业季交错，在相遇中逐渐揭开往事。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "SAGA PLANETS",
+      "year": "2012",
+      "source": "https://bgm.tv/subject/19002",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
