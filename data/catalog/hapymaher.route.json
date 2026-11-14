@@ -1,0 +1,2274 @@
+{
+  "schemaVersion": "0.1",
+  "id": "hapymaher-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "hapymaher",
+    "title": "幸福噩梦",
+    "aliases": [
+      "ハピメア"
+    ]
+  },
+  "release": {
+    "id": "hapymaher-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "回忆追加选项在咲、弥生、景子中任一条完成后才出现；首轮未出现时跳过该节点，不能误判选错。",
+    "有栖 TRUE 必须满足前置后从新游戏开始；舞亚／有栖短篇的最低解锁条件在来源中存在差异，本页明确提供完成上述任一条后的可用路径，不声称是最低条件。",
+    "本站保留 NookGaming 的一整组选法；日文攻略存在其他可到同一结局的钥匙／人物组合，不混用。",
+    "限定 2013 原作 PC 版／其英译版，不包含 Fragmentation Dream，REGRET END 的界面差异未核验。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/hapymaher-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://kannagi35.com/x/hapymaher-walkthrough",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/purplesoftware/hapymaher.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "saki",
+      "safeLabel": "莲乃咲",
+      "entryChoiceId": "saki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yayoi",
+      "safeLabel": "弥生·B·卢特维奇",
+      "entryChoiceId": "yayoi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "keiko",
+      "safeLabel": "平坂景子",
+      "entryChoiceId": "keiko-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "maia",
+      "safeLabel": "内藤舞亚 · 二周目路径",
+      "entryChoiceId": "maia-01",
+      "requiredEndingIds": [
+        "extras-unlocked"
+      ]
+    },
+    {
+      "id": "alice-normal",
+      "safeLabel": "鸟海有栖 · 短篇结局",
+      "entryChoiceId": "alice-normal-01",
+      "requiredEndingIds": [
+        "extras-unlocked"
+      ]
+    },
+    {
+      "id": "alice-true",
+      "safeLabel": "鸟海有栖 · TRUE",
+      "entryChoiceId": "alice-true-01",
+      "requiredEndingIds": [
+        "extras-unlocked"
+      ]
+    },
+    {
+      "id": "normal",
+      "safeLabel": "NORMAL END",
+      "entryChoiceId": "normal-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "bad",
+      "safeLabel": "BAD END",
+      "entryChoiceId": "bad-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "saki-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "saki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "saki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "saki-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "saki-04"
+      }
+    },
+    {
+      "id": "saki-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并非没有在意的人",
+          "next": {
+            "kind": "choice",
+            "id": "saki-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-05",
+      "locator": "幕间 1 · 对方",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "认识的人",
+          "next": {
+            "kind": "choice",
+            "id": "saki-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 幕间 1 · 对方；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "忍住",
+          "next": {
+            "kind": "choice",
+            "id": "saki-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在意咲",
+          "next": {
+            "kind": "choice",
+            "id": "saki-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "自己房间的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "saki-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "咲",
+          "next": {
+            "kind": "choice",
+            "id": "saki-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-10",
+      "locator": "第 6 话 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是这样",
+          "next": {
+            "kind": "ending",
+            "id": "saki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "莲乃咲 / 第 6 话 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "yayoi-04"
+      }
+    },
+    {
+      "id": "yayoi-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并非没有在意的人",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-05",
+      "locator": "幕间 1 · 对方",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不认识的人",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 幕间 1 · 对方；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "无法忍住",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在意弥生",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "科学教室的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "yayoi-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yayoi-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "弥生",
+          "next": {
+            "kind": "ending",
+            "id": "yayoi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yayoi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "弥生·B·卢特维奇 / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "keiko-04"
+      }
+    },
+    {
+      "id": "keiko-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并非没有在意的人",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-05",
+      "locator": "幕间 1 · 对方",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不认识的人",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 幕间 1 · 对方；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "忍住",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "没有特别想到谁",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吉他盒的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "keiko-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "keiko-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "景子",
+          "next": {
+            "kind": "ending",
+            "id": "keiko-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "keiko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "平坂景子 / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "maia-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "maia-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "maia-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "maia-04"
+      }
+    },
+    {
+      "id": "maia-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "没有",
+          "next": {
+            "kind": "choice",
+            "id": "maia-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-05",
+      "locator": "幕间 1 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "舞亚",
+          "next": {
+            "kind": "choice",
+            "id": "maia-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 幕间 1 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "忍住",
+          "next": {
+            "kind": "choice",
+            "id": "maia-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "没有特别想到谁",
+          "next": {
+            "kind": "choice",
+            "id": "maia-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-08",
+      "locator": "幕间 3 · 行动",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "追上舞亚",
+          "next": {
+            "kind": "choice",
+            "id": "maia-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 幕间 3 · 行动；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "景子",
+          "next": {
+            "kind": "choice",
+            "id": "maia-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maia-10",
+      "locator": "第 6 话 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并不是这样",
+          "next": {
+            "kind": "ending",
+            "id": "maia-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maia",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "内藤舞亚 · 二周目路径 / 第 6 话 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "alice-normal-04"
+      }
+    },
+    {
+      "id": "alice-normal-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "没有",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-05",
+      "locator": "幕间 1 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 幕间 1 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "忍住",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在意有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "心形图案的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-normal-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-normal-10",
+      "locator": "第 6 话 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并不是这样",
+          "next": {
+            "kind": "ending",
+            "id": "alice-normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · 短篇结局 / 第 6 话 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "满足前置后必须从新游戏开始，不能读取解锁之前的旧存档。",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不知为何看到了蓝天",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "没有",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-05",
+      "locator": "幕间 1 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 幕间 1 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "忍住",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在意有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "心形图案的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "有栖",
+          "next": {
+            "kind": "choice",
+            "id": "alice-true-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "alice-true-10",
+      "locator": "第 6 话 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并不是这样",
+          "next": {
+            "kind": "ending",
+            "id": "alice-true-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "alice-true",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "鸟海有栖 · TRUE / 第 6 话 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "normal-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这不是自己",
+          "next": {
+            "kind": "choice",
+            "id": "normal-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-03",
+      "locator": "幕间 1 · 追加回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想起重要之人的面孔",
+          "next": {
+            "kind": "choice",
+            "id": "normal-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 幕间 1 · 追加回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ],
+      "skipTo": {
+        "kind": "choice",
+        "id": "normal-04"
+      }
+    },
+    {
+      "id": "normal-04",
+      "locator": "幕间 1 · 是否在意某人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "并非没有在意的人",
+          "next": {
+            "kind": "choice",
+            "id": "normal-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 幕间 1 · 是否在意某人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-05",
+      "locator": "幕间 1 · 对方",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不认识的人",
+          "next": {
+            "kind": "choice",
+            "id": "normal-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 幕间 1 · 对方；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-06",
+      "locator": "第 3 话 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "无法忍住",
+          "next": {
+            "kind": "choice",
+            "id": "normal-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 第 3 话 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-07",
+      "locator": "幕间 2 · 想起的人",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "在意弥生",
+          "next": {
+            "kind": "choice",
+            "id": "normal-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 幕间 2 · 想起的人；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-08",
+      "locator": "幕间 3 · 钥匙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "吉他盒的钥匙",
+          "next": {
+            "kind": "choice",
+            "id": "normal-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 幕间 3 · 钥匙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "normal-09",
+      "locator": "第 5 话 · 人物",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "咲",
+          "next": {
+            "kind": "ending",
+            "id": "normal-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "normal",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "NORMAL END / 第 5 话 · 人物；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-02",
+      "locator": "第 2 话 · 自我认知",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受现状",
+          "next": {
+            "kind": "ending",
+            "id": "bad-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 第 2 话 · 自我认知；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "extras-unlocked",
+      "safeLabel": "已完成咲／弥生／景子中的任意一条，并从新游戏开始",
+      "hiddenTitle": "已完成咲／弥生／景子中的任意一条，并从新游戏开始",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "saki-end",
+      "safeLabel": "莲乃咲",
+      "hiddenTitle": "莲乃咲",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yayoi-end",
+      "safeLabel": "弥生·B·卢特维奇",
+      "hiddenTitle": "弥生·B·卢特维奇",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "keiko-end",
+      "safeLabel": "平坂景子",
+      "hiddenTitle": "平坂景子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "maia-end",
+      "safeLabel": "内藤舞亚 · 二周目路径",
+      "hiddenTitle": "内藤舞亚 · 二周目路径",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "alice-normal-end",
+      "safeLabel": "鸟海有栖 · 短篇结局",
+      "hiddenTitle": "鸟海有栖 · 短篇结局",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "alice-true-end",
+      "safeLabel": "鸟海有栖 · TRUE",
+      "hiddenTitle": "鸟海有栖 · TRUE",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "normal-end",
+      "safeLabel": "NORMAL END",
+      "hiddenTitle": "NORMAL END",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-end",
+      "safeLabel": "BAD END",
+      "hiddenTitle": "BAD END",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "saki",
+        "yayoi",
+        "keiko",
+        "maia",
+        "alice-normal",
+        "alice-true",
+        "normal",
+        "bad"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "NookGaming 提供完整新游戏选法；巫-KANNAGI-和誠也复核追加选项、新游戏要求及八类结局。对最低解锁前置的分歧明确限定二周目存档状态，没有宣称所有版本完全一致。"
+    }
+  ]
+}

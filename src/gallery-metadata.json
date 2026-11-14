@@ -626,5 +626,22 @@
       "source": "https://bgm.tv/subject/100309",
       "checkedAt": "2026-11-12"
     }
+  },
+  "hapymaher": {
+    "subjectId": 48010,
+    "title": "ハピメア",
+    "score": 6.9,
+    "votes": 977,
+    "source": "https://api.bgm.tv/search/subject/%E3%83%8F%E3%83%94%E3%83%A1%E3%82%A2?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/48010",
+    "comment": "清醒梦与现实彼此渗透，沿着选择探寻记忆的边界。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Purple software",
+      "year": "2013",
+      "source": "https://bgm.tv/subject/48010",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

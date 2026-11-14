@@ -601,5 +601,24 @@
       "position": "90% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "hapymaher": {
+    "src": "/images/covers/hapymaher.jpg",
+    "width": 320,
+    "height": 460,
+    "subjectId": 48010,
+    "subjectTitle": "ハピメア",
+    "source": "https://bgm.tv/subject/48010",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/26/7d/48010_69v9i.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/hapymaher.webp",
+      "width": 960,
+      "height": 600,
+      "source": "https://www.purplesoftware.jp/products/hapymaher/",
+      "imageSource": "https://www.purplesoftware.jp/products/hapymaher/image/top02.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
