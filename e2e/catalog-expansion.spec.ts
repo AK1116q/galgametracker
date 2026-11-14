@@ -27,7 +27,7 @@ for (const pack of works) {
     await expect(page.locator(".game-workspace h1")).toHaveText(pack.game.title);
     await expect(page.locator(".turntable")).toBeVisible();
     const route = pack.routes[0];
-    await page.locator(".target-picker button").filter({ hasText: route.safeLabel }).first().click();
+    await page.locator(".target-picker button").filter({ has: page.getByText(route.safeLabel, { exact: true }) }).click();
     await expect(page.locator(".tree-step")).toHaveCount(guidePath(pack, route.id).nodes.length);
     await expect(page.getByLabel("攻略使用条件")).toContainText("未实机");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);

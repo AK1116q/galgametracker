@@ -32,11 +32,8 @@ for (const pack of additions) {
     await expect(page.locator(".turntable")).toBeVisible();
     const route = pack.routes[0];
     await page
-      .getByRole("button", {
-        name: new RegExp(
-          `^${route.safeLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
-        ),
-      })
+      .locator(".target-picker button")
+      .filter({ has: page.getByText(route.safeLabel, { exact: true }) })
       .click();
     await expect(page.locator(".tree-step").first()).toBeVisible();
     expect(
