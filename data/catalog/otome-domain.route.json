@@ -1,0 +1,547 @@
+{
+  "schemaVersion": "0.1",
+  "id": "otome-domain-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "otome-domain",
+    "title": "少女＊领域",
+    "aliases": [
+      "オトメ＊ドメイン",
+      "Otome * Domain"
+    ]
+  },
+  "release": {
+    "id": "otome-domain-pc",
+    "label": "PC 完整内容版 · 三角色主线",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "风莉在英译版称 Kazari，中文沿用日文汉字“風莉”。",
+    "限定 PC 完整内容版；Steam 未补全内容版没有风莉路线。",
+    "最后的“继续”决定风莉路线；其他两人按前三项一致选择，最后选择停止。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/otome-domain-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/qualia/otomedomain.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kazari",
+      "safeLabel": "西园寺风莉",
+      "entryChoiceId": "kazari-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yuzu",
+      "safeLabel": "贵船柚子",
+      "entryChoiceId": "yuzu-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hinata",
+      "safeLabel": "大垣日向",
+      "entryChoiceId": "hinata-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "kazari-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kazari-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "西园寺风莉 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazari-02",
+      "locator": "询问偏好",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "问柚子的喜好",
+          "next": {
+            "kind": "choice",
+            "id": "kazari-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "西园寺风莉 / 询问偏好；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazari-03",
+      "locator": "外出地点",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去吃汉堡",
+          "next": {
+            "kind": "choice",
+            "id": "kazari-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "西园寺风莉 / 外出地点；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazari-04",
+      "locator": "同行者",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与柚子同行",
+          "next": {
+            "kind": "choice",
+            "id": "kazari-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "西园寺风莉 / 同行者；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazari-05",
+      "locator": "风莉相关分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她继续",
+          "next": {
+            "kind": "ending",
+            "id": "kazari-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazari",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "西园寺风莉 / 风莉相关分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzu-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "yuzu-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "贵船柚子 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzu-02",
+      "locator": "询问偏好",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "问柚子的喜好",
+          "next": {
+            "kind": "choice",
+            "id": "yuzu-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "贵船柚子 / 询问偏好；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzu-03",
+      "locator": "外出地点",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去吃汉堡",
+          "next": {
+            "kind": "choice",
+            "id": "yuzu-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "贵船柚子 / 外出地点；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzu-04",
+      "locator": "同行者",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与柚子同行",
+          "next": {
+            "kind": "choice",
+            "id": "yuzu-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "贵船柚子 / 同行者；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzu-05",
+      "locator": "风莉相关分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她停下",
+          "next": {
+            "kind": "ending",
+            "id": "yuzu-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "贵船柚子 / 风莉相关分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hinata-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "大垣日向 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hinata-02",
+      "locator": "询问偏好",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "问日向的喜好",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "大垣日向 / 询问偏好；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hinata-03",
+      "locator": "外出地点",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去看魔法饰品",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "大垣日向 / 外出地点；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hinata-04",
+      "locator": "同行者",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与日向同行",
+          "next": {
+            "kind": "choice",
+            "id": "hinata-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "大垣日向 / 同行者；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hinata-05",
+      "locator": "风莉相关分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "请她停下",
+          "next": {
+            "kind": "ending",
+            "id": "hinata-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hinata",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "大垣日向 / 风莉相关分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kazari-end",
+      "safeLabel": "西园寺风莉",
+      "hiddenTitle": "西园寺风莉",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yuzu-end",
+      "safeLabel": "贵船柚子",
+      "hiddenTitle": "贵船柚子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hinata-end",
+      "safeLabel": "大垣日向",
+      "hiddenTitle": "大垣日向",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kazari",
+        "yuzu",
+        "hinata"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

@@ -449,5 +449,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "otome-domain": {
+    "src": "/images/covers/otome-domain.jpg",
+    "width": 600,
+    "height": 429,
+    "subjectId": 143834,
+    "subjectTitle": "オトメ＊ドメイン",
+    "source": "https://bgm.tv/subject/143834",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/51/88/143834_Z4lFd.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/otome-domain.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/2153330/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2153330/library_hero.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

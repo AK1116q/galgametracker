@@ -490,5 +490,22 @@
       "source": "https://bgm.tv/subject/344272",
       "checkedAt": "2026-11-12"
     }
+  },
+  "otome-domain": {
+    "subjectId": 143834,
+    "title": "オトメ＊ドメイン",
+    "score": 6.7,
+    "votes": 2668,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%AA%E3%83%88%E3%83%A1%EF%BC%8A%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/143834",
+    "comment": "以特殊身份进入女校，在共同生活中拉近彼此距离。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ぱれっとクオリア",
+      "year": "2016",
+      "source": "https://bgm.tv/subject/143834",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
