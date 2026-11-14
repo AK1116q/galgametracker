@@ -587,6 +587,19 @@
     font-size: 15px;
   }
 }
+@media (max-width: 560px) {
+  .disc-pagination {
+    left: auto;
+    right: 20px;
+    translate: none;
+    max-width: calc(100% - 112px);
+  }
+  .disc-pagination button {
+    min-width: 28px;
+    width: 36px;
+    flex: 0 1 36px;
+  }
+}
 @media (max-height: 500px) and (min-width: 561px) {
   .disc-catalog {
     bottom: 16px;

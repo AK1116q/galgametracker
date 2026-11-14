@@ -15,6 +15,33 @@ const workCount = Object.keys(
   JSON.parse(readFileSync("src/gallery-metadata.json", "utf8")),
 ).length;
 
+for (const width of [320, 375]) {
+  test(`narrow catalog footer keeps six-page navigation clear at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/");
+    const catalog = page.getByRole("button", { name: "作品目录", exact: true });
+    const pagination = page.getByRole("navigation", { name: "作品分页" });
+    const menuBox = await catalog.boundingBox();
+    const dotsBox = await pagination.boundingBox();
+    expect(menuBox).not.toBeNull();
+    expect(dotsBox).not.toBeNull();
+    expect(dotsBox!.x).toBeGreaterThanOrEqual(menuBox!.x + menuBox!.width + 8);
+    expect(dotsBox!.x + dotsBox!.width).toBeLessThanOrEqual(width);
+    await pagination.getByRole("button").last().click();
+    await expect(pagination.getByRole("button").last()).toHaveAttribute(
+      "aria-current",
+      "page",
+    );
+    await catalog.click();
+    await expect(
+      page.getByRole("dialog", { name: "作品目录", exact: true }),
+    ).toBeVisible();
+  });
+}
+
 for (const pack of works) {
   test(`${pack.game.id}: catalog, artwork, guide and prerequisites`, async ({
     page,
