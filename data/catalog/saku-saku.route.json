@@ -1,0 +1,875 @@
+{
+  "schemaVersion": "0.1",
+  "id": "saku-saku-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "saku-saku",
+    "title": "恋花绽放樱飞时",
+    "aliases": [
+      "恋がさくころ桜どき",
+      "Saku Saku: Love Blooms with the Cherry Blossoms"
+    ]
+  },
+  "release": {
+    "id": "saku-saku-pc",
+    "label": "PC 完整版本篇 · 五条角色路线",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "使用誠也的四项共同前缀与第五项分流；NookGaming 也说明“让她帮忙”的平分路径会在第五项出现四选一。",
+    "如果前四项自行改选，第五项可能不出现或变为另一组题目；此时需返回同一新游戏路径，不能直接套用最后一项。",
+    "蒂娜只要求杏完成，不强制四条角色路线全部通关。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/saku-saku-love-blooms-with-the-cherry-blossoms-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/palette/sakusaku.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "ann",
+      "safeLabel": "神凤杏",
+      "entryChoiceId": "ann-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mio",
+      "safeLabel": "一之濑美樱",
+      "entryChoiceId": "mio-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yuri",
+      "safeLabel": "月岛夕莉",
+      "entryChoiceId": "yuri-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "konami",
+      "safeLabel": "浅叶小奈美",
+      "entryChoiceId": "konami-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "tina",
+      "safeLabel": "蒂娜",
+      "entryChoiceId": "tina-01",
+      "requiredEndingIds": [
+        "ann-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "ann-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "ann-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ann-02",
+      "locator": "共通篇 · 是否帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "ann-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 共通篇 · 是否帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ann-03",
+      "locator": "共通篇 · 午餐",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她去学校食堂",
+          "next": {
+            "kind": "choice",
+            "id": "ann-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 共通篇 · 午餐；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ann-04",
+      "locator": "共通篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "巧妙替她掩饰",
+          "next": {
+            "kind": "choice",
+            "id": "ann-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 共通篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ann-05",
+      "locator": "共通篇 · 招待",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受她请客",
+          "next": {
+            "kind": "choice",
+            "id": "ann-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 共通篇 · 招待；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ann-06",
+      "locator": "同好感度分流",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听听学姐的请求",
+          "next": {
+            "kind": "ending",
+            "id": "ann-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ann",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "神凤杏 / 同好感度分流；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mio-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-02",
+      "locator": "共通篇 · 是否帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "mio-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 共通篇 · 是否帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-03",
+      "locator": "共通篇 · 午餐",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她去学校食堂",
+          "next": {
+            "kind": "choice",
+            "id": "mio-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 共通篇 · 午餐；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-04",
+      "locator": "共通篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "巧妙替她掩饰",
+          "next": {
+            "kind": "choice",
+            "id": "mio-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 共通篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-05",
+      "locator": "共通篇 · 招待",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受她请客",
+          "next": {
+            "kind": "choice",
+            "id": "mio-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 共通篇 · 招待；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mio-06",
+      "locator": "同好感度分流",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "借口去洗手间而离开",
+          "next": {
+            "kind": "ending",
+            "id": "mio-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "一之濑美樱 / 同好感度分流；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-02",
+      "locator": "共通篇 · 是否帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 共通篇 · 是否帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-03",
+      "locator": "共通篇 · 午餐",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她去学校食堂",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 共通篇 · 午餐；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-04",
+      "locator": "共通篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "巧妙替她掩饰",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 共通篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-05",
+      "locator": "共通篇 · 招待",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受她请客",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 共通篇 · 招待；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-06",
+      "locator": "同好感度分流",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "自己也去买饮料",
+          "next": {
+            "kind": "ending",
+            "id": "yuri-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "月岛夕莉 / 同好感度分流；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "konami-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-02",
+      "locator": "共通篇 · 是否帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她帮忙",
+          "next": {
+            "kind": "choice",
+            "id": "konami-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 共通篇 · 是否帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-03",
+      "locator": "共通篇 · 午餐",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她去学校食堂",
+          "next": {
+            "kind": "choice",
+            "id": "konami-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 共通篇 · 午餐；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-04",
+      "locator": "共通篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "巧妙替她掩饰",
+          "next": {
+            "kind": "choice",
+            "id": "konami-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 共通篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-05",
+      "locator": "共通篇 · 招待",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受她请客",
+          "next": {
+            "kind": "choice",
+            "id": "konami-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 共通篇 · 招待；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "konami-06",
+      "locator": "同好感度分流",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "交给爽，自己离开",
+          "next": {
+            "kind": "ending",
+            "id": "konami-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "konami",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "浅叶小奈美 / 同好感度分流；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tina-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "完成杏后选择 Tina 的独立入口，阅读至片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "tina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "蒂娜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "ann-end",
+      "safeLabel": "神凤杏",
+      "hiddenTitle": "神凤杏",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mio-end",
+      "safeLabel": "一之濑美樱",
+      "hiddenTitle": "一之濑美樱",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yuri-end",
+      "safeLabel": "月岛夕莉",
+      "hiddenTitle": "月岛夕莉",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "konami-end",
+      "safeLabel": "浅叶小奈美",
+      "hiddenTitle": "浅叶小奈美",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "tina-end",
+      "safeLabel": "蒂娜",
+      "hiddenTitle": "蒂娜",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "ann",
+        "mio",
+        "yuri",
+        "konami",
+        "tina"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

@@ -677,5 +677,24 @@
       "position": "90% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "saku-saku": {
+    "src": "/images/covers/saku-saku.jpg",
+    "width": 600,
+    "height": 446,
+    "subjectId": 49561,
+    "subjectTitle": "恋がさくころ桜どき",
+    "source": "https://bgm.tv/subject/49561",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/de/96/49561_ywDww.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/saku-saku.webp",
+      "width": 1072,
+      "height": 797,
+      "source": "https://bgm.tv/subject/49561",
+      "imageSource": "https://lain.bgm.tv/pic/cover/l/de/96/49561_ywDww.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
