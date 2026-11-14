@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "0.1",
+  "id": "kunado-chronicles-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "kunado-chronicles",
+    "title": "久那土国记",
+    "aliases": [
+      "クナド国記",
+      "Kunado Chronicles"
+    ]
+  },
+  "release": {
+    "id": "kunado-chronicles-pc",
+    "label": "2021 PC 完整内容版 · 三条主线",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "本篇按阶梯依次经过优里和双子章节，选择继续向未来前进才进入后面的路线；不必先通关前一结局。",
+    "Steam 未补全内容版缺少茜与葵路线，本页限定完整内容版。",
+    "After／Parallel 附加短篇的解锁说法在来源中不完全一致，因此不把它们列为已核对主线结局。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/kunado-chronicles-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/purplesoftware/kunadokokuki.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "yuri",
+      "safeLabel": "优里",
+      "entryChoiceId": "yuri-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "twins",
+      "safeLabel": "茜与葵",
+      "entryChoiceId": "twins-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "haruhime",
+      "safeLabel": "春姬",
+      "entryChoiceId": "haruhime-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "yuri-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；原版若出现开始确认，选择“是”。",
+          "next": {
+            "kind": "choice",
+            "id": "yuri-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "优里 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuri-02",
+      "locator": "优里篇 · 告白回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "发自内心地爱优里",
+          "next": {
+            "kind": "ending",
+            "id": "yuri-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuri",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "优里 / 优里篇 · 告白回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；原版若出现开始确认，选择“是”。",
+          "next": {
+            "kind": "choice",
+            "id": "twins-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "茜与葵 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-02",
+      "locator": "优里篇 · 告白回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "给她看更远的未来",
+          "next": {
+            "kind": "choice",
+            "id": "twins-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "茜与葵 / 优里篇 · 告白回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-03",
+      "locator": "双子篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "爱着她们两个人",
+          "next": {
+            "kind": "ending",
+            "id": "twins-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "茜与葵 / 双子篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhime-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；原版若出现开始确认，选择“是”。",
+          "next": {
+            "kind": "choice",
+            "id": "haruhime-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhime",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春姬 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhime-02",
+      "locator": "优里篇 · 告白回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "给她看更远的未来",
+          "next": {
+            "kind": "choice",
+            "id": "haruhime-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhime",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春姬 / 优里篇 · 告白回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhime-03",
+      "locator": "双子篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "牵起两人的手走向更远的未来",
+          "next": {
+            "kind": "ending",
+            "id": "haruhime-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhime",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春姬 / 双子篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "yuri-end",
+      "safeLabel": "优里",
+      "hiddenTitle": "优里",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "twins-end",
+      "safeLabel": "茜与葵",
+      "hiddenTitle": "茜与葵",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "haruhime-end",
+      "safeLabel": "春姬",
+      "hiddenTitle": "春姬",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "yuri",
+        "twins",
+        "haruhime"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

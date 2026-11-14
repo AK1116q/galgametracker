@@ -507,5 +507,22 @@
       "source": "https://bgm.tv/subject/143834",
       "checkedAt": "2026-11-12"
     }
+  },
+  "kunado-chronicles": {
+    "subjectId": 347490,
+    "title": "クナド国記",
+    "score": 6.5,
+    "votes": 570,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%AF%E3%83%8A%E3%83%89%E5%9B%BD%E8%A8%98?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/347490",
+    "comment": "失去记忆的来客走入异能之国，在重建中寻找未来。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Purple software",
+      "year": "2021",
+      "source": "https://bgm.tv/subject/347490",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

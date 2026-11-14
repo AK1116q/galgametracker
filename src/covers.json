@@ -468,5 +468,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "kunado-chronicles": {
+    "src": "/images/covers/kunado-chronicles.jpg",
+    "width": 600,
+    "height": 423,
+    "subjectId": 347490,
+    "subjectTitle": "クナド国記",
+    "source": "https://bgm.tv/subject/347490",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/fe/3a/347490_E1N4J.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/kunado-chronicles.webp",
+      "width": 2400,
+      "height": 1691,
+      "source": "https://bgm.tv/subject/347490",
+      "imageSource": "https://lain.bgm.tv/pic/cover/l/fe/3a/347490_E1N4J.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
