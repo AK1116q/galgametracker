@@ -1,0 +1,2197 @@
+{
+  "schemaVersion": "0.1",
+  "id": "study-steady-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "study-steady",
+    "title": "Study § Steady",
+    "aliases": [
+      "スタディ§ステディ"
+    ]
+  },
+  "release": {
+    "id": "study-steady-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "每位角色有两种结局，共八条目标路径；不把发型差分算作新结局。",
+    "先确认当前地图上人物与地点相符；英文 Bakery 对应日文蛋糕店，Mall 对应商店街。",
+    "限定第一作 PC 完整内容版并安装官方修正补丁，不包含第二作。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/study-%c2%a7-steady-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/marmalade/studystedy.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "nanoka-1",
+      "safeLabel": "来宫乃乃香 · END 1",
+      "entryChoiceId": "nanoka-1-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "nanoka-2",
+      "safeLabel": "来宫乃乃香 · END 2",
+      "entryChoiceId": "nanoka-2-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yuu-1",
+      "safeLabel": "御前崎悠羽 · END 1",
+      "entryChoiceId": "yuu-1-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yuu-2",
+      "safeLabel": "御前崎悠羽 · END 2",
+      "entryChoiceId": "yuu-2-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mai-1",
+      "safeLabel": "舞阪茉衣 · END 1",
+      "entryChoiceId": "mai-1-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mai-2",
+      "safeLabel": "舞阪茉衣 · END 2",
+      "entryChoiceId": "mai-2-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hazuki-1",
+      "safeLabel": "挂川叶月 · END 1",
+      "entryChoiceId": "hazuki-1-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hazuki-2",
+      "safeLabel": "挂川叶月 · END 2",
+      "entryChoiceId": "hazuki-2-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "nanoka-1-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宠物店 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-1-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-1-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与她一起努力成为兽医",
+          "next": {
+            "kind": "ending",
+            "id": "nanoka-1-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "用自己的方式支持她",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 1 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "宠物店 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 来宫乃乃香",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "nanoka-2-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanoka-2-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与她一起努力成为兽医",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "用自己的方式支持她",
+          "next": {
+            "kind": "ending",
+            "id": "nanoka-2-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanoka-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "来宫乃乃香 · END 2 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "杂货店 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-1-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-1-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "向她承诺结婚",
+          "next": {
+            "kind": "ending",
+            "id": "yuu-1-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "与她报考同一所大学",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 1 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "杂货店 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 御前崎悠羽",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "yuu-2-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuu-2-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "向她承诺结婚",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "与她报考同一所大学",
+          "next": {
+            "kind": "ending",
+            "id": "yuu-2-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuu-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "御前崎悠羽 · END 2 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "蛋糕店 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "mai-1-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-1-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起生活",
+          "next": {
+            "kind": "ending",
+            "id": "mai-1-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "相信距离不会影响感情",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 1 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "蛋糕店 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "学校 · 舞阪茉衣",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-07",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "mai-2-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mai-2-08",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请她一起生活",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "相信距离不会影响感情",
+          "next": {
+            "kind": "ending",
+            "id": "mai-2-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mai-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "舞阪茉衣 · END 2 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "游戏厅 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-07",
+      "locator": "蛋糕选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信叶月，选择萨赫蛋糕",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 蛋糕选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-08",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-1-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-1-09",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受怀孕的可能",
+          "next": {
+            "kind": "ending",
+            "id": "hazuki-1-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "选择先做好计划",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-1",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 1 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-01",
+      "locator": "开始至地图选择",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前六次日常回答不决定路线，可按喜好选；到地图选择后，按本页指定地点与人物。",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 开始至地图选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-02",
+      "locator": "地图选择 1",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "游戏厅 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 地图选择 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-03",
+      "locator": "地图选择 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "商店街 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 地图选择 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-04",
+      "locator": "地图选择 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "上学路 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 地图选择 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-05",
+      "locator": "地图选择 4",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "公园 · 挂川叶月",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 地图选择 4；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-06",
+      "locator": "确认关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "是",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 确认关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-07",
+      "locator": "蛋糕选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信叶月，选择萨赫蛋糕",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 蛋糕选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-08",
+      "locator": "个人篇 · 外观与差分",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "服装与发型选择影响图像差分，不改变本页目标结局；按喜好选择后继续到未来打算的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "hazuki-2-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 个人篇 · 外观与差分；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hazuki-2-09",
+      "locator": "个人篇 · 未来打算",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受怀孕的可能",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "选择先做好计划",
+          "next": {
+            "kind": "ending",
+            "id": "hazuki-2-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hazuki-2",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "挂川叶月 · END 2 / 个人篇 · 未来打算；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "nanoka-1-end",
+      "safeLabel": "来宫乃乃香 · END 1",
+      "hiddenTitle": "来宫乃乃香 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "nanoka-2-end",
+      "safeLabel": "来宫乃乃香 · END 2",
+      "hiddenTitle": "来宫乃乃香 · END 2",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yuu-1-end",
+      "safeLabel": "御前崎悠羽 · END 1",
+      "hiddenTitle": "御前崎悠羽 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yuu-2-end",
+      "safeLabel": "御前崎悠羽 · END 2",
+      "hiddenTitle": "御前崎悠羽 · END 2",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mai-1-end",
+      "safeLabel": "舞阪茉衣 · END 1",
+      "hiddenTitle": "舞阪茉衣 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mai-2-end",
+      "safeLabel": "舞阪茉衣 · END 2",
+      "hiddenTitle": "舞阪茉衣 · END 2",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hazuki-1-end",
+      "safeLabel": "挂川叶月 · END 1",
+      "hiddenTitle": "挂川叶月 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hazuki-2-end",
+      "safeLabel": "挂川叶月 · END 2",
+      "hiddenTitle": "挂川叶月 · END 2",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "nanoka-1",
+        "nanoka-2",
+        "yuu-1",
+        "yuu-2",
+        "mai-1",
+        "mai-2",
+        "hazuki-1",
+        "hazuki-2"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

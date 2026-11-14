@@ -487,5 +487,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "study-steady": {
+    "src": "/images/covers/study-steady.jpg",
+    "width": 600,
+    "height": 415,
+    "subjectId": 266886,
+    "subjectTitle": "スタディ§ステディ",
+    "source": "https://bgm.tv/subject/266886",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/44/b9/266886_j41n4.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/study-steady.webp",
+      "width": 758,
+      "height": 524,
+      "source": "https://bgm.tv/subject/266886",
+      "imageSource": "https://lain.bgm.tv/pic/cover/l/44/b9/266886_j41n4.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
