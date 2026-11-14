@@ -473,5 +473,22 @@
       "source": "https://bgm.tv/subject/220311",
       "checkedAt": "2026-11-12"
     }
+  },
+  "parquet": {
+    "subjectId": 344272,
+    "title": "PARQUET",
+    "score": 5.7,
+    "votes": 1007,
+    "source": "https://api.bgm.tv/search/subject/PARQUET?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/344272",
+    "comment": "记忆能够被保存的近未来，一间公寓连接三个人。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Yuzusoft SOUR",
+      "year": "2021",
+      "source": "https://bgm.tv/subject/344272",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

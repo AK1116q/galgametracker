@@ -430,5 +430,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "parquet": {
+    "src": "/images/covers/parquet.jpg",
+    "width": 600,
+    "height": 424,
+    "subjectId": 344272,
+    "subjectTitle": "PARQUET",
+    "source": "https://bgm.tv/subject/344272",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/e6/82/344272_44b64.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/parquet.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/1662840/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1662840/library_hero_2x.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

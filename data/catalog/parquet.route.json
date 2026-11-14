@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "0.1",
+  "id": "parquet-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "parquet",
+    "title": "PARQUET",
+    "aliases": []
+  },
+  "release": {
+    "id": "parquet-pc",
+    "label": "2021 PC / Steam 全年龄版",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "本篇是无分支阅读，两个 After 分支均要求本篇完成；不能将“全作品无选项”作为说明。",
+    "仅覆盖 PC 本篇与 After，PRE STORY 是前置阅读说明而非额外人物结局。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/parquet-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://galge.seiya-saiga.com/game/yuzu-soft/parquet.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "main",
+      "safeLabel": "本篇",
+      "entryChoiceId": "main-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "rino",
+      "safeLabel": "茨木莉乃 · After",
+      "entryChoiceId": "rino-01",
+      "requiredEndingIds": [
+        "main-end"
+      ]
+    },
+    {
+      "id": "tsubasa",
+      "safeLabel": "城门翼 · After",
+      "entryChoiceId": "tsubasa-01",
+      "requiredEndingIds": [
+        "main-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "main-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "进入本篇；若当前版本先显示 PRE STORY，读完后再进入开始选项。",
+          "next": {
+            "kind": "choice",
+            "id": "main-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "main-02",
+      "locator": "本篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "顺序阅读到本篇片尾，本篇没有路线分歧。",
+          "next": {
+            "kind": "ending",
+            "id": "main-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "main",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "本篇 / 本篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "rino-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "本篇完成后进入 AFTER STORY。",
+          "next": {
+            "kind": "choice",
+            "id": "rino-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "茨木莉乃 · After / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "rino-02",
+      "locator": "After · 唤醒谁",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "叫醒茨木小姐",
+          "next": {
+            "kind": "ending",
+            "id": "rino-end"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "叫醒城门小姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "rino",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "茨木莉乃 · After / After · 唤醒谁；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubasa-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "本篇完成后进入 AFTER STORY。",
+          "next": {
+            "kind": "choice",
+            "id": "tsubasa-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubasa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "城门翼 · After / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubasa-02",
+      "locator": "After · 唤醒谁",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "叫醒茨木小姐",
+          "next": {
+            "kind": "unknown",
+            "id": "off-path"
+          }
+        },
+        {
+          "id": "option-2",
+          "text": "叫醒城门小姐",
+          "next": {
+            "kind": "ending",
+            "id": "tsubasa-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubasa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-2"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "城门翼 · After / After · 唤醒谁；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "main-end",
+      "safeLabel": "本篇",
+      "hiddenTitle": "本篇",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "rino-end",
+      "safeLabel": "茨木莉乃 · After",
+      "hiddenTitle": "茨木莉乃 · After",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "tsubasa-end",
+      "safeLabel": "城门翼 · After",
+      "hiddenTitle": "城门翼 · After",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "main",
+        "rino",
+        "tsubasa"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}
