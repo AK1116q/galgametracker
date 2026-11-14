@@ -1,0 +1,1733 @@
+{
+  "schemaVersion": "0.1",
+  "id": "sankaku-renai-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "sankaku-renai",
+    "title": "青春×好奇相伴的三角恋爱",
+    "aliases": [
+      "スキとスキとでサンカク恋愛",
+      "Sankaku Renai: Love Triangle Trouble"
+    ]
+  },
+  "release": {
+    "id": "sankaku-renai-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "本页主要分流采用巫-KANNAGI-的完整新游戏路径；NookGaming 有另一组有效前缀，不将不同前缀拼接。",
+    "茜采用“青梅竹马→继续寻找→配合气氛→邀请七瑠玩游戏→帮七瑠”的一致路径，与其他攻略读档点不同。",
+    "原版攻略提醒“跳到下一场景”可能跨过选择并影响标记，茜尤其容易受影响；使用普通文字快进，异常时从新游戏重走本页路径。",
+    "本页不要求完成任意角色作为隐藏前置；人物路线后的无关玩笑选项不补写成结局分支。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/sankaku-renai-love-triangle-trouble-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://kannagi35.com/x/suki-to-suki-to-de-sankaku-renai-walkthrough",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/asa-pro/sankakurenai.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "nanaru",
+      "safeLabel": "小森江七瑠",
+      "entryChoiceId": "nanaru-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "suzu",
+      "safeLabel": "小森江铃",
+      "entryChoiceId": "suzu-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "akane",
+      "safeLabel": "和吕田茜",
+      "entryChoiceId": "akane-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "shiina",
+      "safeLabel": "木须志衣菜",
+      "entryChoiceId": "shiina-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "maho",
+      "safeLabel": "鸣泷真帆",
+      "entryChoiceId": "maho-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "cara",
+      "safeLabel": "卡拉·奥利维亚",
+      "entryChoiceId": "cara-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "nanaru-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择青梅竹马",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续找，找到为止",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "配合大家的气氛",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "留在七瑠身旁",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-07",
+      "locator": "妹妹三角篇 1 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮忙照顾餐厅里的七瑠",
+          "next": {
+            "kind": "choice",
+            "id": "nanaru-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 妹妹三角篇 1 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "nanaru-08",
+      "locator": "七瑠篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "之后角度回答任选，读到七瑠片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "nanaru-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "nanaru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江七瑠 / 七瑠篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择青梅竹马",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续找，找到为止",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "配合大家的气氛",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "留在七瑠身旁",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-07",
+      "locator": "妹妹三角篇 1 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮铃做炒面",
+          "next": {
+            "kind": "choice",
+            "id": "suzu-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 妹妹三角篇 1 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "suzu-08",
+      "locator": "铃篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "之后方位回答任选，读到铃片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "suzu-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "suzu",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "小森江铃 / 铃篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "akane-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "akane-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择青梅竹马",
+          "next": {
+            "kind": "choice",
+            "id": "akane-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续找，找到为止",
+          "next": {
+            "kind": "choice",
+            "id": "akane-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "配合大家的气氛",
+          "next": {
+            "kind": "choice",
+            "id": "akane-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请七瑠玩游戏",
+          "next": {
+            "kind": "choice",
+            "id": "akane-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-07",
+      "locator": "妹妹三角篇 1 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮忙照顾餐厅里的七瑠",
+          "next": {
+            "kind": "choice",
+            "id": "akane-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 妹妹三角篇 1 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akane-08",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "akane-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "和吕田茜 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择最近在意的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "劝她放弃寻找",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与真帆一起投入游戏",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请七瑠玩游戏",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-07",
+      "locator": "恋爱三角篇 1",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "此处配角吐槽、称呼学姐及哥哥的称呼不影响分流；按喜好阅读到联系谁的选项。",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 恋爱三角篇 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-08",
+      "locator": "恋爱三角篇 2 · 联系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "给木须学姐发消息",
+          "next": {
+            "kind": "choice",
+            "id": "shiina-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 恋爱三角篇 2 · 联系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "shiina-09",
+      "locator": "志衣菜篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "进入志衣菜路线后其余对话任选，继续到片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "shiina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "shiina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "木须志衣菜 / 志衣菜篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "maho-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "maho-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择最近在意的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "maho-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "劝她放弃寻找",
+          "next": {
+            "kind": "choice",
+            "id": "maho-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与真帆一起投入游戏",
+          "next": {
+            "kind": "choice",
+            "id": "maho-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请七瑠玩游戏",
+          "next": {
+            "kind": "choice",
+            "id": "maho-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-07",
+      "locator": "恋爱三角篇 1",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "此处配角吐槽、称呼学姐及哥哥的称呼不影响分流；按喜好阅读到联系谁的选项。",
+          "next": {
+            "kind": "choice",
+            "id": "maho-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 恋爱三角篇 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-08",
+      "locator": "恋爱三角篇 2 · 联系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请真帆",
+          "next": {
+            "kind": "choice",
+            "id": "maho-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 恋爱三角篇 2 · 联系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-09",
+      "locator": "真帆篇 1 · 服装评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "评价难得换装的真帆",
+          "next": {
+            "kind": "choice",
+            "id": "maho-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 真帆篇 1 · 服装评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "maho-10",
+      "locator": "真帆篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "后段玩笑回答任选，继续到真帆片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "maho-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "maho",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣泷真帆 / 真帆篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "cara-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-02",
+      "locator": "序章 · 听取提议",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "听一听",
+          "next": {
+            "kind": "choice",
+            "id": "cara-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 序章 · 听取提议；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-03",
+      "locator": "共通篇 2",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择最近在意的女孩",
+          "next": {
+            "kind": "choice",
+            "id": "cara-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 共通篇 2；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-04",
+      "locator": "共通篇 3",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "劝她放弃寻找",
+          "next": {
+            "kind": "choice",
+            "id": "cara-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 共通篇 3；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-05",
+      "locator": "共通篇 5",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与真帆一起投入游戏",
+          "next": {
+            "kind": "choice",
+            "id": "cara-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 共通篇 5；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-06",
+      "locator": "共通篇 6",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请七瑠玩游戏",
+          "next": {
+            "kind": "choice",
+            "id": "cara-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 共通篇 6；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-07",
+      "locator": "恋爱三角篇 1",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "此处配角吐槽、称呼学姐及哥哥的称呼不影响分流；按喜好阅读到联系谁的选项。",
+          "next": {
+            "kind": "choice",
+            "id": "cara-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 恋爱三角篇 1；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-08",
+      "locator": "恋爱三角篇 2 · 联系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "邀请真帆",
+          "next": {
+            "kind": "choice",
+            "id": "cara-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 恋爱三角篇 2 · 联系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-09",
+      "locator": "真帆篇 1 · 服装评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "称赞卡拉换装后也很可爱",
+          "next": {
+            "kind": "choice",
+            "id": "cara-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 真帆篇 1 · 服装评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "cara-10",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "cara-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "cara",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "卡拉·奥利维亚 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "nanaru-end",
+      "safeLabel": "小森江七瑠",
+      "hiddenTitle": "小森江七瑠",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "suzu-end",
+      "safeLabel": "小森江铃",
+      "hiddenTitle": "小森江铃",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "akane-end",
+      "safeLabel": "和吕田茜",
+      "hiddenTitle": "和吕田茜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "shiina-end",
+      "safeLabel": "木须志衣菜",
+      "hiddenTitle": "木须志衣菜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "maho-end",
+      "safeLabel": "鸣泷真帆",
+      "hiddenTitle": "鸣泷真帆",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "cara-end",
+      "safeLabel": "卡拉·奥利维亚",
+      "hiddenTitle": "卡拉·奥利维亚",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "nanaru",
+        "suzu",
+        "akane",
+        "shiina",
+        "maho",
+        "cara"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "巫-KANNAGI-给出各段路线、目标选项与无关选择；NookGaming 独立说明六条分流并提供另一组选法。誠也记录原版场景跳转引起的标记问题。本站保存一份完整路径，未混合读档前缀。"
+    }
+  ]
+}

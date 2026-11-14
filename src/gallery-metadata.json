@@ -575,5 +575,22 @@
       "source": "https://bgm.tv/subject/377476",
       "checkedAt": "2026-11-12"
     }
+  },
+  "sankaku-renai": {
+    "subjectId": 183145,
+    "title": "スキとスキとでサンカク恋愛",
+    "score": 6.6,
+    "votes": 750,
+    "source": "https://api.bgm.tv/search/subject/%E3%82%B9%E3%82%AD%E3%81%A8%E3%82%B9%E3%82%AD%E3%81%A8%E3%81%A7%E3%82%B5%E3%83%B3%E3%82%AB%E3%82%AF%E6%81%8B%E6%84%9B?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/183145",
+    "comment": "社团里的多角关系与密集吐槽，主打轻快恋爱喜剧。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ASa Project",
+      "year": "2016",
+      "source": "https://bgm.tv/subject/183145",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

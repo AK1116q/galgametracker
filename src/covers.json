@@ -544,5 +544,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "sankaku-renai": {
+    "src": "/images/covers/sankaku-renai.jpg",
+    "width": 500,
+    "height": 708,
+    "subjectId": 183145,
+    "subjectTitle": "スキとスキとでサンカク恋愛",
+    "source": "https://bgm.tv/subject/183145",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/4f/51/183145_AQHut.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/sankaku-renai.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/1009450/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1009450/library_hero_2x.jpg",
+      "position": "90% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
