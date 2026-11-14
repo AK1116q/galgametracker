@@ -506,5 +506,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "marshmallow": {
+    "src": "/images/covers/marshmallow.jpg",
+    "width": 600,
+    "height": 410,
+    "subjectId": 206741,
+    "subjectTitle": "お家に帰るまでがましまろです",
+    "source": "https://bgm.tv/subject/206741",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/5f/d7/206741_57VW0.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/marshmallow.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/1369790/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1369790/library_hero_2x.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

@@ -1,0 +1,573 @@
+{
+  "schemaVersion": "0.1",
+  "id": "marshmallow-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "marshmallow",
+    "title": "回家前都算是棉花糖",
+    "aliases": [
+      "お家に帰るまでがましまろです",
+      "Marshmallow All the Way Home"
+    ]
+  },
+  "release": {
+    "id": "marshmallow-pc",
+    "label": "2017 PC 完整内容版 · 四角色五结局",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "编号遵循誠也的部屋：礼羽 END 1 为怀孕方向，END 2 为另一分支；不以不同攻略的推荐先后顺序重新编号。",
+    "礼羽的末段选择确实改变结尾，不能当作一般 CG 差分跳过。",
+    "SIDE STORY 不作为新的本篇结局；本页不覆盖主线之外的追加场景。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/marshmallow-all-the-way-home-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/marmalade/mashimaro.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kanon",
+      "safeLabel": "春日部花音",
+      "entryChoiceId": "kanon-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ushio",
+      "safeLabel": "朝霞汐",
+      "entryChoiceId": "ushio-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "sasa",
+      "safeLabel": "皇铃纱纱",
+      "entryChoiceId": "sasa-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "raiha-one",
+      "safeLabel": "礼羽 · END 1",
+      "entryChoiceId": "raiha-one-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "raiha-two",
+      "safeLabel": "礼羽 · END 2",
+      "entryChoiceId": "raiha-two-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "kanon-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前两次邀请和店铺选择不影响最终人物分支；按喜好阅读到四人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "kanon-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanon",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春日部花音 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kanon-02",
+      "locator": "四人选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "春日部花音",
+          "next": {
+            "kind": "choice",
+            "id": "kanon-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanon",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春日部花音 / 四人选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kanon-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "kanon-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kanon",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "春日部花音 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ushio-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前两次邀请和店铺选择不影响最终人物分支；按喜好阅读到四人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "ushio-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ushio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝霞汐 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ushio-02",
+      "locator": "四人选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "朝霞汐",
+          "next": {
+            "kind": "choice",
+            "id": "ushio-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ushio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝霞汐 / 四人选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ushio-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "ushio-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ushio",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "朝霞汐 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sasa-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前两次邀请和店铺选择不影响最终人物分支；按喜好阅读到四人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "sasa-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sasa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "皇铃纱纱 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sasa-02",
+      "locator": "四人选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "皇铃纱纱",
+          "next": {
+            "kind": "choice",
+            "id": "sasa-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sasa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "皇铃纱纱 / 四人选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sasa-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "sasa-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sasa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "皇铃纱纱 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-one-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前两次邀请和店铺选择不影响最终人物分支；按喜好阅读到四人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "raiha-one-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 1 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-one-02",
+      "locator": "四人选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "礼羽·莱科宁",
+          "next": {
+            "kind": "choice",
+            "id": "raiha-one-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 1 / 四人选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-one-03",
+      "locator": "礼羽篇 · 片尾前的结局分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择怀孕方向的答复",
+          "next": {
+            "kind": "ending",
+            "id": "raiha-one-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-one",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 1 / 礼羽篇 · 片尾前的结局分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-two-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始。前两次邀请和店铺选择不影响最终人物分支；按喜好阅读到四人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "raiha-two-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 2 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-two-02",
+      "locator": "四人选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "礼羽·莱科宁",
+          "next": {
+            "kind": "choice",
+            "id": "raiha-two-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 2 / 四人选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "raiha-two-03",
+      "locator": "礼羽篇 · 片尾前的结局分歧",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择体外方向的答复",
+          "next": {
+            "kind": "ending",
+            "id": "raiha-two-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "raiha-two",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "礼羽 · END 2 / 礼羽篇 · 片尾前的结局分歧；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kanon-end",
+      "safeLabel": "春日部花音",
+      "hiddenTitle": "春日部花音",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ushio-end",
+      "safeLabel": "朝霞汐",
+      "hiddenTitle": "朝霞汐",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "sasa-end",
+      "safeLabel": "皇铃纱纱",
+      "hiddenTitle": "皇铃纱纱",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "raiha-one-end",
+      "safeLabel": "礼羽 · END 1",
+      "hiddenTitle": "礼羽 · END 1",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "raiha-two-end",
+      "safeLabel": "礼羽 · END 2",
+      "hiddenTitle": "礼羽 · END 2",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kanon",
+        "ushio",
+        "sasa",
+        "raiha-one",
+        "raiha-two"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

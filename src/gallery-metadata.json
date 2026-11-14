@@ -541,5 +541,22 @@
       "source": "https://bgm.tv/subject/266886",
       "checkedAt": "2026-11-12"
     }
+  },
+  "marshmallow": {
+    "subjectId": 206741,
+    "title": "お家に帰るまでがましまろです",
+    "score": 6.5,
+    "votes": 792,
+    "source": "https://api.bgm.tv/search/subject/%E3%81%8A%E5%AE%B6%E3%81%AB%E5%B8%B0%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%8C%E3%81%BE%E3%81%97%E3%81%BE%E3%82%8D%E3%81%A7%E3%81%99?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/206741",
+    "comment": "从甜点店开始的新生活，工作与恋爱交织成温暖日常。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ま〜まれぇど",
+      "year": "2017",
+      "source": "https://bgm.tv/subject/206741",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
