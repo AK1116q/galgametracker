@@ -1,0 +1,1790 @@
+{
+  "schemaVersion": "0.1",
+  "id": "wagamama-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "wagamama",
+    "title": "任性HighSpec",
+    "aliases": [
+      "ワガママハイスペック",
+      "WAGAMAMA HIGH SPEC"
+    ]
+  },
+  "release": {
+    "id": "wagamama-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "本页采用誠也的完整共同前缀，再从最后三项分流；NookGaming 用的是另一套偏向单人的前缀，不能混着用。",
+    "限定 PC 原版完整内容主线。未补全 Steam／主机版选项数量可能不同，不包含 OC。",
+    "本站不模拟任意混选后的好感度；偏离路径后停止推断。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/wagamama-high-spec-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/madosoft/wagahigh.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kaoruko",
+      "safeLabel": "鹿苑寺薰子",
+      "entryChoiceId": "kaoruko-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "ashe",
+      "safeLabel": "樱木·露弗莱特·阿西",
+      "entryChoiceId": "ashe-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "toa",
+      "safeLabel": "鸣海兔亚",
+      "entryChoiceId": "toa-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "mihiro",
+      "safeLabel": "宫濑未寻",
+      "entryChoiceId": "mihiro-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "kaoruko-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-02",
+      "locator": "共通篇 01 · 是否接受",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 01 · 是否接受；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-03",
+      "locator": "共通篇 02 · 感想",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "多亏你来了",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 02 · 感想；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-04",
+      "locator": "共通篇 03 · 工作",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "交给自己来做",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 03 · 工作；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-05",
+      "locator": "共通篇 04 · 围裙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想象未寻穿围裙的样子",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 04 · 围裙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-06",
+      "locator": "共通篇 05 · 蛋包饭",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她尝一口",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 05 · 蛋包饭；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-07",
+      "locator": "共通篇 06 · 评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "非常可爱",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 06 · 评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-08",
+      "locator": "共通篇 07 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这点程度没什么",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 07 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-09",
+      "locator": "共通篇 08 · 分组",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "分成两组",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 08 · 分组；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-10",
+      "locator": "共通篇 09 · 理由",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "为了大家",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 09 · 理由；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-11",
+      "locator": "共通篇 10 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "反过来充分称赞她",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 10 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-12",
+      "locator": "共通篇 11 · 谁最好看",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家都好看",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 11 · 谁最好看；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-13",
+      "locator": "共通篇 12 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮厨房的忙",
+          "next": {
+            "kind": "choice",
+            "id": "kaoruko-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 共通篇 12 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaoruko-14",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "kaoruko-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaoruko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鹿苑寺薰子 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-02",
+      "locator": "共通篇 01 · 是否接受",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 01 · 是否接受；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-03",
+      "locator": "共通篇 02 · 感想",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "多亏你来了",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 02 · 感想；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-04",
+      "locator": "共通篇 03 · 工作",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "交给自己来做",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 03 · 工作；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-05",
+      "locator": "共通篇 04 · 围裙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想象未寻穿围裙的样子",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 04 · 围裙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-06",
+      "locator": "共通篇 05 · 蛋包饭",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她尝一口",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 05 · 蛋包饭；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-07",
+      "locator": "共通篇 06 · 评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "非常可爱",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 06 · 评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-08",
+      "locator": "共通篇 07 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这点程度没什么",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 07 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-09",
+      "locator": "共通篇 08 · 分组",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "分成两组",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 08 · 分组；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-10",
+      "locator": "共通篇 09 · 理由",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "为了大家",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 09 · 理由；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-11",
+      "locator": "共通篇 10 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "回一个冷笑话",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 10 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-12",
+      "locator": "共通篇 11 · 谁最好看",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若一定要选，那就兔亚",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 11 · 谁最好看；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-13",
+      "locator": "共通篇 12 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮前厅的忙",
+          "next": {
+            "kind": "choice",
+            "id": "ashe-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 共通篇 12 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "ashe-14",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "ashe-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "ashe",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "樱木·露弗莱特·阿西 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "toa-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-02",
+      "locator": "共通篇 01 · 是否接受",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受",
+          "next": {
+            "kind": "choice",
+            "id": "toa-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 01 · 是否接受；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-03",
+      "locator": "共通篇 02 · 感想",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "多亏你来了",
+          "next": {
+            "kind": "choice",
+            "id": "toa-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 02 · 感想；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-04",
+      "locator": "共通篇 03 · 工作",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "交给自己来做",
+          "next": {
+            "kind": "choice",
+            "id": "toa-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 03 · 工作；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-05",
+      "locator": "共通篇 04 · 围裙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想象未寻穿围裙的样子",
+          "next": {
+            "kind": "choice",
+            "id": "toa-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 04 · 围裙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-06",
+      "locator": "共通篇 05 · 蛋包饭",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她尝一口",
+          "next": {
+            "kind": "choice",
+            "id": "toa-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 05 · 蛋包饭；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-07",
+      "locator": "共通篇 06 · 评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "非常可爱",
+          "next": {
+            "kind": "choice",
+            "id": "toa-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 06 · 评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-08",
+      "locator": "共通篇 07 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这点程度没什么",
+          "next": {
+            "kind": "choice",
+            "id": "toa-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 07 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-09",
+      "locator": "共通篇 08 · 分组",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "分成两组",
+          "next": {
+            "kind": "choice",
+            "id": "toa-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 08 · 分组；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-10",
+      "locator": "共通篇 09 · 理由",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "为了大家",
+          "next": {
+            "kind": "choice",
+            "id": "toa-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 09 · 理由；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-11",
+      "locator": "共通篇 10 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "回一个冷笑话",
+          "next": {
+            "kind": "choice",
+            "id": "toa-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 10 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-12",
+      "locator": "共通篇 11 · 谁最好看",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "若一定要选，那就兔亚",
+          "next": {
+            "kind": "choice",
+            "id": "toa-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 11 · 谁最好看；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-13",
+      "locator": "共通篇 12 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮厨房的忙",
+          "next": {
+            "kind": "choice",
+            "id": "toa-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 共通篇 12 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "toa-14",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "toa-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "toa",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "鸣海兔亚 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-02",
+      "locator": "共通篇 01 · 是否接受",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "接受",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 01 · 是否接受；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-03",
+      "locator": "共通篇 02 · 感想",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "多亏你来了",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 02 · 感想；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-04",
+      "locator": "共通篇 03 · 工作",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "交给自己来做",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 03 · 工作；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-05",
+      "locator": "共通篇 04 · 围裙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想象未寻穿围裙的样子",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 04 · 围裙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-06",
+      "locator": "共通篇 05 · 蛋包饭",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "让她尝一口",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-07"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 05 · 蛋包饭；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-07",
+      "locator": "共通篇 06 · 评价",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "非常可爱",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-08"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 06 · 评价；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-08",
+      "locator": "共通篇 07 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "这点程度没什么",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-09"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 07 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-09",
+      "locator": "共通篇 08 · 分组",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "分成两组",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-10"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 08 · 分组；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-10",
+      "locator": "共通篇 09 · 理由",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "为了大家",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-11"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 09 · 理由；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-11",
+      "locator": "共通篇 10 · 回答",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "回一个冷笑话",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-12"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 10 · 回答；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-12",
+      "locator": "共通篇 11 · 谁最好看",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家都好看",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-13"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 11 · 谁最好看；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-13",
+      "locator": "共通篇 12 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "帮厨房的忙",
+          "next": {
+            "kind": "choice",
+            "id": "mihiro-14"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 共通篇 12 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mihiro-14",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "mihiro-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mihiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-2",
+          "sourceLocator": "宫濑未寻 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kaoruko-end",
+      "safeLabel": "鹿苑寺薰子",
+      "hiddenTitle": "鹿苑寺薰子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "ashe-end",
+      "safeLabel": "樱木·露弗莱特·阿西",
+      "hiddenTitle": "樱木·露弗莱特·阿西",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "toa-end",
+      "safeLabel": "鸣海兔亚",
+      "hiddenTitle": "鸣海兔亚",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "mihiro-end",
+      "safeLabel": "宫濑未寻",
+      "hiddenTitle": "宫濑未寻",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kaoruko",
+        "ashe",
+        "toa",
+        "mihiro"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "誠也给出一套带好感度标记的四路线共同前缀及末三项分流；NookGaming 独立确认四条主线与不同的完整选择路径。没有混用两组存档前缀。"
+    }
+  ]
+}

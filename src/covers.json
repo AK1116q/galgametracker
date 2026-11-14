@@ -620,5 +620,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "wagamama": {
+    "src": "/images/covers/wagamama.jpg",
+    "width": 600,
+    "height": 427,
+    "subjectId": 137664,
+    "subjectTitle": "ワガママハイスペック",
+    "source": "https://bgm.tv/subject/137664",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/1b/b7/137664_QQlf3.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/wagamama.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/575480/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/575480/library_hero.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
