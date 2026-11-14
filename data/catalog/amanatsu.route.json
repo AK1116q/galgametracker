@@ -1,0 +1,456 @@
+{
+  "schemaVersion": "0.1",
+  "id": "amanatsu-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "amanatsu",
+    "title": "甜蜜夏日",
+    "aliases": [
+      "アマナツ",
+      "AMANATSU ~Perfect Edition~"
+    ]
+  },
+  "release": {
+    "id": "amanatsu-pc",
+    "label": "PC AMANATSU ~Perfect Edition~ 本篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "三次选择都选择同一人物；三条路线可自由开始，不虚构通关前置。",
+    "适用 Perfect Edition 本篇，原作发行年为 2022；不收录另售《アマナツ＋》。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/amanatsu-perfect-edition-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/azarashi/amanatu.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kazuha",
+      "safeLabel": "相仓和叶",
+      "entryChoiceId": "kazuha-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "kogane",
+      "safeLabel": "雨晴小金",
+      "entryChoiceId": "kogane-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yashiro",
+      "safeLabel": "上梨夜雪",
+      "entryChoiceId": "yashiro-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "kazuha-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kazuha-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazuha",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "相仓和叶 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazuha-02",
+      "locator": "共通篇 · 会面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去与相仓和叶见面",
+          "next": {
+            "kind": "choice",
+            "id": "kazuha-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazuha",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "相仓和叶 / 共通篇 · 会面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazuha-03",
+      "locator": "共通篇 · 放学后",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与相仓和叶一起度过",
+          "next": {
+            "kind": "choice",
+            "id": "kazuha-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazuha",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "相仓和叶 / 共通篇 · 放学后；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kazuha-04",
+      "locator": "共通篇 · 学习",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "辅导相仓和叶学习",
+          "next": {
+            "kind": "ending",
+            "id": "kazuha-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kazuha",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "相仓和叶 / 共通篇 · 学习；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kogane-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kogane-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kogane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "雨晴小金 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kogane-02",
+      "locator": "共通篇 · 会面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去与雨晴小金见面",
+          "next": {
+            "kind": "choice",
+            "id": "kogane-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kogane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "雨晴小金 / 共通篇 · 会面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kogane-03",
+      "locator": "共通篇 · 放学后",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与雨晴小金一起度过",
+          "next": {
+            "kind": "choice",
+            "id": "kogane-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kogane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "雨晴小金 / 共通篇 · 放学后；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kogane-04",
+      "locator": "共通篇 · 学习",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "辅导雨晴小金学习",
+          "next": {
+            "kind": "ending",
+            "id": "kogane-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kogane",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "雨晴小金 / 共通篇 · 学习；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yashiro-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "yashiro-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "上梨夜雪 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yashiro-02",
+      "locator": "共通篇 · 会面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "去与上梨夜雪见面",
+          "next": {
+            "kind": "choice",
+            "id": "yashiro-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "上梨夜雪 / 共通篇 · 会面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yashiro-03",
+      "locator": "共通篇 · 放学后",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "与上梨夜雪一起度过",
+          "next": {
+            "kind": "choice",
+            "id": "yashiro-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "上梨夜雪 / 共通篇 · 放学后；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yashiro-04",
+      "locator": "共通篇 · 学习",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "辅导上梨夜雪学习",
+          "next": {
+            "kind": "ending",
+            "id": "yashiro-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yashiro",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "上梨夜雪 / 共通篇 · 学习；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kazuha-end",
+      "safeLabel": "相仓和叶",
+      "hiddenTitle": "相仓和叶",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "kogane-end",
+      "safeLabel": "雨晴小金",
+      "hiddenTitle": "雨晴小金",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yashiro-end",
+      "safeLabel": "上梨夜雪",
+      "hiddenTitle": "上梨夜雪",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kazuha",
+        "kogane",
+        "yashiro"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}
