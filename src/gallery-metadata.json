@@ -592,5 +592,22 @@
       "source": "https://bgm.tv/subject/183145",
       "checkedAt": "2026-11-12"
     }
+  },
+  "koikari": {
+    "subjectId": 275265,
+    "title": "恋愛、借りちゃいました",
+    "score": 6.9,
+    "votes": 2275,
+    "source": "https://api.bgm.tv/search/subject/%E6%81%8B%E6%84%9B%E3%80%81%E5%80%9F%E3%82%8A%E3%81%A1%E3%82%83%E3%81%84%E3%81%BE%E3%81%97%E3%81%9F?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/275265",
+    "comment": "从出租关系开始的恋爱喜剧，秘密让日常不断偏离计划。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ASa Project",
+      "year": "2019",
+      "source": "https://bgm.tv/subject/275265",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

@@ -1,0 +1,1139 @@
+{
+  "schemaVersion": "0.1",
+  "id": "koikari-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "koikari",
+    "title": "恋爱，我就借走了",
+    "aliases": [
+      "恋愛、借りちゃいました",
+      "Renai Karichaimashita: Koikari - Love For Hire"
+    ]
+  },
+  "release": {
+    "id": "koikari-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "四条主角路线、两条配角路线及一个 BAD END 共七条路径；双子是共同路线，不拆成两部作品。",
+    "前七项对应地点、是否前往、人物、动作、椿的提问、泳池、与天满的关系；只改变日常或 CG，不影响本页后续分流。",
+    "采用 PC 完整版；不包含两套另售 Mini After Story。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/renai-karichaimashita-koikari-love-for-hire-guide-and-walkthrough/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/asa-pro/koikari.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "tsubaki",
+      "safeLabel": "空路椿",
+      "entryChoiceId": "tsubaki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "twins",
+      "safeLabel": "泉千夏与泉小夏",
+      "entryChoiceId": "twins-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "saki",
+      "safeLabel": "美浜咲希",
+      "entryChoiceId": "saki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "emi",
+      "safeLabel": "濑川绘未",
+      "entryChoiceId": "emi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "hasumi",
+      "safeLabel": "天满八纯",
+      "entryChoiceId": "hasumi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "momoko",
+      "safeLabel": "小关桃子",
+      "entryChoiceId": "momoko-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "bad",
+      "safeLabel": "BAD END",
+      "entryChoiceId": "bad-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "tsubaki-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "tsubaki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "空路椿 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubaki-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "自己追上椿",
+          "next": {
+            "kind": "ending",
+            "id": "tsubaki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "空路椿 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "twins-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "泉千夏与泉小夏 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "twins-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "泉千夏与泉小夏 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "twins-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "千夏与小夏",
+          "next": {
+            "kind": "ending",
+            "id": "twins-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "twins",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "泉千夏与泉小夏 / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "saki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "美浜咲希 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "saki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "美浜咲希 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "月",
+          "next": {
+            "kind": "choice",
+            "id": "saki-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "美浜咲希 / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "saki-04",
+      "locator": "美浜相关的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先让美浜冷静下来",
+          "next": {
+            "kind": "ending",
+            "id": "saki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "saki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "美浜咲希 / 美浜相关的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "emi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "emi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "月",
+          "next": {
+            "kind": "choice",
+            "id": "emi-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-04",
+      "locator": "美浜相关的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信绘未，留在原地",
+          "next": {
+            "kind": "choice",
+            "id": "emi-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 美浜相关的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-05",
+      "locator": "决定",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "已经决定了",
+          "next": {
+            "kind": "choice",
+            "id": "emi-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 决定；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "emi-06",
+      "locator": "钱款选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "存折 · 绘未",
+          "next": {
+            "kind": "ending",
+            "id": "emi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "emi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "濑川绘未 / 钱款选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "hasumi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "hasumi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "月",
+          "next": {
+            "kind": "choice",
+            "id": "hasumi-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-04",
+      "locator": "美浜相关的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信绘未，留在原地",
+          "next": {
+            "kind": "choice",
+            "id": "hasumi-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 美浜相关的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-05",
+      "locator": "决定",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "已经决定了",
+          "next": {
+            "kind": "choice",
+            "id": "hasumi-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 决定；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "hasumi-06",
+      "locator": "钱款选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "现金 · 八纯",
+          "next": {
+            "kind": "ending",
+            "id": "hasumi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "hasumi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天满八纯 / 钱款选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "momoko-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "momoko-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "月",
+          "next": {
+            "kind": "choice",
+            "id": "momoko-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-04",
+      "locator": "美浜相关的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信绘未，留在原地",
+          "next": {
+            "kind": "choice",
+            "id": "momoko-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 美浜相关的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-05",
+      "locator": "决定",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "无法选择",
+          "next": {
+            "kind": "choice",
+            "id": "momoko-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 决定；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "momoko-06",
+      "locator": "与桃子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "自己也不知道",
+          "next": {
+            "kind": "ending",
+            "id": "momoko-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "momoko",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "小关桃子 / 与桃子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-01",
+      "locator": "开始与前七项",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前七项只改变日常及 CG，不决定人物路线。读到是否追上椿的分歧。",
+          "next": {
+            "kind": "choice",
+            "id": "bad-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 开始与前七项；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-02",
+      "locator": "追上椿",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "大家一起追上去",
+          "next": {
+            "kind": "choice",
+            "id": "bad-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 追上椿；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-03",
+      "locator": "人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "月",
+          "next": {
+            "kind": "choice",
+            "id": "bad-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-04",
+      "locator": "美浜相关的回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信绘未，留在原地",
+          "next": {
+            "kind": "choice",
+            "id": "bad-05"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 美浜相关的回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-05",
+      "locator": "决定",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "无法选择",
+          "next": {
+            "kind": "choice",
+            "id": "bad-06"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 决定；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "bad-06",
+      "locator": "与桃子的关系",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "维持关系不错的熟人就好",
+          "next": {
+            "kind": "ending",
+            "id": "bad-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "bad",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "BAD END / 与桃子的关系；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "tsubaki-end",
+      "safeLabel": "空路椿",
+      "hiddenTitle": "空路椿",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "twins-end",
+      "safeLabel": "泉千夏与泉小夏",
+      "hiddenTitle": "泉千夏与泉小夏",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "saki-end",
+      "safeLabel": "美浜咲希",
+      "hiddenTitle": "美浜咲希",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "emi-end",
+      "safeLabel": "濑川绘未",
+      "hiddenTitle": "濑川绘未",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "hasumi-end",
+      "safeLabel": "天满八纯",
+      "hiddenTitle": "天满八纯",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "momoko-end",
+      "safeLabel": "小关桃子",
+      "hiddenTitle": "小关桃子",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "bad-end",
+      "safeLabel": "BAD END",
+      "hiddenTitle": "BAD END",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "tsubaki",
+        "twins",
+        "saki",
+        "emi",
+        "hasumi",
+        "momoko",
+        "bad"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

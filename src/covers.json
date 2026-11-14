@@ -563,5 +563,24 @@
       "position": "90% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "koikari": {
+    "src": "/images/covers/koikari.jpg",
+    "width": 499,
+    "height": 700,
+    "subjectId": 275265,
+    "subjectTitle": "恋愛、借りちゃいました",
+    "source": "https://bgm.tv/subject/275265",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/78/70/275265_69xl3.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/koikari.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/1662850/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1662850/library_hero_2x.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
