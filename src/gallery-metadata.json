@@ -677,5 +677,22 @@
       "source": "https://bgm.tv/subject/19002",
       "checkedAt": "2026-11-12"
     }
+  },
+  "future-radio": {
+    "subjectId": 240016,
+    "title": "未来ラジオと人工鳩",
+    "score": 6.5,
+    "votes": 600,
+    "source": "https://api.bgm.tv/search/subject/%E6%9C%AA%E6%9D%A5%E3%83%A9%E3%82%B8%E3%82%AA%E3%81%A8%E4%BA%BA%E5%B7%A5%E9%B3%A9?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/240016",
+    "comment": "失去天空的城市里，一段来自未来的广播改变日常。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Laplacian",
+      "year": "2018",
+      "source": "https://bgm.tv/subject/240016",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

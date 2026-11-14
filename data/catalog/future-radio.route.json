@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "0.1",
+  "id": "future-radio-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "future-radio",
+    "title": "未来广播与人工鸽",
+    "aliases": [
+      "未来ラジオと人工鳩",
+      "The Future Radio and the Artificial Pigeons"
+    ]
+  },
+  "release": {
+    "id": "future-radio-pc",
+    "label": "2018 PC 原版完整内容 · 主线及最终篇",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "原版最终篇要求观看七段附加故事，仅完成辉夜本篇不够。本页把操作列在路线内，不能只勾选结局就省略。",
+    "NookGaming 对英译版写有较少的最终篇前置；本页采用两份日文攻略共同确认的 2018 PC 原版条件，不推断为所有版本最低条件。",
+    "最终篇开头若选择否定回答会回标题；本页用不描写场景的含义提示，不收录成人场景细节。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://flirtingnavi.net/webdata/Mirairadio/index.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/laplacian/mirairadio.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-3",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/the-future-radio-and-the-artificial-pigeons-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "mizuki",
+      "safeLabel": "月见里水雪",
+      "entryChoiceId": "mizuki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "akina",
+      "safeLabel": "越百秋奈",
+      "entryChoiceId": "akina-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "tsubaki",
+      "safeLabel": "蓟野椿姬",
+      "entryChoiceId": "tsubaki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "kaguya",
+      "safeLabel": "叶月辉夜",
+      "entryChoiceId": "kaguya-01",
+      "requiredEndingIds": [
+        "tsubaki-end"
+      ]
+    },
+    {
+      "id": "new-game-plus",
+      "safeLabel": "辉夜 · 最终篇",
+      "entryChoiceId": "new-game-plus-01",
+      "requiredEndingIds": [
+        "mizuki-end",
+        "akina-end",
+        "tsubaki-end",
+        "kaguya-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "mizuki-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "mizuki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mizuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月见里水雪 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mizuki-02",
+      "locator": "共通篇 · 是否依靠辉夜",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不能依靠辉夜",
+          "next": {
+            "kind": "choice",
+            "id": "mizuki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mizuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月见里水雪 / 共通篇 · 是否依靠辉夜；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "mizuki-03",
+      "locator": "共通篇 · 回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想再考虑一下",
+          "next": {
+            "kind": "ending",
+            "id": "mizuki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "mizuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "月见里水雪 / 共通篇 · 回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akina-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "akina-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "越百秋奈 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akina-02",
+      "locator": "共通篇 · 是否依靠辉夜",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不能依靠辉夜",
+          "next": {
+            "kind": "choice",
+            "id": "akina-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "越百秋奈 / 共通篇 · 是否依靠辉夜；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akina-03",
+      "locator": "共通篇 · 回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想要回想起来",
+          "next": {
+            "kind": "choice",
+            "id": "akina-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "越百秋奈 / 共通篇 · 回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "akina-04",
+      "locator": "共通篇 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "之后再来帮忙",
+          "next": {
+            "kind": "ending",
+            "id": "akina-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "akina",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "越百秋奈 / 共通篇 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubaki-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "tsubaki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蓟野椿姬 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubaki-02",
+      "locator": "共通篇 · 是否依靠辉夜",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "不能依靠辉夜",
+          "next": {
+            "kind": "choice",
+            "id": "tsubaki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蓟野椿姬 / 共通篇 · 是否依靠辉夜；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubaki-03",
+      "locator": "共通篇 · 回忆",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "想要回想起来",
+          "next": {
+            "kind": "choice",
+            "id": "tsubaki-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蓟野椿姬 / 共通篇 · 回忆；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "tsubaki-04",
+      "locator": "共通篇 · 帮忙",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "觉得不太妥当",
+          "next": {
+            "kind": "ending",
+            "id": "tsubaki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "tsubaki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "蓟野椿姬 / 共通篇 · 帮忙；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaguya-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；不要沿用选项不同的中途存档。",
+          "next": {
+            "kind": "choice",
+            "id": "kaguya-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaguya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "叶月辉夜 / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kaguya-02",
+      "locator": "共通篇 · 是否依靠辉夜",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "相信辉夜的话",
+          "next": {
+            "kind": "ending",
+            "id": "kaguya-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kaguya",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "叶月辉夜 / 共通篇 · 是否依靠辉夜；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "new-game-plus-01",
+      "locator": "SPECIAL → OMAKE",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "先看完七段已解锁附加故事：水雪、秋奈、椿姬各两段，辉夜一段。",
+          "next": {
+            "kind": "choice",
+            "id": "new-game-plus-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "new-game-plus",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "辉夜 · 最终篇 / SPECIAL → OMAKE；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "new-game-plus-02",
+      "locator": "SPECIAL",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择“强力继续／つよくてコンティニュー”（New Game+）入口。",
+          "next": {
+            "kind": "choice",
+            "id": "new-game-plus-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "new-game-plus",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "辉夜 · 最终篇 / SPECIAL；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "new-game-plus-03",
+      "locator": "最终篇 · 开头问题",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "选择肯定随意亲密关系的答复",
+          "next": {
+            "kind": "choice",
+            "id": "new-game-plus-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "new-game-plus",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "辉夜 · 最终篇 / 最终篇 · 开头问题；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "new-game-plus-04",
+      "locator": "最终篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续读完辉夜后续剧情；否定回答会返回标题，不能到达本页终点。",
+          "next": {
+            "kind": "ending",
+            "id": "new-game-plus-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "new-game-plus",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "辉夜 · 最终篇 / 最终篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "mizuki-end",
+      "safeLabel": "月见里水雪",
+      "hiddenTitle": "月见里水雪",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "akina-end",
+      "safeLabel": "越百秋奈",
+      "hiddenTitle": "越百秋奈",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "tsubaki-end",
+      "safeLabel": "蓟野椿姬",
+      "hiddenTitle": "蓟野椿姬",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "kaguya-end",
+      "safeLabel": "叶月辉夜",
+      "hiddenTitle": "叶月辉夜",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "new-game-plus-end",
+      "safeLabel": "辉夜 · 最终篇",
+      "hiddenTitle": "辉夜 · 最终篇",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "mizuki",
+        "akina",
+        "tsubaki",
+        "kaguya",
+        "new-game-plus"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

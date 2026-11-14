@@ -658,5 +658,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "future-radio": {
+    "src": "/images/covers/future-radio.jpg",
+    "width": 600,
+    "height": 823,
+    "subjectId": 240016,
+    "subjectTitle": "未来ラジオと人工鳩",
+    "source": "https://bgm.tv/subject/240016",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/ae/c4/240016_umWXS.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/future-radio.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/2156620/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2156620/library_hero_2x.jpg",
+      "position": "90% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
