@@ -696,5 +696,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "shugaten": {
+    "src": "/images/covers/shugaten.jpg",
+    "width": 600,
+    "height": 429,
+    "subjectId": 196255,
+    "subjectTitle": "しゅがてん！-sugarfull tempering-",
+    "source": "https://bgm.tv/subject/196255",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/dc/9e/196255_wdSe6.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/shugaten.webp",
+      "width": 1920,
+      "height": 620,
+      "source": "https://store.steampowered.com/app/2374590/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/2374590/library_hero.jpg",
+      "position": "50% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

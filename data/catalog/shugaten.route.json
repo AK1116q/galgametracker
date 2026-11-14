@@ -1,0 +1,473 @@
+{
+  "schemaVersion": "0.1",
+  "id": "shugaten-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "shugaten",
+    "title": "甜糖热恋",
+    "aliases": [
+      "しゅがてん！-sugarfull tempering-",
+      "Sugar Sweet Temptation"
+    ]
+  },
+  "release": {
+    "id": "shugaten-pc",
+    "label": "2017 PC / Steam 本篇与 EPILOGUE",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "三位角色可任意顺序开始；EPILOGUE 要求三条路线全完成。",
+    "人物选择画面隐藏常用工具栏，需要存档时可用顶部菜单；不收录差分 CG。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/sugar-sweet-temptation-walkthrough-guide-shugaten/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/recette/syugaten.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "kori",
+      "safeLabel": "圣代桥冰织",
+      "entryChoiceId": "kori-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "meru",
+      "safeLabel": "古仓梦琉",
+      "entryChoiceId": "meru-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "chocolat",
+      "safeLabel": "巧克拉·涅玖",
+      "entryChoiceId": "chocolat-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "epilogue",
+      "safeLabel": "EPILOGUE",
+      "entryChoiceId": "epilogue-01",
+      "requiredEndingIds": [
+        "kori-end",
+        "meru-end",
+        "chocolat-end"
+      ]
+    }
+  ],
+  "choices": [
+    {
+      "id": "kori-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前四个日常选择不决定路线，按喜好阅读到三人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "kori-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kori",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "圣代桥冰织 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kori-02",
+      "locator": "人物选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "冰织（Kori）",
+          "next": {
+            "kind": "choice",
+            "id": "kori-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kori",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "圣代桥冰织 / 人物选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kori-03",
+      "locator": "冰织篇 · 回应",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "出声叫她",
+          "next": {
+            "kind": "choice",
+            "id": "kori-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kori",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "圣代桥冰织 / 冰织篇 · 回应；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kori-04",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "kori-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kori",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "圣代桥冰织 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "meru-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前四个日常选择不决定路线，按喜好阅读到三人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "meru-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "古仓梦琉 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "meru-02",
+      "locator": "人物选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "梦琉（Meru）",
+          "next": {
+            "kind": "choice",
+            "id": "meru-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "古仓梦琉 / 人物选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "meru-03",
+      "locator": "梦琉篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "普通玩笑答复可任选，顺序读到片尾；差分 CG 不在本页范围。",
+          "next": {
+            "kind": "ending",
+            "id": "meru-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "meru",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "古仓梦琉 / 梦琉篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "chocolat-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始；前四个日常选择不决定路线，按喜好阅读到三人选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "chocolat-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chocolat",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "巧克拉·涅玖 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "chocolat-02",
+      "locator": "人物选择画面",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "巧克拉（Chocolat）",
+          "next": {
+            "kind": "choice",
+            "id": "chocolat-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chocolat",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "巧克拉·涅玖 / 人物选择画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "chocolat-03",
+      "locator": "巧克拉篇 · 活动",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "玩雪",
+          "next": {
+            "kind": "choice",
+            "id": "chocolat-04"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chocolat",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "巧克拉·涅玖 / 巧克拉篇 · 活动；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "chocolat-04",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "chocolat-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "chocolat",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "巧克拉·涅玖 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "epilogue-01",
+      "locator": "标题画面",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "完成三位角色后选择 EPILOGUE，读到片尾。",
+          "next": {
+            "kind": "ending",
+            "id": "epilogue-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "epilogue",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "EPILOGUE / 标题画面；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "kori-end",
+      "safeLabel": "圣代桥冰织",
+      "hiddenTitle": "圣代桥冰织",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "meru-end",
+      "safeLabel": "古仓梦琉",
+      "hiddenTitle": "古仓梦琉",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "chocolat-end",
+      "safeLabel": "巧克拉·涅玖",
+      "hiddenTitle": "巧克拉·涅玖",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "epilogue-end",
+      "safeLabel": "EPILOGUE",
+      "hiddenTitle": "EPILOGUE",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "kori",
+        "meru",
+        "chocolat",
+        "epilogue"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

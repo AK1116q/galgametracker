@@ -711,5 +711,22 @@
       "source": "https://bgm.tv/subject/49561",
       "checkedAt": "2026-11-12"
     }
+  },
+  "shugaten": {
+    "subjectId": 196255,
+    "title": "しゅがてん！-sugarfull tempering-",
+    "score": 6.8,
+    "votes": 1220,
+    "source": "https://api.bgm.tv/search/subject/%E3%81%97%E3%82%85%E3%81%8C%E3%81%A6%E3%82%93?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/196255",
+    "comment": "失去记忆的少年与甜点店少女，在雪中小镇寻找答案。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "Recette",
+      "year": "2017",
+      "source": "https://bgm.tv/subject/196255",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
