@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "0.1",
+  "id": "primal-hearts-pc",
+  "revision": 1,
+  "synthetic": false,
+  "status": "source_checked",
+  "game": {
+    "id": "primal-hearts",
+    "title": "PRIMAL×HEARTS",
+    "aliases": [
+      "Primal Hearts"
+    ]
+  },
+  "release": {
+    "id": "primal-hearts-pc",
+    "label": "PC 完整版主线 · 中文含义提示",
+    "locale": "zh-CN"
+  },
+  "notes": [
+    "按同一条路径从指定入口开始；本页覆盖目标结局，不代替全 CG、全成就或差分场景收集。",
+    "中文为自行概述的选项含义，不能保证与所有汉化逐字相同。只显示已核对的目标项；没有核验完整菜单时，不补写其他选项或排列序号。",
+    "依据公开攻略核对，尚未实机通关；自动化只检查路线数据与页面，不能证明实际游戏结局。",
+    "决定人物路线的是共通篇最后的四人选择；之前提及角色的日常选择不等于已经进入路线。",
+    "Steam 未补全内容版不包含阳姬路线；本页限定完整内容版本。",
+    "无路线解锁顺序；不将 Michi 或 SIDE STORY 虚构为第五条主线。"
+  ],
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "public_reference",
+      "reference": "https://www.nookgaming.com/primal-hearts-walkthrough-guide/",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    },
+    {
+      "id": "source-2",
+      "kind": "public_reference",
+      "reference": "https://seiya-saiga.com/game/marmalade/primal.html",
+      "permission": "仅整理操作、分支与前置事实，中文自行概述，不转载攻略正文、截图或剧情。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "sera",
+      "safeLabel": "仓贺野圣良",
+      "entryChoiceId": "sera-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "haruhi",
+      "safeLabel": "天神平阳姬",
+      "entryChoiceId": "haruhi-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "yuzuki",
+      "safeLabel": "驹形柚月",
+      "entryChoiceId": "yuzuki-01",
+      "requiredEndingIds": []
+    },
+    {
+      "id": "kana",
+      "safeLabel": "神流歌奈",
+      "entryChoiceId": "kana-01",
+      "requiredEndingIds": []
+    }
+  ],
+  "choices": [
+    {
+      "id": "sera-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始，前五次选择均不决定路线；按喜好阅读到最终人物选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "sera-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sera",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓贺野圣良 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sera-02",
+      "locator": "最终人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "仓贺野圣良",
+          "next": {
+            "kind": "choice",
+            "id": "sera-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sera",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓贺野圣良 / 最终人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "sera-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "sera-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "sera",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "仓贺野圣良 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhi-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始，前五次选择均不决定路线；按喜好阅读到最终人物选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "haruhi-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天神平阳姬 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhi-02",
+      "locator": "最终人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "天神平阳姬",
+          "next": {
+            "kind": "choice",
+            "id": "haruhi-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天神平阳姬 / 最终人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "haruhi-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "haruhi-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "haruhi",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "天神平阳姬 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzuki-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始，前五次选择均不决定路线；按喜好阅读到最终人物选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "yuzuki-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "驹形柚月 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzuki-02",
+      "locator": "最终人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "驹形柚月",
+          "next": {
+            "kind": "choice",
+            "id": "yuzuki-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "驹形柚月 / 最终人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "yuzuki-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "yuzuki-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "yuzuki",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "驹形柚月 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kana-01",
+      "locator": "共通篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "从新游戏开始，前五次选择均不决定路线；按喜好阅读到最终人物选择画面。",
+          "next": {
+            "kind": "choice",
+            "id": "kana-02"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "神流歌奈 / 共通篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kana-02",
+      "locator": "最终人物选择",
+      "prompt": "目标选项",
+      "orderKnown": false,
+      "optionsComplete": false,
+      "options": [
+        {
+          "id": "option-1",
+          "text": "神流歌奈",
+          "next": {
+            "kind": "choice",
+            "id": "kana-03"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "神流歌奈 / 最终人物选择；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    },
+    {
+      "id": "kana-03",
+      "locator": "个人篇",
+      "prompt": "阅读操作",
+      "orderKnown": false,
+      "kind": "instruction",
+      "options": [
+        {
+          "id": "option-1",
+          "text": "继续阅读到该路线片尾；本页不收集差分 CG。",
+          "next": {
+            "kind": "ending",
+            "id": "kana-end"
+          }
+        }
+      ],
+      "rules": [
+        {
+          "routeId": "kana",
+          "when": {
+            "all": []
+          },
+          "recommendedOptionIds": [
+            "option-1"
+          ],
+          "sourceId": "source-1",
+          "sourceLocator": "神流歌奈 / 个人篇；另一来源用于复核结局与前置，路径差异见本作核对文档。"
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "sera-end",
+      "safeLabel": "仓贺野圣良",
+      "hiddenTitle": "仓贺野圣良",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "haruhi-end",
+      "safeLabel": "天神平阳姬",
+      "hiddenTitle": "天神平阳姬",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "yuzuki-end",
+      "safeLabel": "驹形柚月",
+      "hiddenTitle": "驹形柚月",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "kana-end",
+      "safeLabel": "神流歌奈",
+      "hiddenTitle": "神流歌奈",
+      "spoilerLevel": 1
+    }
+  ],
+  "reviews": [
+    {
+      "reviewer": "公开攻略核对（非实机）",
+      "date": "2026-11-12",
+      "routeIds": [
+        "sera",
+        "haruhi",
+        "yuzuki",
+        "kana"
+      ],
+      "method": "source_crosscheck",
+      "evidence": "对照两位作者的攻略核对路线结构、目标选项含义及前置。中文提示不冒充游戏原文；不同版本与差分范围详见 notes 和本作资料文档。"
+    }
+  ]
+}

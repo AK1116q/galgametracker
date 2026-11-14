@@ -609,5 +609,22 @@
       "source": "https://bgm.tv/subject/275265",
       "checkedAt": "2026-11-12"
     }
+  },
+  "primal-hearts": {
+    "subjectId": 100309,
+    "title": "PRIMAL×HEARTS",
+    "score": 6.9,
+    "votes": 666,
+    "source": "https://api.bgm.tv/search/subject/PRIMAL%C3%97HEARTS?type=4&responseGroup=large&max_results=8",
+    "checkedAt": "2026-11-12",
+    "url": "https://bgm.tv/subject/100309",
+    "comment": "两个学生会之间的新来者，在校园分歧中寻找自己的选择。",
+    "scope": "作品条目评分",
+    "production": {
+      "developer": "ま〜まれぇど",
+      "year": "2014",
+      "source": "https://bgm.tv/subject/100309",
+      "checkedAt": "2026-11-12"
+    }
   }
 }

@@ -582,5 +582,24 @@
       "position": "50% 38%",
       "checkedAt": "2026-11-12"
     }
+  },
+  "primal-hearts": {
+    "src": "/images/covers/primal-hearts.jpg",
+    "width": 600,
+    "height": 423,
+    "subjectId": 100309,
+    "subjectTitle": "PRIMAL×HEARTS",
+    "source": "https://bgm.tv/subject/100309",
+    "imageSource": "https://lain.bgm.tv/pic/cover/l/d7/09/100309_yCrCa.jpg",
+    "checkedAt": "2026-11-12",
+    "disc": {
+      "src": "/images/discs/primal-hearts.webp",
+      "width": 2400,
+      "height": 775,
+      "source": "https://store.steampowered.com/app/1359400/",
+      "imageSource": "https://shared.steamstatic.com/store_item_assets/steam/apps/1359400/library_hero_2x.jpg",
+      "position": "90% 38%",
+      "checkedAt": "2026-11-12"
+    }
   }
 }
